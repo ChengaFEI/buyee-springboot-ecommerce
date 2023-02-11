@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/fragments :: page_head('Brands - Buyee Admin', 'none', 'table')}"/>
+
+<body>
+
+	<div>
+		<!-- Header (navigation bar) -->
+		<div th:replace="~{/common/header :: navbar('Brands')}"></div>
+		<!-- Float Window Message -->
+		<div th:replace="~{/common/header :: floatwindow}"></div>
+		<!-- Search Bar & Command Buttons -->
+		<div th:replace="~{/common/search :: search_commands('brands')}"></div>
+		
+		<!-- Brands Table with full-details -->
+		<div class="container-fluid full-details">
+			<table class="table table-bordered table-hover table-responsive-xl">
+				<!-- Table Head -->
+				<thead>
+					<tr>
+						<th th:replace="~{/common/table::head_link('brands', 'logo', 'Logo', '50px', 'text-center', false)}" />
+						<th th:replace="~{/common/table::head_link('brands', 'id', 'ID', '70px', 'text-center', true)}" />
+						<th th:replace="~{/common/table::head_link('brands', 'name', 'Name', '', '', true)}" />
+						<th th:replace="~{/common/table::head_link('brands', 'categories', 'Categories', '70%', '', false)}" />
+						<th th:replace="~{/common/table::head_link('brands', '', 'Actions', '40px', 'text-center', false)}" />
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="brand : ${listBrands}">
+						<td class="align-middle text-center">
+							<img th:src="@{${brand.getLogoPathString()}}" style="width: 50px" />	
+						</td>
+						<td class="align-middle text-center" th:text="${brand.getId()}"></td>
+						<td class="align-middle" th:text="${brand.getName()}"></td>
+						<td class="align-middle">
+							<span th:each="category : ${brand.getCategories()}"
+								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
+						</td>
+						<td class="align-middle text-center">
+							<a th:replace="~{/common/table::button-update('brands', ${brand}, '')}"></a>&nbsp;&nbsp;
+							<a th:replace="~{/common/table::button-delete('brands', ${brand}, '')}"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- Table with less details -->
+		<div class="less-details container-fluid">
+			<table class="container-fluid">
+				<tbody>
+					<tr th:each="brand : ${listBrands}">
+						<td>
+							<div class="row mb-3">
+								<!-- Left: Photo -->
+								<div style="width: 220px">
+									<img th:src="@{${brand.getLogoPathString()}}" style="width: 100%" />
+								</div>
+								<!-- Middle: Information -->
+								<div style="width: 40%; padding-left: 0">
+									<div class="mb-2"><b>ID: </b>[[${brand.id}]]</div>
+									<div class="mb-2"><b>Name: </b>[[${brand.name}]]</div>
+									<div class="mb-2"><b>Categories: </b></div>
+									<div class="mb-2">
+										<span th:each="category : ${brand.categories}"
+								 			  class="badge rounded-pill text-bg-dark fw-normal badge-custom">
+								 			[[${category.name}]]
+								 		</span>
+									</div>
+								</div>
+								<!-- Right: Enabled & Actions -->
+								<div class="" style="width: 64px; margin-left: auto">
+									<a th:replace="~{/common/table::button-update('brands', ${brand}, 'fa-2x mb-4')}"></a>
+									<a th:replace="~{/common/table::button-delete('brands', ${brand}, 'fa-2x')}"></a>
+								</div>
+							</div>
+							<hr />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<!-- Pagination -->
+		<div th:replace="~{/common/table::pagination('brands')}"></div>
+		<!-- Delete User Confirmation Modal -->
+		<div th:replace="~{/common/modal :: modal_deletion}"></div>
+		<!-- Footer -->
+		<div th:replace="~{/common/footer :: footer}"></div>
+	</div>
+	
+	<script type="text/javascript" th:src="@{/js/common_table.js}"></script>
+	
+</body>
+
+</html>

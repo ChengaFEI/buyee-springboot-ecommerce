@@ -1,0 +1,58 @@
+@import './theme.css';
+
+/* Tab */
+
+.link-tab-manager {
+	border-radius: var(--main-border-radius);
+	border: 1px solid var(--main-gray-light-ultra);
+}
+
+/* .link-tab-manager>li {
+	height: 45px;
+} */
+
+.link-tab-manager>li>.active {
+	color: var(--main-gray-normal);
+	border-radius: var(--main-border-radius);
+	background-color: var(--main-gray-light-ultra);
+}
+
+.link-tab-manager>li>a {
+	color: var(--main-gray-normal);
+	border-radius: var(--main-border-radius);
+	text-decoration: none;
+	height: var(--main-command-bar-height);
+}
+
+.link-tab-manager>li>a:hover {
+	color: var(--main-pink-bright);
+	border-radius: var(--main-border-radius);
+}
+
+/* Check Box */
+
+.checkbox-custom {
+	opacity: .6; 
+	accent-color: rgb(100, 100, 100); 
+}
+
+/* Drop Down Selection Menu */
+
+.select-custom {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border: 1px solid var(--main-gray-light); 
+	border-radius: var(--main-border-radius);
+}
+
+.select-custom>select {
+	border: 0px;
+	resize: vertical;
+	height: 210px;
+}
+
+.select-custom>select>option {
+	color: var(--main-gray-normal); 
+	margin-bottom: 3px;
+}

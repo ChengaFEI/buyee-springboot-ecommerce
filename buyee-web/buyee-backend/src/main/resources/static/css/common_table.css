@@ -1,0 +1,101 @@
+@import './theme.css';
+
+/* Search Bar Buttons */
+
+.link-button-manager {
+	color: var(--main-gray-normal);
+	text-decoration: none
+}
+
+.link-button-manager:hover {
+	color: var(--main-pink-bright);
+}
+
+.link-clear-search {
+	border: 1px solid var(--main-gray-light);
+	border-right: 0px;
+	background-color: var(--main-transparent);;
+}
+
+/* Search Bar */
+
+.search-bar-custom {
+	border: 1px solid var(--main-gray-light);
+	border-left: 0px;
+	padding: 0 0 0 0;
+}
+
+.search-bar-custom>#search {
+	margin: 0 0 0 0;
+	border: var(--main-transparent);
+	height: var(--main-command-bar-height);
+}
+
+/* Table Heads */
+
+.table-head-active {
+	text-decoration: none;
+	color: var(--main-pink-bright);
+}
+
+.table-head-active:hover {
+	text-decoration: none;
+	color: var(--main-pink-normal);
+}
+
+.table-head-inactive {
+	text-decoration: none;
+	color: var(--main-black-normal);
+}
+
+.table-head-inactive:hover {
+	text-decoration: none;
+	color: var(--main-pink-bright);
+}
+
+/* Badges */
+.badge-custom {
+	margin-right: 10px;
+}
+
+/* Table Buttons */
+
+.icon-action {
+	color: var(--main-gray-normal);
+}
+
+.icon-action:hover {
+	color: var(--main-pink-bright);;
+}
+
+.icon-no-deco {
+	text-decoration: none
+}
+
+/* Pagination */
+
+.pagination>li>.page-link {
+	color: var(--main-gray-light-medium); 
+	border: 1px solid var(--main-gray-light-ultra);
+}
+
+.pagination>li>.page-link:hover {
+	background-color: var(--main-white-bright);
+	color: var(--main-pink-bright);
+	border: 1px solid var(--main-gray-light-ultra);
+}
+
+.pagination>.disabled>a {
+	color: var(--main-gray-light-medium);
+	border: 1px solid var(--main-gray-light-ultra);
+}
+
+.pagination>.active>a {
+	background-color: var(--main-transparent);
+	color: var(--main-pink-bright);
+}
+
+.pagination>.active>a:hover {
+	background-color: var(--main-transparent);
+	color: var(--main-pink-normal);
+}

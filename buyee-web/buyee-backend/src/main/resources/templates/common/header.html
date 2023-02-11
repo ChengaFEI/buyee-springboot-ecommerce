@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/fragments :: page_head('', 'none', null)}" />
+
+
+<body>
+
+	<!-- Navigation Bar -->
+	<div th:fragment="navbar(activeItem)">
+		<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+			<input type="submit" />
+		</form>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-custom">
+			<a class="navbar-brand" th:href="@{/}" style="margin-right: 0px;"> 
+				<img src="https://buyee-db.s3.us-east-2.amazonaws.com/site-logo/buyee-logo.png" />
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar"
+			        aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="topNavbar" style="padding-left: 0px">
+				<ul class="navbar-nav" style="padding-left: 15px">
+				
+					<th:block sec:authorize="hasAuthority('Admin')">
+						<li th:if="${activeItem == 'Users'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/users}">Users</a>
+						</li>
+						<li th:if="${activeItem != 'Users'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/users}">Users</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li th:if="${activeItem == 'Categories'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/categories}">Categories</a>
+						</li>
+						<li th:if="${activeItem != 'Categories'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/categories}">Categories</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li th:if="${activeItem == 'Brands'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/brands}">Brands</a>
+						</li>
+						<li th:if="${activeItem != 'Brands'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/brands}">Brands</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
+						<li th:if="${activeItem == 'Products'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/products}">Products</a>
+						</li>
+						<li th:if="${activeItem != 'Products'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/products}">Products</a>
+						</li>&nbsp;
+					</th:block>
+										
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
+						<li th:if="${activeItem == 'Questions'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/questions}">Questions</a>
+						</li>
+						<li th:if="${activeItem != 'Questions'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/questions}">Questions</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
+						<li th:if="${activeItem == 'Reviews'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/reviews}">Reviews</a>
+						</li>
+						<li th:if="${activeItem != 'Reviews'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/reviews}">Reviews</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+						<li th:if="${activeItem == 'Customers'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/customers}">Customers</a>
+						</li>
+						<li th:if="${activeItem != 'Customers'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/customers}">Customers</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+						<li th:if="${activeItem == 'Shipping'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/shipping}">Shipping</a>
+						</li>
+						<li th:if="${activeItem != 'Shipping'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/shipping}">Shipping</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
+						<li th:if="${activeItem == 'Orders'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/orders}">Orders</a>
+						</li>
+						<li th:if="${activeItem != 'Orders'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/orders}">Orders</a>
+						</li>&nbsp;
+					</th:block>
+
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+						<li th:if="${activeItem == 'Reports'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/reports}">Reports</a>
+						</li>
+						<li th:if="${activeItem != 'Reports'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/reports}">Reports</a>
+						</li>&nbsp;
+					</th:block>
+
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li th:if="${activeItem == 'Articles'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/articles}">Articles</a>
+						</li>
+						<li th:if="${activeItem != 'Articles'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/articles}">Articles</a>
+						</li>&nbsp;
+					</th:block>
+
+					<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+						<li th:if="${activeItem == 'Menus'}" class="nav-item nav-item-active">
+							<a class="nav-link" th:href="@{/menus}">Menus</a>
+						</li>
+						<li th:if="${activeItem != 'Menus'}" class="nav-item nav-item-inactive">
+							<a class="nav-link" th:href="@{/menus}">Menus</a>
+						</li>&nbsp;
+					</th:block>
+
+					<th:block sec:authorize="hasAnyAuthority('Admin')">
+						<li th:if="${activeItem == 'Settings'}" class="nav-item nav-item-active">
+						<a class="nav-link" th:href="@{/settings}">Settings</a>
+						</li>
+						<li th:if="${activeItem != 'Settings'}" class="nav-item nav-item-inactive">
+						<a class="nav-link" th:href="@{/settings}">Settings</a>
+						</li>&nbsp;
+					</th:block>
+					
+					<th:block>
+						<li th:if="${activeItem == 'Account'}" class="nav-item ml-auto">
+							<div class="dropdown nav-item-active">
+	  							<a class="nav-link dropdown-toggle" th:href="@{/account}">
+		  							<i class="fas fa-user"></i> &nbsp;
+									<span sec:authentication="principal.fullName"></span>
+	  							</a>
+	  							<div class="dropdown-content">
+	  								<a th:href="@{/account }">Account</a>
+	  								<a id="logoutLink" href="">Logout</a>
+							  	</div>
+							</div>
+						</li>
+						<li th:if="${activeItem != 'Account'}" class="nav-item ml-auto">
+							<div class="dropdown nav-item-inactive">
+	  							<a class="nav-link dropdown-toggle" th:href="@{/account}">
+		  							<i class="fas fa-user"></i> &nbsp;
+									<span sec:authentication="principal.fullName"></span>
+	  							</a>
+	  							<div class="dropdown-content">
+	  								<a th:href="@{/account }">Account</a>
+	  								<a id="logoutLink" href="">Logout</a>
+							  	</div>
+							</div>
+						</li>
+					</th:block>
+					
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	<!-- Float Window Message -->
+	<div th:fragment="floatwindow" th:if="${message != null}" class="alert alert-secondary text-center bg-dark alert-square">
+		<div class="alert-square-item form-control bg-dark">[[${message}]]</div>
+	</div>
+	
+</body>
+
+</html>

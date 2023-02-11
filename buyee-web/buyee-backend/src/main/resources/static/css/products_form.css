@@ -1,21 +1,55 @@
 @import './theme.css';
 
 /* File Input Button */
-
 .file-button-custom input[type=file]::-webkit-file-upload-button {
-  display: none;
+	display: none;
 }
 
 .file-button-custom input[type=file]::file-selector-button {
-  display: none;
+	display: none;
 }
 
 .file-button-custom input[type=file] {
-  border-top-left-radius: var(--main-border-radius) !important;
-  border-bottom-left-radius: var(--main-border-radius) !important;
+	border-top-left-radius: var(- -main-border-radius) !important;
+	border-bottom-left-radius: var(- -main-border-radius) !important;
 }
 
 .file-button-custom a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
+/* Description Rich Text Editor */
+.richText-btn, .richText-undo, .richText-redo, .richText-help {
+	color: var(--main-gray-normal); 
+}
+
+.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {
+	color: var(--main-pink-bright); 
+}
+
+.richText-btn:hover .richText-dropdown {
+	color: var(--main-gray-normal);
+}
+
+.richText-btn:hover .richText-dropdown li:hover {
+	color: var(--main-pink-bright);
+}
+
+.richText .richText-form button {
+	background-color: transparent;
+	color: var(--main-pink-bright);
+	border: 1px solid var(--main-pink-bright);
+}
+
+.richText .richText-form button:hover {
+	background-color: var(--main-pink-bright);
+	color:  var(--main-white-bright);
+}
+
+.richText .richText-form input[type=text]:focus {
+	border: 1px solid var(--main-pink-bright);
+}
+
+.richText .richText-editor:focus {
+	border-left: 2px solid var(--main-pink-bright);
+}

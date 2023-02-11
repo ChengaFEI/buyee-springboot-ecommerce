@@ -1,24 +1,30 @@
 // Display the thumbnail of uploaded image
-
 $(document).ready(function() {
 	$("#cancelButton").on("click", function() {
 		window.location = moduleURL;
 	});
 
 	$("#imageFile").change(function() {
-		fileSize = this.files[0].size;
-		if (fileSize > MAX_FILE_SIZE) {
-			this.setCustomValidity("Image is larger than " + MAX_FILE_SIZE + " bytes!");
-			this.reportValidity();
-		} else {
-			this.setCustomValidity("");
+		if (checkFileSize(this)) {
 			showImageThumbnail(this);
 		}
 	});
 });
 
-// Image Preview
+// Check File Size
+function checkFileSize(fileInput) {
+	fileSize = fileInput.files[0].size;
+	if (fileSize > MAX_FILE_SIZE) {
+		fileInput.setCustomValidity("Image is larger than " + MAX_FILE_SIZE + " bytes!");
+		fileInput.reportValidity();
+		return false;
+	} else {
+		fileInput.setCustomValidity("");
+		return true;
+	}
+}
 
+// Image Preview
 function showImageThumbnail(fileInput) {
 	var file = fileInput.files[0];
 	var reader = new FileReader();
@@ -29,7 +35,6 @@ function showImageThumbnail(fileInput) {
 };
 
 // Modal Dialog
-
 function showModalDialog(title, message) {
 	$("#modalTitle").text(title);
 	$("#modalBody").text(message);
@@ -45,21 +50,19 @@ function showErrorModal(message) {
 }
 
 // Multi-Selection Blanks Preview
-
 function showSelectedCategories(dropdownCategories, selectedCategories) {
 	dropdownCategories.children("option:selected").each(function() {
 		selectedCategory = $(this);
 		catId = selectedCategory.val();
 		catName = selectedCategory.text().replace(/·/g, "");
 		selectedCategories.append(
-			"<span class='badge rounded-pill text-bg-dark fw-normal badge-custom'>"
+			"<span class='badge rounded-pill text-bg-light fw-normal badge-custom' style='margin-right:10px'>"
 			+ catName +
 			"</span>");
 	});
 }
 
 // Check Name Uniqueness
-
 function checkNameUnique(form) {
 	url = moduleURL + "/check_name";
 	instanceId = $("#id").val();

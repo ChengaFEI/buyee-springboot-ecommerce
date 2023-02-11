@@ -7,10 +7,6 @@
 	border: 1px solid var(--main-gray-light-ultra);
 }
 
-/* .link-tab-manager>li {
-	height: 45px;
-} */
-
 .link-tab-manager>li>.active {
 	color: var(--main-gray-normal);
 	border-radius: var(--main-border-radius);
@@ -27,6 +23,16 @@
 .link-tab-manager>li>a:hover {
 	color: var(--main-pink-bright);
 	border-radius: var(--main-border-radius);
+}
+
+/* Delete Button */
+.link-delete-manager {
+	color: var(--main-gray-normal);
+	text-decoration: none
+}
+
+.link-delete-manager:hover {
+	color: var(--main-pink-bright);
 }
 
 /* Check Box */

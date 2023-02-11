@@ -3,6 +3,7 @@
 <head>
 	<head th:replace="~{/common/fragments :: page_head(${pageTitle}, 'tag', 'form')}"/>
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/products_form.css}" />
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
 </head>
 
@@ -95,6 +96,7 @@
 		MAX_FILE_SIZE = 1048576; // 1MB
 		moduleURL = "[[@{/products}]]";
 		brandModuleURL = "[[@{/brands}]]";
+		defaultImageThumbnail = "[[@{${product.mainImagePathString}}]]";
 	</script>
 	
 </body>

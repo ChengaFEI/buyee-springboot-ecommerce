@@ -3,11 +3,23 @@
 <body>
 
 	<div th:fragment="content" th:remove="tag">
-		<div class="form-group mb-3 rounded" style="width: 30%" title="Image should be smaller than 1MB">
-			<label class="col-form-label" for="mainImageFile">Main Image</label>
-			<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
-			       accept="image/png image/jpeg">
-			<img id="thumbnail" alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+		<div class="row" id="divProductImages">
+			<div class="form-group mb-3 rounded" style="width: 25%" title="Image should be smaller than 1MB">
+				<label class="col-form-label" for="imageFile">Main Image</label>
+				<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
+				       accept="image/png image/jpeg">
+				<img id="thumbnail" alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+			</div>
+			<div id="extraImageDiv0" class="form-group mb-3 rounded" style="width: 25%" 
+				 title="Image should be smaller than 1MB">
+				<label class="col-form-label">Extra Image 1</label>
+				<div id="extraImageHeader0" class="input-group mb-3 file-button-custom" >
+					<input type="hidden" id="isImageExist0" value="false">
+					<input class="form-inline form-control text-muted" type="file" name="extraImageFile" accept="image/png image/jpeg">
+				</div>
+				<img id="extraThumbnail0" alt="Extra Image 1 Preview" style="width: 100%" 
+						 th:src="@{${product.mainImagePathString}}"/>
+			</div>
 		</div>
 	</div>
 	

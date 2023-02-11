@@ -136,7 +136,8 @@ public class User {
     @Transient
     public String getPhotoPathString() {
 	if (id == null || photo == null) return Constants.S3_BASE_URI + "/user-photos/default-photo.png";
-	return Constants.S3_BASE_URI + "/user-photos/" + this.id + "/" + this.photo;
+	return Constants.S3_BASE_URI + "/user-photos/" + this.getId() + "/" + this.getPhoto();
+	
     }
 
     @Override

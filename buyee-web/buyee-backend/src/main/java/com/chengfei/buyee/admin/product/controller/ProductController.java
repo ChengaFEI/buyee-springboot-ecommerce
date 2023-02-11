@@ -1,5 +1,6 @@
 package com.chengfei.buyee.admin.product.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.chengfei.buyee.admin.AmazonS3Util;
 import com.chengfei.buyee.admin.brand.BrandService;
 import com.chengfei.buyee.admin.product.ProductNotFoundException;
 import com.chengfei.buyee.admin.product.ProductService;
@@ -41,8 +45,19 @@ public class ProductController {
     }	
     
     @PostMapping("/products/save")
-    public String submitProduct(Product product, RedirectAttributes redirectAttributes) {
-	productService.saveProduct(product);
+    public String submitProduct(Product product, RedirectAttributes redirectAttributes, 
+	    @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
+	if (!multipartFile.isEmpty()) {
+	    String fileName = product.getName().toLowerCase().replaceAll(" ", "_") + ".png";
+	    product.setMainImage(fileName);
+	    productService.saveProduct(product);
+	    String folderName = "product-images/" + product.getId();
+	    AmazonS3Util.deleteFolder(folderName + "/");
+	    AmazonS3Util.saveFile(folderName, fileName, multipartFile.getInputStream());
+	} else {
+    	    if (product.getMainImage().isEmpty()) product.setMainImage(null);
+    	    productService.saveProduct(product);
+	}
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
 	return "redirect:/products";
     }

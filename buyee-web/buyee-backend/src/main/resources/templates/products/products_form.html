@@ -90,33 +90,11 @@
 	</div>
 	
 	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+	<script type="text/javascript" th:src="@{/js/products_form.js}"></script>
 	<script type="text/javascript">
+		MAX_FILE_SIZE = 1048576; // 1MB
 		moduleURL = "[[@{/products}]]";
 		brandModuleURL = "[[@{/brands}]]";
-		dropdownBrands = $("#brand");
-		dropdownCategories = $("#category");
-		
-		MAX_FILE_SIZE = 1048576; // 1MB
-		
-		$(document).ready(function() {
-			$("#shortDescription").richText();
-			$("#fullDescription").richText();
-			dropdownBrands.change(function() {
-				dropdownCategories.empty();
-				readCategories();
-			});
-			readCategories();
-		});
-		
-		function readCategories() {
-			brandId = dropdownBrands.val();
-			url = brandModuleURL + "/" + brandId + "/categories";
-			$.get(url, function(responseJson) {
-				$.each(responseJson, function(index, category) {
-					$("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
-				});
-			});
-		}
 	</script>
 	
 </body>

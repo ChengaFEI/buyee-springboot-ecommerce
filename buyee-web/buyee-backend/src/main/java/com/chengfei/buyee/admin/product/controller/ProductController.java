@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,6 @@ import com.chengfei.buyee.common.entity.Product;
 public class ProductController {
     @Autowired
     private ProductService productService;
-    
     @Autowired
     private BrandService brandService;
     
@@ -46,18 +46,12 @@ public class ProductController {
     
     @PostMapping("/products/save")
     public String submitProduct(Product product, RedirectAttributes redirectAttributes, 
-	    @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
-	if (!multipartFile.isEmpty()) {
-	    String fileName = product.getName().toLowerCase().replaceAll(" ", "_") + ".png";
-	    product.setMainImage(fileName);
-	    productService.saveProduct(product);
-	    String folderName = "product-images/" + product.getId();
-	    AmazonS3Util.deleteFolder(folderName + "/");
-	    AmazonS3Util.saveFile(folderName, fileName, multipartFile.getInputStream());
-	} else {
-    	    if (product.getMainImage().isEmpty()) product.setMainImage(null);
-    	    productService.saveProduct(product);
-	}
+	    @RequestParam("imageFile") MultipartFile mainImageMultipart,
+	    @RequestParam("extraImageFile") MultipartFile[] extraImageMultiparts) throws IOException {
+	setMainImageName(product, mainImageMultipart);
+	setExtraImageNames(product, extraImageMultiparts);
+	Product savedProduct = productService.saveProduct(product);
+	uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
 	return "redirect:/products";
     }
@@ -131,11 +125,51 @@ public class ProductController {
     public String deleteProductById(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 	try {
 	    productService.deleteProductById(id);
-//	    AmazonS3Util.deleteFolder("product-images/" + id + "/");
+	    AmazonS3Util.deleteFolder("product-images/" + id + "/extras");
+	    AmazonS3Util.deleteFolder("product-images/" + id + "/");
 	    redirectAttributes.addFlashAttribute("message", "Successfully delete product with ID " + id + "!");
 	} catch (ProductNotFoundException e) {
 	    redirectAttributes.addFlashAttribute("message", e.getMessage());
 	}
 	return "redirect:/products";
+    }
+    
+    // Helper Functions
+    
+    private void setMainImageName(Product product, MultipartFile mainImageMultipart) {
+	if (!mainImageMultipart.isEmpty()) {
+	    String fileName = product.getName().toLowerCase().replaceAll(" ", "_") + ".png";
+	    product.setMainImage(fileName);
+	}
+    }
+
+    private void setExtraImageNames(Product product, MultipartFile[] extraImageMultiparts) {
+	if (extraImageMultiparts.length > 0) {
+	    for (MultipartFile multipartFile: extraImageMultiparts) {
+		if (!multipartFile.isEmpty()) {
+		    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		    product.addExtraImage(fileName);
+		}
+	    }
+	}
+    }
+    
+    private void uploadImages(Product savedProduct, MultipartFile mainImageMultipart,
+	    MultipartFile[] extraImageMultiparts) throws IOException {
+	if (!mainImageMultipart.isEmpty()) {
+	    String fileName = savedProduct.getName().toLowerCase().replaceAll(" ", "_") + ".png";
+	    String folderName = "product-images/" + savedProduct.getId();    
+	    AmazonS3Util.deleteFolder(folderName + "/");
+	    AmazonS3Util.saveFile(folderName, fileName, mainImageMultipart.getInputStream());
+	}
+	if (extraImageMultiparts.length > 0) {
+	    String extraFolderName = "product-images/" + savedProduct.getId() + "/extras";    
+	    for (MultipartFile multipartFile: extraImageMultiparts) {
+		if (!multipartFile.isEmpty()) {
+		    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		    AmazonS3Util.saveFile(extraFolderName, fileName, multipartFile.getInputStream());
+		}
+	    }
+	}
     }
 }

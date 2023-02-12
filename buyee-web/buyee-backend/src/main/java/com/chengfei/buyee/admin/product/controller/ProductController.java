@@ -43,13 +43,16 @@ public class ProductController {
    	model.addAttribute("pageTitle", "Create Product");
    	return "products/products_form";
     }	
-    
+     
     @PostMapping("/products/save")
     public String submitProduct(Product product, RedirectAttributes redirectAttributes, 
 	    @RequestParam("imageFile") MultipartFile mainImageMultipart,
-	    @RequestParam("extraImageFile") MultipartFile[] extraImageMultiparts) throws IOException {
+	    @RequestParam("extraImageFile") MultipartFile[] extraImageMultiparts,
+	    @RequestParam(name = "detailName", required = false) String[] detailNames,
+	    @RequestParam(name = "detailValue", required = false) String[] detailValues) throws IOException {
 	setMainImageName(product, mainImageMultipart);
 	setExtraImageNames(product, extraImageMultiparts);
+	setDetails(product, detailNames, detailValues);
 	Product savedProduct = productService.saveProduct(product);
 	uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
@@ -57,7 +60,7 @@ public class ProductController {
     }
     
     // Read Tasks
-    
+
     @GetMapping("/products")
     public String readProductsInFirstPage(Model model) {
 	return readProductsByPageNum(1, null, null, null, model);
@@ -150,6 +153,17 @@ public class ProductController {
 		    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		    product.addExtraImage(fileName);
 		}
+	    }
+	}
+    }
+    
+    private void setDetails(Product product, String[] detailNames, String[] detailValues) {
+	if (detailNames == null || detailNames.length == 0) return;
+	for (int i = 0; i < detailNames.length; i++) {
+	    String name = detailNames[i];
+	    String value = detailValues[i];
+	    if (!name.isEmpty() && !value.isEmpty()) {
+		product.addDetail(name, value);
 	    }
 	}
     }

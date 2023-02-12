@@ -8,7 +8,7 @@ $(document).ready(function() {
 		dropdownCategories.empty();
 		readCategories();
 	});
-	readCategories();
+	readCategoriesForNewForm();
 });
 
 // Display categories of the selected brand 
@@ -20,4 +20,11 @@ function readCategories() {
 			$("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
 		});
 	});
+}
+
+// Display pre-selected category of the product
+function readCategoriesForNewForm() {
+	categoryIdField = $("#categoryId");
+	editMode = (categoryIdField.length != 0);
+	if (!editMode) readCategories();
 }

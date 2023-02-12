@@ -1,6 +1,8 @@
 package com.chengfei.buyee.common.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.chengfei.buyee.common.Constants;
@@ -81,6 +83,14 @@ public class Brand {
 
     public Set<Category> getCategories() {
         return categories;
+    }
+    
+    public List<Category> getSortedCategories() {
+	List<Category> sortedCategories = new ArrayList<>(categories);
+	sortedCategories.sort((c1, c2) -> {
+	    return c1.getName().compareToIgnoreCase(c2.getName());
+	});
+	return sortedCategories;
     }
     
     public void setCategories(Set<Category> categories) {

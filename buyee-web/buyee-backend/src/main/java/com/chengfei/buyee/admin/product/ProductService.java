@@ -2,6 +2,7 @@ package com.chengfei.buyee.admin.product;
 
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,6 +40,14 @@ public class ProductService {
     }
     
     // Read Tasks
+    
+    public Product readProductById(Integer id) throws ProductNotFoundException {
+	try {
+	    return repo.findById(id).get();
+	} catch (NoSuchElementException e) {
+	    throw new ProductNotFoundException("Could not find any product with ID " + id + ".");
+	}
+    }
     
     public Page<Product> readProductsByPageNum(int pageNum, String sortField, String sortOrder, String keyword) {
 	Pageable pageable = null;

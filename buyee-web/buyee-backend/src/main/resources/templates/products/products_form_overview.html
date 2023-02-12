@@ -30,7 +30,18 @@
 		<div class="form-group mb-3" title="Please select a category">
 			<label class="col-form-label">Category *</label>
 			<div>
-				<select th:field="*{category}" class="form-control" required></select>
+				<!-- Add New Product Mode -->
+				<th:block th:if="${product.category == null}">
+					<select th:field="*{category}" class="form-control" required></select>
+				</th:block>
+				<!-- Edit Product Mode -->
+				<th:block th:if="${product.category != null}">
+					<select th:field="*{category}" class="form-control" required>
+						<th:block th:each="category : ${product.brand.sortedCategories}">
+							<option th:value="${category.id}">[[${category.name}]]</option>
+						</th:block>
+					</select>
+				</th:block>
 			</div>
 		</div>
 		<div class="form-group mb-3" title="Enable/disable the product">

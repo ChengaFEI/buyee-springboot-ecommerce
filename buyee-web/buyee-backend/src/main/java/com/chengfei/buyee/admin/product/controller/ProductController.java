@@ -95,7 +95,23 @@ public class ProductController {
 	return "products/products";
     }
     
-    // Update Tasks
+    // Update Tasks 
+    
+    @GetMapping("/products/edit/{id}")
+    public String updateProductById(@PathVariable(name = "id") Integer id, Model model,
+	    			  RedirectAttributes redirectAttributes) {
+	try {
+	    Product product = productService.readProductById(id);
+	    List<Brand> listBrands = brandService.readAllBrandsIdNameAscByName();
+	    model.addAttribute("product", product);
+	    model.addAttribute("listBrands", listBrands);
+	    model.addAttribute("pageTitle", "Update Product (ID: " + id + ")");
+	    return "/products/products_form";
+	} catch (ProductNotFoundException e) {
+	    redirectAttributes.addFlashAttribute("message", e.getMessage());
+	    return "redirect:/products";
+	}
+    }
     
     @GetMapping("/products/{id}/enabled/{status}")
     public String updateProductEnabledStatus(@PathVariable(name = "id") Integer id,

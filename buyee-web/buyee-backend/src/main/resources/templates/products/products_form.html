@@ -59,19 +59,36 @@
 				<hr />
 				<div class="tab-content">
 					<div class="tab-pane active fade show" id="overview" role="tabpanel">
-						<div th:replace="~{products/products_overview :: content}"></div>
+						<div th:replace="~{products/products_form_overview :: content}"></div>
 					</div>
 					<div class="tab-pane fade" id="description" role="tabpanel">
-						<div th:replace="~{products/products_description :: content}"></div>
+						<div th:replace="~{products/products_form_description :: content}"></div>
 					</div>
 					<div class="tab-pane fade" id="images" role="tabpanel">
-						<div th:replace="~{products/products_images :: content}"></div>
+						<div th:replace="~{products/products_form_images :: content}"></div>
 					</div>
 					<div class="tab-pane fade" id="details" role="tabpanel">
-						<div th:replace="~{products/products_details :: content}"></div>
+						<div th:replace="~{products/products_form_details :: content}"></div>
+						<!-- Add New Detail Line -->
+						<div class="row mb-3">
+							<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
+								<label class="text-muted detail-label-padding">Name:</label>
+								<input disabled type="text" class="form-control rounded" name="detailName" pattern=".{2,255}"/>
+							</div>
+							<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
+								<label class="text-muted detail-label-padding">Value:</label>
+								<input disabled type="text" class="form-control rounded" name="detailValue" pattern=".{2,255}"/>
+							</div>
+							<!-- Add New Detail Button -->
+							<div class="input-group" style="width: 5%" title="Add a detail">
+								<a class="detail-button-padding detail-button-manager" onclick="showNextDetailSection();"> 
+									<i class="fa-solid fa-circle-plus fa-2x"></i>
+								</a>
+							</div>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="shipping" role="tabpanel">
-						<div th:replace="~{products/products_shipping :: content}"></div>
+						<div th:replace="~{products/products_form_shipping :: content}"></div>
 					</div>
 				</div>
 				<div>
@@ -96,6 +113,7 @@
 	<script type="text/javascript" th:src="@{/js/products_form_overview.js}"></script>
 	<script type="text/javascript" th:src="@{/js/products_form_description.js}"></script>
 	<script type="text/javascript" th:src="@{/js/products_form_images.js}"></script>
+	<script type="text/javascript" th:src="@{/js/products_form_details.js}"></script>
 	<script type="text/javascript">
 		MAX_FILE_SIZE = 1048576; // 1MB
 		moduleURL = "[[@{/products}]]";

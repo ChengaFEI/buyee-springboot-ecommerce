@@ -36,8 +36,8 @@ function showNextExtraImageSection(index) {
 		</div>
 	`;	
 	htmlLinkRemove = `
-		<a class="input-group-text border-0 link-delete-manager" title="Delete This Image"
-		   href="javascript:removeExtraImageSections(${index-1})"> 
+		<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
+		   href="javascript:removeExtraImageSection(${index-1})"> 
 		    <i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
 		</a>
 	`;
@@ -50,6 +50,6 @@ function showNextExtraImageSection(index) {
 }
 
 // Delete extra image sections
-function removeExtraImageSections(index) {
+function removeExtraImageSection(index) {
 	$("#extraImageDiv" + index).remove();
 }

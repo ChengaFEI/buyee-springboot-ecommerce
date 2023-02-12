@@ -1,4 +1,7 @@
 @import './theme.css';
+@import './products_form_description.css';
+@import './products_form_images.css';
+@import './products_form_details.css';
 
 /* Tab */
 .link-tab-manager {
@@ -7,7 +10,7 @@
 }
 
 .link-tab-manager>li>.active {
-	color: var(--main-gray-normal);
+	color: var(--main-pink-bright);
 	border-radius: var(--main-border-radius);
 	background-color: var(--main-gray-light-ultra);
 }
@@ -24,56 +27,6 @@
 	border-radius: var(--main-border-radius);
 }
 
-/* File Input Bar */
-.file-button-custom input[type=file]::-webkit-file-upload-button {
-	display: none;
-}
-
-.file-button-custom input[type=file]::file-selector-button {
-	display: none;
-}
-
-.file-button-custom input[type=file] {
-	border-top-left-radius: var(--main-border-radius) !important;
-	border-bottom-left-radius: var(--main-border-radius) !important;
-}
-
-.file-button-custom a:hover {
-	cursor: pointer;
-}
-
-/* Description Rich Text Editor */
-.richText-btn, .richText-undo, .richText-redo, .richText-help {
-	color: var(--main-gray-normal); 
-}
-
-.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {
-	color: var(--main-pink-bright); 
-}
-
-.richText-btn:hover .richText-dropdown {
-	color: var(--main-gray-normal);
-}
-
-.richText-btn:hover .richText-dropdown li:hover {
-	color: var(--main-pink-bright);
-}
-
-.richText .richText-form button {
-	background-color: transparent;
-	color: var(--main-pink-bright);
-	border: 1px solid var(--main-pink-bright);
-}
-
-.richText .richText-form button:hover {
-	background-color: var(--main-pink-bright);
-	color:  var(--main-white-bright);
-}
-
-.richText .richText-form input[type=text]:focus {
-	border: 1px solid var(--main-pink-bright);
-}
-
-.richText .richText-editor:focus {
-	border-left: 2px solid var(--main-pink-bright);
+.link-tab-manager>li>.active:hover {
+	color: var(--main-pink-normal);
 }

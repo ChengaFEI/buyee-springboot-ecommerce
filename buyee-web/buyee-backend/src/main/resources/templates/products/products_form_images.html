@@ -4,12 +4,14 @@
 
 	<div th:fragment="content" th:remove="tag">
 		<div class="row" id="divProductImages">
+			<!-- Main Image -->
 			<div class="form-group mb-3 rounded" style="width: 25%" title="Image should be smaller than 1MB">
 				<label class="col-form-label" for="imageFile">Main Image</label>
 				<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
 				       accept="image/png image/jpeg">
 				<img id="thumbnail" alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
 			</div>
+			<!-- Extra Image (original state, no delete button) -->
 			<div id="extraImageDiv0" class="form-group mb-3 rounded" style="width: 25%" 
 				 title="Image should be smaller than 1MB">
 				<label class="col-form-label">Extra Image 1</label>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:fragment="content" th:remove="tag">
+		<div id="divProductDetails">
+			<div id="divDetail0" class="row mb-3">
+				<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
+					<label class="detail-label-padding">Name:</label>
+					<input type="text" class="form-control rounded" name="detailName" pattern=".{2,255}"/>
+				</div>
+				<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
+					<label class="detail-label-padding">Value:</label>
+					<input type="text" class="form-control rounded" name="detailValue" pattern=".{2,255}"/>
+				</div>
+			</div>
+		</div> 
+	</div>
+	
+</body>
+</html>
+ 

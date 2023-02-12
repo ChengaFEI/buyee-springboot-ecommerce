@@ -41,13 +41,14 @@ public class ProductController {
    	model.addAttribute("product", product);
    	model.addAttribute("listBrands", listBrands);
    	model.addAttribute("pageTitle", "Create Product");
+   	model.addAttribute("numExistingExtraImages", 0);
    	return "products/products_form";
     }	
      
     @PostMapping("/products/save")
     public String submitProduct(Product product, RedirectAttributes redirectAttributes, 
 	    @RequestParam("imageFile") MultipartFile mainImageMultipart,
-	    @RequestParam("extraImageFile") MultipartFile[] extraImageMultiparts,
+	    @RequestParam(name = "extraImageFile", required = false) MultipartFile[] extraImageMultiparts,
 	    @RequestParam(name = "detailName", required = false) String[] detailNames,
 	    @RequestParam(name = "detailValue", required = false) String[] detailValues) throws IOException {
 	setMainImageName(product, mainImageMultipart);
@@ -103,8 +104,10 @@ public class ProductController {
 	try {
 	    Product product = productService.readProductById(id);
 	    List<Brand> listBrands = brandService.readAllBrandsIdNameAscByName();
+	    Integer numExistingExtraImages = product.getImages().size();
 	    model.addAttribute("product", product);
 	    model.addAttribute("listBrands", listBrands);
+	    model.addAttribute("numExistingExtraImages", numExistingExtraImages);
 	    model.addAttribute("pageTitle", "Update Product (ID: " + id + ")");
 	    return "/products/products_form";
 	} catch (ProductNotFoundException e) {
@@ -157,13 +160,13 @@ public class ProductController {
     
     private void setMainImageName(Product product, MultipartFile mainImageMultipart) {
 	if (!mainImageMultipart.isEmpty()) {
-	    String fileName = product.getName().toLowerCase().replaceAll(" ", "_") + ".png";
+	    String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());
 	    product.setMainImage(fileName);
 	}
     }
 
     private void setExtraImageNames(Product product, MultipartFile[] extraImageMultiparts) {
-	if (extraImageMultiparts.length > 0) {
+	if (extraImageMultiparts != null && extraImageMultiparts.length > 0) {
 	    for (MultipartFile multipartFile: extraImageMultiparts) {
 		if (!multipartFile.isEmpty()) {
 		    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -187,7 +190,7 @@ public class ProductController {
     private void uploadImages(Product savedProduct, MultipartFile mainImageMultipart,
 	    MultipartFile[] extraImageMultiparts) throws IOException {
 	if (!mainImageMultipart.isEmpty()) {
-	    String fileName = savedProduct.getName().toLowerCase().replaceAll(" ", "_") + ".png";
+	    String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());
 	    String folderName = "product-images/" + savedProduct.getId();    
 	    AmazonS3Util.deleteFolder(folderName + "/");
 	    AmazonS3Util.saveFile(folderName, fileName, mainImageMultipart.getInputStream());

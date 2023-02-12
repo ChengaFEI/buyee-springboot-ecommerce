@@ -70,7 +70,7 @@
 					</div>
 					<div class="tab-pane fade" id="details" role="tabpanel">
 						<div th:replace="~{products/products_form_details :: content}"></div>
-						<!-- Add New Detail Line -->
+						Add New Detail Line
 						<div class="row mb-3">
 							<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
 								<label class="text-muted detail-label-padding">Name:</label>
@@ -80,7 +80,7 @@
 								<label class="text-muted detail-label-padding">Value:</label>
 								<input disabled type="text" class="form-control rounded" name="detailValue" pattern=".{2,255}"/>
 							</div>
-							<!-- Add New Detail Button -->
+							Add New Detail Button
 							<div class="input-group" style="width: 5%" title="Add a detail">
 								<a class="detail-button-padding detail-button-manager" onclick="showNextDetailSection();"> 
 									<i class="fa-solid fa-circle-plus fa-2x"></i>
@@ -119,7 +119,7 @@
 		MAX_FILE_SIZE = 1048576; // 1MB
 		moduleURL = "[[@{/products}]]";
 		brandModuleURL = "[[@{/brands}]]";
-		defaultImageThumbnail = "[[@{${product.mainImagePathString}}]]";
+		defaultImageThumbnail = "[[@{${product.defaultImagePathString}}]]";
 	</script>
 	
 </body>

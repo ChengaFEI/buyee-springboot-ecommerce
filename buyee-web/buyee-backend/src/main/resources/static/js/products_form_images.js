@@ -1,10 +1,17 @@
 // Format the description blank
 $(document).ready(function() {
+	// Display the image thumbnail
 	$("input[name='extraImageFile']").each(function(index) {
 		$(this).change(function() {
 			if (checkFileSize(this)) {
 				showExtraImageThumbnail(this, index);
 			}
+		});
+	});
+	// Remove the stored extra images
+	$("a[name='linkRemoveExtraImage']").each(function(index) {
+		$(this).click(function() {
+			removeExtraImageSection(index);
 		});
 	});
 });
@@ -34,7 +41,7 @@ function showNextExtraImageSection(index) {
 			<img id="extraThumbnail${index}" alt="Extra Image ${index+1} Preview" style="width: 100%" 
 				 src="${defaultImageThumbnail}"/>
 		</div>
-	`;	
+	`;
 	htmlLinkRemove = `
 		<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
 		   href="javascript:removeExtraImageSection(${index-1})"> 

@@ -199,6 +199,9 @@ public class Product {
 	if (id == null || mainImage == null) return Constants.S3_BASE_URI + "/product-images/default-image.png";
 	return Constants.S3_BASE_URI + "/product-images/" + this.getId() + "/" + this.getMainImage();
     }
+    public String getDefaultImagePathString() {
+	return Constants.S3_BASE_URI + "/product-images/default-image.png";
+    }
     public List<ProductDetail> getDetails() {
         return details;
     }

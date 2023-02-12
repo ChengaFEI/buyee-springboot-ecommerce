@@ -1,5 +1,7 @@
 package com.chengfei.buyee.common.entity;
 
+import com.chengfei.buyee.common.Constants;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "product_images")
@@ -45,5 +48,9 @@ public class ProductImage {
     public void setProduct(Product product) {
         this.product = product;
     }
-    
+    @Transient
+    public String getImagePathString() {
+	if (id == null || name == null) return Constants.S3_BASE_URI + "/product-images/default-image.png";
+	return Constants.S3_BASE_URI + "/product-images/" + this.getProduct().getId() + "/extras/" + this.name;
+    }
 }

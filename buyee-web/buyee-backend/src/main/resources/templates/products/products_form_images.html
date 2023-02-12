@@ -4,24 +4,66 @@
 
 	<div th:fragment="content" th:remove="tag">
 		<div class="row" id="divProductImages">
+		
 			<!-- Main Image -->
-			<div class="form-group mb-3 rounded" style="width: 25%" title="Image should be smaller than 1MB">
-				<label class="col-form-label" for="imageFile">Main Image</label>
-				<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
-				       accept="image/png image/jpeg">
-				<img id="thumbnail" alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
-			</div>
-			<!-- Extra Image (original state, no delete button) -->
-			<div id="extraImageDiv0" class="form-group mb-3 rounded" style="width: 25%" 
-				 title="Image should be smaller than 1MB">
-				<label class="col-form-label">Extra Image 1</label>
-				<div id="extraImageHeader0" class="input-group mb-3 file-button-custom" >
-					<input type="hidden" id="isImageExist0" value="false">
-					<input class="form-inline form-control text-muted" type="file" name="extraImageFile" accept="image/png image/jpeg">
+			<div class="form-group mb-3 rounded" style="width: 25%">
+				<input type="hidden" th:field="*{mainImage}"/>
+				<!-- Image Input -->
+				<div title="Image should be smaller than 1MB">
+					<label class="col-form-label" style="width: 100%" for="imageFile">Main Image</label>
+					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
+					       accept="image/png image/jpeg" th:required="${product.mainImage == null}">
 				</div>
-				<img id="extraThumbnail0" alt="Extra Image 1 Preview" style="width: 100%" 
+				<!-- Image Preview -->
+				<div th:title="${product.mainImage}">
+					<img id="thumbnail" alt="Main Image Preview" style="width: 100%" 
 						 th:src="@{${product.mainImagePathString}}"/>
+				</div>
 			</div>
+			
+			<!-- All Stored Extra Images -->
+			<th:block th:each="extraImage, status : ${product.images}">
+				<div th:id="${'extraImageDiv' + status.index}" class="form-group mb-3 rounded" style="width: 25%">
+					<input type="hidden" th:id="${'isImageExist' + status.index}" value="true">
+					<!-- Image Input -->
+					<div title="Image should be smaller than 1MB">
+						<label class="col-form-label">Extra Image #[[${status.index + 1}]]</label>
+						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3 file-button-custom" >
+							<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
+								   accept="image/png image/jpeg">
+							<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
+							   name="linkRemoveExtraImage"> 
+							    <i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
+							</a>
+						</div>
+					</div>
+					<!-- Image Preview -->
+					<div th:title="${extraImage.name}">
+						<img th:id="${'extraThumbnail' + status.index}" th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 
+							 th:src="@{${extraImage.imagePathString}}"/>
+					</div>
+				</div>
+			</th:block>
+			
+			<!-- Extra Image (original state, no delete button) -->
+			<div th:id="${'extraImageDiv' + numExistingExtraImages}" class="form-group mb-3 rounded" style="width: 25%"
+				 title="Image should be smaller than 1MB">
+				<input type="hidden" th:id="${'isImageExist' + numExistingExtraImages}" value="false">
+				<!-- Image Input -->
+				<div>
+					<label class="col-form-label">Extra Image #[[${numExistingExtraImages+1}]]</label>
+					<div th:id="${'extraImageHeader' + numExistingExtraImages}" class="input-group mb-3 file-button-custom" >
+						<input class="form-inline form-control text-muted" type="file" name="extraImageFile" accept="image/png image/jpeg">
+					</div>
+				</div>
+				<!-- Image Preview -->
+				<div>
+					<img th:id="${'extraThumbnail' + numExistingExtraImages}" 
+						 th:alt="${'Extra Image ' + numExistingExtraImages + ' Preview'}" style="width: 100%" 
+						 th:src="@{${product.defaultImagePathString}}"/>
+				</div>
+			</div>
+				
 		</div>
 	</div>
 	

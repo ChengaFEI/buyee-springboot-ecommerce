@@ -1,6 +1,30 @@
 @import './theme.css';
 
-/* File Input Button */
+/* Tab */
+.link-tab-manager {
+	border-radius: var(--main-border-radius);
+	border: 1px solid var(--main-gray-light);
+}
+
+.link-tab-manager>li>.active {
+	color: var(--main-gray-normal);
+	border-radius: var(--main-border-radius);
+	background-color: var(--main-gray-light-ultra);
+}
+
+.link-tab-manager>li>a {
+	color: var(--main-gray-normal);
+	border-radius: var(--main-border-radius);
+	text-decoration: none;
+	height: var(--main-command-bar-height);
+}
+
+.link-tab-manager>li>a:hover {
+	color: var(--main-pink-bright);
+	border-radius: var(--main-border-radius);
+}
+
+/* File Input Bar */
 .file-button-custom input[type=file]::-webkit-file-upload-button {
 	display: none;
 }

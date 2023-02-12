@@ -1,7 +1,9 @@
 package com.chengfei.buyee.common.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.chengfei.buyee.common.Constants;
@@ -61,6 +63,8 @@ public class Product {
     private Brand brand;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductImage> images = new HashSet<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<ProductDetail> details = new ArrayList<>();
     
     public Product() {}
      
@@ -82,10 +86,10 @@ public class Product {
     public void setAlias(String alias) {
         this.alias = alias;
     }
-    public String getshortDescription() {
+    public String getShortDescription() {
         return shortDescription;
     }
-    public void setshortDescription(String shortDescription) {
+    public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
     public String getFullDescription() {
@@ -194,6 +198,15 @@ public class Product {
     public String getMainImagePathString() {
 	if (id == null || mainImage == null) return Constants.S3_BASE_URI + "/product-images/default-image.png";
 	return Constants.S3_BASE_URI + "/product-images/" + this.getId() + "/" + this.getMainImage();
+    }
+    public List<ProductDetail> getDetails() {
+        return details;
+    }
+    public void setDetails(List<ProductDetail> details) {
+        this.details = details;
+    }
+    public void addDetail(String name, String value) {
+	this.details.add(new ProductDetail(name, value, this));
     }
 
     @Override

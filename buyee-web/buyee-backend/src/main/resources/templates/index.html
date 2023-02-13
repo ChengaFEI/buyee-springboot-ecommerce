@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:replace="~{/common/fragments :: page_head('Home - Buyee Admin', 'none', 'index')}" />
-
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
@@ -20,19 +19,8 @@
 				<span sec:authentication="principal.authorities"></span>
 			</a>
 		</div>
-		
 		<!-- Footer -->
 		<div th:replace="~{/common/footer :: footer}"></div>
 	</div>
-	
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#logoutLink").on("click", function(e) {
-				e.preventDefault();
-				document.logoutForm.submit();
-			});
-		});
-	</script>	
 </body>
-
 </html>

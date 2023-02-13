@@ -10,7 +10,7 @@
 
 		<!-- Data Collection Form -->
 		<form class="mt-3 container-fluid" th:action="@{/categories/save}" method="post" style="margin: 0 auto" 
-		      enctype="multipart/form-data" th:object="${category}" onsubmit="return checkNameAliasUnique(this);">
+		      enctype="multipart/form-data" th:object="${category}" onsubmit="return checkNameAlias(this);">
 			<input type="hidden" th:field="*{id}" />
 			<div class="border border-secondary rounded p-3">
 				<div class="mb-3"><h2>[[${pageTitle}]]</h2></div>
@@ -18,14 +18,14 @@
 				<div class="form-group mb-3" title="Name must be 3-128 characters long">
 					<label class="col-form-label" for="inputName">Name *</label>
 					<div>
-						<input type="text" class="form-control" th:field="*{name}" required pattern=".{3,128}" 
+						<input type="text" class="form-control" th:field="*{name}" pattern=".{3,128}" 
 						       placeholder="eg. Computers" id="inputName" />
 					</div>
 				</div>
 				<div class="form-group mb-3" title="Alias must be 3-64 characters long">
 					<label class="col-form-label" for="inputAlias">Alias *</label>
 					<div>
-						<input type="text" class="form-control" th:field="*{alias}" required pattern=".{3,64}" 
+						<input type="text" class="form-control" th:field="*{alias}" pattern=".{3,64}" 
 						       placeholder="eg. Computers" id="inputAlias" />
 					</div>
 				</div>
@@ -74,32 +74,10 @@
 	</div>
 	
 	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+	<script type="text/javascript" th:src="@{/js/categories_form.js}"></script>
 	<script type="text/javascript">		
 		moduleURL = "[[@{/categories}]]";
-		
 		MAX_FILE_SIZE = 1048576; // 1MB
-		
-		function checkNameAliasUnique(form) {
-			url = "[[@{/categories/check_namealias}]]";
-			categoryId = $("#id").val();
-			categoryName = $("#inputName").val();
-			categoryAlias = $("#inputAlias").val();
-			csrfValue = $("input[name='_csrf']").val();
-			params = {id: categoryId, name: categoryName, alias: categoryAlias, _csrf: csrfValue};
-			
-			$.post(url, params, function(response) {
-				if (response == "OK") form.submit();
-				else if (response == "DuplicateName") 
-					showWarningModal("\"" + categoryName + "\" is used by others! Please enter another name!");
-				else if (response == "DuplicateAlias")
-					showWarningModal("\"" + categoryAlias + "\" is used by others! Please enter another alias!");
-				else showErrorModal("Unknown response from the server!");
-			}).fail(function() {
-				showErrorModal("Could not connect to the server!");
-			});
-			
-			return false;
-		}
 	</script>
 	
 </body>

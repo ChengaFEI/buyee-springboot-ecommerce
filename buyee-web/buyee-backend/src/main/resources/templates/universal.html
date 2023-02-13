@@ -22,8 +22,10 @@
 	<script type="text/javascript" th:src="@{/js/universal.js}"></script>
 	<!-- Customized Dependencies (Special) -->
 	<link th:if="${type == 'index'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/index.css}" />
-	<link th:if="${type == 'homepage'}" rel="stylesheet" type="text/css" th:href="@{/css/common_homepage.css}" />
-	<link th:if="${type == 'form'}" rel="stylesheet" type="text/css" th:href="@{/css/common_form.css}" />
+	<link th:if="${type == 'users'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/users/users.css}" />
+	<link th:if="${type == 'categories'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/categories/categories.css}" />
+	<link th:if="${type == 'brands'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/brands/brands.css}" />
+	<link th:if="${type == 'products'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/products/products.css}" />
 </head>
 <body>
 </body>

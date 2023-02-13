@@ -1,21 +1,17 @@
 @import './theme.css';
-
 /* Delete Button */
 .link-delete-manager {
 	color: var(--main-gray-normal);
 	text-decoration: none
 }
-
 .link-delete-manager:hover {
 	color: var(--main-pink-bright);
 }
-
 /* Check Box */
 .checkbox-custom {
 	opacity: .6; 
 	accent-color: rgb(100, 100, 100); 
 }
-
 /* Drop Down Selection Menu */
 .select-custom {
 	padding-top: 10px;
@@ -24,13 +20,11 @@
 	border: 1px solid var(--main-gray-light); 
 	border-radius: var(--main-border-radius);
 }
-
 .select-custom>select {
 	border: 0px;
 	resize: vertical;
 	height: 210px;
 }
-
 .select-custom>select>option {
 	color: var(--main-gray-normal); 
 	margin-bottom: 3px;

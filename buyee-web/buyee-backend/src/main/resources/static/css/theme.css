@@ -1,24 +1,22 @@
 /* Theme settings */
-
 :root {
+	/* Colors */
 	--main-pink-bright: rgba(220, 53, 69, 1);
 	--main-pink-normal: rgba(220, 53, 69, .7);
-	
 	--main-black-normal: rgba(33, 37, 41, 1);
 	--main-gray-normal: rgba(150, 150, 150, 1);
 	--main-gray-light-medium: rgba(41, 43, 44, .4);
 	--main-gray-light: rgba(41, 43, 44, .2);
 	--main-gray-light-ultra: rgba(41, 43, 44, .1);
 	--main-white-bright: rgba(255, 255, 255, 1);
-	
+	/* Alpha */
 	--main-transparent: rgba(255, 255, 255, 0);
-	
+	/* Scale */
 	--main-border-radius: 0.375rem;
 	--main-command-bar-height: 45px;
-	
 	--main-thumbnail-width: 200px;
 	--main-thumbnail-small-width: 50px;
-	
+	/* Padding */
 	--main-padding-vertical: 0.375rem;
 	--main-padding-vertical-sm: 0.15rem;
 	--main-padding-horizontal: 0.75rem;

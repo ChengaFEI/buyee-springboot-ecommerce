@@ -1,4 +1,3 @@
-// Format the description blank
 $(document).ready(function() {
 	// Display the image thumbnail
 	$("input[name='extraImageFile']").each(function(index) {

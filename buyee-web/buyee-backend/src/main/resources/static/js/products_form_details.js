@@ -1,9 +1,17 @@
+$(document).ready(function() {
+	// Remove stored details by clicking button
+	$(".linkRemoveDetail").each(function(index) {
+		$(this).click(function() {
+			removeDetailSectionByIndex(index);
+		});
+	});
+});
+
 // Add extra detail section
 function showNextDetailSection() {
 	allDivDetails = $("[id^='divDetail']");
 	divDetailsNum = allDivDetails.length;
 	nextDivDetailId = divDetailsNum
-	
 	// Add extra detail section
 	html = `
 		<div id="divDetail${nextDivDetailId}" class="row mb-3">
@@ -12,13 +20,12 @@ function showNextDetailSection() {
 				<input type="text" class="form-control rounded" name="detailName" pattern=".{2,255}"/>
 			</div>
 			<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
-				<label class="detail-label-padding">Value:</label>
+				<label class="detail-label-padding">Value:</label> 
 				<input type="text" class="form-control rounded" name="detailValue" pattern=".{2,255}"/>
 			</div>
 		</div>
 	`;
 	$("#divProductDetails").append(html);
-	
 	// Add remove button to the newly added detail section
 	allDivDetails = $("[id^='divDetail']");
 	lastDivDetail = allDivDetails.last();
@@ -37,4 +44,8 @@ function showNextDetailSection() {
 // Delete extra detail sections
 function removeDetailSectionById(id) {
 	$("#" + id).remove();
+}
+
+function removeDetailSectionByIndex(index) {
+	$("#divDetail" + index).remove();
 }

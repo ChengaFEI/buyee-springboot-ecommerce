@@ -2,12 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<head th:replace="~{/universal :: head(${pageTitle}, 'tag', 'products_form')}"/>
+	<!-- RichText Editor for Description Section -->
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+	<!-- Products Form JS Codes -->
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_description.js}"></script>
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_images.js}"></script>
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_details.js}"></script>
+	<!-- Common JS Codes for Form -->
 	<script type="text/javascript" th:src="@{/js/components/form.js}"></script>
+	<!-- Customized Variables -->
 	<script type="text/javascript">
 		let moduleURL = "[[@{/products}]]";
 		let brandModuleURL = "[[@{/brands}]]";
@@ -123,6 +127,7 @@
 		<!-- Footer -->
 		<div th:replace="~{/components/footer :: footer}"></div>
 	</div>
+	<!-- Products Overview JS Codes -->
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_overview.js}"></script>	
 </body>
 </html>

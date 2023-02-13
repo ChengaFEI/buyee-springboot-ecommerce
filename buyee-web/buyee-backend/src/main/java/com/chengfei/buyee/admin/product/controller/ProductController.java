@@ -68,7 +68,7 @@ public class ProductController {
 	ProductSaveUtil.deleteRemovedExtraImages(savedProduct);
 	// Redirect Messages back
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
-	return "redirect:/products";
+	return "redirect:/products/page/1?keyword=" + product.getName();
     }
     
     // Read Tasks

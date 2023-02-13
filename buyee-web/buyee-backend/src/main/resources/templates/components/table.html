@@ -24,7 +24,7 @@
 	</th>
 	<!-- View Button -->
 	<a th:fragment="button-view(sectionName, instance, extraClass)" data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
-	   th:href="@{'/' + ${sectionName} + '/edit/' + ${instance.getId()}}"
+	   th:href="@{'/' + ${sectionName} + '/view/' + ${instance.getId()}}"
 	   th:class="'fa-solid fa-eye icon-action icon-no-deco ' + ${extraClass}"></a> 
 	<!-- Enabled Button -->
 	<div th:fragment="button-enabled(sectionName, instance, extraClass)" 

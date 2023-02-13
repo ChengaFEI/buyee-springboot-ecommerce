@@ -1,0 +1,38 @@
+/* Float Island Tab */
+.float-island-tab {
+	border-radius: var(--main-border-radius);
+	border: 1px solid var(--main-gray-light);
+}
+.float-island-tab>li>a {
+	color: var(--main-gray-normal);
+	border-radius: var(--main-border-radius);
+	text-decoration: none;
+	height: var(--main-command-bar-height);
+}
+.float-island-tab>li>.active {
+	color: var(--main-pink-bright);
+}
+.float-island-tab>li>a:hover {
+	color: var(--main-white-bright);
+	background-color: var(--main-pink-bright);
+}
+
+/* No Border Tab */
+.full-width-tab {
+	background-color: var(--main-black-normal);
+}
+.full-width-tab>li>a {
+	color: var(--main-gray-normal);
+	text-decoration: none;
+	height: var(--main-command-bar-height);
+	border-top: 2px solid var(--main-black-normal);
+}
+.full-width-tab>li>a:hover, .full-width-tab>li>.active {
+	color: var(--main-black-normal);
+	background-color: var(--main-white-bright);
+	border-bottom: 2px dotted var(--main-gray-light-medium);
+	border-top: 2px solid var(--main-gray-light-medium);
+}
+.full-width-tab>li>.active:hover {
+	color: var(--main-gray-normal);
+}

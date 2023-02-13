@@ -1,0 +1,34 @@
+<!-- Shipping Section -->
+<div th:fragment="content(leftWidthRatio, rightWidthRatio)" class="tab-pane fade" id="shipping" role="tabpanel" 
+	 style="padding: var(--bs-modal-padding)">
+	<div class="container-fluid">
+		<!-- Length -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Length (inch)</label>
+			<div th:style="'width:' + ${rightWidthRatio}">
+				<input type="text" class="form-control" th:value="${product.length}" readonly/>
+			</div>
+		</div> 
+		<!-- Width -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Width (inch)</label>
+			<div th:style="'width:' + ${rightWidthRatio}">
+				<input type="text" class="form-control" th:value="${product.width}" readonly/>
+			</div>
+		</div> 
+		<!-- Height -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Height (inch)</label>
+			<div th:style="'width:' + ${rightWidthRatio}">
+				<input type="text" class="form-control" th:value="${product.height}" readonly/>
+			</div>
+		</div> 
+		<!-- Weight -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Weight (pound)</label>
+			<div th:style="'width:' + ${rightWidthRatio}">
+				<input type="text" class="form-control" th:value="${product.weight}" readonly/>
+			</div>
+		</div> 
+	</div>
+</div>

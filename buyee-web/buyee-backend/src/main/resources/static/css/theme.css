@@ -17,6 +17,7 @@
 	--main-thumbnail-width: 200px;
 	--main-thumbnail-small-width: 50px;
 	/* Padding */
+	--main-padding-vertical-lg: 0.5rem;
 	--main-padding-vertical: 0.375rem;
 	--main-padding-vertical-sm: 0.15rem;
 	--main-padding-horizontal: 0.75rem;

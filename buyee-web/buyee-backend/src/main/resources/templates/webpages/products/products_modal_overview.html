@@ -1,0 +1,67 @@
+<!-- Overview Section -->
+<div th:fragment="content(leftWidthRatio, rightWidthRatio)" class="tab-pane active fade show" id="overview" role="tabpanel" 
+	 style="padding: var(--bs-modal-padding)">
+	<div class="container-fluid">
+		<!-- Name -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Name</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.name}" readonly/></div>
+		</div>
+		<!-- Alias -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Alias</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.alias}" readonly/></div>
+		</div>
+		<!-- Brand -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Brand</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.brand.name}" readonly/></div>
+		</div>
+		<!-- Category -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Category</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.category.name}" readonly/></div>
+		</div>
+		<!-- Enabled -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Enabled</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.enabled?'Yes':'No'}" readonly/></div>
+		</div>
+		<!-- In Stock -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">In Stock</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.inStock?'Yes':'No'}" readonly/></div>
+		</div>
+		<!-- Cost -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Cost</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.cost}" readonly/></div>
+		</div>
+		<!-- Price -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Price</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.price}" readonly/></div>
+		</div>
+		<!-- Discount -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Discount</label>
+			<div th:style="'width:' + ${rightWidthRatio}"><input type="text" class="form-control" th:value="${product.discountPercent}" readonly/></div>
+		</div>
+		<!-- Created Time -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Created Time</label>
+			<div th:style="'width:' + ${rightWidthRatio}">
+				<input type="text" class="form-control" readonly
+					   th:value="${#dates.format(product.createdTime, 'yyyy-MM-dd HH:mm:ss')}"/>
+			</div>
+		</div>
+		<!-- Updated Time -->
+		<div class="form-group mb-3 row">
+			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Updated Time</label>
+			<div th:style="'width:' + ${rightWidthRatio}">
+				<input type="text" class="form-control" readonly
+					   th:value="${#dates.format(product.updatedTime, 'yyyy-MM-dd HH:mm:ss')}"/>
+			</div>
+		</div>
+	</div>
+</div>

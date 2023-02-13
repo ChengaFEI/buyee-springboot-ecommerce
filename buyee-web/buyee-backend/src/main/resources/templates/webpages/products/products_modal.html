@@ -1,0 +1,24 @@
+<div class="modal-header model-header-custom">
+	<h4 class="modal-title">Product Preview (ID: [[${product.id}]])</h4>
+	<button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body" style="padding: 0">
+	<!-- Tabs -->
+	<div th:replace="~{/components/tab::tab('full-width-tab')}"></div>
+	<!-- Form Panels -->
+	<div class="tab-content">
+		<!-- Overview Section -->
+		<div th:replace="~{/webpages/products/products_modal_overview::content('18.8%', '81.2%')}"></div>
+		<!-- Description Section -->
+		<div th:replace="~{/webpages/products/products_modal_description::content('18.8%', '81.2%')}"></div>
+		<!-- Images Section -->
+		<div th:replace="~{/webpages/products/products_modal_images::content}"></div>
+		<!-- Details Section -->
+		<div th:replace="~{/webpages/products/products_modal_details::content}"></div>
+		<!-- Shipping Section -->
+		<div th:replace="~{/webpages/products/products_modal_shipping::content('18.8%', '81.2%')}"></div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-outline-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+</div>

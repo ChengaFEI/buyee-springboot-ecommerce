@@ -1,3 +1,12 @@
 @import '../../components/header.css';
 @import '../../components/search.css';
 @import '../../components/table.css';
+@import './products_modal.css';
+/* Text Link */
+.text-action>a {
+	color: var(--main-black-normal);
+	text-decoration: none;
+}
+.text-action:hover>a {
+	color: var(--main-pink-bright);
+}

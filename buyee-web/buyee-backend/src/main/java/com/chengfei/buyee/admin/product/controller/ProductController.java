@@ -78,8 +78,12 @@ public class ProductController {
     }
 
     @GetMapping("/products/page/{pageNum}")
-    public String readProductsByPageNum(@PathVariable(name = "pageNum") int pageNum, @Param("sortField") String sortField,
-	    @Param("sortOrder") String sortOrder, @Param("keyword") String keyword, Model model) {
+    public String readProductsByPageNum(
+	    @PathVariable(name = "pageNum") int pageNum, 
+	    @Param("sortField") String sortField,
+	    @Param("sortOrder") String sortOrder, 
+	    @Param("keyword") String keyword,
+	    Model model) {
 	Page<Product> page = productService.readProductsByPageNum(pageNum, sortField, sortOrder, keyword);
 	List<Product> listProducts = page.getContent();
 	long totalElements = page.getTotalElements();
@@ -103,11 +107,25 @@ public class ProductController {
 	}
 	return "/webpages/products/products";
     }
+    @GetMapping("/products/view/{id}")
+    public String viewProductById(
+	    @PathVariable(name = "id") Integer id,
+	    Model model, RedirectAttributes redirectAttributes) {
+	try {
+	    Product product = productService.readProductById(id);
+	    model.addAttribute("product", product);
+	    return "/webpages/products/products_modal";
+	} catch (ProductNotFoundException e) {
+	    redirectAttributes.addFlashAttribute("message", e.getMessage());
+	    return "redirect:/products";
+	}
+    }
     
     // Update Tasks 
     @GetMapping("/products/edit/{id}")
-    public String updateProductById(@PathVariable(name = "id") Integer id, Model model,
-	    			  RedirectAttributes redirectAttributes) {
+    public String updateProductById(
+	    @PathVariable(name = "id") Integer id, 
+	    Model model, RedirectAttributes redirectAttributes) {
 	try {
 	    Product product = productService.readProductById(id);
 	    List<Brand> listBrands = brandService.readAllBrandsIdNameAscByName();
@@ -124,10 +142,14 @@ public class ProductController {
     }
     
     @GetMapping("/products/{id}/enabled/{status}")
-    public String updateProductEnabledStatus(@PathVariable(name = "id") Integer id,
-	    @PathVariable(name = "status") boolean status, @Param("pageNum") int pageNum,
-	    @Param("keyword") String keyword, @Param("sortField") String sortField, 
-	    @Param("sortOrder") String sortOrder, RedirectAttributes redirectAttributes) {
+    public String updateProductEnabledStatus(
+	    @PathVariable(name = "id") Integer id,
+	    @PathVariable(name = "status") boolean status, 
+	    @Param("pageNum") int pageNum,
+	    @Param("keyword") String keyword, 
+	    @Param("sortField") String sortField, 
+	    @Param("sortOrder") String sortOrder, 
+	    RedirectAttributes redirectAttributes) {
 	productService.updateProductEnabledStatus(id, status);
 	String enabledStr = status ? "enable" : "disable";
 	redirectAttributes.addFlashAttribute("message", "Successfully " + enabledStr + " product with ID " + id + ".");

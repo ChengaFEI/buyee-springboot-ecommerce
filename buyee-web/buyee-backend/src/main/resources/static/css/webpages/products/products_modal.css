@@ -1,0 +1,10 @@
+@import '../../components/tab.css';
+@import '../../components/form.css';
+/* Modal Header */
+.model-header-custom {
+	background-color: var(--main-black-normal); 
+	color: var(--main-white-bright);
+}
+.model-header-custom>h4 {
+	color: var(--main-white-bright);
+}

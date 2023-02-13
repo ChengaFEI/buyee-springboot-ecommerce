@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head th:replace="~{/universal :: head('Products - Buyee Admin', 'tag', 'products')}"/>
+	<head th:replace="~{/universal::head('Products - Buyee Admin', 'tag', 'products')}"/>
+	<script type="text/javascript" th:src="@{/js/webpages/products/products.js}"></script>
 	<script type="text/javascript" th:src="@{/js/components/table.js}"></script>
 </head>
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
-		<div th:replace="~{/components/header :: navbar('Products')}"></div>
+		<div th:replace="~{/components/header::navbar('Products')}"></div>
 		<!-- Float Window Message -->
-		<div th:replace="~{/components/header :: floatwindow}"></div>
+		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Search Bar & Command Buttons -->
-		<div th:replace="~{/components/search :: search_commands('products')}"></div>
-		<!-- Brands Table with full-details -->
+		<div th:replace="~{/components/search::search_commands('products')}"></div>
+		<!-- Products Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">
 				<!-- Table Head -->
@@ -29,7 +30,7 @@
 				</thead> 
 				<!-- Table Body -->
 				<tbody>
-					<tr th:each="product : ${listProducts}">
+					<tr th:each="product:${listProducts}">
 						<!-- Main Image -->
 						<td class="align-middle text-center">
 							<img th:src="@{${product.getMainImagePathString()}}" style="width: 50px" />	
@@ -37,15 +38,15 @@
 						<!-- ID -->
 						<td class="align-middle text-center" th:text="${product.id}" />
 						<!-- Name -->
-						<td class="align-middle">
-							<a title="View this product" th:text="${product.name}" class="text-action"
+						<td class="align-middle text-action">
+							<a title="View this product" th:text="${product.name}" class="link-detail"
 							   th:href="@{'/products/view/' + ${product.id}}"></a> 
 						</td>
 						<!-- Brand Name -->
 						<td class="align-middle" th:text="${product.brand.name}" />
 						<!-- Category Name -->
 						<td class="align-middle">
-							<span th:each="category : ${product.getCategory()}"
+							<span th:each="category:${product.getCategory()}"
 								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
 						</td>
 						<!-- Enabled -->
@@ -54,7 +55,7 @@
 						</td>
 						<!-- Actions -->
 						<td class="align-middle text-center">
-							<a th:replace="~{/components/table::button-view('products', ${product}, '')}"></a>&nbsp;&nbsp;
+							<a th:replace="~{/components/table::button-view('products', ${product}, 'link-detail')}"></a>&nbsp;&nbsp;
 							<a th:replace="~{/components/table::button-update('products', ${product}, '')}"></a>&nbsp;&nbsp;
 							<a th:replace="~{/components/table::button-delete('products', ${product}, '')}"></a>
 						</td>
@@ -65,9 +66,11 @@
 		<!-- Pagination -->
 		<div th:replace="~{/components/table::pagination('products')}"></div>
 		<!-- Delete User Confirmation Modal -->
-		<div th:replace="~{/components/modal :: modal_deletion}"></div>
+		<div th:replace="~{/components/modal::modal_deletion}"></div>
+		<!-- Product Preview Modal -->
+		<div th:replace="~{/components/modal::modal_preview}"></div>
 		<!-- Footer -->
-		<div th:replace="~{/components/footer :: footer}"></div>
+		<div th:replace="~{/components/footer::footer}"></div>
 	</div>
 </body>
 </html>

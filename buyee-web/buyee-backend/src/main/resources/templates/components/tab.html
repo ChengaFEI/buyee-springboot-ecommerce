@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/universal :: head('', 'none', null)}" />
+<body>
+	<!-- Tab in Product Section -->
+	<div th:fragment="tab(tabClass)" class="mb-3">
+		<ul th:class="'nav nav-justified ' + ${tabClass}" id="myTab" role="tablist">
+			<li class="nav-item">
+		    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
+		    	   role="tab" type="button">
+		    		<span class="align-middle">Overview</span>
+		    	</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#description" 
+		    	   role="tab" type="button">
+		    		<span class="align-middle">Description</span>
+		    	</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#images" 
+		    	   role="tab" type="button">
+		    		<span class="align-middle">Images</span>
+		    	</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#details" 
+		    	   role="tab" type="button">
+		    		<span class="align-middle">Details</span>
+		    	</a>
+		  	</li>
+		  	<li class="nav-item">
+		    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" 
+		    	   role="tab" type="button">
+		    		<span class="align-middle">Shipping</span>
+	    	    </a>
+		  	</li>
+		</ul>
+	</div>
+</body>
+</html>

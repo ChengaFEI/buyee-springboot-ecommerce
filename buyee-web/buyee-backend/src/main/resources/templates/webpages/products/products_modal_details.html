@@ -1,0 +1,24 @@
+<!-- Details Section -->
+<div th:fragment="content" class="tab-pane fade" id="details" role="tabpanel" style="padding: var(--bs-modal-padding)">
+	<!-- Details Table with full-details -->
+	<div class="container-fluid full-details">
+		<table class="table table-bordered table-hover table-responsive-xl">
+			<!-- Table Head -->
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Value</th>
+				</tr>
+			</thead> 
+			<!-- Table Body -->
+			<tbody>
+				<tr th:each="detail, status:${product.details}">
+					<td>[[${status.index+1}]]</td>
+					<td>[[${detail.name}]]</td>
+					<td>[[${detail.value}]]</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

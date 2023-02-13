@@ -22,41 +22,10 @@
 <body>
 	<div>
 		<!-- Navigation Bar -->
-		<div th:replace="~{/components/header :: navbar('Products')}"></div>
+		<div th:replace="~{/components/header::navbar('Products')}"></div>
 		<!-- Tabs -->
-		<div class="mt-3 mb-3 container-fluid">
-			<ul class="nav nav-justified link-tab-manager" id="myTab" role="tablist">
-				<li class="nav-item">
-			    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
-			    	   role="tab" type="button">
-			    		<span class="align-middle">Overview</span>
-			    	</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#description" 
-			    	   role="tab" type="button">
-			    		<span class="align-middle">Description</span>
-			    	</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#images" 
-			    	   role="tab" type="button">
-			    		<span class="align-middle">Images</span>
-			    	</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#details" 
-			    	   role="tab" type="button">
-			    		<span class="align-middle">Details</span>
-			    	</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" 
-			    	   role="tab" type="button">
-			    		<span class="align-middle">Shipping</span>
-		    	    </a>
-			  	</li>
-			</ul>
+		<div class="container-fluid mt-3 mb-3">
+			<div th:replace="~{/components/tab::tab('float-island-tab')}"></div>
 		</div>
 		<!-- Data Collection Form -->
 		<form class="container-fluid" th:action="@{/products/save}" method="post" style="margin: 0 auto" 

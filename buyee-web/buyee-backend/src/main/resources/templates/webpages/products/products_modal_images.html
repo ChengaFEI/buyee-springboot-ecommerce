@@ -1,0 +1,21 @@
+<!-- Overview Section -->
+<div th:fragment="content" class="tab-pane fade" id="images" role="tabpanel" 
+	 style="padding: var(--bs-modal-padding)">
+	 <div class="row container-fluid">
+		<!-- Main Image -->
+		<div class="form-group mb-3 rounded" style="width: 25%">
+			<div th:title="'(Main) ' + ${product.mainImage}">
+				<img alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+			</div>
+		</div>
+		<!-- All Existing Extra Images -->
+		<th:block th:each="extraImage, status : ${product.sortedImages}">
+			<div class="form-group mb-3 rounded" style="width: 25%">
+				<div th:title="'(Extra ' + ${status.index+1} + ') ' + ${extraImage.name}">
+					<img th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 
+						 th:src="@{${extraImage.imagePathString}}"/>
+				</div>
+			</div>
+		</th:block>
+	</div>
+</div>

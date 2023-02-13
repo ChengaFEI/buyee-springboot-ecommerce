@@ -15,13 +15,6 @@
 	text-decoration: none;
 	color: var(--main-pink-bright);
 }
-/* Text Link */
-.text-action {
-	color: var(--main-black-normal);
-}
-.text-action:hover {
-	color: var(--main-pink-bright);
-}
 /* Badges */
 .badge-custom {
 	margin-right: 10px;

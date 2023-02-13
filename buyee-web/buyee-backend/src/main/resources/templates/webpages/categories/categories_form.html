@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/universal :: head(${pageTitle}, 'none', 'form')}"/>
+<body>
+	<div>
+		<!-- Navigation Bar -->
+		<div th:replace="~{/components/header :: navbar('Categories')}"></div>
+		<!-- Data Collection Form -->
+		<form class="mt-3 container-fluid" th:action="@{/categories/save}" method="post" style="margin: 0 auto" 
+		      enctype="multipart/form-data" th:object="${category}" onsubmit="return checkNameAlias(this);">
+			<input type="hidden" th:field="*{id}" />
+			<div class="border border-secondary rounded p-3">
+				<div class="mb-3"><h2>[[${pageTitle}]]</h2></div>
+				<hr/>
+				<div class="form-group mb-3" title="Name must be 3-128 characters long">
+					<label class="col-form-label" for="inputName">Name *</label>
+					<div>
+						<input type="text" class="form-control" th:field="*{name}" pattern=".{3,128}" 
+						       placeholder="eg. Computers" id="inputName" />
+					</div>
+				</div>
+				<div class="form-group mb-3" title="Alias must be 3-64 characters long">
+					<label class="col-form-label" for="inputAlias">Alias *</label>
+					<div>
+						<input type="text" class="form-control" th:field="*{alias}" pattern=".{3,64}" 
+						       placeholder="eg. Computers" id="inputAlias" />
+					</div>
+				</div>
+				<div class="form-group mb-3" title="Select the direct parent category">
+					<label class="col-form-label" for="inputAlias">Parent Category</label>
+					<div aria-describedby="aliasHelp">
+						<select class="form-control" th:field="*{parent}">
+							<option value="0">[No Parent]</option>
+							<th:block th:each="category: ${listCategories}">
+								<option th:value="${category.id}">[[${category.name}]]</option>
+							</th:block>
+						</select>
+					</div>
+				</div>
+				<div class="form-group mb-3" title="Enable/disable the category for use">
+					<label class="col-form-label">Enabled</label>
+					<div>
+						<input class="checkbox-custom" type="checkbox" th:field="*{enabled}" /> 
+						<label class="col-sm-1">Yes</label>
+					</div>
+				</div>
+				<div class="form-group mb-3" title="Image should be smaller than 1MB">
+					<input type="hidden" th:field=*{image}></input> 
+					<label for="imageFile" class="form-label">Image</label> 
+					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
+					       accept="image/png image/jpeg">
+					<img style="width: var(--main-thumbnail-width)" id="thumbnail" th:src="@{${category.getImagePathString()}}"/>
+				</div>
+				<div>
+					<span class="form-text text-muted">ps. Blanks marked with * are required</span>
+				</div>
+				<hr/>
+				<div class="text-center">
+					<input type="submit" value="Submit" class="btn btn-outline-danger m-2" /> 
+					<input type="button" value="Cancel" class="btn btn-outline-dark" id="cancelButton" />
+				</div>
+			</div>
+		</form>
+		<!-- Name/Alias Conflict Modal -->
+		<div th:replace="~{/components/modal :: modal_unique}"></div>
+		<!-- Footer -->
+		<div th:replace="~{/components/footer :: footer}"></div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+	<script type="text/javascript" th:src="@{/js/categories_form.js}"></script>
+	<script type="text/javascript">		
+		moduleURL = "[[@{/categories}]]";
+		MAX_FILE_SIZE = 1048576; // 1MB
+	</script>
+</body>
+</html>

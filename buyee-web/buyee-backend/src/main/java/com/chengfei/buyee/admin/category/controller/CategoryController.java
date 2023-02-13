@@ -29,11 +29,9 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CategoryController {
     @Autowired
     private CategoryService service;
-    
     private static final int CATEGORIES_PER_PAGE = 5;
     
     // Create Tasks
-
     @GetMapping("/categories/new")
     public String createCategory(Model model) {
 	List<Category> listCategories = service.readCategoriesInForm();
@@ -42,7 +40,7 @@ public class CategoryController {
 	model.addAttribute("category", category);
 	model.addAttribute("listCategories", listCategories);
 	model.addAttribute("pageTitle", "Create Category");
-	return "categories/categories_form";
+	return "/webpages/categories/categories_form";
     }
     
     @PostMapping("/categories/save")
@@ -69,16 +67,18 @@ public class CategoryController {
     }
     
     // Read Tasks
-    
     @GetMapping("/categories")
     public String readAllCategories(Model model) {
 	return readCategoriesByPageNum(1, "name", "asc", null, model);
     }   
     
     @GetMapping("/categories/page/{pageNum}")
-    public String readCategoriesByPageNum(@PathVariable(name = "pageNum") int pageNum, 
-	    @Param("sortField") String sortField, @Param("sortOrder") String sortOrder, 
-	    @Param("keyword") String keyword, Model model) {
+    public String readCategoriesByPageNum(
+	    @PathVariable(name = "pageNum") int pageNum, 
+	    @Param("sortField") String sortField, 
+	    @Param("sortOrder") String sortOrder, 
+	    @Param("keyword") String keyword, 
+	    Model model) {
 	if (keyword == null && (sortField == null || sortField.equals("name"))) {
 	    model.addAttribute("hierarchy", true);
 	    List<Category> listCategories = service.readCategoriesFullData(sortField, sortOrder);
@@ -111,11 +111,10 @@ public class CategoryController {
 		model.addAttribute("reverseOrder", sortOrder.equals("asc") ? "desc" : "asc");
 	    }
 	}
-	return "categories/categories";
+	return "/webpages/categories/categories";
     }
     
     // Update Tasks
-    
     @GetMapping("/categories/edit/{id}")
     public String updateCategoryById(@PathVariable(name = "id") Integer id, 
 	    RedirectAttributes redirectAttributes, Model model) {
@@ -125,7 +124,7 @@ public class CategoryController {
 	    model.addAttribute("category", category);
 	    model.addAttribute("listCategories", listCategories);
 	    model.addAttribute("pageTitle", "Update Category (ID: " + id + ")");
-	    return "/categories/categories_form";
+	    return "/webpages/categories/categories_form";
 	} catch (CategoryNotFoundException e) {
 	    redirectAttributes.addFlashAttribute("message", e.getMessage());
 	    return "redirect:/categories";
@@ -133,10 +132,14 @@ public class CategoryController {
     }
     
     @GetMapping("/categories/{id}/enabled/{status}")
-    public String updateUserEnabledStatus(@PathVariable(name = "id") Integer id,
-	    @PathVariable(name = "status") boolean status, @Param("pageNum") int pageNum,
-	    @Param("keyword") String keyword, @Param("sortField") String sortField, 
-	    @Param("sortOrder") String sortOrder, RedirectAttributes redirectAttributes) {
+    public String updateUserEnabledStatus(
+	    @PathVariable(name = "id") Integer id,
+	    @PathVariable(name = "status") boolean status, 
+	    @Param("pageNum") int pageNum,
+	    @Param("keyword") String keyword,
+	    @Param("sortField") String sortField, 
+	    @Param("sortOrder") String sortOrder, 
+	    RedirectAttributes redirectAttributes) {
 	service.updateCategoryEnabledStatus(id, status);
 	String enabledStr = status ? "enable" : "disable";
 	redirectAttributes.addFlashAttribute("message", "Successfully " + enabledStr + " category with ID " + id + ".");
@@ -173,7 +176,6 @@ public class CategoryController {
     }
     
     // Export Tasks
-
     @GetMapping("/categories/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
 	List<Category> listCategories = service.readAllCategories();

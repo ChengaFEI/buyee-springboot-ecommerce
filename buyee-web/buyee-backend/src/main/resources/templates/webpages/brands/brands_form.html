@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/universal :: head(${pageTitle}, 'none', 'form')}"/>
+<body>
+	<div>
+		<!-- Navigation Bar -->
+		<div th:replace="~{/components/header :: navbar('Brands')}"></div>
+		<!-- Data Collection Form -->
+		<form class="mt-3 container-fluid" th:action="@{/brands/save}" method="post" style="margin: 0 auto" 
+		      enctype="multipart/form-data" th:object="${brand}" onsubmit="return checkName(this);">
+			<input type="hidden" th:field="*{id}" />
+			<div class="border border-secondary rounded p-3">
+				<div class="mb-3">
+					<h2>[[${pageTitle}]]</h2>
+				</div>
+				<hr/>
+				<div class="form-group mb-3" title="Name must be 3-128 characters long">
+					<label class="col-form-label" for="inputName">Name *</label>
+					<div>
+						<input type="text" class="form-control" th:field="*{name}" pattern=".{1,128}" 
+						       placeholder="eg. Apple" id="inputName" />
+					</div>
+				</div>
+				<div class="form-group mb-3" title="Press 'ctrl/shift + left click' for multiple selection">
+					<label class="col-form-label" for="inputCategories">Categories</label>
+					<div class="select-custom">
+						<select multiple class="form-control" th:field="*{categories}">
+							<th:block th:each="category: ${listCategories}">
+								<option th:value="${category.id}">[[${category.name}]]</option>
+							</th:block>
+						</select>
+					</div>
+					<div id="selectedCategories" class="mt-2"></div>
+				</div>
+				<div class="form-group mb-3" title="Image should be smaller than 1MB">
+					<input type="hidden" th:field=*{logo}></input> 
+					<label for="imageFile" class="form-label">Logo</label> 
+					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
+					       accept="image/png image/jpeg">
+					<img style="width: var(--main-thumbnail-width)" id="thumbnail" th:src="@{${brand.getLogoPathString()}}"/>
+				</div>
+				<div>
+					<span class="form-text text-muted">ps. Blanks marked with * are required</span>
+				</div>
+				<hr/>
+				<div class="text-center">
+					<input type="submit" value="Submit" class="btn btn-outline-danger m-2" />&nbsp;&nbsp;
+					<input type="button" value="Cancel" class="btn btn-outline-dark" id="cancelButton" />
+				</div>
+			</div>
+		</form>
+		<!-- Name/Alias Conflict Modal -->
+		<div th:replace="~{/components/modal :: modal_unique}"></div>
+		<!-- Footer -->
+		<div th:replace="~{/components/footer :: footer}"></div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+	<script type="text/javascript" th:src="@{/js/brands_form.js}"></script>
+	<script type="text/javascript">
+		moduleURL = "[[@{/brands}]]";
+		MAX_FILE_SIZE = 1048576; // 1MB
+	</script>
+</body>
+</html>

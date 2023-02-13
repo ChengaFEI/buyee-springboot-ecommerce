@@ -1,0 +1,10 @@
+/* Account Link */
+
+.link-account-manager {
+	color: var(--main-gray-normal);
+	text-decoration: none
+}
+
+.link-account-manager:hover {
+	color: var(--main-pink-bright);
+}

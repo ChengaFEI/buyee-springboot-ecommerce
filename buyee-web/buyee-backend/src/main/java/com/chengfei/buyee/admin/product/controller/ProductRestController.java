@@ -14,7 +14,6 @@ public class ProductRestController {
     ProductService service;
     
     // Validate Tasks
-    
     @PostMapping("/products/check_name")
     public String checkDuplicateName(@Param("id") Integer id, @Param("name") String name) {
 	return service.isNameUnique(id, name) ? "OK" : "Duplicate";

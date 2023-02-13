@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/universal :: head('Products - Buyee Admin', 'none', 'homepage')}"/>
+<body>
+	<div>
+		<!-- Header (navigation bar) -->
+		<div th:replace="~{/components/header :: navbar('Products')}"></div>
+		<!-- Float Window Message -->
+		<div th:replace="~{/components/header :: floatwindow}"></div>
+		<!-- Search Bar & Command Buttons -->
+		<div th:replace="~{/components/search :: search_commands('products')}"></div>
+		<!-- Brands Table with full-details -->
+		<div class="container-fluid full-details">
+			<table class="table table-bordered table-hover table-responsive-xl">
+				<!-- Table Head -->
+				<thead>
+					<tr>
+						<th th:replace="~{/components/table::head_link('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
+						<th th:replace="~{/components/table::head_link('products', 'id', 'ID', '70px', 'text-center', true)}" />
+						<th th:replace="~{/components/table::head_link('products', 'name', 'Name', '', '', true)}" />
+						<th th:replace="~{/components/table::head_link('products', 'brand', 'Brand', '200px', '', true)}" />
+						<th th:replace="~{/components/table::head_link('products', 'category', 'Category', '200px', '', true)}" />
+						<th th:replace="~{/components/table::head_link('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<th th:replace="~{/components/table::head_link('products', '', 'Actions', '100px', 'text-center', false)}" />
+					</tr>
+				</thead> 
+				<!-- Table Body -->
+				<tbody>
+					<tr th:each="product : ${listProducts}">
+						<!-- Main Image -->
+						<td class="align-middle text-center">
+							<img th:src="@{${product.getMainImagePathString()}}" style="width: 50px" />	
+						</td>
+						<!-- ID -->
+						<td class="align-middle text-center" th:text="${product.id}" />
+						<!-- Name -->
+						<td class="align-middle">
+							<a title="View this product" th:text="${product.name}" class="text-action"
+							   th:href="@{'/products/edit/' + ${product.id}}"></a> 
+						</td>
+						<!-- Brand Name -->
+						<td class="align-middle" th:text="${product.brand.name}" />
+						<!-- Category Name -->
+						<td class="align-middle">
+							<span th:each="category : ${product.getCategory()}"
+								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
+						</td>
+						<!-- Enabled -->
+						<td class="align-middle text-center">
+							<div th:replace="~{/components/table::button-enabled('products', ${product}, '')}"></div>
+						</td>
+						<!-- Actions -->
+						<td class="align-middle text-center">
+							<a th:replace="~{/components/table::button-view('products', ${product}, '')}"></a>&nbsp;&nbsp;
+							<a th:replace="~{/components/table::button-update('products', ${product}, '')}"></a>&nbsp;&nbsp;
+							<a th:replace="~{/components/table::button-delete('products', ${product}, '')}"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- Pagination -->
+		<div th:replace="~{/components/table::pagination('products')}"></div>
+		<!-- Delete User Confirmation Modal -->
+		<div th:replace="~{/components/modal :: modal_deletion}"></div>
+		<!-- Footer -->
+		<div th:replace="~{/components/footer :: footer}"></div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/common_table.js}"></script>
+</body>
+</html>

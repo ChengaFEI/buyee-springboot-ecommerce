@@ -40,7 +40,7 @@ public class ProductController {
    	model.addAttribute("listBrands", listBrands);
    	model.addAttribute("pageTitle", "Create Product");
    	model.addAttribute("numExistingExtraImages", 0);
-   	return "products/products_form";
+   	return "/webpages/products/products_form";
     }	
      
     @PostMapping("/products/save")
@@ -101,7 +101,7 @@ public class ProductController {
 	if (keyword != null) {
 	    model.addAttribute("keyword", keyword);
 	}
-	return "products/products";
+	return "/webpages/products/products";
     }
     
     // Update Tasks 
@@ -116,7 +116,7 @@ public class ProductController {
 	    model.addAttribute("listBrands", listBrands);
 	    model.addAttribute("numExistingExtraImages", numExistingExtraImages);
 	    model.addAttribute("pageTitle", "Update Product (ID: " + id + ")");
-	    return "/products/products_form";
+	    return "/webpages/products/products_form";
 	} catch (ProductNotFoundException e) {
 	    redirectAttributes.addFlashAttribute("message", e.getMessage());
 	    return "redirect:/products";

@@ -24,7 +24,6 @@ public class AccountController {
     private UserService service;
     
     // Read Tasks
-    
     @GetMapping("/account")
     public String readAccountDetails(@AuthenticationPrincipal BuyeeUserDetails loggedUser, Model model) {
 	String email = loggedUser.getUsername();
@@ -35,11 +34,10 @@ public class AccountController {
 	    e.printStackTrace();
 	    System.out.println(e.getMessage());
 	}
-	return "users/account_form";
+	return "/webpages/users/account_form";
     }
     
     // Update Tasks
-    
     @PostMapping("/account/update")
     public String updateAccountDetails(User user, RedirectAttributes redirectAttributes, 
 	    	  @AuthenticationPrincipal BuyeeUserDetails loggedUser,

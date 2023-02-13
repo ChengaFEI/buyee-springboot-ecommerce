@@ -32,12 +32,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class BrandController {
     @Autowired
     private BrandService brandService;
-    
     @Autowired
     private CategoryService categoryService;
    
     // Create Tasks
-    
     @GetMapping("/brands/new")
     public String createBrand(Model model) {
 	Brand brand = new Brand();
@@ -45,7 +43,7 @@ public class BrandController {
 	model.addAttribute("brand", brand);
 	model.addAttribute("listCategories", listCategories);
 	model.addAttribute("pageTitle", "Create Brand");
-	return "brands/brands_form";
+	return "/webpages/brands/brands_form";
     }
     
     @PostMapping("/brands/save")
@@ -67,7 +65,6 @@ public class BrandController {
     }
     
     // Read Tasks
-    
     @GetMapping("/brands")
     public String readAllBrands(Model model) {
 	return readBrandsByPageNum(1, null, null, null, model);
@@ -101,11 +98,10 @@ public class BrandController {
 	    model.addAttribute("keyword", keyword);
 	}
 
-	return "brands/brands";
+	return "/webpages/brands/brands";
     }
     
     // Update Tasks
-    
     @GetMapping("/brands/edit/{id}")
     public String updateBrandById(@PathVariable(name = "id") Integer id, Model model,
 	    			  RedirectAttributes redirectAttributes) {
@@ -115,7 +111,7 @@ public class BrandController {
 	    model.addAttribute("brand", brand);
 	    model.addAttribute("listCategories", listCategories);
 	    model.addAttribute("pageTitle", "Update Brand (ID: " + id + ")");
-	    return "/brands/brands_form";
+	    return "/webpages/brands/brands_form";
 	} catch (BrandNotFoundException e) {
 	    redirectAttributes.addFlashAttribute("message", e.getMessage());
 	    return "redirect:/brands";
@@ -123,7 +119,6 @@ public class BrandController {
     }
     
     // Delete Tasks
-    
     @GetMapping("/brands/delete/{id}")
     public String deleteBrandById(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 	try {
@@ -137,7 +132,6 @@ public class BrandController {
     }
     
     // Export Tasks
-
     @GetMapping("/brands/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
 	List<Brand> listBrands = brandService.readAllBrands();

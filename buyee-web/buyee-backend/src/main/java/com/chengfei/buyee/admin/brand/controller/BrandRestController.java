@@ -22,7 +22,6 @@ public class BrandRestController {
     BrandService service;
 
     // Read Tasks
-    
     @GetMapping("/brands/{id}/categories")
     public List<CategoryDTO> readCategoriesById(@PathVariable(name = "id") Integer id) throws BrandNotFoundRestException {
 	List<CategoryDTO> listCategories = new ArrayList<>(); 
@@ -43,7 +42,6 @@ public class BrandRestController {
     }
     
     // Validate Tasks
-    
     @PostMapping("/brands/check_name")
     public String checkDuplicateName(@Param("id") Integer id, @Param("name") String name) {
 	return service.isNameUnique(id, name) ? "OK" : "Duplicate";

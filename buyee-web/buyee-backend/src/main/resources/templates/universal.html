@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- Param: title  -- customized title of webpages -->
+<!--                  leave it blank when used by components -->
+<!-- Param: remove -- enter "tag" if more special dependencies are needed -->
+<!--                  enter "none" by default -->
+<!-- Param: type   -- select special customized dependencies -->
+<!--                  enter null by default -->
+<head th:fragment="head(title, remove, type)" th:remove="${remove}">
+	<!-- Metadata -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<!-- Title -->
+	<title>[[${title}]]</title>
+	<!-- Downloaded Dependencies -->
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<!-- Customized Dependencies (Universal)  -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/universal.css}" />
+	<script type="text/javascript" th:src="@{/js/universal.js}"></script>
+	<!-- Customized Dependencies (Special) -->
+	<link th:if="${type == 'index'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/index.css}" />
+	<link th:if="${type == 'homepage'}" rel="stylesheet" type="text/css" th:href="@{/css/common_homepage.css}" />
+	<link th:if="${type == 'form'}" rel="stylesheet" type="text/css" th:href="@{/css/common_form.css}" />
+</head>
+<body>
+</body>
+</html>

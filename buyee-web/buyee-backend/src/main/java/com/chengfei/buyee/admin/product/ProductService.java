@@ -26,10 +26,15 @@ public class ProductService {
     // Create Tasks
     
     public Product saveProduct(Product product) {
-	if (product.getId() == null) {
-	    product.setCreatedTime(new Date());
+	Date currentTime = new Date();
+	Integer id = product.getId();
+	if (id == null) {
+	    product.setCreatedTime(currentTime);
+	} else {
+	    Product productInDB = repo.findById(id).get();
+	    product.setCreatedTime(productInDB.getCreatedTime());
 	}
-	product.setUpdatedTime(new Date());
+	product.setUpdatedTime(currentTime);
 	if (product.getAlias() == null || product.getAlias().isEmpty()) {
 	    String defaultAlias = product.getName().toLowerCase().replaceAll(" ", "_");
 	    product.setAlias(defaultAlias);

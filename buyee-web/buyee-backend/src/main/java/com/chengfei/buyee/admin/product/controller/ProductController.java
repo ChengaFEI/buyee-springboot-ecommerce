@@ -31,7 +31,6 @@ public class ProductController {
     private BrandService brandService;
     
     // Create Tasks
-    
     @GetMapping("/products/new")
     public String createProduct(Model model) {
 	Product product = new Product();
@@ -61,7 +60,6 @@ public class ProductController {
     }
     
     // Read Tasks
-
     @GetMapping("/products")
     public String readProductsInFirstPage(Model model) {
 	return readProductsByPageNum(1, null, null, null, model);
@@ -97,7 +95,6 @@ public class ProductController {
     }
     
     // Update Tasks 
-    
     @GetMapping("/products/edit/{id}")
     public String updateProductById(@PathVariable(name = "id") Integer id, Model model,
 	    			  RedirectAttributes redirectAttributes) {
@@ -142,7 +139,6 @@ public class ProductController {
     }
 
     // Delete Tasks
-
     @GetMapping("/products/delete/{id}")
     public String deleteProductById(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 	try {
@@ -157,7 +153,6 @@ public class ProductController {
     }
     
     // Helper Functions
-    
     private void setMainImageName(Product product, MultipartFile mainImageMultipart) {
 	if (!mainImageMultipart.isEmpty()) {
 	    String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());

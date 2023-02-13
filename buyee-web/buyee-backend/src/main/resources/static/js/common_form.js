@@ -62,6 +62,23 @@ function showSelectedCategories(dropdownCategories, selectedCategories) {
 	});
 }
 
+// Check Name
+function checkName(form) {
+	nameExist = checkNameExist();
+	if (nameExist) nameUnique = checkNameUnique(form);
+	return false;
+}
+
+// Check Name Exists
+function checkNameExist() {
+	instanceName = $("#inputName").val();
+	if (instanceName != null && instanceName.length != 0) return true;
+	else {
+		showWarningModal("Name is required!");
+		return false;
+	}
+}
+
 // Check Name Uniqueness
 function checkNameUnique(form) {
 	url = moduleURL + "/check_name";

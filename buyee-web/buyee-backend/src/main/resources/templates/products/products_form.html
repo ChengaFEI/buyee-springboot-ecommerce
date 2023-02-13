@@ -50,7 +50,7 @@
 		
 		<!-- Data Collection Form -->
 		<form class="container-fluid" th:action="@{/products/save}" method="post" style="margin: 0 auto" 
-		      enctype="multipart/form-data" th:object="${product}" onsubmit="return checkNameUnique(this);">
+		      enctype="multipart/form-data" th:object="${product}" onsubmit="return checkName(this);">
 			<input type="hidden" th:field="*{id}" />
 			<input th:if="${product.category != null}" type="hidden" id="categoryId" th:value="${product.category.id}" />
 			<div class="border border-secondary rounded p-3">

@@ -4,7 +4,16 @@
 	<head th:replace="~{/universal :: head(${pageTitle}, 'tag', 'products_form')}"/>
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
-	<link rel="stylesheet" th:href="@{/css/products_form.css}" />
+	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_description.js}"></script>
+	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_images.js}"></script>
+	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_details.js}"></script>
+	<script type="text/javascript" th:src="@{/js/components/form.js}"></script>
+	<script type="text/javascript">
+		let moduleURL = "[[@{/products}]]";
+		let brandModuleURL = "[[@{/brands}]]";
+		let MAX_FILE_SIZE = 1048576; // 1MB
+		let defaultImageThumbnail = "[[@{${product.defaultImagePathString}}]]";
+	</script>
 </head>
 <body>
 	<div>
@@ -114,16 +123,6 @@
 		<!-- Footer -->
 		<div th:replace="~{/components/footer :: footer}"></div>
 	</div>
-	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
-	<script type="text/javascript" th:src="@{/js/products_form_overview.js}"></script>
-	<script type="text/javascript" th:src="@{/js/products_form_description.js}"></script>
-	<script type="text/javascript" th:src="@{/js/products_form_images.js}"></script>
-	<script type="text/javascript" th:src="@{/js/products_form_details.js}"></script>
-	<script type="text/javascript">
-		MAX_FILE_SIZE = 1048576; // 1MB
-		moduleURL = "[[@{/products}]]";
-		brandModuleURL = "[[@{/brands}]]";
-		defaultImageThumbnail = "[[@{${product.defaultImagePathString}}]]";
-	</script>
+	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_overview.js}"></script>	
 </body>
 </html>

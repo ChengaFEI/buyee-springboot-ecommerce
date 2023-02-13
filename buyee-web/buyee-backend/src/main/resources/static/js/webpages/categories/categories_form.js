@@ -1,14 +1,13 @@
-// Check Email
+// Check Email and Alias
 function checkNameAlias(form) {
-	nameAliasExist = checkNameAliasExist();
+	let nameAliasExist = checkNameAliasExist();
 	if (nameAliasExist) checkNameAliasUnique(form);
 	return false;
 }
-
-// Check Email Exists
+// Step 1: Check Email and Alias Existence
 function checkNameAliasExist() {
-	instanceName = $("#inputName").val();
-	instanceAlias = $("#inputAlias").val();
+	let instanceName = $("#inputName").val();
+	let instanceAlias = $("#inputAlias").val();
 	if (instanceName == null || instanceName.length == 0) {
 		showWarningModal("Email is required!");
 		return false;
@@ -19,15 +18,14 @@ function checkNameAliasExist() {
 	}
 	return true;
 }
-
-// Check Name and Alias Unique
+// Step 2: Check Name and Alias Unique
 function checkNameAliasUnique(form) {
-	url = moduleURL + "/check_namealias";
-	categoryId = $("#id").val();
-	categoryName = $("#inputName").val();
-	categoryAlias = $("#inputAlias").val();
-	csrfValue = $("input[name='_csrf']").val();
-	params = { id: categoryId, name: categoryName, alias: categoryAlias, _csrf: csrfValue };
+	let url = moduleURL + "/check_namealias";
+	let categoryId = $("#id").val();
+	let categoryName = $("#inputName").val();
+	let categoryAlias = $("#inputAlias").val();
+	let csrfValue = $("input[name='_csrf']").val();
+	let params = { id: categoryId, name: categoryName, alias: categoryAlias, _csrf: csrfValue };
 	$.post(url, params, function(response) {
 		if (response == "OK") form.submit();
 		else if (response == "DuplicateName")

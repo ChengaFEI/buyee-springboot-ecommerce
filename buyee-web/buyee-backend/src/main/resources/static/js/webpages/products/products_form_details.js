@@ -6,7 +6,6 @@ $(document).ready(function() {
 		});
 	});
 });
-
 // Add extra detail section
 function showNextDetailSection() {
 	allDivDetails = $("[id^='divDetail']");
@@ -41,7 +40,6 @@ function showNextDetailSection() {
 	`;
 	lastDivDetail.append(htmlLinkRemove);
 }
-
 // Delete extra detail sections
 function removeDetailSectionById(id) {
 	$("#" + id).remove();

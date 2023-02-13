@@ -69,7 +69,6 @@ public class BrandController {
     public String readAllBrands(Model model) {
 	return readBrandsByPageNum(1, null, null, null, model);
     }
-    
     @GetMapping("/brands/page/{pageNum}")
     public String readBrandsByPageNum(@PathVariable(name = "pageNum") int pageNum, @Param("sortField") String sortField,
 	    @Param("sortOrder") String sortOrder, @Param("keyword") String keyword, Model model) {
@@ -81,7 +80,6 @@ public class BrandController {
 	long startCount = (pageNum - 1) * BrandService.BRANDS_PER_PAGE + 1;
 	long endCount = startCount + BrandService.BRANDS_PER_PAGE - 1;
 	endCount = Math.min(totalElements, endCount);
-
 	model.addAttribute("pageNum", pageNum);
 	model.addAttribute("listBrands", listBrands);
 	model.addAttribute("totalElements", totalElements);
@@ -97,7 +95,6 @@ public class BrandController {
 	if (keyword != null) {
 	    model.addAttribute("keyword", keyword);
 	}
-
 	return "/webpages/brands/brands";
     }
     

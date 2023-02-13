@@ -10,10 +10,9 @@ $(document).ready(function() {
 		}
 	});
 });
-
-// Check File Size
+// Step 1: Check File Size
 function checkFileSize(fileInput) {
-	fileSize = fileInput.files[0].size;
+	let fileSize = fileInput.files[0].size;
 	if (fileSize > MAX_FILE_SIZE) {
 		fileInput.setCustomValidity("Image is larger than " + MAX_FILE_SIZE + " bytes!");
 		fileInput.reportValidity();
@@ -23,8 +22,7 @@ function checkFileSize(fileInput) {
 		return true;
 	}
 }
-
-// Image Preview
+// Step 2: Image Preview
 function showImageThumbnail(fileInput) {
 	var file = fileInput.files[0];
 	var reader = new FileReader();
@@ -33,59 +31,42 @@ function showImageThumbnail(fileInput) {
 	};
 	reader.readAsDataURL(file);
 };
-
-// Modal Dialog
+// Show Modal Dialog
 function showModalDialog(title, message) {
 	$("#modalTitle").text(title);
 	$("#modalBody").text(message);
 	$("#modalDialog").modal("show");
 }
-
+// Type 1: Warning
 function showWarningModal(message) {
 	showModalDialog("Warning", message);
 }
-
+// Type 2: Error
 function showErrorModal(message) {
 	showModalDialog("Error", message);
 }
-
-// Multi-Selection Blanks Preview
-function showSelectedCategories(dropdownCategories, selectedCategories) {
-	dropdownCategories.children("option:selected").each(function() {
-		selectedCategory = $(this);
-		catId = selectedCategory.val();
-		catName = selectedCategory.text().replace(/·/g, "");
-		selectedCategories.append(
-			"<span class='badge rounded-pill text-bg-light fw-normal badge-custom' style='margin-right:10px'>"
-			+ catName +
-			"</span>");
-	});
-}
-
-// Check Name
+// Presubmission Name Check
 function checkName(form) {
-	nameExist = checkNameExist();
+	let nameExist = checkNameExist();
 	if (nameExist) checkNameUnique(form);
 	return false;
 }
-
-// Check Name Exists
+// Step 1: Check existence
 function checkNameExist() {
-	instanceName = $("#inputName").val();
+	let instanceName = $("#inputName").val();
 	if (instanceName != null && instanceName.length != 0) return true;
 	else {
 		showWarningModal("Name is required!");
 		return false;
 	}
 }
-
-// Check Name Unique
+// Step 2: Check uniqueness
 function checkNameUnique(form) {
-	url = moduleURL + "/check_name";
-	instanceId = $("#id").val();
-	instanceName = $("#inputName").val();
-	csrfValue = $("input[name = '_csrf']").val();
-	params = { id: instanceId, name: instanceName, _csrf: csrfValue };
+	let url = moduleURL + "/check_name";
+	let instanceId = $("#id").val();
+	let instanceName = $("#inputName").val();
+	let csrfValue = $("input[name = '_csrf']").val();
+	let params = { id: instanceId, name: instanceName, _csrf: csrfValue };
 	$.post(url, params, function(response) {
 		if (response == "OK") form.submit();
 		else if (response == "Duplicate") {

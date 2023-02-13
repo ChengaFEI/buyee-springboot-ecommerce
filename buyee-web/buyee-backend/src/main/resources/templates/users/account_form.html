@@ -82,18 +82,10 @@
 	</div>
 	
 	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+	<script type="text/javascript" th:src="@{/js/account_form.js}"></script>
 	<script type="text/javascript">
 		moduleURL = "[[@{/}]]"
-		
 		MAX_FILE_SIZE = 1048576; // 1MB
-		
-		function checkPasswordMatch(confirmPassword) {
-			if (confirmPassword.value != $("#inputPassword").val()) {
-				confirmPassword.setCustomValidity("Password doesn't match!");
-			} else {
-				confirmPassword.setCustomValidity("");
-			}
-		};
 	</script>
 	
 </body>

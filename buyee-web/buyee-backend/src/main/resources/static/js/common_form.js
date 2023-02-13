@@ -65,7 +65,7 @@ function showSelectedCategories(dropdownCategories, selectedCategories) {
 // Check Name
 function checkName(form) {
 	nameExist = checkNameExist();
-	if (nameExist) nameUnique = checkNameUnique(form);
+	if (nameExist) checkNameUnique(form);
 	return false;
 }
 
@@ -79,7 +79,7 @@ function checkNameExist() {
 	}
 }
 
-// Check Name Uniqueness
+// Check Name Unique
 function checkNameUnique(form) {
 	url = moduleURL + "/check_name";
 	instanceId = $("#id").val();

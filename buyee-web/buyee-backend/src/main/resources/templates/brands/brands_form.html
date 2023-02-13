@@ -61,20 +61,10 @@
 	</div>
 	
 	<script type="text/javascript" th:src="@{/js/common_form.js}"></script>
+	<script type="text/javascript" th:src="@{/js/brands_form.js}"></script>
 	<script type="text/javascript">
 		moduleURL = "[[@{/brands}]]";
-		
 		MAX_FILE_SIZE = 1048576; // 1MB
-		
-		$(document).ready(function() {
-			dropdownCategories = $("#categories");
-			selectedCategories = $("#selectedCategories");
-			showSelectedCategories(dropdownCategories, selectedCategories);
-			dropdownCategories.change(function() {
-				selectedCategories.empty();
-				showSelectedCategories(dropdownCategories, selectedCategories)
-			});
-		});
 	</script>
 	
 </body>

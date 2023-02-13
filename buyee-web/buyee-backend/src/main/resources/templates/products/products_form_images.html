@@ -21,16 +21,23 @@
 				</div>
 			</div>
 			
-			<!-- All Stored Extra Images -->
-			<th:block th:each="extraImage, status : ${product.images}">
+			<!-- All Existing Extra Images -->
+			<th:block th:each="extraImage, status : ${product.sortedImages}">
 				<div th:id="${'extraImageDiv' + status.index}" class="form-group mb-3 rounded" style="width: 25%">
+					<!-- Required Properties -->
 					<input type="hidden" th:id="${'isImageExist' + status.index}" value="true">
+					<input type="hidden" name="extraImageIds" th:id="'extraImageId' + ${status.index}"
+						   th:value="${extraImage.id}"/>
+					<input type="hidden" name="extraImageNames" th:id="'extraImageName' + ${status.index}"
+						   th:value="${extraImage.name}"/>
 					<!-- Image Input -->
 					<div title="Image should be smaller than 1MB">
 						<label class="col-form-label">Extra Image #[[${status.index + 1}]]</label>
 						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3 file-button-custom" >
+							<!-- Input Bar -->
 							<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
 								   accept="image/png image/jpeg">
+							<!-- Delete Button -->
 							<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
 							   name="linkRemoveExtraImage"> 
 							    <i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
@@ -39,7 +46,8 @@
 					</div>
 					<!-- Image Preview -->
 					<div th:title="${extraImage.name}">
-						<img th:id="${'extraThumbnail' + status.index}" th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 
+						<img th:id="${'extraThumbnail' + status.index}" 
+							 th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 
 							 th:src="@{${extraImage.imagePathString}}"/>
 					</div>
 				</div>
@@ -48,6 +56,7 @@
 			<!-- Extra Image (original state, no delete button) -->
 			<div th:id="${'extraImageDiv' + numExistingExtraImages}" class="form-group mb-3 rounded" style="width: 25%"
 				 title="Image should be smaller than 1MB">
+				<!-- Required Properties -->
 				<input type="hidden" th:id="${'isImageExist' + numExistingExtraImages}" value="false">
 				<!-- Image Input -->
 				<div>

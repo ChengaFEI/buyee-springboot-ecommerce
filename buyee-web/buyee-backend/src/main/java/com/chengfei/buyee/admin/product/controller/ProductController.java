@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,16 +44,28 @@ public class ProductController {
     }	
      
     @PostMapping("/products/save")
-    public String submitProduct(Product product, RedirectAttributes redirectAttributes, 
+    public String submitProduct(
+	    Product product, RedirectAttributes redirectAttributes, 
+	    // Images Section
 	    @RequestParam("imageFile") MultipartFile mainImageMultipart,
 	    @RequestParam(name = "extraImageFile", required = false) MultipartFile[] extraImageMultiparts,
+	    @RequestParam(name = "extraImageIds", required = false) String[] existingExtraImageIds,
+	    @RequestParam(name = "extraImageNames", required = false) String[] existingExtraImageNames,
+	    // Details Section
 	    @RequestParam(name = "detailName", required = false) String[] detailNames,
-	    @RequestParam(name = "detailValue", required = false) String[] detailValues) throws IOException {
-	setMainImageName(product, mainImageMultipart);
-	setExtraImageNames(product, extraImageMultiparts);
-	setDetails(product, detailNames, detailValues);
+	    @RequestParam(name = "detailValue", required = false) String[] detailValues
+	    ) throws IOException {
+	// Save Images in Database
+	ProductSaveUtil.setMainImageName(product, mainImageMultipart);
+	ProductSaveUtil.setExistingExtraImageNames(product, existingExtraImageIds, existingExtraImageNames);
+	ProductSaveUtil.setNewExtraImageNames(product, extraImageMultiparts);
+	// Save Details in Database
+	ProductSaveUtil.setDetails(product, detailNames, detailValues);
 	Product savedProduct = productService.saveProduct(product);
-	uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
+	// Process Images in Amazon S3
+	ProductSaveUtil.uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
+	ProductSaveUtil.deleteRemovedExtraImages(savedProduct);
+	// Redirect Messages back
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
 	return "redirect:/products";
     }
@@ -150,54 +161,5 @@ public class ProductController {
 	    redirectAttributes.addFlashAttribute("message", e.getMessage());
 	}
 	return "redirect:/products";
-    }
-    
-    // Helper Functions
-    private void setMainImageName(Product product, MultipartFile mainImageMultipart) {
-	if (!mainImageMultipart.isEmpty()) {
-	    String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());
-	    product.setMainImage(fileName);
-	}
-    }
-
-    private void setExtraImageNames(Product product, MultipartFile[] extraImageMultiparts) {
-	if (extraImageMultiparts != null && extraImageMultiparts.length > 0) {
-	    for (MultipartFile multipartFile: extraImageMultiparts) {
-		if (!multipartFile.isEmpty()) {
-		    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		    product.addExtraImage(fileName);
-		}
-	    }
-	}
-    }
-    
-    private void setDetails(Product product, String[] detailNames, String[] detailValues) {
-	if (detailNames == null || detailNames.length == 0) return;
-	for (int i = 0; i < detailNames.length; i++) {
-	    String name = detailNames[i];
-	    String value = detailValues[i];
-	    if (!name.isEmpty() && !value.isEmpty()) {
-		product.addDetail(name, value);
-	    }
-	}
-    }
-    
-    private void uploadImages(Product savedProduct, MultipartFile mainImageMultipart,
-	    MultipartFile[] extraImageMultiparts) throws IOException {
-	if (!mainImageMultipart.isEmpty()) {
-	    String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());
-	    String folderName = "product-images/" + savedProduct.getId();    
-	    AmazonS3Util.deleteFolder(folderName + "/");
-	    AmazonS3Util.saveFile(folderName, fileName, mainImageMultipart.getInputStream());
-	}
-	if (extraImageMultiparts.length > 0) {
-	    String extraFolderName = "product-images/" + savedProduct.getId() + "/extras";    
-	    for (MultipartFile multipartFile: extraImageMultiparts) {
-		if (!multipartFile.isEmpty()) {
-		    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		    AmazonS3Util.saveFile(extraFolderName, fileName, multipartFile.getInputStream());
-		}
-	    }
-	}
     }
 }

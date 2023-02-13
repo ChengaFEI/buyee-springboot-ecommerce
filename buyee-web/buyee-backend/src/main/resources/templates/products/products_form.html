@@ -51,23 +51,30 @@
 		<!-- Data Collection Form -->
 		<form class="container-fluid" th:action="@{/products/save}" method="post" style="margin: 0 auto" 
 		      enctype="multipart/form-data" th:object="${product}" onsubmit="return checkName(this);">
+		    <!-- Required Properties -->
 			<input type="hidden" th:field="*{id}" />
 			<input th:if="${product.category != null}" type="hidden" id="categoryId" th:value="${product.category.id}" />
 			<div class="border border-secondary rounded p-3">
+				<!-- Form Header -->
 				<div class="mb-3">
 					<h2>[[${pageTitle}]]</h2>
 				</div>
 				<hr />
+				<!-- Form Panels -->
 				<div class="tab-content">
+					<!-- Overview Section -->
 					<div class="tab-pane active fade show" id="overview" role="tabpanel">
 						<div th:replace="~{products/products_form_overview :: content}"></div>
 					</div>
+					<!-- Description Section -->
 					<div class="tab-pane fade" id="description" role="tabpanel">
 						<div th:replace="~{products/products_form_description :: content}"></div>
 					</div>
+					<!-- Images Section -->
 					<div class="tab-pane fade" id="images" role="tabpanel">
 						<div th:replace="~{products/products_form_images :: content}"></div>
 					</div>
+					<!-- Details Section -->
 					<div class="tab-pane fade" id="details" role="tabpanel">
 						<div th:replace="~{products/products_form_details :: content}"></div>
 						<!-- Add New Detail Line -->
@@ -88,10 +95,12 @@
 							</div>
 						</div>
 					</div>
+					<!-- Shipping Section -->
 					<div class="tab-pane fade" id="shipping" role="tabpanel">
 						<div th:replace="~{products/products_form_shipping :: content}"></div>
 					</div>
 				</div>
+				<!-- Form Footer -->
 				<div>
 					<span class="form-text text-muted">ps. Blanks marked with * are required</span>
 				</div>

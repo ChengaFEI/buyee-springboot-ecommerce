@@ -7,7 +7,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	// Remove the stored extra images
+	// Remove the stored extra images section
 	$("a[name='linkRemoveExtraImage']").each(function(index) {
 		$(this).click(function() {
 			removeExtraImageSection(index);
@@ -17,12 +17,20 @@ $(document).ready(function() {
 
 // Display extra images
 function showExtraImageThumbnail(fileInput, index) {
+	// Display image
 	var file = fileInput.files[0];
 	var reader = new FileReader();
 	reader.onload = function(e) {
 		$("#extraThumbnail" + index).attr("src", e.target.result);
 	};
 	reader.readAsDataURL(file);
+	// Replace the hidden image name of the extra image section
+	fileName = file.name;
+	extraImageNameHiddenField = $("#extraImageName" + index);
+	if (extraImageNameHiddenField != null && extraImageNameHiddenField.length) {
+		extraImageNameHiddenField.val(fileName); 
+	}
+	// Add extra image section
 	showNextExtraImageSection(index+1);
 }
 

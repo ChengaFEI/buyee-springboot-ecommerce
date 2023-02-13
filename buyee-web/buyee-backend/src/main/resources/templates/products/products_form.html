@@ -76,16 +76,17 @@
 					</div>
 					<!-- Details Section -->
 					<div class="tab-pane fade" id="details" role="tabpanel">
+						<!-- Existing Details and Input Details -->
 						<div th:replace="~{products/products_form_details :: content}"></div>
 						<!-- Add New Detail Line -->
 						<div class="row mb-3">
-							<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
+							<div class="input-group" style="width: 47.5%">
 								<label class="text-muted detail-label-padding">Name:</label>
-								<input disabled type="text" class="form-control rounded" name="detailName" pattern=".{2,255}"/>
+								<input disabled type="text" class="form-control rounded"/>
 							</div>
-							<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
+							<div class="input-group" style="width: 47.5%">
 								<label class="text-muted detail-label-padding">Value:</label>
-								<input disabled type="text" class="form-control rounded" name="detailValue" pattern=".{2,255}"/>
+								<input disabled type="text" class="form-control rounded"/>
 							</div>
 							<!-- Add New Detail Button -->
 							<div class="input-group" style="width: 5%" title="Add a detail">

@@ -84,12 +84,15 @@ public class ProductSaveUtil {
     }
     
     // Save Details in Database
-    static void setDetails(Product product, String[] detailNames, String[] detailValues) {
+    static void setDetails(Product product, String[] detailIds, String[] detailNames, String[] detailValues) {
 	if (detailNames == null || detailNames.length == 0) return;
-	for (int i = 0; i < detailNames.length; i++) {
+	for (int i = 0; i < detailIds.length; i++) {
+	    Integer id = Integer.parseInt(detailIds[i]);
 	    String name = detailNames[i];
 	    String value = detailValues[i];
-	    if (!name.isEmpty() && !value.isEmpty()) {
+	    if (id != null && id != 0) {
+		product.addDetail(id, name, value);
+	    } else if (!name.isEmpty() && !value.isEmpty()) {
 		product.addDetail(name, value);
 	    }
 	}

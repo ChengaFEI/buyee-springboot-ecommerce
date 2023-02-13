@@ -64,7 +64,7 @@ public class Product {
     private Set<ProductImage> images = new HashSet<>();
     
     // Details Section 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductDetail> details = new ArrayList<>();
     
     // Shipping Section
@@ -210,14 +210,19 @@ public class Product {
     }
     
     // Details Section
+    // Getter and Setter
     public List<ProductDetail> getDetails() {
         return details;
     }
     public void setDetails(List<ProductDetail> details) {
         this.details = details;
     }
+    // Adder
     public void addDetail(String name, String value) {
 	this.details.add(new ProductDetail(name, value, this));
+    }
+    public void addDetail(Integer id, String name, String value) {
+	this.details.add(new ProductDetail(id, name, value, this));
     }
 
     // Shipping Section

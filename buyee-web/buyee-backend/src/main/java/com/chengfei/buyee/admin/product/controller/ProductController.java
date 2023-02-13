@@ -52,15 +52,16 @@ public class ProductController {
 	    @RequestParam(name = "extraImageIds", required = false) String[] existingExtraImageIds,
 	    @RequestParam(name = "extraImageNames", required = false) String[] existingExtraImageNames,
 	    // Details Section
-	    @RequestParam(name = "detailName", required = false) String[] detailNames,
-	    @RequestParam(name = "detailValue", required = false) String[] detailValues
+	    @RequestParam(name = "detailIds", required = false) String[] detailIds,
+	    @RequestParam(name = "detailNames", required = false) String[] detailNames,
+	    @RequestParam(name = "detailValues", required = false) String[] detailValues
 	    ) throws IOException {
 	// Save Images in Database
 	ProductSaveUtil.setMainImageName(product, mainImageMultipart);
 	ProductSaveUtil.setExistingExtraImageNames(product, existingExtraImageIds, existingExtraImageNames);
 	ProductSaveUtil.setNewExtraImageNames(product, extraImageMultiparts);
 	// Save Details in Database
-	ProductSaveUtil.setDetails(product, detailNames, detailValues);
+	ProductSaveUtil.setDetails(product, detailIds, detailNames, detailValues);
 	Product savedProduct = productService.saveProduct(product);
 	// Process Images in Amazon S3
 	ProductSaveUtil.uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
@@ -85,7 +86,6 @@ public class ProductController {
 	long startCount = (pageNum - 1) * ProductService.PRODUCTS_PER_PAGE + 1;
 	long endCount = startCount + ProductService.PRODUCTS_PER_PAGE - 1;
 	endCount = Math.min(totalElements, endCount);
-
 	model.addAttribute("pageNum", pageNum);
 	model.addAttribute("listProducts", listProducts);
 	model.addAttribute("totalElements", totalElements);
@@ -101,7 +101,6 @@ public class ProductController {
 	if (keyword != null) {
 	    model.addAttribute("keyword", keyword);
 	}
-
 	return "products/products";
     }
     

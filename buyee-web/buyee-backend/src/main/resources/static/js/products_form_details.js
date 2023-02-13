@@ -15,13 +15,14 @@ function showNextDetailSection() {
 	// Add extra detail section
 	html = `
 		<div id="divDetail${nextDivDetailId}" class="row mb-3">
+			<input type="hidden" name="detailIds" value="0"/>
 			<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
 				<label class="detail-label-padding">Name:</label>
-				<input type="text" class="form-control rounded" name="detailName" pattern=".{2,255}"/>
+				<input type="text" class="form-control rounded" name="detailNames" pattern=".{2,255}"/>
 			</div>
 			<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
 				<label class="detail-label-padding">Value:</label> 
-				<input type="text" class="form-control rounded" name="detailValue" pattern=".{2,255}"/>
+				<input type="text" class="form-control rounded" name="detailValues" pattern=".{2,255}"/>
 			</div>
 		</div>
 	`;

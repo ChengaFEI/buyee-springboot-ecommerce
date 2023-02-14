@@ -1,2 +1,5 @@
+/* Main Components */
 @import '../../components/header.css';
 @import '../../components/form.css';
+/* Special Components */
+@import '../../components/dropdown.css';

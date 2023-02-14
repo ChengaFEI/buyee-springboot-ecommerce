@@ -22,11 +22,20 @@
 	text-decoration: none
 }
 /* Buttons in Form */
-	/* Image File Delete Button in Products Form */
+	/* Image File Delete Button in Products' Images Form */
 .link-delete-manager {
 	color: var(--main-gray-normal);
 	text-decoration: none
 }
 .link-delete-manager:hover {
 	color: var(--main-pink-bright);
+}
+	/* Add/Delete Buttons in Products' Details Form */
+.detail-button-manager {
+	color: var(--main-gray-light-medium);
+	text-decoration: none
+}
+.detail-button-manager:hover {
+	color: var(--main-pink-bright);
+	cursor: pointer;
 }

@@ -1,9 +1,2 @@
 @import '../components/header.css';
-/* Welcome Message and Account Link */
-.link-account-manager {
-	color: var(--main-gray-normal);
-	text-decoration: none
-}
-.link-account-manager:hover {
-	color: var(--main-pink-bright);
-}
+@import '../components/text.css';

@@ -1,4 +1,6 @@
+/* Sub Page */
+@import './products_modal.css';
+/* Components */
 @import '../../components/header.css';
 @import '../../components/dock.css';
 @import '../../components/table.css';
-@import './products_modal.css';

@@ -1,6 +1,8 @@
-@import '../../components/header.css';
-@import '../../components/tab.css';
-@import '../../components/form.css';
+/* Sub Page */
 @import './products_form_description.css';
 @import './products_form_images.css';
 @import './products_form_details.css';
+/* Components */
+@import '../../components/header.css';
+@import '../../components/tab.css';
+@import '../../components/form.css';

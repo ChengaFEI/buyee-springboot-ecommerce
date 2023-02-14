@@ -1,19 +1,8 @@
+@import '../../components/button.css';
 /* Padding */
 .detail-label-padding {
 	padding: var(--main-padding-vertical) var(--main-padding-horizontal) var(--main-padding-vertical) 0;
 }
-
 .detail-button-padding {
 	padding: var(--main-padding-vertical-sm) var(--main-padding-horizontal) var(--main-padding-vertical-sm) 0;
-}
-
-/* Buttons */
-.detail-button-manager {
-	color: var(--main-gray-light-medium);
-	text-decoration: none
-}
-
-.detail-button-manager:hover {
-	color: var(--main-pink-bright);
-	cursor: pointer;
 }

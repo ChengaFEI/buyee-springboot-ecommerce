@@ -1,3 +1,11 @@
+/* Welcome Text in Index Page */
+.link-account-manager {
+	color: var(--main-gray-normal);
+	text-decoration: none
+}
+.link-account-manager:hover {
+	color: var(--main-pink-bright);
+}
 /* Text of Header's Navigation Items */
 .navbar-custom {
 	background-color: var(--main-black-normal) !important;

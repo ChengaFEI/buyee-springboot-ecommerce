@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head th:replace="~{/universal :: head('Account Details', 'tag', 'account_form')}"/>
+	<head th:replace="~{/universal::head('Account Details', 'tag', 'account_form')}"/>
 	<script type="text/javascript" th:src="@{/js/webpages/users/account_form.js}"></script>
 	<script type="text/javascript" th:src="@{/js/components/form.js}"></script>
 	<script type="text/javascript">
@@ -12,7 +12,7 @@
 <body>
 	<div>
 		<!-- Header (navigation bar) -->	
-		<div th:replace="~{/components/header :: navbar('Account')}"></div>
+		<div th:replace="~{/components/header::navbar('Account')}"></div>
 		<!-- Data Collection Form -->
 		<form class="mt-3 container-fluid" th:action="@{/account/update}" method="post" style="margin: 0 auto" 
 		      enctype="multipart/form-data" th:object="${user}">
@@ -81,7 +81,7 @@
 			</div>
 		</form>
 		<!-- Footer -->
-		<div th:replace="~{components/footer :: footer}"></div>
+		<div th:replace="~{components/footer::copyright}"></div>
 	</div>
 </body>
 </html>

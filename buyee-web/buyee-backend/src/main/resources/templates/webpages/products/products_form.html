@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head th:replace="~{/universal :: head(${pageTitle}, 'tag', 'products_form')}"/>
+	<head th:replace="~{/universal::head(${pageTitle}, 'tag', 'products_form')}"/>
 	<!-- RichText Editor for Description Section -->
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
@@ -25,7 +25,7 @@
 		<div th:replace="~{/components/header::navbar('Products')}"></div>
 		<!-- Tabs -->
 		<div class="container-fluid mt-3 mb-3">
-			<div th:replace="~{/components/tab::tab('float-island-tab')}"></div>
+			<div th:replace="~{/components/tab::bar('float-island-tab')}"></div>
 		</div>
 		<!-- Data Collection Form -->
 		<form class="container-fluid" th:action="@{/products/save}" method="post" style="margin: 0 auto" 
@@ -92,9 +92,9 @@
 			</div>
 		</form>
 		<!-- Name/Alias Conflict Modal -->
-		<div th:replace="~{/components/modal :: modal_unique}"></div>
+		<div th:replace="~{/components/modal::warn}"></div>
 		<!-- Footer -->
-		<div th:replace="~{/components/footer :: footer}"></div>
+		<div th:replace="~{/components/footer::copyright}"></div>
 	</div>
 	<!-- Products Overview JS Codes -->
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_overview.js}"></script>	

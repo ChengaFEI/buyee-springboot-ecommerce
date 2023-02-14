@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head th:replace="~{/universal :: head('Users - Buyee Admin', 'tag', 'users')}"/>
+	<head th:replace="~{/universal::head('Users - Buyee Admin', 'tag', 'users')}"/>
 	<script type="text/javascript" th:src="@{/js/components/table.js}"></script>
 </head>
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
-		<div th:replace="~{/components/header :: navbar('Users')}"></div>
+		<div th:replace="~{/components/header::navbar('Users')}"></div>
 		<!-- Float Window Message -->
-		<div th:replace="~{/components/header :: floatwindow}"></div>
+		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Dock with Search Bar and Command Buttons -->
-		<div th:replace="~{/components/dock :: search_buttons('users')}"></div>
+		<div th:replace="~{/components/dock::search_buttons('users')}"></div>
 		<!-- Users Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">
@@ -87,9 +87,9 @@
 		<!-- Pagination -->
 		<div th:replace="~{/components/table::pagination('users')}"></div>
 		<!-- Delete User Confirmation Modal -->
-		<div th:replace="~{/components/modal :: modal_deletion}"></div>
+		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Footer -->
-		<div th:replace="~{/components/footer :: footer}"></div>
+		<div th:replace="~{/components/footer::copyright}"></div>
 	</div>
 </body>
 </html>

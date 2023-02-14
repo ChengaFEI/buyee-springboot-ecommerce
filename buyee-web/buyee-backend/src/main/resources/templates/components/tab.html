@@ -1,6 +1,6 @@
 <!-- Tab in Product Section -->
-<div th:fragment="tab(tabClass)" class="mb-3">
-	<ul th:class="'nav nav-justified ' + ${tabClass}" id="myTab" role="tablist">
+<div th:fragment="bar(extraClass)" class="mb-3">
+	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
 		<li class="nav-item">
 	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
 	    	   role="tab" type="button">

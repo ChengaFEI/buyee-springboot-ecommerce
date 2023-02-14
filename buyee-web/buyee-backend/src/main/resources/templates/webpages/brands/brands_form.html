@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head th:replace="~{/universal :: head(${pageTitle}, 'tag', 'brands_form')}"/>
+	<head th:replace="~{/universal::head(${pageTitle}, 'tag', 'brands_form')}"/>
 	<script type="text/javascript" th:src="@{/js/webpages/brands/brands_form.js}"></script>
 	<script type="text/javascript" th:src="@{/js/components/form.js}"></script>
 	<script type="text/javascript">
@@ -12,7 +12,7 @@
 <body>
 	<div>
 		<!-- Navigation Bar -->
-		<div th:replace="~{/components/header :: navbar('Brands')}"></div>
+		<div th:replace="~{/components/header::navbar('Brands')}"></div>
 		<!-- Data Collection Form -->
 		<form class="mt-3 container-fluid" th:action="@{/brands/save}" method="post" style="margin: 0 auto" 
 		      enctype="multipart/form-data" th:object="${brand}" onsubmit="return checkName(this);">
@@ -68,9 +68,9 @@
 			</div>
 		</form>
 		<!-- Name/Alias Conflict Modal -->
-		<div th:replace="~{/components/modal :: modal_unique}"></div>
+		<div th:replace="~{/components/modal::warn}"></div>
 		<!-- Footer -->
-		<div th:replace="~{/components/footer :: footer}"></div>
+		<div th:replace="~{/components/footer::copyright}"></div>
 	</div>
 </body>
 </html>

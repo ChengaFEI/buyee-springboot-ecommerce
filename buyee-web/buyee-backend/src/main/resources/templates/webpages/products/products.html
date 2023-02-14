@@ -12,7 +12,7 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Dock with Search Bar and Command Buttons -->
-		<div th:replace="~{/components/dock :: search_buttons('products')}"></div>
+		<div th:replace="~{/components/dock::search_buttons('products')}"></div>
 		<!-- Products Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">
@@ -67,11 +67,11 @@
 		<!-- Pagination -->
 		<div th:replace="~{/components/table::pagination('products')}"></div>
 		<!-- Delete User Confirmation Modal -->
-		<div th:replace="~{/components/modal::modal_deletion}"></div>
+		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Product Preview Modal -->
-		<div th:replace="~{/components/modal::modal_preview}"></div>
+		<div th:replace="~{/components/modal::preview}"></div>
 		<!-- Footer -->
-		<div th:replace="~{/components/footer::footer}"></div>
+		<div th:replace="~{/components/footer::copyright}"></div>
 	</div>
 </body>
 </html>

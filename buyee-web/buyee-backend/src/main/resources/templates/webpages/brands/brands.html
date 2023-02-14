@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<head th:replace="~{/universal :: head('Brands - Buyee Admin', 'tag', 'brands')}"/>
+	<head th:replace="~{/universal::head('Brands - Buyee Admin', 'tag', 'brands')}"/>
 	<script type="text/javascript" th:src="@{/js/components/table.js}"></script>
 </head>
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
-		<div th:replace="~{/components/header :: navbar('Brands')}"></div>
+		<div th:replace="~{/components/header::navbar('Brands')}"></div>
 		<!-- Float Window Message -->
-		<div th:replace="~{/components/header :: floatwindow}"></div>
+		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Dock with Command Buttons and Search Bar -->
 		<div th:replace="~{/components/dock :: search_buttons('brands')}"></div>
 		<!-- Brands Table with full-details -->
@@ -82,9 +82,9 @@
 		<!-- Pagination -->
 		<div th:replace="~{/components/table::pagination('brands')}"></div>
 		<!-- Delete User Confirmation Modal -->
-		<div th:replace="~{/components/modal :: modal_deletion}"></div>
+		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Footer -->
-		<div th:replace="~{/components/footer :: footer}"></div>
+		<div th:replace="~{/components/footer::copyright}"></div>
 	</div>
 </body>
 </html>

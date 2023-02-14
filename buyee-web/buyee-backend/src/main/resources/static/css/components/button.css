@@ -1,4 +1,4 @@
-/* Buttons */
+/* Buttons in Dock */
 .link-button-manager {
 	color: var(--main-gray-normal);
 	text-decoration: none
@@ -10,4 +10,23 @@
 	border: 1px solid var(--main-gray-light);
 	border-right: 0px;
 	background-color: var(--main-transparent);;
+}
+/* Buttons in Table */
+.icon-action {
+	color: var(--main-gray-normal);
+}
+.icon-action:hover {
+	color: var(--main-pink-bright);
+}
+.icon-no-deco {
+	text-decoration: none
+}
+/* Buttons in Form */
+	/* Image File Delete Button in Products Form */
+.link-delete-manager {
+	color: var(--main-gray-normal);
+	text-decoration: none
+}
+.link-delete-manager:hover {
+	color: var(--main-pink-bright);
 }

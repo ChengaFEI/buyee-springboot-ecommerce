@@ -1,0 +1,53 @@
+/* Text of Header's Navigation Items */
+.navbar-custom {
+	background-color: var(--main-black-normal) !important;
+}
+.nav-item-active {
+	border-bottom: 1px solid var(--main-white-bright);
+}
+.nav-item-active:hover {
+	border-bottom: 1px solid var(--main-gray-normal);
+}
+.nav-item-active>a {
+	color: var(--main-white-bright);
+}
+.nav-item-inactive:hover {
+	border-bottom: 1px solid var(--main-white-bright);
+}
+.nav-item-inactive>a {
+	color: var(--main-gray-normal);
+}
+.nav-item-inactive>a:hover {
+	color: var(--main-white-bright);
+}
+/* Text in Table Heads */
+.table-head-active {
+	text-decoration: none;
+	color: var(--main-pink-bright);
+}
+.table-head-active:hover {
+	text-decoration: none;
+	color: var(--main-pink-normal);
+}
+.table-head-inactive {
+	text-decoration: none;
+	color: var(--main-black-normal);
+}
+.table-head-inactive:hover {
+	text-decoration: none;
+	color: var(--main-pink-bright);
+}
+/* Hyperlink Text in Table Body */
+.text-action>a {
+	color: var(--main-black-normal);
+	text-decoration: underline dotted var(--main-gray-normal);
+	text-underline-offset: 8px;
+}
+.text-action:hover>a {
+	color: var(--main-pink-bright);
+	text-decoration: underline solid var(--main-pink-bright);
+}
+/* Text of Badges in Table Body */
+.badge-custom {
+	margin-right: 10px;
+}

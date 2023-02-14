@@ -1,0 +1,44 @@
+/* Account Label Drop Down */
+.dropdown {
+	display: inline-block;
+	position: relative;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	width: 100%;
+	overflow: auto;
+	z-index: 10;
+}
+.dropdown-content a {
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	color: var(--main-gray-normal);
+}
+.dropdown:hover .dropdown-content {
+	display: block;
+	background-color: var(--main-white-bright);
+	border: 1px solid var(--main-gray-light); 
+}
+.dropdown-content a:hover {
+	color: var(--main-white-bright);
+	background-color: var(--main-gray-light);
+}
+/* Drop Down in Brands Form */
+.select-custom {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border: 1px solid var(--main-gray-light); 
+	border-radius: var(--main-border-radius);
+}
+.select-custom>select {
+	border: 0px;
+	resize: vertical;
+	height: 210px;
+}
+.select-custom>select>option {
+	color: var(--main-gray-normal); 
+	margin-bottom: 3px;
+}

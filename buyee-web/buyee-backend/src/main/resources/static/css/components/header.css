@@ -1,52 +1,5 @@
-/* Sections */
-.navbar-custom {
-	background-color: var(--main-black-normal) !important;
-}
-.nav-item-active {
-	border-bottom: 1px solid var(--main-white-bright);
-}
-.nav-item-active:hover {
-	border-bottom: 1px solid var(--main-gray-normal);
-}
-.nav-item-active>a {
-	color: var(--main-white-bright);
-}
-.nav-item-inactive:hover {
-	border-bottom: 1px solid var(--main-white-bright);
-}
-.nav-item-inactive>a {
-	color: var(--main-gray-normal);
-}
-.nav-item-inactive>a:hover {
-	color: var(--main-white-bright);
-}
-/* Drop Down Menu */
-.dropdown {
-	display: inline-block;
-	position: relative;
-}
-.dropdown-content {
-	display: none;
-	position: absolute;
-	width: 100%;
-	overflow: auto;
-	z-index: 10;
-}
-.dropdown-content a {
-	display: block;
-	padding: 10px;
-	text-decoration: none;
-	color: var(--main-gray-normal);
-}
-.dropdown:hover .dropdown-content {
-	display: block;
-	background-color: var(--main-white-bright);
-	border: 1px solid var(--main-gray-light); 
-}
-.dropdown-content a:hover {
-	color: var(--main-white-bright);
-	background-color: var(--main-gray-light);
-}
+@import './text.css';
+@import './dropdown.css';
 /* Float Window */
 .float-square {
 	border-radius: 0px;

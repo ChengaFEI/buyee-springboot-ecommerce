@@ -1,10 +1,10 @@
-/* Search Bar */
-.search-bar-custom {
+/* Filter Bar */
+.filter-bar-custom {
 	border: 1px solid var(--main-gray-light);
 	border-left: 0px;
 	padding: 0 0 0 0;
 }
-.search-bar-custom>#search {
+.filter-bar-custom>#filter {
 	margin: 0 0 0 0;
 	border: var(--main-transparent);
 	height: var(--main-command-bar-height);

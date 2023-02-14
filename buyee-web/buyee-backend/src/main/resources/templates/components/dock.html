@@ -15,3 +15,22 @@
 	<!-- Export PDF Buttons -->
 	<div th:replace="~{/components/button::export_pdf(${sectionName})}"></div>
 </div>
+<!-- Dock with Search Bar, Filter Bar, and Command Buttons -->
+<div th:fragment="search_filter_buttons(sectionName)" class="input-group rounded container-fluid mt-3 mb-3">
+	<!-- Create Item Button -->
+	<div th:replace="~{/components/button::create(${sectionName})}"></div>
+	<!-- Clear Sorting Button -->
+	<div th:replace="~{/components/button::clear_sort(${sectionName})}"></div>
+	<!-- Clear Search Button -->
+	<div th:replace="~{/components/button::clear_search(${sectionName})}"></div>
+	<!-- Search Bar -->
+	<div th:replace="~{/components/search::bar(${sectionName})}"></div>
+	<!-- Filter Bar -->
+	<div th:replace="~{/components/filter::bar(${sectionName})}"></div>
+	<!-- Export CSV Buttons -->
+	<div th:replace="~{/components/button::export_csv(${sectionName})}"></div>
+	<!-- Export Excel Buttons -->
+	<div th:replace="~{/components/button::export_excel(${sectionName})}"></div>
+	<!-- Export PDF Buttons -->
+	<div th:replace="~{/components/button::export_pdf(${sectionName})}"></div>
+</div>

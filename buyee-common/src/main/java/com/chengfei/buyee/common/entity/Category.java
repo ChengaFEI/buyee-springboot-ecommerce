@@ -1,10 +1,7 @@
 package com.chengfei.buyee.common.entity;
-
 import java.util.HashSet;
 import java.util.Set;
-
 import com.chengfei.buyee.common.Constants;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,62 +11,48 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
     @Column(length = 128, nullable = false, unique = true)
     private String name;
-    
     @Column(length = 64, nullable = false, unique = true)
     private String alias;
-    
     @Column(length = 128)
     private String image; 
-    
     private boolean enabled;
-    
     private Integer level;
-    
     @OneToOne
     @JoinColumn(name = "parent_id")
     private Category parent;
-    
     @OneToMany(mappedBy = "parent")
     private Set<Category> children = new HashSet<>();
-    
+    // Constructors
     public Category() {
     }
-    
     public Category(Integer id) {
 	this.id = id;
     }
-    
     public Category(String name) {
 	this.name = name;
 	this.alias = name;
     }
-    
     public Category(Integer id, String name) {
 	this.id = id;
 	this.name = name;
     }
-    
     public Category(Integer id, String name, String alias) {
 	this.id = id;
 	this.name = name;
 	this.alias = alias;
     }
-    
     public Category(String name, Category parent) {
 	this(name);
 	this.parent = parent;
     }
-    
     public Category(Integer id, String name, String alias, String image, boolean enabled, Integer level,
 	    Category parent) {
 	this.id = id;
@@ -80,7 +63,6 @@ public class Category {
 	this.level = level;
 	this.parent = parent;
     }
-
     public Category(Integer id, String name, String alias, String image, boolean enabled, Integer level,
 	    Category parent, Set<Category> children) {
 	this.id = id;
@@ -92,7 +74,7 @@ public class Category {
 	this.parent = parent;
 	this.children = children;
     }
-
+    // Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -141,20 +123,16 @@ public class Category {
     public void setChildren(Set<Category> children) {
         this.children = children;
     }
-    
     public String getImagePathString() {
 	if (id == null || image == null) return Constants.S3_BASE_URI + "/category-images/default-image.png";
 	return Constants.S3_BASE_URI + "/category-images/" + this.getId() + "/" + this.getImage();
     }
-    
     public Integer getParentId() {
 	return this.parent.getId();
     }
-    
     public Integer getParentLevel() {
 	return this.parent.getLevel();
     }
-
     @Override
     public String toString() {
 	return this.name;

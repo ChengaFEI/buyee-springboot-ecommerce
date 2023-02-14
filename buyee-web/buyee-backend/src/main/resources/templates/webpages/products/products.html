@@ -39,7 +39,8 @@
 						<td class="align-middle text-center" th:text="${product.id}" />
 						<!-- Name -->
 						<td class="align-middle text-action">
-							<a title="View this product" th:text="${product.shortName}" class="link-detail"
+							<!-- link-detail is required for using preview-modal -->
+							<a class="link-detail" title="View this product" th:text="${product.shortName}" 
 							   th:href="@{'/products/view/' + ${product.id}}"></a> 
 						</td>
 						<!-- Brand Name -->

@@ -44,7 +44,20 @@
 						<!-- ID -->
 						<td class="align-middle text-center" th:text="${category.getId()}"></td>
 						<!-- Name -->
-						<td class="align-middle" th:text="${category.getName()}"></td>
+						<th:block>
+							<!-- Display in hierarchy mode -->
+							<td th:if="${hierarchy}" class="align-middle text-action">
+								<a th:if="${category.children != null && category.children.size != 0}" 
+								   th:text="${category.name}" th:href="'#'+${category.id}"></a>
+								<span th:unless="${category.children != null && category.children.size != 0}">
+									[[${category.name}]]
+								</span>
+							</td>
+							<!-- Display in normal table mode -->
+							<td th:unless="${hierarchy}" class="align-middle">
+								<span>[[${category.name}]]</span>
+							</td>
+						</th:block>
 						<!-- Alias -->
 						<td class="align-middle" th:text="${category.getAlias()}" />
 						<!-- Enabled -->

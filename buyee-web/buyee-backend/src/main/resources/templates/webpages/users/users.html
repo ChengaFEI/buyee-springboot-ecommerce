@@ -10,8 +10,8 @@
 		<div th:replace="~{/components/header :: navbar('Users')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header :: floatwindow}"></div>
-		<!-- Search Bar & Command Buttons -->
-		<div th:replace="~{/components/search :: search_commands('users')}"></div>
+		<!-- Dock with Search Bar and Command Buttons -->
+		<div th:replace="~{/components/dock :: search_buttons('users')}"></div>
 		<!-- Users Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">

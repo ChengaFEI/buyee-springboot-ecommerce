@@ -11,8 +11,8 @@
 		<div th:replace="~{/components/header :: navbar('Categories')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header :: floatwindow}"></div>
-		<!-- Search Bar & Command Buttons -->
-		<div th:replace="~{/components/search :: search_commands('categories')}"></div>
+		<!-- Dock with Search Bar and Command Buttons -->
+		<div th:replace="~{/components/dock :: search_buttons('categories')}"></div>
 		<!-- Categories Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">

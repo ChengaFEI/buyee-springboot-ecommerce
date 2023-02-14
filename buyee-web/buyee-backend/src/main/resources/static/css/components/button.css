@@ -1,0 +1,13 @@
+/* Buttons */
+.link-button-manager {
+	color: var(--main-gray-normal);
+	text-decoration: none
+}
+.link-button-manager:hover {
+	color: var(--main-pink-bright);
+}
+.link-clear-search {
+	border: 1px solid var(--main-gray-light);
+	border-right: 0px;
+	background-color: var(--main-transparent);;
+}

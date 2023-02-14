@@ -24,12 +24,14 @@ public class Category {
     @Column(length = 128)
     private String image; 
     private boolean enabled;
-    private Integer level;
     @OneToOne
     @JoinColumn(name = "parent_id")
     private Category parent;
+    @Column(name = "all_parent_ids", length = 512, nullable = true)
+    private String allParentIds;
     @OneToMany(mappedBy = "parent")
     private Set<Category> children = new HashSet<>();
+    private Integer level;
     // Constructors
     public Category() {
     }
@@ -75,63 +77,78 @@ public class Category {
 	this.children = children;
     }
     // Getters and Setters
+    	// Id
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
     }
+    	// Name
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+    	// Alias
     public String getAlias() {
         return alias;
     }
     public void setAlias(String alias) {
         this.alias = alias;
     }
+    	// Image
     public String getImage() {
         return image;
     }
     public void setImage(String image) {
         this.image = image;
     }
+    public String getImagePathString() {
+	if (id == null || image == null) return Constants.S3_BASE_URI + "/category-images/default-image.png";
+	return Constants.S3_BASE_URI + "/category-images/" + this.getId() + "/" + this.getImage();
+    }
+    	// Enabled
     public boolean isEnabled() {
         return enabled;
     }
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-    public Integer getLevel() {
-	return this.level;
-    }
-    public void setLevel(Integer level) {
-	this.level = level;
-    }
+    	// Parent
     public Category getParent() {
         return parent;
     }
     public void setParent(Category parent) {
         this.parent = parent;
     }
-    public Set<Category> getChildren() {
-        return children;
-    }
-    public void setChildren(Set<Category> children) {
-        this.children = children;
-    }
-    public String getImagePathString() {
-	if (id == null || image == null) return Constants.S3_BASE_URI + "/category-images/default-image.png";
-	return Constants.S3_BASE_URI + "/category-images/" + this.getId() + "/" + this.getImage();
-    }
     public Integer getParentId() {
 	return this.parent.getId();
     }
     public Integer getParentLevel() {
 	return this.parent.getLevel();
+    }
+    	// All Parent IDs
+    public String getAllParentIds() {
+	return allParentIds;
+    }
+    public void setAllParentIds(String allParentIds) {
+	this.allParentIds = allParentIds;
+    }
+    	// Children
+    public Set<Category> getChildren() {
+        return children;
+    }
+    public void setChildren(Set<Category> children) {
+        this.children = children; 
+    }
+    	// Level
+    public Integer getLevel() {
+	return this.level;
+    }
+    public void setLevel(Integer level) {
+	this.level = level;
     }
     @Override
     public String toString() {

@@ -142,32 +142,26 @@ public class ProductController {
 	    @PathVariable(name = "id") Integer id,
 	    @PathVariable(name = "status") boolean status, 
 	    @Param("pageNum") int pageNum,
-	    @Param("keyword") String keyword, 
 	    @Param("sortField") String sortField, 
 	    @Param("sortOrder") String sortOrder, 
+	    @Param("keyword") String keyword, 
+	    @Param("categoryId") Integer categoryId,
 	    RedirectAttributes redirectAttributes) {
 	productService.updateProductEnabledStatus(id, status);
 	String enabledStr = status ? "enable" : "disable";
 	redirectAttributes.addFlashAttribute("message", "Successfully " + enabledStr + " product with ID " + id + ".");
 	String redirectURL = "redirect:/products/page/" + pageNum + "?";
-	boolean urlHasParam = false;
-	if (keyword != null) {
-	    urlHasParam = true;
-	    redirectURL += "keyword=" + keyword;
-	}
-	if (sortField != null && !urlHasParam) {
-	    urlHasParam = true;
-	    redirectURL += "sortField=" + sortField;
-	} else if (sortField != null && urlHasParam) redirectURL += "&sortField=" + sortField;
-	if (sortOrder != null && !urlHasParam) {
-	    urlHasParam = true;
-	    redirectURL += "sortOrder=" + sortOrder;
-	} else if (sortOrder != null && urlHasParam) redirectURL += "&sortOrder=" + sortOrder;
+	if (sortField != null) redirectURL += "&sortField=" + sortField;
+	if (sortOrder != null) redirectURL += "&sortOrder=" + sortOrder;
+	if (keyword != null) redirectURL += "&keyword=" + keyword;
+	if (categoryId != null) redirectURL += "&categoryId=" + categoryId;
 	return redirectURL;
     }
     // Delete Tasks
     @GetMapping("/products/delete/{id}")
-    public String deleteProductById(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
+    public String deleteProductById(
+	    @PathVariable(name = "id") Integer id, 
+	    RedirectAttributes redirectAttributes) {
 	try {
 	    productService.deleteProductById(id);
 	    AmazonS3Util.deleteFolder("product-images/" + id + "/extras");

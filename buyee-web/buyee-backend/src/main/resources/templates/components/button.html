@@ -9,16 +9,29 @@
 <!-- Clear Sorting -->
 <div th:fragment="clear_sort(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Clear Sorting"
-	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + 
-	   			  ${keyword == null ? '' : '?keyword='+keyword}}"> 
+	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
+	   			  ${keyword != null ? '&keyword=' + keyword : ''} +
+		   		  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
 	    <i class="fa-solid fa-square-xmark fa-2x"></i>
 	</a>
 </div>
 <!-- Clear Search -->
 <div th:fragment="clear_search(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-search" id="search-addon" title="Clear Search Results"
-	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + 
-	   			  ${sortField==null && sortOrder==null ? '' : '?sortField=' + sortField + '&sortOrder=' + sortOrder}}">
+	<a class="link-button-manager input-group-text link-clear-custom" id="search-addon" title="Clear Search Results"
+	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+		<i class="fa-solid fa-square-minus fa-2x"></i>
+	</a> 
+</div>
+<!-- Clear Filter -->
+<div th:fragment="clear_filter(sectionName)" th:remove="tag">
+	<a class="link-button-manager input-group-text link-clear-custom" id="search-addon" title="Clear Filter Results"
+	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${keyword != null ? '&keyword=' + keyword : ''}}">
 		<i class="fa-solid fa-square-minus fa-2x"></i>
 	</a> 
 </div>
@@ -49,19 +62,21 @@
 	<!-- If the item is enabled, disable it -->
 	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
 	   th:class="'fa-solid fa-check-circle icon-action icon-no-deco ' + ${extraClass}"
-	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
-	   			  '/enabled/false?pageNum=' + ${pageNum} + 
-	   			  ${keyword == null ? '' : '&keyword=' + keyword} + 
-	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
-	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a> 
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + '/enabled/false?' + 
+	   			  'pageNum=' + ${pageNum} +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${keyword != null ? '&keyword=' + keyword : ''} + 
+				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}"></a> 
 	<!-- If the item is disabled, enable it -->
 	<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
 	   th:class="'fa-regular fa-circle icon-action icon-no-deco ' + ${extraClass}"
-	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
-	   			  '/enabled/true?pageNum=' + ${pageNum} + 
-	   			  ${keyword==null ? '' : '&keyword='+keyword} +
-	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
-	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a>
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + '/enabled/true?' + 
+	   			  'pageNum=' + ${pageNum} +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${keyword != null ? '&keyword=' + keyword : ''} + 
+				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}"></a>
 </div>
 <!-- View Details -->
 <div th:fragment="view(sectionName, instance, extraClass)" th:remove="tag">

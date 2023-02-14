@@ -43,19 +43,22 @@ public class ProductService {
 	}
     }
     public Page<Product> readProductsByPageNum(
-	    int pageNum, String sortField, String sortOrder, String keyword, Integer categoryId) {
+	    int pageNum, String sortField, String sortOrder, 
+	    String keyword, Integer categoryId) {
 	Pageable pageable = null;
 	if (sortField != null && sortOrder != null) {
 	    Sort sort = Sort.by(sortField);
 	    sort = sortOrder.equals("asc") ? sort.ascending() : sort.descending();
 	    pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);
 	} else pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
-	if (keyword != null && !keyword.isEmpty())
-	    return repo.readProductsByKeyword(keyword.trim(), pageable);
-	if (categoryId != null && categoryId > 0) {
+	boolean keywordExist = keyword != null && !keyword.isEmpty();
+	boolean categoryIdExist = categoryId != null && categoryId > 0;
+	if (categoryIdExist) {
 	    String categoryIdMatch = "-" + categoryId + "-";
-	    return repo.readProductsByParentCategory(categoryId, categoryIdMatch, pageable);
-	}
+	    if (keywordExist) return repo.readProductsByKeywordParentCategory(
+		    keyword.trim(), categoryId, categoryIdMatch, pageable);
+	    else return repo.readProductsByParentCategory(categoryId, categoryIdMatch, pageable);
+	} else if (keywordExist) return repo.readProductsByKeyword(keyword.trim(), pageable);
 	return repo.findAll(pageable);
     }
     public List<Product> readAllProducts() {

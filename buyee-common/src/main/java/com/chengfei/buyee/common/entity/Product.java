@@ -203,6 +203,7 @@ public class Product {
     }
     @Transient
     public String getMainImageNameWithChars(int numChars) {
+	if (this.mainImage == null || this.mainImage.length() == 0) return "";
 	if (this.mainImage.length() <= numChars) return this.mainImage;
 	return this.mainImage.substring(0, numChars).concat("...");
     }

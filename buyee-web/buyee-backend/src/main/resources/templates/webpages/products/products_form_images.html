@@ -8,7 +8,7 @@
 				<input type="hidden" th:field="*{mainImage}"/>
 				<!-- Image Input -->
 				<div title="Image should be smaller than 1MB">
-					<label class="col-form-label" style="width: 100%" for="imageFile">Main Image</label>
+					<label class="col-form-label" style="width: 100%" for="imageFile">Main Image: [[${product.shortMainImageName}]]</label>
 					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
 					       accept="image/png image/jpeg" th:required="${product.mainImage == null}">
 				</div>
@@ -29,7 +29,7 @@
 						   th:value="${extraImage.name}"/>
 					<!-- Image Input -->
 					<div title="Image should be smaller than 1MB">
-						<label class="col-form-label">Extra Image #[[${status.index + 1}]]</label>
+						<label class="col-form-label">Extra Image #[[${status.index + 1}]]: [[${extraImage.shortImageName}]]</label>
 						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3 file-button-custom" >
 							<!-- Input Bar -->
 							<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 

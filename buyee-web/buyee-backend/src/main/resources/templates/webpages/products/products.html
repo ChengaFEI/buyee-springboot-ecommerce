@@ -22,8 +22,8 @@
 						<th th:replace="~{/components/table::head_link('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
 						<th th:replace="~{/components/table::head_link('products', 'id', 'ID', '70px', 'text-center', true)}" />
 						<th th:replace="~{/components/table::head_link('products', 'name', 'Name', '', '', true)}" />
-						<th th:replace="~{/components/table::head_link('products', 'brand', 'Brand', '200px', '', true)}" />
-						<th th:replace="~{/components/table::head_link('products', 'category', 'Category', '200px', '', true)}" />
+						<th th:replace="~{/components/table::head_link('products', 'brand', 'Brand', '150px', '', true)}" />
+						<th th:replace="~{/components/table::head_link('products', 'category', 'Category', '150px', '', true)}" />
 						<th th:replace="~{/components/table::head_link('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
 						<th th:replace="~{/components/table::head_link('products', '', 'Actions', '100px', 'text-center', false)}" />
 					</tr>
@@ -39,7 +39,7 @@
 						<td class="align-middle text-center" th:text="${product.id}" />
 						<!-- Name -->
 						<td class="align-middle text-action">
-							<a title="View this product" th:text="${product.name}" class="link-detail"
+							<a title="View this product" th:text="${product.shortName}" class="link-detail"
 							   th:href="@{'/products/view/' + ${product.id}}"></a> 
 						</td>
 						<!-- Brand Name -->

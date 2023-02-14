@@ -1,8 +1,6 @@
 package com.chengfei.buyee.admin.product.controller;
-
 import java.io.IOException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -14,21 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.chengfei.buyee.admin.AmazonS3Util;
 import com.chengfei.buyee.admin.brand.BrandService;
 import com.chengfei.buyee.admin.product.ProductNotFoundException;
 import com.chengfei.buyee.admin.product.ProductService;
 import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Product;
-
 @Controller
 public class ProductController {
     @Autowired
     private ProductService productService;
     @Autowired
     private BrandService brandService;
-    
     // Create Tasks
     @GetMapping("/products/new")
     public String createProduct(Model model) {
@@ -42,7 +37,6 @@ public class ProductController {
    	model.addAttribute("numExistingExtraImages", 0);
    	return "/webpages/products/products_form";
     }	
-     
     @PostMapping("/products/save")
     public String submitProduct(
 	    Product product, RedirectAttributes redirectAttributes, 
@@ -70,13 +64,11 @@ public class ProductController {
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
 	return "redirect:/products/page/1?keyword=" + product.getName();
     }
-    
     // Read Tasks
     @GetMapping("/products")
     public String readProductsInFirstPage(Model model) {
 	return readProductsByPageNum(1, null, null, null, model);
     }
-
     @GetMapping("/products/page/{pageNum}")
     public String readProductsByPageNum(
 	    @PathVariable(name = "pageNum") int pageNum, 
@@ -120,7 +112,6 @@ public class ProductController {
 	    return "redirect:/products";
 	}
     }
-    
     // Update Tasks 
     @GetMapping("/products/edit/{id}")
     public String updateProductById(
@@ -140,7 +131,6 @@ public class ProductController {
 	    return "redirect:/products";
 	}
     }
-    
     @GetMapping("/products/{id}/enabled/{status}")
     public String updateProductEnabledStatus(
 	    @PathVariable(name = "id") Integer id,
@@ -169,7 +159,6 @@ public class ProductController {
 	} else if (sortOrder != null && urlHasParam) redirectURL += "&sortOrder=" + sortOrder;
 	return redirectURL;
     }
-
     // Delete Tasks
     @GetMapping("/products/delete/{id}")
     public String deleteProductById(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {

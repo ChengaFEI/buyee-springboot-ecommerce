@@ -5,8 +5,10 @@
 /* Text Link */
 .text-action>a {
 	color: var(--main-black-normal);
-	text-decoration: none;
+	text-decoration: underline dotted var(--main-gray-normal);
+	text-underline-offset: 8px;
 }
 .text-action:hover>a {
 	color: var(--main-pink-bright);
+	text-decoration: underline solid var(--main-pink-bright);
 }

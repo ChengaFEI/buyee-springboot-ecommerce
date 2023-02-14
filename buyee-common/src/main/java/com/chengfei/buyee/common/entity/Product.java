@@ -1,5 +1,4 @@
 package com.chengfei.buyee.common.entity;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -19,7 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.Transient;
 @Entity
 @Table(name = "products")
 public class Product {
@@ -31,7 +30,6 @@ public class Product {
     private Date createdTime;
     @Column(name = "updated_time")
     private Date updatedTime;
-    
     // Overview Section
     @Column(length = 256, nullable = false, unique = true)
     private String name;
@@ -50,32 +48,26 @@ public class Product {
     private float price;
     @Column(name = "discount_percent")
     private float discountPercent;
-
     // Description Section
     @Column(name = "short_description",length = 4096, nullable = false)
     private String shortDescription;
     @Column(name = "full_description", length = 8192, nullable = false)
     private String fullDescription;
-    
     // Images Section
     @Column(name = "main_image")
     private String mainImage;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProductImage> images = new HashSet<>();
-    
     // Details Section 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductDetail> details = new ArrayList<>();
-    
     // Shipping Section
     private float length;
     private float width;
     private float height;
     private float weight;
-
     // Generators
     public Product() {}
-     
     // Default Properties
     public Integer getId() {
         return id;
@@ -95,13 +87,21 @@ public class Product {
     public void setUpdatedTime(Date updatedTime) {
 	this.updatedTime = updatedTime;
     }
-    
     // Overview Section
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
+    }
+    @Transient
+    public String getShortName() {
+	return getNameWithChars(70);
+    }
+    @Transient
+    public String getNameWithChars(int numChars) {
+	if (this.name.length() <= numChars) return this.name;
+	return this.name.substring(0, numChars).concat("...");
     }
     public String getAlias() {
         return alias;
@@ -151,7 +151,6 @@ public class Product {
     public void setDiscountPercent(float discountPercent) {
 	this.discountPercent = discountPercent;
     }
-    
     // Description Section
     public String getShortDescription() {
         return shortDescription;
@@ -165,9 +164,8 @@ public class Product {
     public void setFullDescription(String fullDescription) {
         this.fullDescription = fullDescription;
     }
-    
     // Images Section
-    // Getters and Setters
+    	// Getters and Setters
     public String getMainImage() {
 	return mainImage;
     }
@@ -180,11 +178,11 @@ public class Product {
     public void setImages(Set<ProductImage> images) {
         this.images = images;
     }
-    // Adder
+    	// Adder
     public void addExtraImage(String imageName) {
 	this.images.add(new ProductImage(imageName, this)); 
     }
-    // Generator 
+    	// Generator 
     public List<ProductImage> getSortedImages() {
 	List<ProductImage> sortedImages = new ArrayList<>(this.images);
 	sortedImages.sort((image1, image2) -> {
@@ -199,7 +197,16 @@ public class Product {
     public String getDefaultImagePathString() {
 	return Constants.S3_BASE_URI + "/product-images/default-image.png";
     }
-    // Validator
+    @Transient
+    public String getShortMainImageName() {
+	return getMainImageNameWithChars(20);
+    }
+    @Transient
+    public String getMainImageNameWithChars(int numChars) {
+	if (this.mainImage.length() <= numChars) return this.mainImage;
+	return this.mainImage.substring(0, numChars).concat("...");
+    }
+    	// Validator
     public boolean containExtraImageName(String imageName) {
 	Iterator<ProductImage> iterator = this.images.iterator();
 	while (iterator.hasNext()) {
@@ -208,24 +215,22 @@ public class Product {
 	}
 	return false;
     }
-    
     // Details Section
-    // Getter and Setter
+    	// Getter and Setter
     public List<ProductDetail> getDetails() {
         return details;
     }
     public void setDetails(List<ProductDetail> details) {
         this.details = details;
     }
-    // Adder
+    	// Adder
     public void addDetail(String name, String value) {
 	this.details.add(new ProductDetail(name, value, this));
     }
     public void addDetail(Integer id, String name, String value) {
 	this.details.add(new ProductDetail(id, name, value, this));
     }
-
-    // Shipping Section
+    	// Shipping Section
     public float getLength() {
 	return length;
     }
@@ -250,12 +255,10 @@ public class Product {
     public void setWeight(float weight) {
 	this.weight = weight;
     }
-
     @Override
     public String toString() {
 	return "Product [id=" + id + ", name=" + name + "]";
     }
-    
     // Builder
     private Product(ProductBuilder builder) {
 	this.id = builder.id;
@@ -296,14 +299,12 @@ public class Product {
 	 private float weight;
 	 private Category category;
 	 private Brand brand;
-	 
 	 public ProductBuilder(String name, String alias, String shortDescription, String fullDescription) {
 	     this.name = name;
 	     this.alias = alias;
 	     this.shortDescription = shortDescription; 
 	     this.fullDescription = fullDescription; 
 	 }
-	 
 	 public ProductBuilder setId(Integer id) {
 	     this.id = id;
 	     return this;

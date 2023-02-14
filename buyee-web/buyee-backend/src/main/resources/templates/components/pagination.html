@@ -1,0 +1,74 @@
+<!-- Pagination Bar -->
+<div th:fragment="bar(sectionName)" th:remove="tag">
+	<!-- Page Counter when items are found -->
+	<div class="text-center mb-2" th:if="${totalElements > 0}">
+		<span style="color: rgba(41, 43, 44, .4)">[[${startCount}]] to [[${endCount}]] of [[${totalElements}]]</span>
+	</div>
+	<!-- No-Item Message when no items are found -->
+	<div class="text-center text-muted mb-2" th:unless="${totalElements > 0}">
+		<span style="color: rgba(41, 43, 44, .4)">no [[${sectionName}]] found</span>
+	</div>
+	<!-- Navigation Bar -->
+	<div th:if="${totalPages > 1}">
+		<nav>
+			<ul class="pagination justify-content-center">
+				<!-- Navigate to the first page -->
+				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
+					<!-- href keeps track of other searchers/filters/sorters -->
+					<a class="page-link" title="First Page"
+					   th:href="@{'/' + ${sectionName} + '/page/1?' + 
+					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+					   			  ${keyword != null ? '&keyword=' + keyword : ''} + 
+					   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+						<i class="fa-solid fa-angles-left"></i></a>
+				</li>
+				<!-- Navigate to previous page -->
+				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
+					<!-- href keeps track of other searchers/filters/sorters -->
+					<a class="page-link" title="Previous Page"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum - 1} + '?' +
+					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+					   			  ${keyword != null ? '&keyword=' + keyword : ''} + 
+					   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+					   	<i class="fa-solid fa-angle-left"></i></a>
+				</li>
+				<!-- Navigate to a specific page -->
+				<li th:class="${pageNum == i ? 'page-item active' : 'page-item'}"
+					th:each="i: ${#numbers.sequence(1, totalPages)}">
+					<!-- href keeps track of other searchers/filters/sorters -->
+					<a class="page-link" th:title="${'Jump to Page ' + i}" 
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${i} + '?' +
+					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+					   			  ${keyword != null ? '&keyword=' + keyword : ''} + 
+					   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+						[[${i}]]</a>
+				</li>
+				<!-- Navigate to next page -->
+				<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
+					<!-- href keeps track of other searchers/filters/sorters -->
+					<a class="page-link" title="Next Page"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum + 1} + '?' +
+					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+					   			  ${keyword != null ? '&keyword=' + keyword : ''} + 
+					   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+					   	<i class="fa-solid fa-angle-right"></i></a>
+				</li>
+				<!-- Navigate to the last page -->
+				<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
+					<!-- href keeps track of other searchers/filters/sorters -->
+					<a class="page-link" title="Last Page"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${totalPages} + '?' +
+					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+					   			  ${keyword != null ? '&keyword=' + keyword : ''} + 
+					   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+					   	<i class="fa-solid fa-angles-right"></i></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>

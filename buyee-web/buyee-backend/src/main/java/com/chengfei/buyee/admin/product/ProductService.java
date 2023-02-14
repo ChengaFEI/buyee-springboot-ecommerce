@@ -49,9 +49,7 @@ public class ProductService {
 	    Sort sort = Sort.by(sortField);
 	    sort = sortOrder.equals("asc") ? sort.ascending() : sort.descending();
 	    pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE, sort);
-	} else {
-	    pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
-	}
+	} else pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
 	if (keyword != null && !keyword.isEmpty())
 	    return repo.readProductsByKeyword(keyword.trim(), pageable);
 	if (categoryId != null && categoryId > 0) {

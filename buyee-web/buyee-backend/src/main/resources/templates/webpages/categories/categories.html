@@ -20,17 +20,17 @@
 				<thead>
 					<tr>
 						<!-- Image -->
-						<th th:replace="~{/components/table::head_link('categories', 'image', 'Image', '50px', 'text-center', false)}" />
+						<th th:replace="~{/components/sort::switch('categories', 'image', 'Image', '50px', 'text-center', false)}" />
 						<!-- ID -->
-						<th th:replace="~{/components/table::head_link('categories', 'id', 'ID', '70px', 'text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('categories', 'id', 'ID', '70px', 'text-center', true)}" />
 						<!-- Name -->
-						<th th:replace="~{/components/table::head_link('categories', 'name', 'Name', '', '', true)}" />
+						<th th:replace="~{/components/sort::switch('categories', 'name', 'Name', '', '', true)}" />
 						<!-- Alias -->
-						<th th:replace="~{/components/table::head_link('categories', 'alias', 'Alias', '20%', '', true)}" />
+						<th th:replace="~{/components/sort::switch('categories', 'alias', 'Alias', '20%', '', true)}" />
 						<!-- Enabled -->
-						<th th:replace="~{/components/table::head_link('categories', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('categories', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
 						<!-- Actions -->
-						<th th:replace="~{/components/table::head_link('categories', '', 'Actions', '40px', 'text-center', false)}" />
+						<th th:replace="~{/components/sort::switch('categories', '', 'Actions', '40px', 'text-center', false)}" />
 					</tr>
 				</thead>
 				<!-- Table Body -->
@@ -109,7 +109,7 @@
 		</div>
 		<!-- Pagination -->
 		<div th:if="${!hierarchy}">
-			<div th:replace="~{/components/table::pagination('categories')}"></div>
+			<div th:replace="~{/components/pagination::bar('categories')}"></div>
 		</div>
 		<!-- Delete User Confirmation Modal -->
 		<div th:replace="~{/components/modal::confirm}"></div>

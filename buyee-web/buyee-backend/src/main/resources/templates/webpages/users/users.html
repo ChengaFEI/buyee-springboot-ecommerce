@@ -19,21 +19,21 @@
 				<thead>
 					<tr>
 						<!-- Photo -->
-						<th th:replace="~{/components/table::head_link('users', 'photo', 'Photo', '50px', 'text-center', false)}" />
+						<th th:replace="~{/components/sort::switch('users', 'photo', 'Photo', '50px', 'text-center', false)}" />
 						<!-- ID -->
-						<th th:replace="~{/components/table::head_link('users', 'id', 'ID', '70px', 'hideable-column text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('users', 'id', 'ID', '70px', 'hideable-column text-center', true)}" />
 						<!-- Email -->
-						<th th:replace="~{/components/table::head_link('users', 'email', 'Email', null, 'hideable-column', true)}" />
+						<th th:replace="~{/components/sort::switch('users', 'email', 'Email', null, 'hideable-column', true)}" />
 						<!-- First Name -->
-						<th th:replace="~{/components/table::head_link('users', 'firstName', 'First Name', '170px', '', true)}" />
+						<th th:replace="~{/components/sort::switch('users', 'firstName', 'First Name', '170px', '', true)}" />
 						<!-- Last Name -->
-						<th th:replace="~{/components/table::head_link('users', 'lastName', 'Last Name', '170px', '', true)}" />
+						<th th:replace="~{/components/sort::switch('users', 'lastName', 'Last Name', '170px', '', true)}" />
 						<!-- Roles -->
-						<th th:replace="~{/components/table::head_link('users', 'roles', 'Roles', '380px', '', false)}" />
+						<th th:replace="~{/components/sort::switch('users', 'roles', 'Roles', '380px', '', false)}" />
 						<!-- Enabled -->
-						<th th:replace="~{/components/table::head_link('users', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('users', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
 						<!-- Actions -->
-						<th th:replace="~{/components/table::head_link('users', '', 'Actions', '40px', 'text-center', false)}" />
+						<th th:replace="~{/components/sort::switch('users', '', 'Actions', '40px', 'text-center', false)}" />
 					</tr>
 				</thead>
 				<!-- Table Body -->
@@ -106,7 +106,7 @@
 			</table>
 		</div>
 		<!-- Pagination -->
-		<div th:replace="~{/components/table::pagination('users')}"></div>
+		<div th:replace="~{/components/pagination::bar('users')}"></div>
 		<!-- Delete User Confirmation Modal -->
 		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Footer -->

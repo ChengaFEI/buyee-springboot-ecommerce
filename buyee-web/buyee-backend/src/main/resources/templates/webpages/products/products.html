@@ -21,19 +21,19 @@
 				<thead>
 					<tr>
 						<!-- Main Image -->
-						<th th:replace="~{/components/table::head_link('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
+						<th th:replace="~{/components/sort::switch('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
 						<!-- ID -->
-						<th th:replace="~{/components/table::head_link('products', 'id', 'ID', '70px', 'text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('products', 'id', 'ID', '70px', 'text-center', true)}" />
 						<!-- Name -->
-						<th th:replace="~{/components/table::head_link('products', 'name', 'Name', '', '', true)}" />
+						<th th:replace="~{/components/sort::switch('products', 'name', 'Name', '', '', true)}" />
 						<!-- Brand -->
-						<th th:replace="~{/components/table::head_link('products', 'brand', 'Brand', '150px', '', true)}" />
+						<th th:replace="~{/components/sort::switch('products', 'brand', 'Brand', '150px', '', true)}" />
 						<!-- Category -->
-						<th th:replace="~{/components/table::head_link('products', 'category', 'Category', '150px', '', true)}" />
+						<th th:replace="~{/components/sort::switch('products', 'category', 'Category', '150px', '', true)}" />
 						<!-- Enabled -->
-						<th th:replace="~{/components/table::head_link('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
 						<!-- Actions -->
-						<th th:replace="~{/components/table::head_link('products', '', 'Actions', '100px', 'text-center', false)}" />
+						<th th:replace="~{/components/sort::switch('products', '', 'Actions', '100px', 'text-center', false)}" />
 					</tr>
 				</thead> 
 				<!-- Table Body -->
@@ -76,7 +76,7 @@
 			</table>
 		</div>
 		<!-- Pagination -->
-		<div th:replace="~{/components/table::pagination('products')}"></div>
+		<div th:replace="~{/components/pagination::bar('products')}"></div>
 		<!-- Delete User Confirmation Modal -->
 		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Product Preview Modal -->

@@ -1,8 +1,11 @@
 <!-- Search Bar -->
 <div th:fragment="bar(sectionName)" th:remove="tag">
 	<form th:action="@{'/' + ${sectionName} + '/page/1'}" class="form-inline form-control search-bar-custom">
+		<!-- other filters/sorters to coordinate with -->
 		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
 	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />
+	    <input th:if="${categoryId != null}" type="hidden" name="categoryId" th:value="${categoryId}" />
+	    <!-- Enter a keyword to search for -->
 	    <input type="search" name="keyword" th:value="${keyword}" id="search" class="form-control" 
 	           placeholder="Search..." aria-label="Search" required aria-describedby="search-addon" 
 	           th:title="'Search ' + ${sectionName}" />

@@ -2,8 +2,11 @@
 <div th:fragment="bar(sectionName)" th:remove="tag">
 	<form th:action="@{'/' + ${sectionName} + '/page/1'}" class="form-inline form-control filter-bar-custom"
 		  id="filterForm" th:title="'Filter ' + ${sectionName} + ' by category'">
+		<!-- other searchers/sorters to coordinate with -->
 		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
 	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />
+	    <input th:if="${keyword != null}" type="hidden" name="keyword" th:value="${keyword}" />
+	    <!-- Enter a category to filter -->
 	    <select class="form-control" name="categoryId" id="filter">
 	    	<option value="0">All Categories</option>
 	    	<th:block th:each="category: ${listCategories}">

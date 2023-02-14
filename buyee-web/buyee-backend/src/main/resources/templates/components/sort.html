@@ -1,0 +1,28 @@
+<!-- Sort Switch -->
+<div th:fragment="switch(sectionName, fieldName, columnLabel, columnWidth, extraClass, sortable)" th:remove="tag">
+	<th th:class="'align-middle ' + ${extraClass}" th:style="${columnWidth != null ? 'width: ' + columnWidth : ''}">
+		<!-- If this column can be sorted -->
+		<!-- href keeps track of other searchers/filters -->
+		<a class="table-head-inactive" th:if="${sortable && (sortField == null || sortField != fieldName)}"
+		   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + 
+		   			  '?sortField=' + ${fieldName} + 
+		   			  '&sortOrder=asc' + 
+		   			  ${keyword != null ? '&keyword=' + keyword : ''} +
+		   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+			[[${columnLabel}]] 
+			<i class="fa-solid fa-angle-down"></i>
+	    </a>
+		<!-- href keeps track of other searchers/filters -->
+	    <a class="table-head-active" th:if="${sortable && sortField == fieldName}"
+	       th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + 
+	       			  '?sortField=' + ${fieldName} + 
+	       			  '&sortOrder=' + ${reverseOrder} + 
+		   			  ${keyword != null ? '&keyword=' + keyword : ''} +
+		   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+			[[${columnLabel}]] 
+			<i th:class="${sortOrder == 'asc' ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down'}"></i>
+		</a>	
+		<!-- If this column can't be sorted -->
+		<a th:if="${!sortable}">[[${columnLabel}]]</a>		
+	</th>
+</div>

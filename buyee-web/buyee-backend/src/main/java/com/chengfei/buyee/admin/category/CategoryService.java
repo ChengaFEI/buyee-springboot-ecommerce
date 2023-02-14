@@ -23,8 +23,19 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repo;
     // Create Tasks 
-    public Category saveCategory(Category category) {
-	return repo.save(category);
+    public Category saveCategory(Category categoryInForm) {
+	// Copy children from categoryInDB to categoryInForm
+	Integer id = categoryInForm.getId();
+	boolean isCreatingNew = id == null;
+	Category categoryInDB = null;
+	if (!isCreatingNew) categoryInDB = repo.findById(id).get();
+	if (categoryInDB != null) categoryInForm.setChildren(categoryInDB.getChildren());
+	// Save categoryInForm to database
+	Category savedCategory = repo.save(categoryInForm);
+	// Update properties linked with other Category objects
+	CategoryServiceUtil.setSelfAndSubAllParentIds(savedCategory);
+	CategoryServiceUtil.setSelfAndSubLevel(savedCategory);
+	return savedCategory;
     }
     // Read Tasks
     public Category readCategoryById(Integer id) throws CategoryNotFoundException {
@@ -92,24 +103,23 @@ public class CategoryService {
 	return repo.findAll(pageable);
     }
     // Update Tasks
-    public void updateSubCategoriesLevel(Category category, Integer level) {
-	if (category == null) return;
-	category.setLevel(level);
-	for (Category subCategory: category.getChildren()) 
-	    updateSubCategoriesLevel(subCategory, level+1);
-    }
+//    public void updateSubCategoriesLevel(Category category, Integer level) {
+//	if (category == null) return;
+//	category.setLevel(level);
+//	for (Category subCategory: category.getChildren()) 
+//	    updateSubCategoriesLevel(subCategory, level+1);
+//    }
     public void updateCategoryEnabledStatus(Integer id, boolean enabled) {
 	repo.updateCategoryEnabledStatus(id, enabled);
     }
     // Delete Tasks
     public void deleteCategoryById(Integer id) throws CategoryNotFoundException {
-	Category category =  repo.findById(id).get();
-	if (category == null) {
-	    throw new CategoryNotFoundException("Could not find any category with ID " + id + ".");
-	}
-	for (Category subCategory: category.getChildren()) {
-	    subCategory.setParent(category.getParent());
-	    updateSubCategoriesLevel(subCategory, subCategory.getLevel()-1);
+	Category categoryInDB =  repo.findById(id).get();
+	if (categoryInDB == null) throw new CategoryNotFoundException("Could not find any category with ID " + id + ".");
+	for (Category subCategory: categoryInDB.getChildren()) {
+	    subCategory.setParent(categoryInDB.getParent());
+	    CategoryServiceUtil.setSelfAndSubAllParentIds(subCategory);
+	    CategoryServiceUtil.setSelfAndSubLevel(subCategory);
 	}
 	repo.deleteById(id);
     }

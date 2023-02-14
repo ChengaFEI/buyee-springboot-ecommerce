@@ -40,9 +40,6 @@ public class CategoryController {
     public String submitCategory(
 	    Category category, RedirectAttributes redirectAttributes,
 	    @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
-	
-	if (category.getParent() == null) service.updateSubCategoriesLevel(category, 0);
-	else service.updateSubCategoriesLevel(category, category.getParentLevel() + 1);
 	if (!multipartFile.isEmpty()) {
 	    String fileName = category.getAlias() + ".png";
 	    category.setImage(fileName);
@@ -159,7 +156,6 @@ public class CategoryController {
 	} catch (CategoryNotFoundException e) {
 	    redirectAttributes.addFlashAttribute("message", e.getMessage());
 	}
-	    
 	return "redirect:/categories";
     }
     // Export Tasks

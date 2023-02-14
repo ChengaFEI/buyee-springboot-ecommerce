@@ -1,3 +1,4 @@
+// Prepare to show preview modal
 $(document).ready(function() {
 	$(".link-detail").on("click", function(e) {
 		e.preventDefault();

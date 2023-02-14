@@ -102,12 +102,6 @@ public class CategoryService {
 	return repo.findAll(pageable);
     }
     // Update Tasks
-//    public void updateSubCategoriesLevel(Category category, Integer level) {
-//	if (category == null) return;
-//	category.setLevel(level);
-//	for (Category subCategory: category.getChildren()) 
-//	    updateSubCategoriesLevel(subCategory, level+1);
-//    }
     public void updateCategoryEnabledStatus(Integer id, boolean enabled) {
 	repo.updateCategoryEnabledStatus(id, enabled);
     }

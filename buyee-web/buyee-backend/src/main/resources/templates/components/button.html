@@ -1,42 +1,82 @@
-<!-- New Item Button -->
+<!-- Buttons in Dock -->
+<!-- Create New Item -->
 <div th:fragment="create(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text border-0" id="search-addon" th:title="'Create ' + ${sectionName}" 
 	   th:href="@{'/' + ${sectionName} + '/new'}"> 
 		<i class="fa-solid fa-circle-plus fa-2x"></i>
 	</a>
 </div>
-<!-- Clear Sorting Button -->
+<!-- Clear Sorting -->
 <div th:fragment="clear_sort(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Clear Sorting"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + ${keyword == null ? '' : '?keyword='+keyword}}"> 
 	    <i class="fa-solid fa-square-xmark fa-2x"></i>
 	</a>
 </div>
-<!-- Clear Search Button -->
+<!-- Clear Search -->
 <div th:fragment="clear_search(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text link-clear-search" id="search-addon" title="Clear Search Results"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + ${sortField == null && sortOrder == null ? '' : '?sortField='+sortField+'&sortOrder='+sortOrder}}">
 		<i class="fa-solid fa-square-minus fa-2x"></i>
 	</a> 
 </div>
-<!-- Export CSV File Button -->
+<!-- Export table to CSV File -->
 <div th:fragment="export_csv(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Export to csv"
 	   th:href="@{'/' + ${sectionName} + '/export/csv'}"> 
 	    <i class="fa-solid fa-file-csv fa-2x"></i>
 	</a>
 </div>
-<!-- Export Excel File Button -->
+<!-- Export table to Excel File -->
 <div th:fragment="export_excel(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Export to excel"
 	   th:href="@{'/' + ${sectionName} + '/export/excel'}"> 
 	    <i class="fa-solid fa-file-excel fa-2x"></i>
 	</a>
 </div>
-<!-- Export PDF File Button -->
+<!-- Export table to PDF File -->
 <div th:fragment="export_pdf(sectionName)" th:remove="tag">
 	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Export to pdf"
 	   th:href="@{'/' + ${sectionName} + '/export/pdf'}"> 
 	    <i class="fa-solid fa-file-pdf fa-2x"></i>
 	</a>	
+</div>
+<!-- Buttons in Table -->
+<!-- Enable Item -->
+<div th:fragment="enable(sectionName, instance, extraClass)" th:class="'align-middle ' + ${extraClass}" th:remove="tag">
+	<!-- If the item is enabled, disable it -->
+	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
+	   class="fa-solid fa-check-circle icon-action icon-no-deco"
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
+	   			  '/enabled/false?pageNum=' + ${pageNum} + 
+	   			  ${keyword == null ? '' : '&keyword=' + keyword} + 
+	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
+	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a> 
+	<!-- If the item is disabled, enable it -->
+	<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
+	   class="fa-regular fa-circle icon-action icon-no-deco"
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
+	   			  '/enabled/true?pageNum=' + ${pageNum} + 
+	   			  ${keyword==null ? '' : '&keyword='+keyword} +
+	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
+	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a>
+</div>
+<!-- View Details -->
+<div th:fragment="view(sectionName, instance, extraClass)" th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
+	   th:href="@{'/' + ${sectionName} + '/view/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-eye icon-action icon-no-deco ' + ${extraClass}"></a> 
+</div>
+<!-- Edit Item -->
+<div th:fragment="edit(sectionName, instance, extraClass)"  th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'Update ' + ${sectionName}" 
+	   th:href="@{'/' + ${sectionName} + '/edit/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-pen-to-square icon-action icon-no-deco ' + ${extraClass}"></a> 
+</div>
+<!-- Delete Item -->
+<div th:fragment="delete(sectionName, instance, extraClass)"  th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'Delete ' + ${sectionName}"
+ 	   th:href="@{'/' + ${sectionName} + '/delete/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-trash-can icon-action icon-no-deco button-delete ' + ${extraClass}"
+	   th:instanceId="${instance.getId()}" th:instanceName="${instance.getName()}"></a>
 </div>

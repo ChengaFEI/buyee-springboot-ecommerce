@@ -16,45 +16,6 @@
 		<a th:if="${!hasLink}">[[${columnLabel}]]</a>		
 	</th>
 </div>
-<!-- View Button -->
-<div th:fragment="button-view(sectionName, instance, extraClass)" th:remove="tag">
-	<a data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
-	   th:href="@{'/' + ${sectionName} + '/view/' + ${instance.getId()}}"
-	   th:class="'fa-solid fa-eye icon-action icon-no-deco ' + ${extraClass}"></a> 
-</div>
-<!-- Enabled Button -->
-<div th:fragment="button-enabled(sectionName, instance, extraClass)" 
-	 th:class="'align-middle ' + ${extraClass}" th:remove="tag">
-	<!-- If enabled -->
-	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
-	   class="fa-solid fa-check-circle icon-action icon-no-deco"
-	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
-	   			  '/enabled/false?pageNum=' + ${pageNum} + 
-	   			  ${keyword == null ? '' : '&keyword=' + keyword} + 
-	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
-	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a> 
-	<!-- If disabled -->
-	<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
-	   class="fa-regular fa-circle icon-action icon-no-deco"
-	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
-	   			  '/enabled/true?pageNum=' + ${pageNum} + 
-	   			  ${keyword==null ? '' : '&keyword='+keyword} +
-	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
-	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a>
-</div>
-<!-- Update/Edit Button -->
-<div th:fragment="button-update(sectionName, instance, extraClass)"  th:remove="tag">
-	<a data-bs-toggle="tooltip" th:title="'Update ' + ${sectionName}" 
-	   th:href="@{'/' + ${sectionName} + '/edit/' + ${instance.getId()}}"
-	   th:class="'fa-solid fa-pen-to-square icon-action icon-no-deco ' + ${extraClass}"></a> 
-</div>
-<!-- Delete Button -->
-<div th:fragment="button-delete(sectionName, instance, extraClass)"  th:remove="tag">
-	<a data-bs-toggle="tooltip" th:title="'Delete ' + ${sectionName}"
- 	   th:href="@{'/' + ${sectionName} + '/delete/' + ${instance.getId()}}"
-	   th:class="'fa-solid fa-trash-can icon-action icon-no-deco button-delete ' + ${extraClass}"
-	   th:instanceId="${instance.getId()}" th:instanceName="${instance.getName()}"></a>
-</div>
 <!-- Pagination -->
 <div th:fragment="pagination(sectionName)" th:remove="tag">
 	<div class="text-center mb-2" th:if="${totalElements > 0}">

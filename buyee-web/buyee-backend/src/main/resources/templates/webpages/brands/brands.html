@@ -18,27 +18,40 @@
 				<!-- Table Head -->
 				<thead>
 					<tr>
+						<!-- Logo -->
 						<th th:replace="~{/components/table::head_link('brands', 'logo', 'Logo', '50px', 'text-center', false)}" />
+						<!-- ID -->
 						<th th:replace="~{/components/table::head_link('brands', 'id', 'ID', '70px', 'text-center', true)}" />
+						<!-- Name -->
 						<th th:replace="~{/components/table::head_link('brands', 'name', 'Name', '', '', true)}" />
+						<!-- Categories -->
 						<th th:replace="~{/components/table::head_link('brands', 'categories', 'Categories', '70%', '', false)}" />
+						<!-- Actions -->
 						<th th:replace="~{/components/table::head_link('brands', '', 'Actions', '40px', 'text-center', false)}" />
 					</tr>
 				</thead>
+				<!-- Table Body -->
 				<tbody>
 					<tr th:each="brand : ${listBrands}">
+						<!-- Logo -->
 						<td class="align-middle text-center">
 							<img th:src="@{${brand.getLogoPathString()}}" style="width: 50px" />	
 						</td>
+						<!-- ID -->
 						<td class="align-middle text-center" th:text="${brand.getId()}"></td>
+						<!-- Name -->
 						<td class="align-middle" th:text="${brand.getName()}"></td>
+						<!-- Categories -->
 						<td class="align-middle">
 							<span th:each="category : ${brand.getCategories()}"
 								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
 						</td>
+						<!-- Actions -->
 						<td class="align-middle text-center">
-							<a th:replace="~{/components/table::button-update('brands', ${brand}, '')}"></a>&nbsp;&nbsp;
-							<a th:replace="~{/components/table::button-delete('brands', ${brand}, '')}"></a>
+							<!-- Edit -->
+							<a th:replace="~{/components/button::edit('brands', ${brand}, '')}"></a>&nbsp;&nbsp;
+							<!-- Delete -->
+							<a th:replace="~{/components/button::delete('brands', ${brand}, '')}"></a>
 						</td>
 					</tr>
 				</tbody>
@@ -69,8 +82,10 @@
 								</div>
 								<!-- Right: Enabled & Actions -->
 								<div class="" style="width: 64px; margin-left: auto">
-									<a th:replace="~{/components/table::button-update('brands', ${brand}, 'fa-2x mb-4')}"></a>
-									<a th:replace="~{/components/table::button-delete('brands', ${brand}, 'fa-2x')}"></a>
+									<!-- Enabled -->
+									<a th:replace="~{/components/button::edit('brands', ${brand}, 'fa-2x mb-4')}"></a>
+									<!-- Delete -->
+									<a th:replace="~{/components/button::delete('brands', ${brand}, 'fa-2x')}"></a>
 								</div>
 							</div>
 							<hr />

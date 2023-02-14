@@ -62,12 +62,14 @@
 						<td class="align-middle" th:text="${category.getAlias()}" />
 						<!-- Enabled -->
 						<td class="align-middle text-center">
-							<div th:replace="~{/components/table::button-enabled('categories', ${category}, '')}"></div>
+							<div th:replace="~{/components/button::enable('categories', ${category}, '')}"></div>
 						</td>
 						<!-- Actions -->
 						<td class="align-middle text-center">
-							<a th:replace="~{/components/table::button-update('categories', ${category}, '')}"></a>&nbsp;&nbsp;
-							<a th:replace="~{/components/table::button-delete('categories', ${category}, '')}"></a>
+							<!-- Edit -->
+							<a th:replace="~{/components/button::edit('categories', ${category}, '')}"></a>&nbsp;&nbsp;
+							<!-- Delete -->
+							<a th:replace="~{/components/button::delete('categories', ${category}, '')}"></a>
 						</td>
 					</tr>
 				</tbody>

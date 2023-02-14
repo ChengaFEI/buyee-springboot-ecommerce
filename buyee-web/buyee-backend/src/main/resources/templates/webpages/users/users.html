@@ -18,36 +18,54 @@
 				<!-- Table Head -->
 				<thead>
 					<tr>
+						<!-- Photo -->
 						<th th:replace="~{/components/table::head_link('users', 'photo', 'Photo', '50px', 'text-center', false)}" />
+						<!-- ID -->
 						<th th:replace="~{/components/table::head_link('users', 'id', 'ID', '70px', 'hideable-column text-center', true)}" />
+						<!-- Email -->
 						<th th:replace="~{/components/table::head_link('users', 'email', 'Email', null, 'hideable-column', true)}" />
+						<!-- First Name -->
 						<th th:replace="~{/components/table::head_link('users', 'firstName', 'First Name', '170px', '', true)}" />
+						<!-- Last Name -->
 						<th th:replace="~{/components/table::head_link('users', 'lastName', 'Last Name', '170px', '', true)}" />
+						<!-- Roles -->
 						<th th:replace="~{/components/table::head_link('users', 'roles', 'Roles', '380px', '', false)}" />
+						<!-- Enabled -->
 						<th th:replace="~{/components/table::head_link('users', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<!-- Actions -->
 						<th th:replace="~{/components/table::head_link('users', '', 'Actions', '40px', 'text-center', false)}" />
 					</tr>
 				</thead>
 				<!-- Table Body -->
 				<tbody>
 					<tr th:each="user : ${listUsers}">
+						<!-- Photo -->
 						<td class="align-middle text-center">
 							<img th:src="@{${user.getPhotoPathString()}}" style="width: 50px" />
 						</td>
+						<!-- ID -->
 						<td class="align-middle hideable-column text-center" th:text="${user.getId()}" />
+						<!-- Email -->
 						<td class="align-middle hideable-column" th:text="${user.getEmail()}" />
+						<!-- First Name -->
 						<td class="align-middle" th:text="${user.getFirstName()}" />
+						<!-- Last Name -->
 						<td class="align-middle" th:text="${user.getLastName()}" />
+						<!-- Roles -->
 						<td class="align-middle">
 							<span th:each="role : ${user.getRoles()}"
 								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${role.name}]]</span>
 						</td>
+						<!-- Enabled -->
 						<td class="align-middle text-center">
-							<div th:replace="~{/components/table::button-enabled('users', ${user}, '')}"></div>
+							<div th:replace="~{/components/button::enable('users', ${user}, '')}"></div>
 						</td>
+						<!-- Actions -->
 						<td class="align-middle text-center">
-							<a th:replace="~{/components/table::button-update('users', ${user}, '')}"></a>&nbsp;&nbsp;
-							<a th:replace="~{/components/table::button-delete('users', ${user}, '')}"></a>
+							<!-- Edit -->
+							<a th:replace="~{/components/button::edit('users', ${user}, '')}"></a>&nbsp;&nbsp;
+							<!-- Delete -->
+							<a th:replace="~{/components/button::delete('users', ${user}, '')}"></a>
 						</td>
 					</tr>
 				</tbody>
@@ -73,9 +91,12 @@
 								</div>
 								<!-- Right: Enabled & Actions -->
 								<div class="" style="width: 64px; margin-left: auto">
-									<div th:replace="~{/components/table::button-enabled('users', ${user}, 'fa-2x mb-3')}"></div>
-									<a th:replace="~{/components/table::button-update('users', ${user}, 'fa-2x mb-4')}"></a>
-									<a th:replace="~{/components/table::button-delete('users', ${user}, 'fa-2x')}"></a>
+									<!-- Enabled -->
+									<div th:replace="~{/components/button::enable('users', ${user}, 'fa-2x mb-3')}"></div>
+									<!-- Edit -->
+									<a th:replace="~{/components/button::edit('users', ${user}, 'fa-2x mb-4')}"></a>
+									<!-- Delete -->
+									<a th:replace="~{/components/button::delete('users', ${user}, 'fa-2x')}"></a>
 								</div>
 							</div>
 							<hr />

@@ -20,12 +20,19 @@
 				<!-- Table Head -->
 				<thead>
 					<tr>
+						<!-- Main Image -->
 						<th th:replace="~{/components/table::head_link('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
+						<!-- ID -->
 						<th th:replace="~{/components/table::head_link('products', 'id', 'ID', '70px', 'text-center', true)}" />
+						<!-- Name -->
 						<th th:replace="~{/components/table::head_link('products', 'name', 'Name', '', '', true)}" />
+						<!-- Brand -->
 						<th th:replace="~{/components/table::head_link('products', 'brand', 'Brand', '150px', '', true)}" />
+						<!-- Category -->
 						<th th:replace="~{/components/table::head_link('products', 'category', 'Category', '150px', '', true)}" />
+						<!-- Enabled -->
 						<th th:replace="~{/components/table::head_link('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<!-- Actions -->
 						<th th:replace="~{/components/table::head_link('products', '', 'Actions', '100px', 'text-center', false)}" />
 					</tr>
 				</thead> 
@@ -53,13 +60,16 @@
 						</td>
 						<!-- Enabled -->
 						<td class="align-middle text-center">
-							<div th:replace="~{/components/table::button-enabled('products', ${product}, '')}"></div>
+							<div th:replace="~{/components/button::enable('products', ${product}, '')}"></div>
 						</td>
 						<!-- Actions -->
 						<td class="align-middle text-center">
-							<a th:replace="~{/components/table::button-view('products', ${product}, 'link-detail')}"></a>&nbsp;&nbsp;
-							<a th:replace="~{/components/table::button-update('products', ${product}, '')}"></a>&nbsp;&nbsp;
-							<a th:replace="~{/components/table::button-delete('products', ${product}, '')}"></a>
+							<!-- View --><!-- link-detail is required for using preview-modal -->
+							<a th:replace="~{/components/button::view('products', ${product}, 'link-detail')}"></a>&nbsp;&nbsp;
+							<!-- Edit -->
+							<a th:replace="~{/components/button::edit('products', ${product}, '')}"></a>&nbsp;&nbsp;
+							<!-- Delete -->
+							<a th:replace="~{/components/button::delete('products', ${product}, '')}"></a>
 						</td>
 					</tr>
 				</tbody>

@@ -24,10 +24,20 @@ public class WebSecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	http.authorizeHttpRequests()
+	    // Users
 	    .requestMatchers("/users/**").hasAuthority("Admin")
+	    // Categories
 	    .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")
+	    // Brands
 	    .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
-	    .requestMatchers("/products/**").hasAnyAuthority("Admin", "Salesperson", "Editor", "Shipper")
+	    // Products
+	    .requestMatchers("/products/new", "/products/delete/**")
+	    	.hasAnyAuthority("Admin", "Editor")
+	    .requestMatchers("/products/edit/**", "/products/save", "/products/check_name", "/products/*/enabled/**")
+	    	.hasAnyAuthority("Admin", "Editor", "Salesperson")
+	    .requestMatchers("/products", "/products/page/**", "/products/view/**", "/products/export/**")
+	    	.hasAnyAuthority("Admin", "Editor", "Salesperson", "Shipper")
+	    // Questions
 	    .requestMatchers("/questions/**").hasAnyAuthority("Admin", "Assistant")
 	    .requestMatchers("/reviews/**").hasAnyAuthority("Admin", "Assistant")
 	    .requestMatchers("/customers/**").hasAnyAuthority("Admin", "Salesperson")

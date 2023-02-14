@@ -1,50 +1,44 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{/universal :: head('', 'none', null)}" />
-<body>
-	<!-- Delete User Confirmation Modal (in tables) -->
-	<div th:fragment="modal_deletion" class="modal fade" id="confirmModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Warning</h4>
-					<button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-				</div>
-				<div class="modal-body">
-					<span id="modalBody"></span>
-				</div>
-				<div class="modal-footer">
-					<a class="btn btn-outline-danger" type="button" id="confirmButton">Confirm</a>
-					&nbsp;
-					<button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">Cancel</button>
-				</div>
+<!-- Delete User Confirmation Modal (in tables) -->
+<div th:fragment="modal_deletion" class="modal fade" id="confirmModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Warning</h4>
+				<button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+			</div>
+			<div class="modal-body">
+				<span id="modalBody"></span>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-outline-danger" type="button" id="confirmButton">Confirm</a>
+				&nbsp;
+				<button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div>
-	<!-- Product Preview Model (in product table) -->
-	<div th:fragment="modal_preview" class="modal fade" id="previewModal">
-		<div class="modal-dialog modal-xl">
-			<div class="modal-content">
+</div>
+<!-- Product Preview Model (in product table) -->
+<div th:fragment="modal_preview" class="modal fade" id="previewModal">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+<!-- Unique Property Warning Modal (in forms) -->
+<div th:fragment="modal_unique" class="modal fade" id="modalDialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalTitle"></h4>
+				<button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+			</div>
+			<!-- Modal Body -->
+			<div class="modal-body"><span id="modalBody"></span></div>
+			<!-- Modal Footer -->
+			<div class="modal-footer">
+				<button class="btn btn-danger" type="button" data-bs-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
-	<!-- Unique Property Warning Modal (in forms) -->
-	<div th:fragment="modal_unique" class="modal fade" id="modalDialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title" id="modalTitle"></h4>
-					<button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-				</div>
-				<!-- Modal Body -->
-				<div class="modal-body"><span id="modalBody"></span></div>
-				<!-- Modal Footer -->
-				<div class="modal-footer">
-					<button class="btn btn-danger" type="button" data-bs-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+</div>

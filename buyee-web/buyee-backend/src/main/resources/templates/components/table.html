@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{/universal :: head('', 'none', null)}" />
-<body>
-	<!-- Table Header -->
-	<th th:fragment="head_link(sectionName, fieldName, columnLabel, columnWidth, extraClass, hasLink)"
-		th:class="'align-middle ' + ${extraClass}"
-		th:style="${columnWidth != null ? 'width:' + columnWidth : ''}">
+<!-- Table Header -->
+<div th:fragment="head_link(sectionName, fieldName, columnLabel, columnWidth, extraClass, hasLink)" th:remove="tag">
+	<th th:class="'align-middle ' + ${extraClass}" th:style="${columnWidth != null ? 'width:' + columnWidth : ''}">
 		<!-- If this column can be sorted -->
-		<a class="table-head-inactive"
-		   th:if="${hasLink && (sortField == null || sortField != fieldName)}"
+		<a class="table-head-inactive" th:if="${hasLink && (sortField == null || sortField != fieldName)}"
 		   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?sortField=' + ${fieldName} + '&sortOrder=asc' + ${keyword != null ? '&keyword=' + keyword : ''}}">
 			[[${columnLabel}]] 
 			<i class="fa-solid fa-angle-down"></i>
 	    </a>
-	    <a class="table-head-active"
-	       th:if="${hasLink && sortField == fieldName}"
+	    <a class="table-head-active" th:if="${hasLink && sortField == fieldName}"
 	       th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?sortField=' + ${fieldName} + '&sortOrder=' + ${reverseOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
 			[[${columnLabel}]] 
 			<i th:class="${sortOrder == 'asc' ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down'}"></i>
@@ -22,96 +15,101 @@
 		<!-- If this column can't be sorted -->
 		<a th:if="${!hasLink}">[[${columnLabel}]]</a>		
 	</th>
-	<!-- View Button -->
-	<a th:fragment="button-view(sectionName, instance, extraClass)" data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
+</div>
+<!-- View Button -->
+<div th:fragment="button-view(sectionName, instance, extraClass)" th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
 	   th:href="@{'/' + ${sectionName} + '/view/' + ${instance.getId()}}"
 	   th:class="'fa-solid fa-eye icon-action icon-no-deco ' + ${extraClass}"></a> 
-	<!-- Enabled Button -->
-	<div th:fragment="button-enabled(sectionName, instance, extraClass)" 
-		 th:class="'align-middle ' + ${extraClass}" th:remove="tag">
-		<!-- If enabled -->
-		<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
-		   class="fa-solid fa-check-circle icon-action icon-no-deco"
-		   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
-		   			  '/enabled/false?pageNum=' + ${pageNum} + 
-		   			  ${keyword == null ? '' : '&keyword=' + keyword} + 
-		   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
-		   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a> 
-		<!-- If disabled -->
-		<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
-		   class="fa-regular fa-circle icon-action icon-no-deco"
-		   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
-		   			  '/enabled/true?pageNum=' + ${pageNum} + 
-		   			  ${keyword==null ? '' : '&keyword='+keyword} +
-		   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
-		   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a>
-	</div>
-	<!-- Update/Edit Button -->
-	<a th:fragment="button-update(sectionName, instance, extraClass)" data-bs-toggle="tooltip" th:title="'Update ' + ${sectionName}" 
+</div>
+<!-- Enabled Button -->
+<div th:fragment="button-enabled(sectionName, instance, extraClass)" 
+	 th:class="'align-middle ' + ${extraClass}" th:remove="tag">
+	<!-- If enabled -->
+	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
+	   class="fa-solid fa-check-circle icon-action icon-no-deco"
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
+	   			  '/enabled/false?pageNum=' + ${pageNum} + 
+	   			  ${keyword == null ? '' : '&keyword=' + keyword} + 
+	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
+	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a> 
+	<!-- If disabled -->
+	<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
+	   class="fa-regular fa-circle icon-action icon-no-deco"
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
+	   			  '/enabled/true?pageNum=' + ${pageNum} + 
+	   			  ${keyword==null ? '' : '&keyword='+keyword} +
+	   			  ${sortField == null ? '' : '&sortField=' + sortField} + 
+	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a>
+</div>
+<!-- Update/Edit Button -->
+<div th:fragment="button-update(sectionName, instance, extraClass)"  th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'Update ' + ${sectionName}" 
 	   th:href="@{'/' + ${sectionName} + '/edit/' + ${instance.getId()}}"
 	   th:class="'fa-solid fa-pen-to-square icon-action icon-no-deco ' + ${extraClass}"></a> 
-	<!-- Delete Button -->
-	<a th:fragment="button-delete(sectionName, instance, extraClass)" data-bs-toggle="tooltip" th:title="'Delete ' + ${sectionName}"
-	   th:href="@{'/' + ${sectionName} + '/delete/' + ${instance.getId()}}"
+</div>
+<!-- Delete Button -->
+<div th:fragment="button-delete(sectionName, instance, extraClass)"  th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'Delete ' + ${sectionName}"
+ 	   th:href="@{'/' + ${sectionName} + '/delete/' + ${instance.getId()}}"
 	   th:class="'fa-solid fa-trash-can icon-action icon-no-deco button-delete ' + ${extraClass}"
 	   th:instanceId="${instance.getId()}" th:instanceName="${instance.getName()}"></a>
-	<!-- Pagination -->
-	<div th:fragment="pagination(sectionName)" th:remove="tag">
-		<div class="text-center mb-2" th:if="${totalElements > 0}">
-			<span style="color: rgba(41, 43, 44, .4)">[[${startCount}]] to [[${endCount}]] of [[${totalElements}]]</span>
-		</div>
-		<div class="text-center text-muted mb-2" th:unless="${totalElements > 0}">
-			<span style="color: rgba(41, 43, 44, .4)">no [[${sectionName}]] found</span>
-		</div>
-		<div th:if="${totalPages > 1}">
-			<nav>
-				<ul class="pagination justify-content-center">
-					<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
-						<a class="page-link" title="First Page" th:if="${sortField == null && sortOrder == null}"
-						   th:href="@{'/' + ${sectionName} + '/page/1' + ${keyword != null ? '?keyword=' + keyword : ''}}">
-							<i class="fa-solid fa-angles-left"></i></a>
-						<a class="page-link" title="First Page" th:if="${sortField != null && sortOrder != null}"
-						   th:href="@{'/' + ${sectionName} + '/page/1?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
-						    <i class="fa-solid fa-angles-left"></i></a>
-					</li>
-					<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
-						<a class="page-link" title="Previous Page" th:if="${sortField == null && sortOrder == null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum - 1} + ${keyword != null ? '?keyword=' + keyword : ''}}">
-						   	<i class="fa-solid fa-angle-left"></i></a>
-						<a class="page-link" title="Previous Page" th:if="${sortField != null && sortOrder != null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum - 1}} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}">
-						    <i class="fa-solid fa-angle-left"></i></a>
-					</li>
-					<li th:class="${pageNum == i ? 'page-item active' : 'page-item'}"
-						th:each="i: ${#numbers.sequence(1, totalPages)}">
-						<a class="page-link" th:title="${'Jump to Page ' + i}" 
-						   th:if="${sortField==null && sortOrder==null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${i} + ${keyword != null ? '?keyword=' + keyword : ''}}">
-							[[${i}]]</a>
-						<a class="page-link" th:title="${'Jump to Page ' + i}"
-						   th:if="${sortField!=null && sortOrder!=null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${i} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
-						    [[${i}]]</a>
-					</li>
-					<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
-						<a class="page-link" title="Next Page" th:if="${sortField==null && sortOrder==null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum + 1} + ${keyword != null ? '?keyword=' + keyword : ''}}">
-						   	<i class="fa-solid fa-angle-right"></i></a>
-						<a class="page-link" title="Next Page" th:if="${sortField!=null && sortOrder!=null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum + 1} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
-						   	<i class="fa-solid fa-angle-right"></i></a>
-					</li>
-					<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
-						<a class="page-link" title="Last Page" th:if="${sortField==null && sortOrder==null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${totalPages} + ${keyword != null ? '?keyword=' + keyword : ''}}">
-						   	<i class="fa-solid fa-angles-right"></i></a>
-						<a class="page-link" title="Last Page" th:if="${sortField!=null && sortOrder!=null}"
-						   th:href="@{'/' + ${sectionName} + '/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
-						   	<i class="fa-solid fa-angles-right"></i></a>
-					</li>
-				</ul>
-			</nav>
-		</div>
+</div>
+<!-- Pagination -->
+<div th:fragment="pagination(sectionName)" th:remove="tag">
+	<div class="text-center mb-2" th:if="${totalElements > 0}">
+		<span style="color: rgba(41, 43, 44, .4)">[[${startCount}]] to [[${endCount}]] of [[${totalElements}]]</span>
 	</div>
-</body>
-</html>
+	<div class="text-center text-muted mb-2" th:unless="${totalElements > 0}">
+		<span style="color: rgba(41, 43, 44, .4)">no [[${sectionName}]] found</span>
+	</div>
+	<div th:if="${totalPages > 1}">
+		<nav>
+			<ul class="pagination justify-content-center">
+				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
+					<a class="page-link" title="First Page" th:if="${sortField == null && sortOrder == null}"
+					   th:href="@{'/' + ${sectionName} + '/page/1' + ${keyword != null ? '?keyword=' + keyword : ''}}">
+						<i class="fa-solid fa-angles-left"></i></a>
+					<a class="page-link" title="First Page" th:if="${sortField != null && sortOrder != null}"
+					   th:href="@{'/' + ${sectionName} + '/page/1?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+					    <i class="fa-solid fa-angles-left"></i></a>
+				</li>
+				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
+					<a class="page-link" title="Previous Page" th:if="${sortField == null && sortOrder == null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum - 1} + ${keyword != null ? '?keyword=' + keyword : ''}}">
+					   	<i class="fa-solid fa-angle-left"></i></a>
+					<a class="page-link" title="Previous Page" th:if="${sortField != null && sortOrder != null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum - 1}} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}">
+					    <i class="fa-solid fa-angle-left"></i></a>
+				</li>
+				<li th:class="${pageNum == i ? 'page-item active' : 'page-item'}"
+					th:each="i: ${#numbers.sequence(1, totalPages)}">
+					<a class="page-link" th:title="${'Jump to Page ' + i}" 
+					   th:if="${sortField==null && sortOrder==null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${i} + ${keyword != null ? '?keyword=' + keyword : ''}}">
+						[[${i}]]</a>
+					<a class="page-link" th:title="${'Jump to Page ' + i}"
+					   th:if="${sortField!=null && sortOrder!=null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${i} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+					    [[${i}]]</a>
+				</li>
+				<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
+					<a class="page-link" title="Next Page" th:if="${sortField==null && sortOrder==null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum + 1} + ${keyword != null ? '?keyword=' + keyword : ''}}">
+					   	<i class="fa-solid fa-angle-right"></i></a>
+					<a class="page-link" title="Next Page" th:if="${sortField!=null && sortOrder!=null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum + 1} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+					   	<i class="fa-solid fa-angle-right"></i></a>
+				</li>
+				<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
+					<a class="page-link" title="Last Page" th:if="${sortField==null && sortOrder==null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${totalPages} + ${keyword != null ? '?keyword=' + keyword : ''}}">
+					   	<i class="fa-solid fa-angles-right"></i></a>
+					<a class="page-link" title="Last Page" th:if="${sortField!=null && sortOrder!=null}"
+					   th:href="@{'/' + ${sectionName} + '/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortOrder=' + ${sortOrder} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+					   	<i class="fa-solid fa-angles-right"></i></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>

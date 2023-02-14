@@ -70,7 +70,7 @@ public class ProductController {
     // Read Tasks
     @GetMapping("/products")
     public String readProductsInFirstPage(Model model) {
-	return readProductsByPageNum(1, null, null, null, model);
+	return readProductsByPageNum(1, null, null, null, null, model);
     }
     @GetMapping("/products/page/{pageNum}")
     public String readProductsByPageNum(
@@ -78,8 +78,9 @@ public class ProductController {
 	    @Param("sortField") String sortField,
 	    @Param("sortOrder") String sortOrder, 
 	    @Param("keyword") String keyword,
+	    @Param("categoryId") Integer categoryId,
 	    Model model) {
-	Page<Product> page = productService.readProductsByPageNum(pageNum, sortField, sortOrder, keyword);
+	Page<Product> page = productService.readProductsByPageNum(pageNum, sortField, sortOrder, keyword, categoryId);
 	List<Product> listProducts = page.getContent();
 	long totalElements = page.getTotalElements();
 	long totalPages = page.getTotalPages();
@@ -100,9 +101,8 @@ public class ProductController {
 	    model.addAttribute("sortOrder", sortOrder);
 	    model.addAttribute("reverseOrder", reverseOrder);
 	}
-	if (keyword != null) {
-	    model.addAttribute("keyword", keyword);
-	}
+	if (keyword != null) model.addAttribute("keyword", keyword);
+	if (categoryId != null) model.addAttribute("categoryId", categoryId);
 	return "/webpages/products/products";
     }
     @GetMapping("/products/view/{id}")

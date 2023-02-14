@@ -1,12 +1,15 @@
 <!-- Filter Bar -->
 <div th:fragment="bar(sectionName)" th:remove="tag">
-	<form th:action="@{'/' + ${sectionName} + '/page/1'}" class="form-inline form-control filter-bar-custom">
+	<form th:action="@{'/' + ${sectionName} + '/page/1'}" class="form-inline form-control filter-bar-custom"
+		  id="filterForm" th:title="'Filter ' + ${sectionName} + ' by category'">
 		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
 	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />
 	    <select class="form-control" name="categoryId" id="filter">
 	    	<option value="0">All Categories</option>
 	    	<th:block th:each="category: ${listCategories}">
-	    		<option th:value="${category.id}">[[${category.name}]]</option>
+	    		<option th:value="${category.id}" th:selected="${categoryId == category.id}">
+	    			[[${category.name}]]
+	    		</option>
 	    	</th:block>
 	    </select>
 	</form>

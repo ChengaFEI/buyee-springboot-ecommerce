@@ -13,6 +13,9 @@ public interface ProductRepository extends CrudRepository<Product, Integer>,
     public Product findByName(String name);
     @Query("SELECT p FROM Product p WHERE CONCAT(p.id, ' ', p.name, ' ', p.alias, ' ', p.brand.name, ' ', p.category.name) LIKE %?1%")
     public Page<Product> readProductsByKeyword(String keyword, Pageable pageable);
+    @Query("SELECT p FROM Product p WHERE p.category.id = ?1 OR " +
+	   "p.category.allParentIds LIKE %?2%")
+    public Page<Product> readProductsByParentCategory(Integer categoryId, String categoryIdMatch, Pageable pageable);
     // Update Tasks
     @Modifying
     @Query("UPDATE Product p SET p.enabled = ?2 WHERE p.id = ?1")

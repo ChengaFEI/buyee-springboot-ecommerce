@@ -42,7 +42,8 @@ public class ProductService {
 	    throw new ProductNotFoundException("Could not find any product with ID " + id + ".");
 	}
     }
-    public Page<Product> readProductsByPageNum(int pageNum, String sortField, String sortOrder, String keyword) {
+    public Page<Product> readProductsByPageNum(
+	    int pageNum, String sortField, String sortOrder, String keyword, Integer categoryId) {
 	Pageable pageable = null;
 	if (sortField != null && sortOrder != null) {
 	    Sort sort = Sort.by(sortField);
@@ -51,8 +52,12 @@ public class ProductService {
 	} else {
 	    pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
 	}
-	if (keyword != null)
+	if (keyword != null && !keyword.isEmpty())
 	    return repo.readProductsByKeyword(keyword.trim(), pageable);
+	if (categoryId != null && categoryId > 0) {
+	    String categoryIdMatch = "-" + categoryId + "-";
+	    return repo.readProductsByParentCategory(categoryId, categoryIdMatch, pageable);
+	}
 	return repo.findAll(pageable);
     }
     public List<Product> readAllProducts() {

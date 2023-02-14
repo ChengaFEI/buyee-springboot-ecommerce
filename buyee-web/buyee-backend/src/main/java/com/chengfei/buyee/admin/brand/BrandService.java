@@ -14,8 +14,7 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class BrandService {
     public static final Integer BRANDS_PER_PAGE = 8;
-    @Autowired 
-    private BrandRepository repo;
+    @Autowired private BrandRepository repo;
     // Create Tasks
     public void saveBrand(Brand brand) {
 	repo.save(brand);

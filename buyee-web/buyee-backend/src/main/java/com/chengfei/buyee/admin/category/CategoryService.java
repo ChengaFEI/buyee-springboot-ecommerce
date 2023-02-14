@@ -20,8 +20,7 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class CategoryService {
-    @Autowired
-    private CategoryRepository repo;
+    @Autowired private CategoryRepository repo;
     // Create Tasks 
     public Category saveCategory(Category categoryInForm) {
 	// Copy children from categoryInDB to categoryInForm

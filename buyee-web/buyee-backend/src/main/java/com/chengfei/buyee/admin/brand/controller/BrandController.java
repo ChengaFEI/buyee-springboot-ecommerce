@@ -25,10 +25,8 @@ import com.chengfei.buyee.common.entity.Category;
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class BrandController {
-    @Autowired
-    private BrandService brandService;
-    @Autowired
-    private CategoryService categoryService;
+    @Autowired private BrandService brandService;
+    @Autowired private CategoryService categoryService;
     // Create Tasks
     @GetMapping("/brands/new")
     public String createBrand(Model model) {

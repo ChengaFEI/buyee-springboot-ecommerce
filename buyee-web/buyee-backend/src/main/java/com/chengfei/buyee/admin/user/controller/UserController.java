@@ -23,8 +23,7 @@ import com.chengfei.buyee.common.entity.User;
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class UserController {
-    @Autowired
-    private UserService service;
+    @Autowired private UserService service;
     // Create Tasks
     @GetMapping("/users/new")
     public String createUser(Model model) {

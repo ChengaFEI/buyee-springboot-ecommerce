@@ -14,10 +14,8 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class UserService {
     public static final int USERS_PER_PAGE = 6;
-    @Autowired
-    private UserRepository userRepo;
-    @Autowired
-    private RoleRepository roleRepo;
+    @Autowired private UserRepository userRepo;
+    @Autowired private RoleRepository roleRepo;
     // Create Tasks (empty)
     // Read Tasks
     public User readUserById(Integer id) throws UserNotFoundException {

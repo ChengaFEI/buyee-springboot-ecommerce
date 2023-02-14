@@ -20,10 +20,8 @@ import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Product;
 @Controller
 public class ProductController {
-    @Autowired
-    private ProductService productService;
-    @Autowired
-    private BrandService brandService;
+    @Autowired private ProductService productService;
+    @Autowired private BrandService brandService;
     // Create Tasks
     @GetMapping("/products/new")
     public String createProduct(Model model) {

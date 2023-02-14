@@ -16,8 +16,7 @@ import com.chengfei.buyee.admin.user.UserService;
 import com.chengfei.buyee.common.entity.User;
 @Controller
 public class AccountController {
-    @Autowired
-    private UserService service;
+    @Autowired private UserService service;
     // Read Tasks
     @GetMapping("/account")
     public String readAccountDetails(@AuthenticationPrincipal BuyeeUserDetails loggedUser, Model model) {

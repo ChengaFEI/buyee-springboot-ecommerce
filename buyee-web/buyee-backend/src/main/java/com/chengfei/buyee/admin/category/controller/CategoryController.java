@@ -22,9 +22,8 @@ import com.chengfei.buyee.common.entity.Category;
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class CategoryController {
-    @Autowired
-    private CategoryService service;
     private static final int CATEGORIES_PER_PAGE = 5;
+    @Autowired private CategoryService service;
     // Create Tasks
     @GetMapping("/categories/new")
     public String createCategory(Model model) {

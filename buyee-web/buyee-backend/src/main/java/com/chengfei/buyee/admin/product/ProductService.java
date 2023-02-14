@@ -14,8 +14,7 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class ProductService {
     public static final Integer PRODUCTS_PER_PAGE = 5;
-    @Autowired 
-    private ProductRepository repo;
+    @Autowired private ProductRepository repo;
     // Create Tasks
     public Product saveProduct(Product product) {
 	Date currentTime = new Date();

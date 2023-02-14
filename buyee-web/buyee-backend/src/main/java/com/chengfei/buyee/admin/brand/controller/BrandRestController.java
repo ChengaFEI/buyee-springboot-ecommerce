@@ -14,8 +14,7 @@ import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Category;
 @RestController
 public class BrandRestController {
-    @Autowired
-    BrandService service;
+    @Autowired BrandService service;
     // Read Tasks
     @GetMapping("/brands/{id}/categories")
     public List<CategoryDTO> readCategoriesById(@PathVariable(name = "id") Integer id) throws BrandNotFoundRestException {

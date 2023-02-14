@@ -1,82 +1,77 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-	<div th:fragment="content" th:remove="tag">
-		<div class="row" id="divProductImages">
-			<!-- Main Image -->
-			<div class="form-group mb-3 rounded" style="width: 25%">
-				<input type="hidden" th:field="*{mainImage}"/>
+<div th:fragment="content" th:remove="tag">
+	<div class="row" id="divProductImages">
+		<!-- Main Image -->
+		<div class="form-group mb-3 rounded" style="width: 25%">
+			<input type="hidden" th:field="*{mainImage}"/>
+			<!-- Image Input -->
+			<div title="Image should be smaller than 1MB">
+				<label th:if="${product.shortMainImageName != ''}" class="col-form-label" style="width: 100%" 
+					   for="imageFile">
+					Main Image: [[${product.shortMainImageName}]]
+				</label>
+				<label th:if="${product.shortMainImageName == ''}" class="col-form-label" style="width: 100%" 
+					   for="imageFile">
+					Main Image
+				</label>
+				<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
+				       accept="image/png image/jpeg" th:required="${product.mainImage == null}">
+			</div>
+			<!-- Image Preview -->
+			<div th:title="${product.mainImage}">
+				<img id="thumbnail" alt="Main Image Preview" style="width: 100%" 
+					 th:src="@{${product.mainImagePathString}}"/>
+			</div>
+		</div>
+		<!-- All Existing Extra Images -->
+		<th:block th:each="extraImage, status : ${product.sortedImages}">
+			<div th:id="${'extraImageDiv' + status.index}" class="form-group mb-3 rounded" style="width: 25%">
+				<!-- Required Properties -->
+				<input type="hidden" th:id="${'isImageExist' + status.index}" value="true">
+				<input type="hidden" name="extraImageIds" th:id="'extraImageId' + ${status.index}"
+					   th:value="${extraImage.id}"/>
+				<input type="hidden" name="extraImageNames" th:id="'extraImageName' + ${status.index}"
+					   th:value="${extraImage.name}"/>
 				<!-- Image Input -->
 				<div title="Image should be smaller than 1MB">
-					<label th:if="${product.shortMainImageName != ''}" class="col-form-label" style="width: 100%" 
-						   for="imageFile">
-						Main Image: [[${product.shortMainImageName}]]
-					</label>
-					<label th:if="${product.shortMainImageName == ''}" class="col-form-label" style="width: 100%" 
-						   for="imageFile">
-						Main Image
-					</label>
-					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
-					       accept="image/png image/jpeg" th:required="${product.mainImage == null}">
-				</div>
-				<!-- Image Preview -->
-				<div th:title="${product.mainImage}">
-					<img id="thumbnail" alt="Main Image Preview" style="width: 100%" 
-						 th:src="@{${product.mainImagePathString}}"/>
-				</div>
-			</div>
-			<!-- All Existing Extra Images -->
-			<th:block th:each="extraImage, status : ${product.sortedImages}">
-				<div th:id="${'extraImageDiv' + status.index}" class="form-group mb-3 rounded" style="width: 25%">
-					<!-- Required Properties -->
-					<input type="hidden" th:id="${'isImageExist' + status.index}" value="true">
-					<input type="hidden" name="extraImageIds" th:id="'extraImageId' + ${status.index}"
-						   th:value="${extraImage.id}"/>
-					<input type="hidden" name="extraImageNames" th:id="'extraImageName' + ${status.index}"
-						   th:value="${extraImage.name}"/>
-					<!-- Image Input -->
-					<div title="Image should be smaller than 1MB">
-						<label class="col-form-label">Extra Image #[[${status.index + 1}]]: [[${extraImage.shortImageName}]]</label>
-						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3 file-button-custom" >
-							<!-- Input Bar -->
-							<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
-								   accept="image/png image/jpeg">
-							<!-- Delete Button -->
-							<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
-							   name="linkRemoveExtraImage"> 
-							    <i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
-							</a>
-						</div>
-					</div>
-					<!-- Image Preview -->
-					<div th:title="${extraImage.name}">
-						<img th:id="${'extraThumbnail' + status.index}" 
-							 th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 
-							 th:src="@{${extraImage.imagePathString}}"/>
-					</div>
-				</div>
-			</th:block>
-			<!-- Extra Image (original state, no delete button) -->
-			<div th:id="${'extraImageDiv' + numExistingExtraImages}" class="form-group mb-3 rounded" style="width: 25%"
-				 title="Image should be smaller than 1MB">
-				<!-- Required Properties -->
-				<input type="hidden" th:id="${'isImageExist' + numExistingExtraImages}" value="false">
-				<!-- Image Input -->
-				<div>
-					<label class="col-form-label">Extra Image #[[${numExistingExtraImages+1}]]</label>
-					<div th:id="${'extraImageHeader' + numExistingExtraImages}" class="input-group mb-3 file-button-custom" >
+					<label class="col-form-label">Extra Image #[[${status.index + 1}]]: [[${extraImage.shortImageName}]]</label>
+					<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3 file-button-custom" >
+						<!-- Input Bar -->
 						<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
 							   accept="image/png image/jpeg">
+						<!-- Delete Button -->
+						<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
+						   name="linkRemoveExtraImage"> 
+						    <i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
+						</a>
 					</div>
 				</div>
 				<!-- Image Preview -->
-				<div>
-					<img th:id="${'extraThumbnail' + numExistingExtraImages}" 
-						 th:alt="${'Extra Image ' + numExistingExtraImages + ' Preview'}" style="width: 100%" 
-						 th:src="@{${product.defaultImagePathString}}"/>
+				<div th:title="${extraImage.name}">
+					<img th:id="${'extraThumbnail' + status.index}" 
+						 th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 
+						 th:src="@{${extraImage.imagePathString}}"/>
 				</div>
+			</div>
+		</th:block>
+		<!-- Extra Image (original state, no delete button) -->
+		<div th:id="${'extraImageDiv' + numExistingExtraImages}" class="form-group mb-3 rounded" style="width: 25%"
+			 title="Image should be smaller than 1MB">
+			<!-- Required Properties -->
+			<input type="hidden" th:id="${'isImageExist' + numExistingExtraImages}" value="false">
+			<!-- Image Input -->
+			<div>
+				<label class="col-form-label">Extra Image #[[${numExistingExtraImages+1}]]</label>
+				<div th:id="${'extraImageHeader' + numExistingExtraImages}" class="input-group mb-3 file-button-custom" >
+					<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
+						   accept="image/png image/jpeg">
+				</div>
+			</div>
+			<!-- Image Preview -->
+			<div>
+				<img th:id="${'extraThumbnail' + numExistingExtraImages}" 
+					 th:alt="${'Extra Image ' + numExistingExtraImages + ' Preview'}" style="width: 100%" 
+					 th:src="@{${product.defaultImagePathString}}"/>
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+</div>

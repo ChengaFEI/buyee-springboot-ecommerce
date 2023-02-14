@@ -1,7 +1,5 @@
 package com.chengfei.buyee.admin.user.controller;
-
 import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -11,18 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.chengfei.buyee.admin.FileUploadUtil;
 import com.chengfei.buyee.admin.security.BuyeeUserDetails;
 import com.chengfei.buyee.admin.user.UserNotFoundException;
 import com.chengfei.buyee.admin.user.UserService;
 import com.chengfei.buyee.common.entity.User;
-
 @Controller
 public class AccountController {
     @Autowired
     private UserService service;
-    
     // Read Tasks
     @GetMapping("/account")
     public String readAccountDetails(@AuthenticationPrincipal BuyeeUserDetails loggedUser, Model model) {
@@ -36,12 +31,12 @@ public class AccountController {
 	}
 	return "/webpages/users/account_form";
     }
-    
     // Update Tasks
     @PostMapping("/account/update")
-    public String updateAccountDetails(User user, RedirectAttributes redirectAttributes, 
-	    	  @AuthenticationPrincipal BuyeeUserDetails loggedUser,
-	          @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String updateAccountDetails(
+	    User user, RedirectAttributes redirectAttributes, 
+	    @AuthenticationPrincipal BuyeeUserDetails loggedUser, 
+	    @RequestParam("image") MultipartFile multipartFile) throws IOException {
 	if (!multipartFile.isEmpty()) {
 	    String fileName = user.getFirstName().toLowerCase() + "_" + user.getLastName().toLowerCase() + ".png";
 	    user.setPhoto(fileName);

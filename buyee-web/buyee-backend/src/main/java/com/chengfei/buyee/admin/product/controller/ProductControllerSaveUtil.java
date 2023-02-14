@@ -1,18 +1,14 @@
 package com.chengfei.buyee.admin.product.controller;
-
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.chengfei.buyee.admin.AmazonS3Util;
 import com.chengfei.buyee.common.entity.Product;
 import com.chengfei.buyee.common.entity.ProductImage;
-
-public class ProductSaveUtil {
+public class ProductControllerSaveUtil {
     // Save Images in Database
     static void setMainImageName(Product product, MultipartFile mainImageMultipart) {
 	if (!mainImageMultipart.isEmpty()) {
@@ -20,7 +16,6 @@ public class ProductSaveUtil {
 	    product.setMainImage(fileName);
 	}
     }
-
     static void setExistingExtraImageNames(Product product, String[] existingExtraImageIds,
 	    String[] existingExtraImageNames) {
 	if (existingExtraImageIds == null || existingExtraImageIds.length == 0) return;
@@ -32,7 +27,6 @@ public class ProductSaveUtil {
 	}
 	product.setImages(images);
     }
-    
     static void setNewExtraImageNames(Product product, MultipartFile[] extraImageMultiparts) {
 	if (extraImageMultiparts != null && extraImageMultiparts.length > 0) {
 	    for (MultipartFile multipartFile: extraImageMultiparts) {
@@ -44,7 +38,6 @@ public class ProductSaveUtil {
 	    }
 	}
     }
-    
     // Save Images in Amazon S3
     static void uploadImages(Product product, MultipartFile mainImageMultipart,
 	    MultipartFile[] extraImageMultiparts) throws IOException {
@@ -70,7 +63,6 @@ public class ProductSaveUtil {
 	    }
 	}
     }
-    
     // Delete orphan images (images removed from the form) in Amazon S3
     static void deleteRemovedExtraImages(Product product) {
 	String extraImageFolderName = "product-images/" + product.getId() + "/extras";
@@ -82,7 +74,6 @@ public class ProductSaveUtil {
 		AmazonS3Util.deleteFile(objectKey);
 	}
     }
-    
     // Save Details in Database
     static void setDetails(Product product, String[] detailIds, String[] detailNames, String[] detailValues) {
 	if (detailNames == null || detailNames.length == 0) return;

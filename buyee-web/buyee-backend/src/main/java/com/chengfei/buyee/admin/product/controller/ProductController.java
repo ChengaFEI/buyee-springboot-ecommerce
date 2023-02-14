@@ -51,15 +51,15 @@ public class ProductController {
 	    @RequestParam(name = "detailValues", required = false) String[] detailValues
 	    ) throws IOException {
 	// Save Images in Database
-	ProductSaveUtil.setMainImageName(product, mainImageMultipart);
-	ProductSaveUtil.setExistingExtraImageNames(product, existingExtraImageIds, existingExtraImageNames);
-	ProductSaveUtil.setNewExtraImageNames(product, extraImageMultiparts);
+	ProductControllerSaveUtil.setMainImageName(product, mainImageMultipart);
+	ProductControllerSaveUtil.setExistingExtraImageNames(product, existingExtraImageIds, existingExtraImageNames);
+	ProductControllerSaveUtil.setNewExtraImageNames(product, extraImageMultiparts);
 	// Save Details in Database
-	ProductSaveUtil.setDetails(product, detailIds, detailNames, detailValues);
+	ProductControllerSaveUtil.setDetails(product, detailIds, detailNames, detailValues);
 	Product savedProduct = productService.saveProduct(product);
 	// Process Images in Amazon S3
-	ProductSaveUtil.uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
-	ProductSaveUtil.deleteRemovedExtraImages(savedProduct);
+	ProductControllerSaveUtil.uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
+	ProductControllerSaveUtil.deleteRemovedExtraImages(savedProduct);
 	// Redirect Messages back
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
 	return "redirect:/products/page/1?keyword=" + product.getName();

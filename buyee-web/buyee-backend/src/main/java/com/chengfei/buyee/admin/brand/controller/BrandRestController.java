@@ -1,26 +1,21 @@
 package com.chengfei.buyee.admin.brand.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.chengfei.buyee.admin.brand.BrandNotFoundException;
 import com.chengfei.buyee.admin.brand.BrandService;
 import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Category;
-
 @RestController
 public class BrandRestController {
     @Autowired
     BrandService service;
-
     // Read Tasks
     @GetMapping("/brands/{id}/categories")
     public List<CategoryDTO> readCategoriesById(@PathVariable(name = "id") Integer id) throws BrandNotFoundRestException {
@@ -40,7 +35,6 @@ public class BrandRestController {
 	    throw new BrandNotFoundRestException();
 	}
     }
-    
     // Validate Tasks
     @PostMapping("/brands/check_name")
     public String checkDuplicateName(@Param("id") Integer id, @Param("name") String name) {

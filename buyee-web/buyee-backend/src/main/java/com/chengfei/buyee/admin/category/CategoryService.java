@@ -1,5 +1,4 @@
 package com.chengfei.buyee.admin.category;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -18,20 +17,16 @@ import org.springframework.stereotype.Service;
 import com.chengfei.buyee.common.entity.Category;
 
 import jakarta.transaction.Transactional;
-
 @Service
 @Transactional
 public class CategoryService {
     @Autowired
     private CategoryRepository repo;
-    
     // Create Tasks 
     public Category saveCategory(Category category) {
 	return repo.save(category);
     }
-    
     // Read Tasks
-    
     public Category readCategoryById(Integer id) throws CategoryNotFoundException {
 	try {
 	    return repo.findById(id).get();
@@ -39,18 +34,15 @@ public class CategoryService {
 	    throw new CategoryNotFoundException("Could not find any category with id " + id);
 	}
     }
-    
     public List<Category> readAllCategories() {
 	return (List<Category>) repo.findAll();
     }
-    
     public List<Category> readCategoriesInForm() {
 	List<Category> categoriesInForm = new ArrayList<>();
 	List<Category> rootCategoriesInDB = repo.readRootCategories(Sort.by("name").ascending());
 	for (Category category: rootCategoriesInDB) readSubCategoriesInForm(categoriesInForm, category, 0);
 	return categoriesInForm;
     }
-    
     private void readSubCategoriesInForm(List<Category> categoriesInForm, Category category, int level) {
 	if (category == null || category.getName() == null) return;
 	String name = category.getName();
@@ -59,11 +51,9 @@ public class CategoryService {
 	Set<Category> children = sortCategories(category.getChildren());
 	for (Category subCategory: children) readSubCategoriesInForm(categoriesInForm, subCategory, level+1);
     }
-    
     public List<Category> readCategoriesFullData() {
 	return readCategoriesFullData(null, null);
     }
-    
     public List<Category> readCategoriesFullData(String sortField, String sortOrder) {
 	List<Category> categoriesFullData = new ArrayList<>();
 	if (sortField == null || sortField.isEmpty()) sortField = "name";
@@ -76,20 +66,18 @@ public class CategoryService {
 	    readSubCategoriesFullData(categoriesFullData, category, 0, sortField, sortOrder);
 	return categoriesFullData;
     }
-    
     private void readSubCategoriesFullData(List<Category> categoriesFullData, Category category, 
 	    				   int level, String sortField, String sortOrder) {
 	if (category == null || category.getName() == null) return;
 	String name = category.getName();
 	for (int i = 0; i < level; i++) name = "····" + name;
-	Category fullCopiedCategory = fullCopyCategory(category);
+	Category fullCopiedCategory = CategoryServiceUtil.fullCopyCategory(category);
 	fullCopiedCategory.setName(name);
 	categoriesFullData.add(fullCopiedCategory);
 	Set<Category> children = sortCategories(fullCopiedCategory.getChildren(), sortField, sortOrder);
 	for (Category subCategory: children)
 	    readSubCategoriesFullData(categoriesFullData, subCategory, level+1, sortField, sortOrder);
     }
-    
     public Page<Category> readCategoriesByPageNum(int pageNum, int usersPerPage, String sortField, String sortOrder, String keyword) {
 	Pageable pageable = null;
 	if (sortField != null && sortOrder != null) {
@@ -103,20 +91,16 @@ public class CategoryService {
 	    return repo.readCategoriesByKeyword(keyword.trim(), pageable);
 	return repo.findAll(pageable);
     }
-    
     // Update Tasks
-    
     public void updateSubCategoriesLevel(Category category, Integer level) {
 	if (category == null) return;
 	category.setLevel(level);
 	for (Category subCategory: category.getChildren()) 
 	    updateSubCategoriesLevel(subCategory, level+1);
     }
-    
     public void updateCategoryEnabledStatus(Integer id, boolean enabled) {
 	repo.updateCategoryEnabledStatus(id, enabled);
     }
-    
     // Delete Tasks
     public void deleteCategoryById(Integer id) throws CategoryNotFoundException {
 	Category category =  repo.findById(id).get();
@@ -129,9 +113,7 @@ public class CategoryService {
 	}
 	repo.deleteById(id);
     }
-    
     // Validate Tasks
-    
     public String isNameAliasUnique(Integer id, String name, String alias) {
 	Category categoryByName = repo.findByName(name);
 	Category categoryByAlias = repo.findByAlias(alias);
@@ -145,13 +127,10 @@ public class CategoryService {
 	if (categoryByAlias != null && categoryByAlias.getId() != id) return "DuplicateAlias";
 	return "OK";
     }
-    
-    // Helper Functions
-    
+    // Sort Tasks
     public Set<Category> sortCategories(Set<Category> subcategories) {
 	return sortCategories(subcategories, "name", "asc");
     }
-    
     public Set<Category> sortCategories(Set<Category> subcategories, String sortField, String sortOrder) {
 	SortedSet<Category> sortedSubCategories = new TreeSet<>(new Comparator<Category>() {
 	    @Override
@@ -168,11 +147,5 @@ public class CategoryService {
 	});
 	sortedSubCategories.addAll(subcategories);
 	return sortedSubCategories;
-    }
-    
-    private Category fullCopyCategory(Category category) {
-	return new Category(category.getId(), category.getName(), category.getAlias(), 
-			    category.getImage(), category.isEnabled(), category.getLevel(), 
-			    category.getParent(), category.getChildren());
     }
 }

@@ -1,5 +1,4 @@
 package com.chengfei.buyee.admin.security;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -19,12 +17,10 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
 	return new BuyeeUserDetailsService();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
 	return new BCryptPasswordEncoder();
     }
-
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	http.authorizeHttpRequests()
@@ -47,12 +43,10 @@ public class WebSecurityConfig {
 	    .and().rememberMe().key("ABCDEFG").tokenValiditySeconds(24 * 60 * 60);
 	return http.build(); 
     }
-
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 	return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
     }
-
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
 	return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(userDetailsService())

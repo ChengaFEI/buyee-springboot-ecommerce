@@ -1,8 +1,6 @@
 package com.chengfei.buyee.admin.brand.controller;
-
 import java.io.IOException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.chengfei.buyee.admin.AmazonS3Util;
 import com.chengfei.buyee.admin.brand.BrandNotFoundException;
 import com.chengfei.buyee.admin.brand.BrandService;
@@ -25,16 +22,13 @@ import com.chengfei.buyee.admin.category.CategoryService;
 import com.chengfei.buyee.admin.user.UserNotFoundException;
 import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Category;
-
 import jakarta.servlet.http.HttpServletResponse;
-
 @Controller
 public class BrandController {
     @Autowired
     private BrandService brandService;
     @Autowired
     private CategoryService categoryService;
-   
     // Create Tasks
     @GetMapping("/brands/new")
     public String createBrand(Model model) {
@@ -45,10 +39,10 @@ public class BrandController {
 	model.addAttribute("pageTitle", "Create Brand");
 	return "/webpages/brands/brands_form";
     }
-    
     @PostMapping("/brands/save")
-    public String submitBrand(Brand brand, RedirectAttributes redirectAttributes,
-	    		      @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
+    public String submitBrand(
+	    Brand brand, RedirectAttributes redirectAttributes,
+	    @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
 	if (!multipartFile.isEmpty()) {
 	    String fileName = brand.getName().toLowerCase().replace(" ", "_") + ".png";
 	    brand.setLogo(fileName);
@@ -63,15 +57,18 @@ public class BrandController {
 	redirectAttributes.addFlashAttribute("message", "Brand saved successfully!");
 	return "redirect:/brands/page/1?keyword=" + brand.getName();
     }
-    
     // Read Tasks
     @GetMapping("/brands")
     public String readAllBrands(Model model) {
 	return readBrandsByPageNum(1, null, null, null, model);
     }
     @GetMapping("/brands/page/{pageNum}")
-    public String readBrandsByPageNum(@PathVariable(name = "pageNum") int pageNum, @Param("sortField") String sortField,
-	    @Param("sortOrder") String sortOrder, @Param("keyword") String keyword, Model model) {
+    public String readBrandsByPageNum(
+	    @PathVariable(name = "pageNum") int pageNum, 
+	    @Param("sortField") String sortField,
+	    @Param("sortOrder") String sortOrder, 
+	    @Param("keyword") String keyword, 
+	    Model model) {
 	Page<Brand> page = brandService.readBrandsByPageNum(pageNum, sortField, sortOrder, keyword);
 	List<Brand> listBrands = page.getContent();
 	for (Brand brand: listBrands)
@@ -97,11 +94,11 @@ public class BrandController {
 	}
 	return "/webpages/brands/brands";
     }
-    
     // Update Tasks
     @GetMapping("/brands/edit/{id}")
-    public String updateBrandById(@PathVariable(name = "id") Integer id, Model model,
-	    			  RedirectAttributes redirectAttributes) {
+    public String updateBrandById(
+	    @PathVariable(name = "id") Integer id, 
+	    Model model, RedirectAttributes redirectAttributes) {
 	try {
 	    Brand brand = brandService.readBrandById(id);
 	    List<Category> listCategories = categoryService.readCategoriesInForm();
@@ -114,10 +111,11 @@ public class BrandController {
 	    return "redirect:/brands";
 	}
     }
-    
     // Delete Tasks
     @GetMapping("/brands/delete/{id}")
-    public String deleteBrandById(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
+    public String deleteBrandById(
+	    @PathVariable(name = "id") Integer id, 
+	    RedirectAttributes redirectAttributes) {
 	try {
 	    brandService.deleteBrandById(id);
 	    AmazonS3Util.deleteFolder("brand-logos/" + id + "/");
@@ -127,7 +125,6 @@ public class BrandController {
 	}
 	return "redirect:/brands";
     }
-    
     // Export Tasks
     @GetMapping("/brands/export/csv")
     public void exportToCsv(HttpServletResponse response) throws IOException {
@@ -137,7 +134,6 @@ public class BrandController {
 	BrandCsvExporter exporter = new BrandCsvExporter();
 	exporter.export(listBrands, response);
     }
-
     @GetMapping("/brands/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
 	List<Brand> listBrands = brandService.readAllBrands();
@@ -146,7 +142,6 @@ public class BrandController {
 	BrandExcelExporter exporter = new BrandExcelExporter();
 	exporter.export(listBrands, response);
     }
-
     @GetMapping("/brands/export/pdf")
     public void exportToPdf(HttpServletResponse response) throws IOException {
 	List<Brand> listBrands = brandService.readAllBrands();

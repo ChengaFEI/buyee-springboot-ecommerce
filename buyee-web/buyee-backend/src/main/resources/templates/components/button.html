@@ -43,10 +43,10 @@
 </div>
 <!-- Buttons in Table -->
 <!-- Enable Item -->
-<div th:fragment="enable(sectionName, instance, extraClass)" th:class="'align-middle ' + ${extraClass}" th:remove="tag">
+<div th:fragment="enable(sectionName, instance, extraClass)" th:remove="tag">
 	<!-- If the item is enabled, disable it -->
 	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
-	   class="fa-solid fa-check-circle icon-action icon-no-deco"
+	   th:class="'fa-solid fa-check-circle icon-action icon-no-deco ' + ${extraClass}"
 	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
 	   			  '/enabled/false?pageNum=' + ${pageNum} + 
 	   			  ${keyword == null ? '' : '&keyword=' + keyword} + 
@@ -54,7 +54,7 @@
 	   			  ${sortOrder == null ? '' : '&sortOrder=' + sortOrder} }"></a> 
 	<!-- If the item is disabled, enable it -->
 	<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
-	   class="fa-regular fa-circle icon-action icon-no-deco"
+	   th:class="'fa-regular fa-circle icon-action icon-no-deco ' + ${extraClass}"
 	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + 
 	   			  '/enabled/true?pageNum=' + ${pageNum} + 
 	   			  ${keyword==null ? '' : '&keyword='+keyword} +

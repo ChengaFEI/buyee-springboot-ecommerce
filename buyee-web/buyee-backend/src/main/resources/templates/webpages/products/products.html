@@ -13,7 +13,7 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Dock with Search Bar and Command Buttons -->
-		<div th:replace="~{/components/dock::search_filter_buttons('products')}"></div>
+		<div th:replace="~{/components/dock::products}"></div>
 		<!-- Products Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">
@@ -31,9 +31,13 @@
 						<!-- Category -->
 						<th th:replace="~{/components/sort::switch('products', 'category', 'Category', '150px', '', false)}" />
 						<!-- Enabled -->
-						<th th:replace="~{/components/sort::switch('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
+							<th th:replace="~{/components/sort::switch('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+						</th:block>
 						<!-- Actions -->
-						<th th:replace="~{/components/sort::switch('products', '', 'Actions', '100px', 'text-center', false)}" />
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+							<th th:replace="~{/components/sort::switch('products', '', 'Actions', '100px', 'text-center', false)}" />
+						</th:block>
 					</tr>
 				</thead> 
 				<!-- Table Body -->
@@ -47,9 +51,14 @@
 						<td class="align-middle text-center" th:text="${product.id}" />
 						<!-- Name -->
 						<td class="align-middle text-action">
-							<!-- link-detail is required for using preview-modal -->
-							<a class="link-detail" title="View this product" th:text="${product.shortName}" 
-							   th:href="@{'/products/view/' + ${product.id}}"></a> 
+							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+								<!-- link-detail is required for using preview-modal -->
+								<a class="link-detail" title="View this product" th:text="${product.shortName}" 
+								   th:href="@{'/products/view/' + ${product.id}}"></a> 
+							</th:block>
+							<th:block sec:authorize="hasAuthority('Assistant')">
+								<a title="View this product" th:text="${product.shortName}"></a> 
+							</th:block>
 						</td>
 						<!-- Brand Name -->
 						<td class="align-middle" th:text="${product.brand.name}" />
@@ -58,25 +67,38 @@
 							<span th:each="category:${product.getCategory()}"
 								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
 						</td>
-						<!-- Enabled -->
-						<td class="align-middle text-center">
-							<div th:replace="~{/components/button::enable('products', ${product}, '')}"></div>
-						</td>
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
+							<!-- Enabled -->
+							<td class="align-middle text-center">
+								<div th:replace="~{/components/button::enable('products', ${product}, '')}"></div>
+							</td>
+						</th:block>
 						<!-- Actions -->
 						<td class="align-middle text-center">
-							<!-- View --><!-- link-detail is required for using preview-modal -->
-							<a th:replace="~{/components/button::view('products', ${product}, 'link-detail')}"></a>&nbsp;&nbsp;
+							<!-- View -->
+							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+								<!-- link-detail is required for using preview-modal -->
+								<a th:replace="~{/components/button::view('products', ${product}, 'link-detail')}"></a>
+							</th:block>
 							<!-- Edit -->
-							<a th:replace="~{/components/button::edit('products', ${product}, '')}"></a>&nbsp;&nbsp;
+							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
+								&nbsp;&nbsp;
+								<a th:replace="~{/components/button::edit('products', ${product}, '')}"></a>
+							</th:block>
 							<!-- Delete -->
-							<a th:replace="~{/components/button::delete('products', ${product}, '')}"></a>
+							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+								&nbsp;&nbsp;
+								<a th:replace="~{/components/button::delete('products', ${product}, '')}"></a>
+							</th:block>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<!-- Pagination -->
-		<div th:replace="~{/components/pagination::bar('products')}"></div>
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+			<div th:replace="~{/components/pagination::bar('products')}"></div>
+		</th:block>
 		<!-- Delete User Confirmation Modal -->
 		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Product Preview Modal -->

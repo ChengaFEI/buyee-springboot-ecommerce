@@ -3,8 +3,10 @@
 	<form th:action="@{'/' + ${sectionName} + '/page/1'}" class="form-inline form-control filter-bar-custom"
 		  id="filterForm" th:title="'Filter ' + ${sectionName} + ' by category'">
 		<!-- other searchers/sorters to coordinate with -->
+		<!-- Sorter's input -->
 		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
 	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />
+		<!-- Searcher's input -->
 	    <input th:if="${keyword != null}" type="hidden" name="keyword" th:value="${keyword}" />
 	    <!-- Enter a category to filter -->
 	    <select class="form-control" name="categoryId" id="filter">

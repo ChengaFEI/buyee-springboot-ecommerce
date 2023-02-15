@@ -36,3 +36,29 @@
 	<!-- Export PDF Buttons -->
 	<div th:replace="~{/components/button::export_pdf(${sectionName})}"></div>
 </div>
+
+<!-- Dock customized for Products section -->
+<div th:fragment="products" class="input-group rounded container-fluid mt-3 mb-3">
+	<!-- Create Item Button -->
+	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+		<div th:replace="~{/components/button::create('products')}"></div>
+	</th:block>
+	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+		<!-- Clear Sorting Button -->
+		<div th:replace="~{/components/button::clear_sort('products')}"></div>
+		<!-- Clear Search Button -->
+		<div th:replace="~{/components/button::clear_search('products')}"></div>
+		<!-- Search Bar -->
+		<div th:replace="~{/components/search::bar('products')}"></div>
+		<!-- Clear Filter Button -->
+		<div th:replace="~{/components/button::clear_filter('products')}"></div>
+		<!-- Filter Bar -->
+		<div th:replace="~{/components/filter::bar('products')}"></div>
+		<!-- Export CSV Buttons -->
+		<div th:replace="~{/components/button::export_csv('products')}"></div>
+		<!-- Export Excel Buttons -->
+		<div th:replace="~{/components/button::export_excel('products')}"></div>
+		<!-- Export PDF Buttons -->
+		<div th:replace="~{/components/button::export_pdf('products')}"></div>
+	</th:block>
+</div>

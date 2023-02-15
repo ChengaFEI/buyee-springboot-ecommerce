@@ -19,19 +19,19 @@
 <div th:fragment="search_buttons_lg(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Create Item Button -->
-	<div th:replace="~{/components/button::create(${sectionName})}"></div>
+	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
 	<!-- Clear Sorting Button -->
-	<div th:replace="~{/components/button::clear_sort(${sectionName})}"></div>
+	<div th:replace="~{/components/button::clear_sort(${sectionName}, '')}"></div>
 	<!-- Clear Search Button -->
-	<div th:replace="~{/components/button::clear_search_left(${sectionName})}"></div>
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'link-clear-left')}"></div>
 	<!-- Search Bar -->
-	<div th:replace="~{/components/search::bar_right(${sectionName})}"></div>
+	<div th:replace="~{/components/search::bar(${sectionName}, 'search-bar-right')}"></div>
 	<!-- Export CSV Buttons -->
-	<div th:replace="~{/components/button::export_csv(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
 	<!-- Export Excel Buttons -->
-	<div th:replace="~{/components/button::export_excel(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_excel(${sectionName}, '')}"></div>
 	<!-- Export PDF Buttons -->
-	<div th:replace="~{/components/button::export_pdf(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_pdf(${sectionName}, '')}"></div>
 </div>
 <!-- Contents: Search Bar, Command Buttons -->
 <!-- Screen Compatibility: Small -->
@@ -39,17 +39,17 @@
 <div th:fragment="search_buttons_sm(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 less-details">
 	<!-- Create Item Button -->
-	<div th:replace="~{/components/button::create(${sectionName})}"></div>
+	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
 	<!-- Export CSV Buttons -->
-	<div th:replace="~{/components/button::export_csv(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
 	<!-- Export Excel Buttons -->
-	<div th:replace="~{/components/button::export_excel(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_excel(${sectionName}, '')}"></div>
 	<!-- Export PDF Buttons -->
-	<div th:replace="~{/components/button::export_pdf(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_pdf(${sectionName}, '')}"></div>
 	<!-- Search Bar -->
-	<div th:replace="~{/components/search::bar_left(${sectionName})}"></div>
+	<div th:replace="~{/components/search::bar(${sectionName}, 'search-bar-left')}"></div>
 	<!-- Clear Search Button -->
-	<div th:replace="~{/components/button::clear_search_right(${sectionName})}"></div>
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'link-clear-right')}"></div>
 </div>
 <!--------------->
 <!-- Type Two: -->
@@ -60,23 +60,23 @@
 <div th:fragment="search_filter_buttons_lg(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Create Item Button -->
-	<div th:replace="~{/components/button::create(${sectionName})}"></div>
+	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
 	<!-- Clear Sorting Button -->
-	<div th:replace="~{/components/button::clear_sort(${sectionName})}"></div>
+	<div th:replace="~{/components/button::clear_sort(${sectionName}, '')}"></div>
 	<!-- Clear Search Button -->
-	<div th:replace="~{/components/button::clear_search_left(${sectionName})}"></div>
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'link-clear-left')}"></div>
 	<!-- Search Bar -->
-	<div th:replace="~{/components/search::bar_right(${sectionName})}"></div>
+	<div th:replace="~{/components/search::bar(${sectionName}, 'search-bar-right')}"></div>
 	<!-- Clear Filter Button -->
-	<div th:replace="~{/components/button::clear_filter_middle(${sectionName})}"></div>
+	<div th:replace="~{/components/button::clear_filter(${sectionName}, 'link-clear-middle')}"></div>
 	<!-- Filter Bar -->
-	<div th:replace="~{/components/filter::bar_right(${sectionName})}"></div>
+	<div th:replace="~{/components/filter::bar(${sectionName}, 'filter-bar-right')}"></div>
 	<!-- Export CSV Buttons -->
-	<div th:replace="~{/components/button::export_csv(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
 	<!-- Export Excel Buttons -->
-	<div th:replace="~{/components/button::export_excel(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_excel(${sectionName}, '')}"></div>
 	<!-- Export PDF Buttons -->
-	<div th:replace="~{/components/button::export_pdf(${sectionName})}"></div>
+	<div th:replace="~{/components/button::export_pdf(${sectionName}, '')}"></div>
 </div>
 <!-- ###################### -->
 <!-- ## Customized Docks ## -->
@@ -100,12 +100,12 @@
 	<!-- Authorization: only open to admin and editor -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 		<!-- Create Item Button -->
-		<div th:replace="~{/components/button::create('products')}"></div>
+		<div th:replace="~{/components/button::create('products', '')}"></div>
 	</th:block>
 	<!-- Authorization: open to all users with access to this page -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 		<!-- Clear Sorting Button -->
-		<div th:replace="~{/components/button::clear_sort('products')}"></div>
+		<div th:replace="~{/components/button::clear_sort('products', '')}"></div>
 		<!-- Clear Search Button -->
 		<div th:replace="~{/components/button::clear_search('products', 'link-clear-left')}"></div>
 		<!-- Search Bar -->
@@ -115,11 +115,11 @@
 		<!-- Filter Bar -->
 		<div th:replace="~{/components/filter::bar('products', 'filterLargeScreen', 'filter-bar-right')}"></div>
 		<!-- Export CSV Buttons -->
-		<div th:replace="~{/components/button::export_csv('products')}"></div>
+		<div th:replace="~{/components/button::export_csv('products', '')}"></div>
 		<!-- Export Excel Buttons -->
-		<div th:replace="~{/components/button::export_excel('products')}"></div>
+		<div th:replace="~{/components/button::export_excel('products', '')}"></div>
 		<!-- Export PDF Buttons -->
-		<div th:replace="~{/components/button::export_pdf('products')}"></div>
+		<div th:replace="~{/components/button::export_pdf('products', '')}"></div>
 	</th:block>
 </div>
 <!-- Contents: Search Bar, Filter Bar, Command Buttons -->
@@ -131,16 +131,16 @@
 		<!-- Authorization: only open to admin and editor -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 			<!-- Create Item Button -->
-			<div th:replace="~{/components/button::create('products')}"></div>
+			<div th:replace="~{/components/button::create('products', '')}"></div>
 		</th:block>
 		<!-- Authorization: open to all users with access to this page -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 			<!-- Export CSV Buttons -->
-			<div th:replace="~{/components/button::export_csv('products')}"></div>
+			<div th:replace="~{/components/button::export_csv('products', '')}"></div>
 			<!-- Export Excel Buttons -->
-			<div th:replace="~{/components/button::export_excel('products')}"></div>
+			<div th:replace="~{/components/button::export_excel('products', '')}"></div>
 			<!-- Export PDF Buttons -->
-			<div th:replace="~{/components/button::export_pdf('products')}"></div>
+			<div th:replace="~{/components/button::export_pdf('products', '')}"></div>
 			<!-- Search Bar -->
 			<div th:replace="~{/components/search::bar('products', 'search-bar-left')}"></div>
 			<!-- Clear Search Button -->

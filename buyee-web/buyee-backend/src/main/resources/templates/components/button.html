@@ -1,14 +1,17 @@
-<!-- Buttons in Dock -->
+<!-- ##################### -->
+<!-- ## Buttons in Dock ## -->
+<!-- ##################### -->
 <!-- Create New Item -->
-<div th:fragment="create(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text border-0" id="search-addon" th:title="'Create ' + ${sectionName}" 
-	   th:href="@{'/' + ${sectionName} + '/new'}"> 
+<div th:fragment="create(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   th:title="'Create ' + ${sectionName}" th:href="@{'/' + ${sectionName} + '/new'}"> 
 		<i class="fa-solid fa-circle-plus fa-2x"></i>
 	</a>
 </div>
 <!-- Clear Sorting -->
-<div th:fragment="clear_sort(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Clear Sorting"
+<div th:fragment="clear_sort(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Clear Sorting"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
 	   			  ${keyword != null ? '&keyword=' + keyword : ''} +
 		   		  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
@@ -38,27 +41,29 @@
 	</a> 
 </div>
 <!-- Export table to CSV File -->
-<div th:fragment="export_csv(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Export to csv"
-	   th:href="@{'/' + ${sectionName} + '/export/csv'}"> 
+<div th:fragment="export_csv(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Export to csv" th:href="@{'/' + ${sectionName} + '/export/csv'}"> 
 	    <i class="fa-solid fa-file-csv fa-2x"></i>
 	</a>
 </div>
 <!-- Export table to Excel File -->
-<div th:fragment="export_excel(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Export to excel"
-	   th:href="@{'/' + ${sectionName} + '/export/excel'}"> 
+<div th:fragment="export_excel(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Export to excel" th:href="@{'/' + ${sectionName} + '/export/excel'}"> 
 	    <i class="fa-solid fa-file-excel fa-2x"></i>
 	</a>
 </div>
 <!-- Export table to PDF File -->
-<div th:fragment="export_pdf(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text border-0" id="search-addon" title="Export to pdf"
-	   th:href="@{'/' + ${sectionName} + '/export/pdf'}"> 
+<div th:fragment="export_pdf(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Export to pdf" th:href="@{'/' + ${sectionName} + '/export/pdf'}"> 
 	    <i class="fa-solid fa-file-pdf fa-2x"></i>
 	</a>	
 </div>
-<!-- Buttons in Table -->
+<!-- ###################### -->
+<!-- ## Buttons in Table ## -->
+<!-- ###################### -->
 <!-- Enable Item -->
 <div th:fragment="enable(sectionName, instance, extraClass)" th:remove="tag">
 	<!-- If the item is enabled, disable it -->

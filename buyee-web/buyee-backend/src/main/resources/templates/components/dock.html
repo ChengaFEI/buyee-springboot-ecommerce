@@ -9,14 +9,14 @@
 <!-- Authorization: No -->
 <div th:fragment="search_buttons(sectionName)" th:remove="tag">
 	<!-- Large/Medium Screen -->
-	<div th:replace="~{/components/dock::search_buttons_lg(${sectionName})}"></div>
+	<div th:replace="~{/components/dock::search_buttons_full(${sectionName})}"></div>
 	<!-- Small Screen -->
-	<div th:replace="~{/components/dock::search_buttons_sm(${sectionName})}"></div>
+	<div th:replace="~{/components/dock::search_buttons_less(${sectionName})}"></div>
 </div>
 <!-- Contents: Search Bar, Command Buttons -->
 <!-- Screen Compatibility: Large, Medium -->
 <!-- Authorization: No -->
-<div th:fragment="search_buttons_lg(sectionName)" 
+<div th:fragment="search_buttons_full(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Create Item Button -->
 	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
@@ -36,7 +36,7 @@
 <!-- Contents: Search Bar, Command Buttons -->
 <!-- Screen Compatibility: Small -->
 <!-- Authorization: No -->
-<div th:fragment="search_buttons_sm(sectionName)" 
+<div th:fragment="search_buttons_less(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 less-details">
 	<!-- Create Item Button -->
 	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
@@ -57,7 +57,7 @@
 <!-- Contents: Search Bar, Filter Bar, Command Buttons -->
 <!-- Screen Compatibility: Large, Medium -->
 <!-- Authorization: No -->
-<div th:fragment="search_filter_buttons_lg(sectionName)" 
+<div th:fragment="search_filter_buttons_full(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Create Item Button -->
 	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
@@ -89,14 +89,14 @@
 <!-- Authorization: Yes -->
 <div th:fragment="products" th:remove="tag">
 	<!-- Large/Medium Screen -->
-	<div th:replace="~{/components/dock::products_lg}"></div>
+	<div th:replace="~{/components/dock::products_full}"></div>
 	<!-- Small Screen -->
-	<div th:replace="~{/components/dock::products_sm}"></div>
+	<div th:replace="~{/components/dock::products_less}"></div>
 </div>
 <!-- Contents: Search Bar, Filter Bar, Command Buttons -->
 <!-- Screen Compatibility: Large, Medium -->
 <!-- Authorization: Yes -->
-<div th:fragment="products_lg" class="input-group rounded container-fluid mt-3 mb-3 full-details">
+<div th:fragment="products_full" class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Authorization: only open to admin and editor -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 		<!-- Create Item Button -->
@@ -125,7 +125,7 @@
 <!-- Contents: Search Bar, Filter Bar, Command Buttons -->
 <!-- Screen Compatibility: Small -->
 <!-- Authorization: Yes -->
-<div th:fragment="products_sm">
+<div th:fragment="products_less">
 	<!-- First row -->
 	<div class="input-group rounded container-fluid mt-3 mb-3 less-details">
 		<!-- Authorization: only open to admin and editor -->

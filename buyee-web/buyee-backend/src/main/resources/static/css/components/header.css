@@ -1,6 +1,11 @@
 /* Sub Components */
 @import './text.css';
 @import './dropdown.css';
+/* Main Header Nav Bar */
+.section-list-custom {
+	padding-left: 15px; 
+	padding-right: 15px;
+}
 /* Main Header Float Window */
 .float-square {
 	border-radius: 0px;

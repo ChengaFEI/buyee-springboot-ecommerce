@@ -1,0 +1,5 @@
+<!-- Section Item in webpages's header -->
+<li th:fragment="header(sectionName)"
+	th:class="${activeItem == sectionName ? 'nav-item nav-item-active' : 'nav-item nav-item-inactive'}">
+	<a class="nav-link" th:href="@{${'/' + sectionName.toLowerCase()}}">[[${sectionName}]]</a>
+</li>

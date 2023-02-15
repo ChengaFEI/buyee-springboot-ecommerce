@@ -55,9 +55,9 @@
 					<label class="col-form-label">Roles</label>
 					<div>
 						<th:block th:each="role:${listRoles}">
-							<input class="checkbox-custom mb-2" type="checkbox" th:field="*{roles}" th:value="${role.id}" />
-							<label aria-describedby="roleHelp" class="col-sm-1">[[${role.name}]]</label>
-							<small id="roleHelp" class="form-text text-muted">-- [[${role.description}]]</small>
+							<input class="checkbox-custom" type="checkbox" th:field="*{roles}" th:value="${role.id}" />
+							<label aria-describedby="roleHelp" class="col-sm-2">[[${role.name}]]</label>
+							<small id="roleHelp" class="form-text text-muted mb-3">-- [[${role.description}]]</small>
 							<br />
 						</th:block>
 					</div>

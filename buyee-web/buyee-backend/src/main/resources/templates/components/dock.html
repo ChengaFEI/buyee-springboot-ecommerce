@@ -107,13 +107,13 @@
 		<!-- Clear Sorting Button -->
 		<div th:replace="~{/components/button::clear_sort('products')}"></div>
 		<!-- Clear Search Button -->
-		<div th:replace="~{/components/button::clear_search_left('products')}"></div>
+		<div th:replace="~{/components/button::clear_search('products', 'link-clear-left')}"></div>
 		<!-- Search Bar -->
-		<div th:replace="~{/components/search::bar_right('products')}"></div>
+		<div th:replace="~{/components/search::bar('products', 'search-bar-right')}"></div>
 		<!-- Clear Filter Button -->
-		<div th:replace="~{/components/button::clear_filter_middle('products')}"></div>
+		<div th:replace="~{/components/button::clear_filter('products', 'link-clear-middle')}"></div>
 		<!-- Filter Bar -->
-		<div th:replace="~{/components/filter::bar_right('products', 'filterLargeScreen')}"></div>
+		<div th:replace="~{/components/filter::bar('products', 'filterLargeScreen', 'filter-bar-right')}"></div>
 		<!-- Export CSV Buttons -->
 		<div th:replace="~{/components/button::export_csv('products')}"></div>
 		<!-- Export Excel Buttons -->
@@ -142,9 +142,9 @@
 			<!-- Export PDF Buttons -->
 			<div th:replace="~{/components/button::export_pdf('products')}"></div>
 			<!-- Search Bar -->
-			<div th:replace="~{/components/search::bar_left('products')}"></div>
+			<div th:replace="~{/components/search::bar('products', 'search-bar-left')}"></div>
 			<!-- Clear Search Button -->
-			<div th:replace="~{/components/button::clear_search_right('products')}"></div>
+			<div th:replace="~{/components/button::clear_search('products', 'link-clear-right')}"></div>
 		</th:block>
 	</div>
 	<!-- Second row -->
@@ -152,9 +152,9 @@
 		<!-- Authorization: open to all users with access to this page -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 			<!-- Filter Bar -->
-			<div th:replace="~{/components/filter::bar_right('products', 'filterSmallScreen')}"></div>
+			<div th:replace="~{/components/filter::bar('products', 'filterSmallScreen', 'filter-bar-left')}"></div>
 			<!-- Clear Filter Button -->
-			<div th:replace="~{/components/button::clear_filter_right('products')}"></div>
+			<div th:replace="~{/components/button::clear_filter('products', 'link-clear-right')}"></div>
 		</th:block>
 	</div>
 </div>

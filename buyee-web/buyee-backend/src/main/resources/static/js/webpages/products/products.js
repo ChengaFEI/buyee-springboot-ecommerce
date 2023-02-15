@@ -9,10 +9,7 @@ $(document).ready(function() {
 	filterProductByCategory("#filterLargeScreen");
 	filterProductByCategory("#filterSmallScreen");
 });
-// Filter products by category
 function filterProductByCategory(filterFormId) {
 	var filterForm = $(filterFormId);
-	filterForm.find(".filter-select").on("change", function() {
-		filterForm.submit();
-	});
+	filterForm.find(".filter-select").on("change", function() {filterForm.submit();});
 }

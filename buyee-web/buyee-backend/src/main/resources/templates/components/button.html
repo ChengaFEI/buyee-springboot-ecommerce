@@ -16,33 +16,8 @@
 	</a>
 </div>
 <!-- Clear Search -->
-<!-- Position: left to the search bar -->
-<div th:fragment="clear_search_left(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-custom link-clear-left" id="search-addon" 
-	   title="Clear Search Results"
-	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
-	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
-				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
-				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
-		<i class="fa-solid fa-square-minus fa-2x"></i>
-	</a> 
-</div>
-<!-- Clear Search -->
-<!-- Position: in the middle of two search bars -->
-<div th:fragment="clear_search_middle(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-custom link-clear-middle" id="search-addon" 
-	   title="Clear Search Results"
-	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
-	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
-				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
-				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
-		<i class="fa-solid fa-square-minus fa-2x"></i>
-	</a> 
-</div>
-<!-- Clear Search -->
-<!-- Position: right to the search bar -->
-<div th:fragment="clear_search_right(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-custom link-clear-right" id="search-addon" 
+<div th:fragment="clear_search(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text link-clear-custom ' + ${extraClass}" id="search-addon" 
 	   title="Clear Search Results"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
 	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
@@ -52,33 +27,8 @@
 	</a> 
 </div>
 <!-- Clear Filter -->
-<!-- Position: left to the search bar -->
-<div th:fragment="clear_filter_left(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-custom link-clear-left" id="search-addon" 
-	   title="Clear Filter Results"
-	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
-	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
-				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
-				  ${keyword != null ? '&keyword=' + keyword : ''}}">
-		<i class="fa-solid fa-square-minus fa-2x"></i>
-	</a> 
-</div>
-<!-- Clear Filter -->
-<!-- Position: in the middle of two search bars -->
-<div th:fragment="clear_filter_middle(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-custom link-clear-middle" id="search-addon" 
-	   title="Clear Filter Results"
-	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
-	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
-				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
-				  ${keyword != null ? '&keyword=' + keyword : ''}}">
-		<i class="fa-solid fa-square-minus fa-2x"></i>
-	</a> 
-</div>
-<!-- Clear Filter -->
-<!-- Position: right to the search bar -->
-<div th:fragment="clear_filter_right(sectionName)" th:remove="tag">
-	<a class="link-button-manager input-group-text link-clear-custom link-clear-right" id="search-addon" 
+<div th:fragment="clear_filter(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'link-button-manager input-group-text link-clear-custom ' + ${extraClass}" id="search-addon" 
 	   title="Clear Filter Results"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
 	   			  ${sortField != null ? '&sortField=' + sortField : ''} +

@@ -1,22 +1,7 @@
 <!-- Search Bar -->
-<!-- Position: left of a clear_search button -->
-<div th:fragment="bar_left(sectionName)" th:remove="tag">
+<div th:fragment="bar(sectionName, extraClass)" th:remove="tag">
 	<form th:action="@{'/' + ${sectionName} + '/page/1'}" 
-		  class="form-inline form-control search-bar-custom search-bar-left">
-		<!-- other filters/sorters to coordinate with -->
-		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
-	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />
-	    <input th:if="${categoryId != null}" type="hidden" name="categoryId" th:value="${categoryId}" />
-	    <!-- Enter a keyword to search for -->
-	    <input type="search" name="keyword" th:value="${keyword}" class="form-control search-input" 
-	           placeholder="Search..." aria-label="Search" required aria-describedby="search-addon" 
-	           th:title="'Search ' + ${sectionName}" />
-	</form>
-</div>
-<!-- Position: right of a clear_search button -->
-<div th:fragment="bar_right(sectionName)" th:remove="tag">
-	<form th:action="@{'/' + ${sectionName} + '/page/1'}" 
-		  class="form-inline form-control search-bar-custom search-bar-right">
+		  th:class="'form-inline form-control search-bar-custom ' + ${extraClass}">
 		<!-- other filters/sorters to coordinate with -->
 		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
 	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />

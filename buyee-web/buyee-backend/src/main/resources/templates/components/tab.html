@@ -1,5 +1,10 @@
-<!-- Tab in Product Section -->
-<div th:fragment="bar(extraClass)" class="mb-3">
+<!-- Tabs in Product Section -->
+<div th:fragment="bar(extraClass)" th:remove="tag">
+	<div th:replace="~{/components/tab::bar_full(${extraClass})}"></div>
+	<div th:replace="~{/components/tab::bar_less(${extraClass})}"></div>
+</div>
+<!-- Tabs with texts in large/medium screen -->
+<div th:fragment="bar_full(extraClass)" class="mb-3 full-details-block">
 	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
 		<li class="nav-item">
 	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
@@ -29,6 +34,41 @@
 	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" 
 	    	   role="tab" type="button">
 	    		<span class="align-middle">Shipping</span>
+    	    </a>
+	  	</li>
+	</ul>
+</div>
+<!-- Tabs with texts in small screen -->
+<div th:fragment="bar_less(extraClass)" class="mb-3 less-details-block">
+	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
+		<li class="nav-item" title="overview">
+	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
+	    	   role="tab" type="button">
+	    		<i class="fa-brands fa-elementor align-middle"></i>
+	    	</a>
+	  	</li>
+	  	<li class="nav-item" title="description">
+	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#description" 
+	    	   role="tab" type="button">
+	    		<i class="fa-brands fa-readme align-middle"></i>
+	    	</a>
+	  	</li>
+	  	<li class="nav-item" title="images">
+	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#images" 
+	    	   role="tab" type="button">
+	    		<i class="fa-solid fa-images align-middle"></i>
+	    	</a>
+	  	</li>
+	  	<li class="nav-item" title="details">
+	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#details" 
+	    	   role="tab" type="button">
+	    		<i class="fa-solid fa-circle-info align-middle"></i>
+	    	</a>
+	  	</li>
+	  	<li class="nav-item" title="shipping">
+	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" 
+	    	   role="tab" type="button">
+	    		<i class="fa-solid fa-truck-fast align-middle"></i>
     	    </a>
 	  	</li>
 	</ul>

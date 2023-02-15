@@ -91,13 +91,13 @@
 									<div><b>Roles: </b>[[${user.roles}]]</div>
 								</div>
 								<!-- Right: Enabled & Actions -->
-								<div class="" style="width: 64px; margin-left: auto">
+								<div style="width: 64px; margin-left: auto;">
 									<!-- Enabled -->
-									<div th:replace="~{/components/button::enable('users', ${user}, 'fa-2x mb-3 circle-icon-padding')}"></div>
+									<div th:replace="~{/components/button::enable('users', ${user}, 'fa-2x mb-3')}"></div>
 									<!-- Edit -->
-									<a th:replace="~{/components/button::edit('users', ${user}, 'fa-2x mb-4 icon-padding')}"></a>
+									<a th:replace="~{/components/button::edit('users', ${user}, 'fa-2x mb-4')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('users', ${user}, 'fa-2x icon-padding')}"></a>
+									<a th:replace="~{/components/button::delete('users', ${user}, 'fa-2x')}"></a>
 								</div>
 							</div>
 							<hr />

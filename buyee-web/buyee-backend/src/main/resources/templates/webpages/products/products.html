@@ -49,7 +49,7 @@
 						<!-- ID -->
 						<td class="align-middle text-center" th:text="${product.id}" />
 						<!-- Name -->
-						<td class="align-middle text-action">
+						<td class="align-middle text-action-list">
 							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 								<!-- link-detail is required for using preview-modal -->
 								<a class="link-detail" title="View this product" th:text="${product.shortName}" 
@@ -111,16 +111,16 @@
 									<div class="mb-2"><b>Name:</b><br/>[[${product.name}]]</div>
 								</div>
 								<!-- Right: Enabled & Actions -->
-								<div class="" style="width: 64px; margin-left: auto">
+								<div style="width: 64px; margin-left: auto">
 									<!-- View -->
 									<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 										<!-- link-detail is required for using preview-modal -->
 										<a th:replace="~{/components/button::file('products', ${product}, 'fa-2x mb-4 link-detail file-icon-padding')}"></a>
 									</th:block>
 									<!-- Enabled -->
-									<a th:replace="~{/components/button::edit('products', ${product}, 'fa-2x mb-4 icon-padding')}"></a>
+									<a th:replace="~{/components/button::edit('products', ${product}, 'fa-2x mb-4')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('products', ${product}, 'fa-2x icon-padding')}"></a>
+									<a th:replace="~{/components/button::delete('products', ${product}, 'fa-2x')}"></a>
 								</div>
 							</div>
 							<hr/>

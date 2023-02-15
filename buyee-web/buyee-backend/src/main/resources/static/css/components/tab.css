@@ -8,13 +8,21 @@
 	border-radius: var(--main-border-radius);
 	text-decoration: none;
 	height: var(--main-command-bar-height);
-}
-.float-island-tab>li>.active {
-	color: var(--main-pink-bright);
+	border: 1px solid var(--main-white-bright);
 }
 .float-island-tab>li>a:hover {
 	color: var(--main-white-bright);
 	background-color: var(--main-pink-bright);
+	border: 1px solid var(--main-pink-bright);
+}
+.float-island-tab>li>.active {
+	color: var(--main-white-bright);
+	background-color: var(--main-pink-bright);
+	border: 1px solid var(--main-pink-bright);
+}
+.float-island-tab>li>.active:hover {
+	color: var(--main-pink-bright);
+	background-color: var(--main-white-bright);
 }
 /* No Border Tab */
 .full-width-tab {

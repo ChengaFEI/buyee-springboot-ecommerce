@@ -66,6 +66,7 @@
 <!-- ###################### -->
 <!-- Enable Item -->
 <div th:fragment="enable(sectionName, instance, extraClass)" th:remove="tag">
+	
 	<!-- If the item is enabled, disable it -->
 	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
 	   th:class="'fa-solid fa-check-circle icon-action icon-no-deco ' + ${extraClass}"

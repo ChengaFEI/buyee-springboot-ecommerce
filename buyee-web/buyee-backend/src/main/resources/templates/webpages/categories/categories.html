@@ -46,7 +46,7 @@
 						<!-- Name -->
 						<th:block>
 							<!-- Display in hierarchy mode -->
-							<td th:if="${hierarchy}" class="align-middle text-action">
+							<td th:if="${hierarchy}" class="align-middle text-action-tree">
 								<a th:if="${category.children != null && category.children.size != 0}" 
 								   th:text="${category.name}" th:href="'#'+${category.id}"></a>
 								<span th:unless="${category.children != null && category.children.size != 0}">
@@ -91,7 +91,20 @@
 								<!-- Middle: Information -->
 								<div style="width: 40%; padding-left: 0">
 									<div class="mb-2"><b>ID: </b>[[${category.id}]]</div>
-									<div class="mb-2"><b>Name: </b>[[${category.name}]]</div>
+									<!-- Name -->
+									<div><b>Name:</b></div>
+									<!-- Display in hierarchy mode -->
+									<div th:if="${hierarchy}" class="align-middle text-action-tree mb-2">
+										<a th:if="${category.children != null && category.children.size != 0}" 
+										   th:text="${category.name}" th:href="'#'+${category.id}"></a>
+										<span th:unless="${category.children != null && category.children.size != 0}">
+											[[${category.name}]]
+										</span>
+									</div>
+									<!-- Display in normal table mode -->
+									<div th:unless="${hierarchy}" class="align-middle">
+										<span>[[${category.name}]]</span>
+									</div>
 									<div class="mb-2"><b>Alias: </b>[[${category.alias}]]</div>
 									<div><b>Superclass: </b>[[${category.parent}]]</div>
 								</div>

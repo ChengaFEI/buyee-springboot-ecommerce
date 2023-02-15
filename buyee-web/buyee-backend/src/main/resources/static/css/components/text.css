@@ -46,14 +46,23 @@
 	color: var(--main-pink-bright);
 }
 /* Hyperlink Text in Table Body */
-.text-action>a {
+.text-action-tree>a {
 	color: var(--main-black-normal);
 	text-decoration: underline dotted var(--main-gray-normal);
 	text-underline-offset: 8px;
 }
-.text-action:hover>a {
+.text-action-tree:hover>a {
 	color: var(--main-pink-bright);
 	text-decoration: underline solid var(--main-pink-bright);
+}
+.text-action-list>a {
+	color: var(--main-black-normal);
+	text-decoration: underline dotted var(--main-gray-normal);
+}
+.text-action-list:hover>a {
+	color: var(--main-pink-bright);
+	text-decoration: underline solid var(--main-pink-bright);
+	text-underline-offset: 8px;
 }
 /* Text of Badges in Table Body */
 .badge-custom {

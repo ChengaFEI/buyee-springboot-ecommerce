@@ -38,7 +38,7 @@ public class BrandController {
 	return "/webpages/brands/brands_form";
     }
     @PostMapping("/brands/save")
-    public String submitBrand(
+    public String saveBrand(
 	    Brand brand, RedirectAttributes redirectAttributes,
 	    @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
 	if (!multipartFile.isEmpty()) {

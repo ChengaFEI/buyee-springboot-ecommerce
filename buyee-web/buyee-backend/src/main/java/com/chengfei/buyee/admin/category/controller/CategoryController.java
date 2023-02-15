@@ -36,7 +36,7 @@ public class CategoryController {
 	return "/webpages/categories/categories_form";
     }
     @PostMapping("/categories/save")
-    public String submitCategory(
+    public String saveCategory(
 	    Category category, RedirectAttributes redirectAttributes,
 	    @RequestParam("imageFile") MultipartFile multipartFile) throws IOException {
 	if (!multipartFile.isEmpty()) {

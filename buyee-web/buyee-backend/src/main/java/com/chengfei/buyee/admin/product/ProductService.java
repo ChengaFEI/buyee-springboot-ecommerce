@@ -19,9 +19,8 @@ public class ProductService {
     public Product saveProduct(Product product) {
 	Date currentTime = new Date();
 	Integer id = product.getId();
-	if (id == null) {
-	    product.setCreatedTime(currentTime);
-	} else {
+	if (id == null) product.setCreatedTime(currentTime);
+	else {
 	    Product productInDB = repo.findById(id).get();
 	    product.setCreatedTime(productInDB.getCreatedTime());
 	}
@@ -29,10 +28,16 @@ public class ProductService {
 	if (product.getAlias() == null || product.getAlias().isEmpty()) {
 	    String defaultAlias = product.getName().toLowerCase().replaceAll(" ", "_");
 	    product.setAlias(defaultAlias);
-	} else {
-	    product.setAlias(product.getAlias().toLowerCase().replaceAll(" ", "_"));
-	}
+	} else product.setAlias(product.getAlias().toLowerCase().replaceAll(" ", "_"));
 	return repo.save(product);
+    }
+    public Product saveProductPrice(Product productInForm) {
+	Product productInDB = repo.findById(productInForm.getId()).get();
+	if (productInDB == null) return null;
+	productInDB.setPrice(productInForm.getPrice());
+	productInDB.setCost(productInForm.getCost());
+	productInDB.setDiscountPercent(productInForm.getDiscountPercent());
+	return repo.save(productInDB);
     }
     // Read Tasks
     public Product readProductById(Integer id) throws ProductNotFoundException {

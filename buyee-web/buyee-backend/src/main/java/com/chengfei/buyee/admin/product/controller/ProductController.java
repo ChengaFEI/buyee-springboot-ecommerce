@@ -1,10 +1,10 @@
 package com.chengfei.buyee.admin.product.controller;
 import java.io.IOException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.chengfei.buyee.admin.AmazonS3Util;
 import com.chengfei.buyee.admin.brand.BrandService;
 import com.chengfei.buyee.admin.category.CategoryService;
 import com.chengfei.buyee.admin.product.ProductNotFoundException;
 import com.chengfei.buyee.admin.product.ProductService;
+import com.chengfei.buyee.admin.security.BuyeeUserDetails;
 import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Category;
 import com.chengfei.buyee.common.entity.Product;
@@ -41,28 +41,34 @@ public class ProductController {
    	return "/webpages/products/products_form";
     }	
     @PostMapping("/products/save")
-    public String submitProduct(
+    public String saveProduct(
 	    Product product, RedirectAttributes redirectAttributes, 
 	    // Images Section
-	    @RequestParam("imageFile") MultipartFile mainImageMultipart,
+	    @RequestParam(name = "imageFile", required = false) MultipartFile mainImageMultipart,
 	    @RequestParam(name = "extraImageFile", required = false) MultipartFile[] extraImageMultiparts,
 	    @RequestParam(name = "extraImageIds", required = false) String[] existingExtraImageIds,
 	    @RequestParam(name = "extraImageNames", required = false) String[] existingExtraImageNames,
 	    // Details Section
 	    @RequestParam(name = "detailIds", required = false) String[] detailIds,
 	    @RequestParam(name = "detailNames", required = false) String[] detailNames,
-	    @RequestParam(name = "detailValues", required = false) String[] detailValues
+	    @RequestParam(name = "detailValues", required = false) String[] detailValues,
+	    // For Authorization 
+	    @AuthenticationPrincipal BuyeeUserDetails loggedUser
 	    ) throws IOException {
-	// Save Images in Database
-	ProductControllerSaveUtil.setMainImageName(product, mainImageMultipart);
-	ProductControllerSaveUtil.setExistingExtraImageNames(product, existingExtraImageIds, existingExtraImageNames);
-	ProductControllerSaveUtil.setNewExtraImageNames(product, extraImageMultiparts);
-	// Save Details in Database
-	ProductControllerSaveUtil.setDetails(product, detailIds, detailNames, detailValues);
-	Product savedProduct = productService.saveProduct(product);
-	// Process Images in Amazon S3
-	ProductControllerSaveUtil.uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
-	ProductControllerSaveUtil.deleteRemovedExtraImages(savedProduct);
+	if (loggedUser.hasRole("Salesperson")) 
+	    product = productService.saveProductPrice(product);
+	else {
+	    // Save Images in Database
+	    ProductControllerSaveUtil.setMainImageName(product, mainImageMultipart);
+	    ProductControllerSaveUtil.setExistingExtraImageNames(product, existingExtraImageIds, existingExtraImageNames);
+	    ProductControllerSaveUtil.setNewExtraImageNames(product, extraImageMultiparts);
+	    // Save Details in Database
+	    ProductControllerSaveUtil.setDetails(product, detailIds, detailNames, detailValues);
+	    Product savedProduct = productService.saveProduct(product);
+	    // Process Images in Amazon S3
+	    ProductControllerSaveUtil.uploadImages(savedProduct, mainImageMultipart, extraImageMultiparts);
+	    ProductControllerSaveUtil.deleteRemovedExtraImages(savedProduct);
+	}
 	// Redirect Messages back
 	redirectAttributes.addFlashAttribute("message", "Product saved successfully!");
 	return "redirect:/products/page/1?keyword=" + product.getName();
@@ -101,8 +107,10 @@ public class ProductController {
 	    model.addAttribute("sortOrder", sortOrder);
 	    model.addAttribute("reverseOrder", reverseOrder);
 	}
-	if (keyword != null) model.addAttribute("keyword", keyword);
-	if (categoryId != null) model.addAttribute("categoryId", categoryId);
+	if (keyword != null) 
+	    model.addAttribute("keyword", keyword);
+	if (categoryId != null) 
+	    model.addAttribute("categoryId", categoryId);
 	return "/webpages/products/products";
     }
     @GetMapping("/products/view/{id}")

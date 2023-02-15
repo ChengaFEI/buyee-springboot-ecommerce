@@ -4,7 +4,6 @@
 	<head th:replace="~{/universal::head('Products - Buyee Admin', 'tag', 'products')}"/>
 	<script type="text/javascript" th:src="@{/js/webpages/products/products.js}"></script>
 	<script type="text/javascript" th:src="@{/js/components/table.js}"></script>
-	<script type="text/javascript" th:src="@{/js/components/filter.js}"></script>
 </head>
 <body>
 	<div>
@@ -90,6 +89,41 @@
 								&nbsp;&nbsp;
 								<a th:replace="~{/components/button::delete('products', ${product}, '')}"></a>
 							</th:block>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- Table with less details -->
+		<div class="less-details container-fluid">
+			<table class="container-fluid">
+				<tbody>
+					<hr/>
+					<tr th:each="product : ${listProducts}">
+						<td>
+							<div class="row mb-3">
+								<!-- Left: Photo -->
+								<div style="width: 220px">
+									<img th:src="@{${product.mainImagePathString}}" style="width: 100%" />
+								</div>
+								<!-- Middle: Information -->
+								<div style="width: 40%; padding-left: 0">
+									<div class="mb-2"><b>Name:</b><br/>[[${product.name}]]</div>
+								</div>
+								<!-- Right: Enabled & Actions -->
+								<div class="" style="width: 64px; margin-left: auto">
+									<!-- View -->
+									<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+										<!-- link-detail is required for using preview-modal -->
+										<a th:replace="~{/components/button::file('products', ${product}, 'fa-2x mb-4 link-detail file-icon-padding')}"></a>
+									</th:block>
+									<!-- Enabled -->
+									<a th:replace="~{/components/button::edit('products', ${product}, 'fa-2x mb-4 icon-padding')}"></a>
+									<!-- Delete -->
+									<a th:replace="~{/components/button::delete('products', ${product}, 'fa-2x icon-padding')}"></a>
+								</div>
+							</div>
+							<hr/>
 						</td>
 					</tr>
 				</tbody>

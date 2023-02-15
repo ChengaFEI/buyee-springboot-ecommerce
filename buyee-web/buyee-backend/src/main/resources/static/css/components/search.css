@@ -1,12 +1,17 @@
 /* Search Bar */
 .search-bar-custom {
 	border: 1px solid var(--main-gray-light);
-	border-left: 0px;
 	padding: 0 0 0 0;
 }
-.search-bar-custom>#search {
+.search-bar-custom>.search-input {
 	margin: 0 0 0 0;
 	border: var(--main-transparent);
 	height: var(--main-command-bar-height);
 	font-size: var(--main-font-size);
+}
+.search-bar-right {
+	border-left: 0px;
+}
+.search-bar-left {
+	border-right: 0px;
 }

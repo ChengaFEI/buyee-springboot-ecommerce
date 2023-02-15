@@ -79,6 +79,7 @@
 		<div class="less-details container-fluid">
 			<table class="container-fluid">
 				<tbody>
+					<hr/>
 					<tr th:each="category: ${listCategories}" th:id="${category.id}"
 						th:class="${category.parent == null ? 'level_0' : 'level_'+category.level+' parent_'+category.parentId}">
 						<td>
@@ -96,9 +97,9 @@
 								</div>
 								<!-- Right: Enabled & Actions -->
 								<div class="" style="width: 64px; margin-left: auto">
-									<div th:replace="~{/components/button::enable('categories', ${category}, 'fa-2x mb-3')}"></div>
-									<a th:replace="~{/components/button::edit('categories', ${category}, 'fa-2x mb-4')}"></a>
-									<a th:replace="~{/components/button::delete('categories', ${category}, 'fa-2x')}"></a>
+									<div th:replace="~{/components/button::enable('categories', ${category}, 'fa-2x mb-3 circle-icon-padding')}"></div>
+									<a th:replace="~{/components/button::edit('categories', ${category}, 'fa-2x mb-4 icon-padding')}"></a>
+									<a th:replace="~{/components/button::delete('categories', ${category}, 'fa-2x icon-padding')}"></a>
 								</div>
 							</div>
 							<hr />

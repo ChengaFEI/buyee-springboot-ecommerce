@@ -61,6 +61,7 @@
 		<div class="less-details container-fluid">
 			<table class="container-fluid">
 				<tbody>
+					<hr/>
 					<tr th:each="brand : ${listBrands}">
 						<td>
 							<div class="row mb-3">
@@ -83,9 +84,9 @@
 								<!-- Right: Enabled & Actions -->
 								<div class="" style="width: 64px; margin-left: auto">
 									<!-- Enabled -->
-									<a th:replace="~{/components/button::edit('brands', ${brand}, 'fa-2x mb-4')}"></a>
+									<a th:replace="~{/components/button::edit('brands', ${brand}, 'fa-2x mb-4 icon-padding')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('brands', ${brand}, 'fa-2x')}"></a>
+									<a th:replace="~{/components/button::delete('brands', ${brand}, 'fa-2x icon-padding')}"></a>
 								</div>
 							</div>
 							<hr />

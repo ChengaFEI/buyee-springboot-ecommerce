@@ -1,5 +1,7 @@
+/*******************/
 /* Buttons in Dock */
-	/* General buttons setting */
+/*******************/
+/* General buttons setting */
 .link-button-manager {
 	color: var(--main-gray-normal);
 	text-decoration: none
@@ -7,13 +9,24 @@
 .link-button-manager:hover {
 	color: var(--main-pink-bright);
 }
-	/* Customized for clear_search button */
+/* Customized for clear_search button */
 .link-clear-custom {
 	border: 1px solid var(--main-gray-light);
-	border-right: 0px;
 	background-color: var(--main-transparent);;
 }
+.link-clear-left {
+	border-right: 0px;
+}
+.link-clear-middle {
+	border-left: 0px;
+	border-right: 0px;
+}
+.link-clear-right {
+	border-left: 0px;
+}
+/********************/
 /* Buttons in Table */
+/********************/
 .icon-action {
 	color: var(--main-gray-normal);
 }
@@ -23,8 +36,19 @@
 .icon-no-deco {
 	text-decoration: none
 }
+.icon-padding {
+	padding-left: 3px;
+}
+.file-icon-padding {
+	padding-left: 5px;
+}
+.circle-icon-padding {
+	padding-left: 2px;
+}
+/*******************/
 /* Buttons in Form */
-	/* Image File Delete Button in Products' Images Form */
+/*******************/
+/* Image File Delete Button in Products' Images Form */
 .link-delete-manager {
 	color: var(--main-gray-normal);
 	text-decoration: none
@@ -32,7 +56,7 @@
 .link-delete-manager:hover {
 	color: var(--main-pink-bright);
 }
-	/* Add/Delete Buttons in Products' Details Form */
+/* Add/Delete Buttons in Products' Details Form */
 .detail-button-manager {
 	color: var(--main-gray-light-medium);
 	text-decoration: none

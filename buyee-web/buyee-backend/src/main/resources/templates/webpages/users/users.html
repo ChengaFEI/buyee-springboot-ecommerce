@@ -75,6 +75,7 @@
 		<div class="less-details container-fluid">
 			<table class="container-fluid">
 				<tbody>
+					<hr/>
 					<tr th:each="user : ${listUsers}">
 						<td>
 							<div class="row mb-3">
@@ -92,11 +93,11 @@
 								<!-- Right: Enabled & Actions -->
 								<div class="" style="width: 64px; margin-left: auto">
 									<!-- Enabled -->
-									<div th:replace="~{/components/button::enable('users', ${user}, 'fa-2x mb-3')}"></div>
+									<div th:replace="~{/components/button::enable('users', ${user}, 'fa-2x mb-3 circle-icon-padding')}"></div>
 									<!-- Edit -->
-									<a th:replace="~{/components/button::edit('users', ${user}, 'fa-2x mb-4')}"></a>
+									<a th:replace="~{/components/button::edit('users', ${user}, 'fa-2x mb-4 icon-padding')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('users', ${user}, 'fa-2x')}"></a>
+									<a th:replace="~{/components/button::delete('users', ${user}, 'fa-2x icon-padding')}"></a>
 								</div>
 							</div>
 							<hr />

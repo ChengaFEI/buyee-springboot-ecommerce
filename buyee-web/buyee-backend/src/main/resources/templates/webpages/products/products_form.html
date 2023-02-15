@@ -58,22 +58,25 @@
 						<!-- Existing Details and Input Details -->
 						<div th:replace="~{/webpages/products/products_form_details :: content}"></div>
 						<!-- Add New Detail Line -->
-						<div class="row mb-3">
-							<div class="input-group" style="width: 47.5%">
-								<label class="text-muted detail-label-padding">Name:</label>
-								<input disabled type="text" class="form-control rounded"/>
+						<!-- read/write authorization for admins and editors -->
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div class="row mb-3">
+								<div class="input-group" style="width: 47.5%">
+									<label class="text-muted detail-label-padding">Name:</label>
+									<input disabled type="text" class="form-control rounded"/>
+								</div>
+								<div class="input-group" style="width: 47.5%">
+									<label class="text-muted detail-label-padding">Value:</label>
+									<input disabled type="text" class="form-control rounded"/>
+								</div>
+								<!-- Add New Detail Button -->
+								<div class="input-group" style="width: 5%" title="Add a detail">
+									<a class="detail-button-padding detail-button-manager" onclick="showNextDetailSection();"> 
+										<i class="fa-solid fa-circle-plus fa-2x"></i>
+									</a>
+								</div>
 							</div>
-							<div class="input-group" style="width: 47.5%">
-								<label class="text-muted detail-label-padding">Value:</label>
-								<input disabled type="text" class="form-control rounded"/>
-							</div>
-							<!-- Add New Detail Button -->
-							<div class="input-group" style="width: 5%" title="Add a detail">
-								<a class="detail-button-padding detail-button-manager" onclick="showNextDetailSection();"> 
-									<i class="fa-solid fa-circle-plus fa-2x"></i>
-								</a>
-							</div>
-						</div>
+						</th:block>
 					</div>
 					<!-- Shipping Section -->
 					<div class="tab-pane fade" id="shipping" role="tabpanel">
@@ -81,14 +84,7 @@
 					</div>
 				</div>
 				<!-- Form Footer -->
-				<div>
-					<span class="form-text text-muted">ps. Blanks marked with * are required</span>
-				</div>
-				<hr/>
-				<div class="text-center">
-					<input type="submit" value="Submit" class="btn btn-outline-danger m-2" />&nbsp;&nbsp;
-					<input type="button" value="Cancel" class="btn btn-outline-dark" id="cancelButton" />
-				</div>
+				<div th:replace="~{/components/footer::form}"></div>
 			</div>
 		</form>
 		<!-- Name/Alias Conflict Modal -->

@@ -1,33 +1,67 @@
 <div th:fragment="content" th:remove="tag">
-	<div class="form-group mb-3">
-		<label class="col-form-label">Notice</label>
-		<div class="form-text text-muted">
-			The following information is important to calculate the shipping cost for the product. <br />
-			Enter the package's dimensions, not the product's dimensions.
+	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+		<div class="form-group mb-3">
+			<label class="col-form-label">Notice</label>
+			<div class="form-text text-muted">
+				The following information is important to calculate the shipping cost for the product. <br />
+				Enter the package's dimensions, not the product's dimensions.
+			</div>
 		</div>
-	</div>
-	<div class="form-group mb-3" title="Please enter the length of this product">
-		<label class="col-form-label" for="inputLength">Length (inch)</label>
+		<div class="form-group mb-3" title="Please enter the length of this product">
+			<label class="col-form-label" for="inputLength">Length (inch)</label>
+			<div>
+				<input type="number" class="form-control" th:field="*{length}" id="inputLength" step="0.01" />
+			</div>
+		</div>
+		<div class="form-group mb-3" title="Please enter the width of this product">
+			<label class="col-form-label" for="inputWidth">Width (inch)</label>
+			<div>
+				<input type="number" class="form-control" th:field="*{width}" id="inputWidth" step="0.01" />
+			</div>
+		</div>
+		<div class="form-group mb-3" title="Please enter the height of this product">
+			<label class="col-form-label" for="inputHeight">Height (inch)</label>
+			<div>
+				<input type="number" class="form-control" th:field="*{height}" id="inputHeight" step="0.01" />
+			</div>
+		</div>
+		<div class="form-group mb-3" title="Please enter the weight of this product">
+			<label class="col-form-label" for="inputWeight">Weight (pound)</label>
+			<div>
+				<input type="number" class="form-control" th:field="*{weight}" id="inputWeight" step="0.01" />
+			</div>
+		</div>
+	</th:block>
+	<th:block sec:authorize="hasAuthority('Salesperson')">
 		<div>
-			<input type="number" class="form-control" th:field="*{length}" id="inputLength" step="0.01" />
+			<!-- Length -->
+			<div class="form-group mb-3 row">
+				<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Length (inch)</label>
+				<div th:style="'width:' + ${rightWidthRatio}">
+					<input type="text" class="form-control" th:value="${product.length}" readonly/>
+				</div>
+			</div> 
+			<!-- Width -->
+			<div class="form-group mb-3 row">
+				<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Width (inch)</label>
+				<div th:style="'width:' + ${rightWidthRatio}">
+					<input type="text" class="form-control" th:value="${product.width}" readonly/>
+				</div>
+			</div> 
+			<!-- Height -->
+			<div class="form-group mb-3 row">
+				<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Height (inch)</label>
+				<div th:style="'width:' + ${rightWidthRatio}">
+					<input type="text" class="form-control" th:value="${product.height}" readonly/>
+				</div>
+			</div> 
+			<!-- Weight -->
+			<div class="form-group mb-3 row">
+				<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Weight (pound)</label>
+				<div th:style="'width:' + ${rightWidthRatio}">
+					<input type="text" class="form-control" th:value="${product.weight}" readonly/>
+				</div>
+			</div> 
 		</div>
-	</div>
-	<div class="form-group mb-3" title="Please enter the width of this product">
-		<label class="col-form-label" for="inputWidth">Width (inch)</label>
-		<div>
-			<input type="number" class="form-control" th:field="*{width}" id="inputWidth" step="0.01" />
-		</div>
-	</div>
-	<div class="form-group mb-3" title="Please enter the height of this product">
-		<label class="col-form-label" for="inputHeight">Height (inch)</label>
-		<div>
-			<input type="number" class="form-control" th:field="*{height}" id="inputHeight" step="0.01" />
-		</div>
-	</div>
-	<div class="form-group mb-3" title="Please enter the weight of this product">
-		<label class="col-form-label" for="inputWeight">Weight (pound)</label>
-		<div>
-			<input type="number" class="form-control" th:field="*{weight}" id="inputWeight" step="0.01" />
-		</div>
-	</div>
+	</th:block>
 </div>

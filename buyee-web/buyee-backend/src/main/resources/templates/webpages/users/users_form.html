@@ -16,42 +16,41 @@
 		<!-- Data Collection Form -->
 		<form class="mt-3 container-fluid" th:action="@{/users/save}" method="post" style="margin: 0 auto" 
 		      enctype="multipart/form-data" th:object="${user}" onsubmit="return checkEmail(this);">
+		    <!-- Required properties for users -->
 			<input type="hidden" th:field="*{id}" />
 			<div class="border border-secondary rounded p-3">
+			    <!-- Form Title -->
 				<div class="mb-3"><h2>[[${pageTitle}]]</h2></div>
 				<hr/>
+			    <!-- Email -->
 				<div class="form-group mb-3" title="We will not share the email with others">
 					<label class="col-form-label" for="inputEmail">Email *</label>
-					<div>
-						<input type="email" class="form-control" th:field="*{email}" pattern=".{0,128}" 
-						       placeholder="username@domain.com" id="inputEmail" />
-					</div>
+					<div><input type="email" class="form-control" th:field="*{email}" pattern=".{0,128}" 
+						        placeholder="username@domain.com" id="inputEmail"/></div>
 				</div>
+			    <!-- Password -->
 				<div class="form-group mb-3" title="Password must be 2-20 characters long">
 					<label class="col-form-label" for="inputPassword">Password *</label>
 					<div>
-						<input th:if="${user.id == null}" type="password" class="form-control" 
-						       th:field="*{password}" required pattern=".{2,20}" placeholder="********" 
-						       id="inputPassword" /> 
-						<input th:if="${user.id != null}" type="password" class="form-control"
-							   th:field="*{password}" pattern=".{2,20}" 
-							   placeholder="Leave blank if password is unchanged" id="inputPassword" />
+						<input th:if="${user.id == null}" type="password" class="form-control" id="inputPassword"
+						       th:field="*{password}" required pattern=".{2,20}" placeholder="********"/> 
+						<input th:if="${user.id != null}" type="password" class="form-control" id="inputPassword"
+							   th:field="*{password}" pattern=".{2,20}" placeholder="Leave blank if password is unchanged"/>
 					</div>
 				</div>
+			    <!-- First Name -->
 				<div class="form-group mb-3" title="First name must be 2-30 characters long">
 					<label class="col-form-label" for="inputFirstName">First Name *</label>
-					<div>
-						<input type="text" class="form-control" th:field="*{firstName}" required pattern=".{2,30}" 
-							   placeholder="First Name" id="inputFirstName" />
-					</div>
+					<div><input type="text" class="form-control" th:field="*{firstName}" required pattern=".{2,30}" 
+							    placeholder="First Name" id="inputFirstName"/></div>
 				</div>
+			    <!-- Last Name -->
 				<div class="form-group mb-3" title="Last name must be 2-30 characters long">
 					<label class="col-form-label" for="inputLastName">Last Name *</label>
-					<div>
-						<input type="text" class="form-control" th:field="*{lastName}" required pattern=".{2,30}" 
-							   placeholder="Last Name" id="inputLastName" />
-					</div>
+					<div><input type="text" class="form-control" th:field="*{lastName}" required pattern=".{2,30}" 
+							    placeholder="Last Name" id="inputLastName"/></div>
 				</div>
+			    <!-- Roles -->
 				<div class="form-group mb-3" title="Assign role(s) and roles have different authorization">
 					<label class="col-form-label">Roles</label>
 					<div>
@@ -63,6 +62,7 @@
 						</th:block>
 					</div>
 				</div>
+			    <!-- Enabled -->
 				<div class="form-group mb-3" title="Enable/disable the account">
 					<label class="col-form-label">Enabled</label>
 					<div>
@@ -70,6 +70,7 @@
 						<label class="col-sm-1">Yes</label>
 					</div>
 				</div>
+			    <!-- Photo -->
 				<div class="form-group mb-3" title="Image should be smaller than 1MB">
 					<input type="hidden" th:field=*{photo}></input> 
 					<label for="imageFile" class="form-label">Photo</label> 
@@ -77,14 +78,8 @@
 					       accept="image/png image/jpeg">
 					<img style="width: var(--main-thumbnail-width)" id="thumbnail" th:src="@{${user.photoPathString}}" />
 				</div>
-				<div>
-					<span class="form-text text-muted">ps. Blanks marked with * are required</span>
-				</div>
-				<hr/>
-				<div class="text-center">
-					<input type="submit" value="Submit" class="btn btn-outline-danger m-2" /> 
-					<input type="button" value="Cancel" class="btn btn-outline-dark" id="cancelButton" />
-				</div>
+				<!-- Form Footer -->
+				<div th:replace="~{/components/footer::form}"></div>
 			</div>
 		</form>
 		<!-- Email Conflict Modal -->

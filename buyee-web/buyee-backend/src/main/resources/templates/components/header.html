@@ -11,10 +11,7 @@
 		</a>
 		<!-- Toggler button to expand the drop down menu -->
 		<!-- hidden in large screen and visible in medium/small screen -->
-		<button class="navbar-toggler cf-button-navbar" type="button" data-bs-toggle="collapse" data-bs-target=".topNavbar"
-		        aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
 		<!-- Website Sections -->
 		<div class="collapse navbar-collapse topNavbar">
 			<ul class="navbar-nav section-list-custom">

@@ -67,11 +67,7 @@
 									<input disabled type="text" class="form-control rounded"/>
 								</div>
 								<!-- Add New Detail Button -->
-								<div class="input-group" style="width: 5%" title="Add a detail">
-									<a class="detail-button-padding detail-button-manager" onclick="showNextDetailSection();"> 
-										<i class="fa-solid fa-circle-plus fa-2x"></i>
-									</a>
-								</div>
+								<div th:replace="~{/components/button::create_detail}"></div>
 							</div>
 						</th:block>
 					</div>

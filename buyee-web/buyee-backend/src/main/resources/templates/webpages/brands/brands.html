@@ -51,7 +51,7 @@
 							<!-- Edit -->
 							<a th:replace="~{/components/button::edit('brands', ${brand}, '')}"></a>&nbsp;&nbsp;
 							<!-- Delete -->
-							<a th:replace="~{/components/button::delete('brands', ${brand}, '')}"></a>
+							<a th:replace="~{/components/button::delete_instance('brands', ${brand}, '')}"></a>
 						</td>
 					</tr>
 				</tbody>
@@ -86,7 +86,7 @@
 									<!-- Enabled -->
 									<a th:replace="~{/components/button::edit('brands', ${brand}, 'fa-2x mb-4 icon-padding')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('brands', ${brand}, 'fa-2x icon-padding')}"></a>
+									<a th:replace="~{/components/button::delete_instance('brands', ${brand}, 'fa-2x icon-padding')}"></a>
 								</div>
 							</div>
 							<hr />

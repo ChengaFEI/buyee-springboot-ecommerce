@@ -80,7 +80,7 @@
 							<!-- Delete -->
 							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 								&nbsp;&nbsp;
-								<a th:replace="~{/components/button::delete('products', ${product}, '')}"></a>
+								<a th:replace="~{/components/button::delete_instance('products', ${product}, '')}"></a>
 							</th:block>
 						</td>
 					</tr>
@@ -108,12 +108,12 @@
 									<!-- View -->
 									<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 										<!-- link-detail is required for using preview-modal -->
-										<a th:replace="~{/components/button::file('products', ${product}, 'fa-2x mb-4 link-detail cf-button-file')}"></a>
+										<a th:replace="~{/components/button::file('products', ${product}, 'fa-2x mb-4 link-detail cf-button-table-file')}"></a>
 									</th:block>
 									<!-- Enabled -->
 									<a th:replace="~{/components/button::edit('products', ${product}, 'fa-2x mb-4')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('products', ${product}, 'fa-2x')}"></a>
+									<a th:replace="~{/components/button::delete_instance('products', ${product}, 'fa-2x')}"></a>
 								</div>
 							</div>
 							<hr/>

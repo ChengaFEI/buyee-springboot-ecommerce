@@ -20,11 +20,7 @@
 							   th:value="${detail.value}"/>
 					</div>
 					<!-- Delete Button -->
-					<div class="input-group" style="width: 5%" title="Delete this detail">
-						<a class="detail-button-padding cf-button-form linkRemoveDetail">
-						    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>
-						</a>	
-					</div>
+					<div th:replace="~{/components/button::delete_detail}"></div>
 				</div>
 			</th:block>
 			<!-- New Detail Blank -->
@@ -42,11 +38,7 @@
 					<input type="text" class="form-control rounded" name="detailValues" pattern=".{2,255}"/>
 				</div>
 				<!-- Delete Button -->
-				<div class="input-group" style="width: 5%" title="Delete this detail">
-					<a class="detail-button-padding detail-button-manager linkRemoveDetail">
-					    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>
-					</a>	
-				</div>
+				<div th:replace="~{/components/button::delete_detail}"></div>
 			</div>
 		</div> 
 	</th:block>

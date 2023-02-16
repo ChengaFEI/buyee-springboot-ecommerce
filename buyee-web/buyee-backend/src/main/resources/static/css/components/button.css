@@ -2,7 +2,7 @@
 /* Buttons in Header */
 /*********************/
 /* navbar toggler */
-.cf-button-navbar {margin-right: calc(var(--cf-gx) * .5);}
+.cf-button-header-navbar {margin-right: calc(var(--cf-gx) * .5);}
 /*******************/
 /* Buttons in Dock */
 /*******************/
@@ -13,16 +13,16 @@
 }
 .cf-button-dock:hover {color: var(--cf-red);}
 /* Customized for clear_search button */
-.cf-button-clear {
+.cf-button-dock-clear {
 	border: 1px solid var(--cf-gray-light);
 	background-color: var(--cf-transparent);;
 }
-.cf-button-clear-left {border-right: 0px;}
-.cf-button-clear-middle {
+.cf-button-dock-clear-left {border-right: 0px;}
+.cf-button-dock-clear-middle {
 	border-left: 0px;
 	border-right: 0px;
 }
-.cf-button-clear-right {border-left: 0px;}
+.cf-button-dock-clear-right {border-left: 0px;}
 /********************/
 /* Buttons in Table */
 /********************/
@@ -31,22 +31,30 @@
 	text-decoration: none
 }
 .cf-button-table:hover {color: var(--cf-red);}
-.cf-button-file {padding-left: 2px;}
+.cf-button-table-file {padding-left: 2px;}
 /*******************/
 /* Buttons in Form */
 /*******************/
 /* Image File Delete Button in Products' Images Form */
-.cf-button-delete-image {
+.cf-button-form-delete-image {
 	color: var(--cf-gray);
 	text-decoration: none
 }
-.cf-button-delete-image:hover {color: var(--cf-red);}
+.cf-button-form-delete-image:hover {color: var(--cf-red);}
 /* Add/Delete Buttons in Products' Details Form */
-.cf-button-form {
+.cf-button-form-delete-detail {
 	color: var(--cf-gray-light);
 	text-decoration: none
 }
-.cf-button-form:hover {
+.cf-button-form-delete-detail:hover {
+	color: var(--cf-red);
+	cursor: pointer;
+}
+.cf-button-form-create-detail {
+	color: var(--cf-gray-light);
+	text-decoration: none
+}
+.cf-button-form-create-detail:hover {
 	color: var(--cf-red);
 	cursor: pointer;
 }

@@ -19,11 +19,11 @@
 <div th:fragment="search_buttons_full(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Create Item Button -->
-	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
+	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
 	<!-- Clear Sorting Button -->
 	<div th:replace="~{/components/button::clear_sort(${sectionName}, '')}"></div>
 	<!-- Clear Search Button -->
-	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-clear-left')}"></div>
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-dock-clear-left')}"></div>
 	<!-- Search Bar -->
 	<div th:replace="~{/components/search::bar(${sectionName}, 'search-bar-right')}"></div>
 	<!-- Export CSV Buttons -->
@@ -39,7 +39,7 @@
 <div th:fragment="search_buttons_less(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 less-details">
 	<!-- Create Item Button -->
-	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
+	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
 	<!-- Export CSV Buttons -->
 	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
 	<!-- Export Excel Buttons -->
@@ -49,7 +49,7 @@
 	<!-- Search Bar -->
 	<div th:replace="~{/components/search::bar(${sectionName}, 'search-bar-left')}"></div>
 	<!-- Clear Search Button -->
-	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-clear-right')}"></div>
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-dock-clear-right')}"></div>
 </div>
 <!--------------->
 <!-- Type Two: -->
@@ -60,15 +60,15 @@
 <div th:fragment="search_filter_buttons_full(sectionName)" 
 	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
 	<!-- Create Item Button -->
-	<div th:replace="~{/components/button::create(${sectionName}, '')}"></div>
+	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
 	<!-- Clear Sorting Button -->
 	<div th:replace="~{/components/button::clear_sort(${sectionName}, '')}"></div>
 	<!-- Clear Search Button -->
-	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-clear-left')}"></div>
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-dock-clear-left')}"></div>
 	<!-- Search Bar -->
 	<div th:replace="~{/components/search::bar(${sectionName}, 'search-bar-right')}"></div>
 	<!-- Clear Filter Button -->
-	<div th:replace="~{/components/button::clear_filter(${sectionName}, 'cf-button-clear-middle')}"></div>
+	<div th:replace="~{/components/button::clear_filter(${sectionName}, 'cf-button-dock-clear-middle')}"></div>
 	<!-- Filter Bar -->
 	<div th:replace="~{/components/filter::bar(${sectionName}, 'filter-bar-right')}"></div>
 	<!-- Export CSV Buttons -->
@@ -100,18 +100,18 @@
 	<!-- Authorization: only open to admin and editor -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 		<!-- Create Item Button -->
-		<div th:replace="~{/components/button::create('products', '')}"></div>
+		<div th:replace="~{/components/button::create_instance('products', '')}"></div>
 	</th:block>
 	<!-- Authorization: open to all users with access to this page -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 		<!-- Clear Sorting Button -->
 		<div th:replace="~{/components/button::clear_sort('products', '')}"></div>
 		<!-- Clear Search Button -->
-		<div th:replace="~{/components/button::clear_search('products', 'cf-button-clear-left')}"></div>
+		<div th:replace="~{/components/button::clear_search('products', 'cf-button-dock-clear-left')}"></div>
 		<!-- Search Bar -->
 		<div th:replace="~{/components/search::bar('products', 'search-bar-right')}"></div>
 		<!-- Clear Filter Button -->
-		<div th:replace="~{/components/button::clear_filter('products', 'cf-button-clear-middle')}"></div>
+		<div th:replace="~{/components/button::clear_filter('products', 'cf-button-dock-clear-middle')}"></div>
 		<!-- Filter Bar -->
 		<div th:replace="~{/components/filter::bar('products', 'filterLargeScreen', 'filter-bar-right')}"></div>
 		<!-- Export CSV Buttons -->
@@ -131,7 +131,7 @@
 		<!-- Authorization: only open to admin and editor -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 			<!-- Create Item Button -->
-			<div th:replace="~{/components/button::create('products', '')}"></div>
+			<div th:replace="~{/components/button::create_instance('products', '')}"></div>
 		</th:block>
 		<!-- Authorization: open to all users with access to this page -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
@@ -144,7 +144,7 @@
 			<!-- Search Bar -->
 			<div th:replace="~{/components/search::bar('products', 'search-bar-left')}"></div>
 			<!-- Clear Search Button -->
-			<div th:replace="~{/components/button::clear_search('products', 'cf-button-clear-right')}"></div>
+			<div th:replace="~{/components/button::clear_search('products', 'cf-button-dock-clear-right')}"></div>
 		</th:block>
 	</div>
 	<!-- Second row -->
@@ -154,7 +154,7 @@
 			<!-- Filter Bar -->
 			<div th:replace="~{/components/filter::bar('products', 'filterSmallScreen', 'filter-bar-left')}"></div>
 			<!-- Clear Filter Button -->
-			<div th:replace="~{/components/button::clear_filter('products', 'cf-button-clear-right')}"></div>
+			<div th:replace="~{/components/button::clear_filter('products', 'cf-button-dock-clear-right')}"></div>
 		</th:block>
 	</div>
 </div>

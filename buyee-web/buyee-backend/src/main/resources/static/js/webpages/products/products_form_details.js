@@ -32,7 +32,7 @@ function showNextDetailSection() {
 	lastDivDetailId = lastDivDetail.attr("id");
 	htmlLinkRemove = `
 		<div class="input-group" style="width: 5%" title="Delete this detail">
-			<a class="detail-button-padding detail-button-manager" 
+			<a class="detail-button-padding cf-button-form-delete-detail" 
 			   onclick="removeDetailSectionById('${lastDivDetailId}');">
 			    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>
 			</a>	

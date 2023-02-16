@@ -65,7 +65,7 @@
 							<!-- Edit -->
 							<a th:replace="~{/components/button::edit('users', ${user}, '')}"></a>&nbsp;&nbsp;
 							<!-- Delete -->
-							<a th:replace="~{/components/button::delete('users', ${user}, '')}"></a>
+							<a th:replace="~{/components/button::delete_instance('users', ${user}, '')}"></a>
 						</td>
 					</tr>
 				</tbody>
@@ -97,7 +97,7 @@
 									<!-- Edit -->
 									<a th:replace="~{/components/button::edit('users', ${user}, 'fa-2x mb-4')}"></a>
 									<!-- Delete -->
-									<a th:replace="~{/components/button::delete('users', ${user}, 'fa-2x')}"></a>
+									<a th:replace="~{/components/button::delete_instance('users', ${user}, 'fa-2x')}"></a>
 								</div>
 							</div>
 							<hr />

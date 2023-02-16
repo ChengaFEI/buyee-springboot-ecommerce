@@ -1,8 +1,19 @@
+<!-- ####################### -->
+<!-- ## Buttons in Header ## -->
+<!-- ####################### -->
+<!-- Navbar Toggler -->
+<div th:fragment="toggler_navbar(extraClass)" th:remove="tag">
+	<button th:class="'navbar-toggler cf-button-header-navbar ' + ${extraClass}" type="button" 
+			data-bs-toggle="collapse" data-bs-target=".topNavbar" aria-controls="topNavbar" aria-expanded="false" 
+			aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+</div>
 <!-- ##################### -->
 <!-- ## Buttons in Dock ## -->
 <!-- ##################### -->
 <!-- Create New Item -->
-<div th:fragment="create(sectionName, extraClass)" th:remove="tag">
+<div th:fragment="create_instance(sectionName, extraClass)" th:remove="tag">
 	<a th:class="'cf-button-dock input-group-text border-0 ' + ${extraClass}" id="search-addon" 
 	   th:title="'Create ' + ${sectionName}" th:href="@{'/' + ${sectionName} + '/new'}"> 
 		<i class="fa-solid fa-circle-plus fa-2x"></i>
@@ -20,7 +31,7 @@
 </div>
 <!-- Clear Search -->
 <div th:fragment="clear_search(sectionName, extraClass)" th:remove="tag">
-	<a th:class="'cf-button-dock input-group-text cf-button-clear ' + ${extraClass}" id="search-addon" 
+	<a th:class="'cf-button-dock input-group-text cf-button-dock-clear ' + ${extraClass}" id="search-addon" 
 	   title="Clear Search Results"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
 	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
@@ -31,7 +42,7 @@
 </div>
 <!-- Clear Filter -->
 <div th:fragment="clear_filter(sectionName, extraClass)" th:remove="tag">
-	<a th:class="'cf-button-dock input-group-text cf-button-clear ' + ${extraClass}" id="search-addon" 
+	<a th:class="'cf-button-dock input-group-text cf-button-dock-clear ' + ${extraClass}" id="search-addon" 
 	   title="Clear Filter Results"
 	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
 	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
@@ -105,7 +116,7 @@
 	   th:class="'fa-solid fa-pen-to-square cf-button-table ' + ${extraClass}"></a> 
 </div>
 <!-- Delete Item -->
-<div th:fragment="delete(sectionName, instance, extraClass)"  th:remove="tag">
+<div th:fragment="delete_instance(sectionName, instance, extraClass)"  th:remove="tag">
 	<a data-bs-toggle="tooltip" th:title="'Delete ' + ${sectionName}"
  	   th:href="@{'/' + ${sectionName} + '/delete/' + ${instance.getId()}}"
 	   th:class="'fa-solid fa-trash-can cf-button-table button-delete ' + ${extraClass}"
@@ -116,14 +127,20 @@
 <!-- ##################### -->
 <!-- Delete Image Button in Products Images Section -->
 <div th:fragment="delete_image"  th:remove="tag">
-	<a class="input-group-text border-0 cf-button-delete-image" title="Delete this image"
+	<a class="input-group-text border-0 cf-button-form-delete-image" title="Delete this image"
   	   name="linkRemoveExtraImage"> 
     	<i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
 	</a>
 </div>
-<!-- Add/Delete Button in Products Details Section -->
-<div class="input-group" style="width: 5%" title="Delete this detail">
-	<a class="detail-button-padding cf-button-form linkRemoveDetail">
+<!-- Delete Button in Products Details Section -->
+<div th:fragment="delete_detail" class="input-group" style="width: 5%" title="Delete this detail">
+	<a class="detail-button-padding cf-button-form-delete-detail linkRemoveDetail">
 	    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>
-	</a>	
+	</a>
+</div>
+<!-- Add Button in Products Details Section -->
+<div th:fragment="create_detail" class="input-group" style="width: 5%" title="Add a detail">
+	<a class="detail-button-padding cf-button-form-create-detail" onclick="showNextDetailSection();"> 
+		<i class="fa-solid fa-circle-plus fa-2x"></i>
+	</a>
 </div>

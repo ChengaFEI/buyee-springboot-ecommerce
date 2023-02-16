@@ -11,13 +11,13 @@
 		</a>
 		<!-- Toggler button to expand the drop down menu -->
 		<!-- hidden in large screen and visible in medium/small screen -->
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar"
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".topNavbar"
 		        aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation" 
 		        style="margin-right: 15px">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<!-- Website Sections -->
-		<div class="collapse navbar-collapse" id="topNavbar">
+		<div class="collapse navbar-collapse topNavbar">
 			<ul class="navbar-nav section-list-custom">
 				<!-- Users -->
 				<th:block sec:authorize="hasAuthority('Admin')">
@@ -71,7 +71,11 @@
 				<th:block sec:authorize="hasAnyAuthority('Admin')">
 					<li th:replace="~{/components/text::header('Settings')}"/>&nbsp;
 				</th:block>
-				<!-- Account -->
+			</ul>
+		</div>
+		<!-- Account -->
+		<div class="collapse navbar-collapse topNavbar">
+			<ul class="navbar-nav section-list-custom" style="padding-right: 0">
 				<li th:class="${activeItem == 'Account' 
 								? 'nav-item ml-auto dropdown nav-item-active'
 								: 'nav-item ml-auto dropdown nav-item-inactive'}">

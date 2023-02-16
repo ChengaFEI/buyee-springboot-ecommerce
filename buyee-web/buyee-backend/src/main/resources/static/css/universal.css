@@ -1,23 +1,33 @@
 @import './theme.css';
+/***********************/
 /* Responsive Settings */
+/***********************/
+/* small screen */
 @media screen and (max-width: 768px) {
-	/* small screen */
+	/* general components */
 	div.full-details {display: none;}
 	div.less-details {display: flex;}
+	/* block-display components */
 	div.full-details-block {display: none;}
 	div.less-details-block {display: block;}
 }
+/* medium screen */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-	/* medium screen */
+	/* general components */
 	div.full-details {display: flex;}
 	div.less-details {display: none;}
+	/* block-display components */
 	div.full-details-block {display: block;}
 	div.less-details-block {display: none;}
+	/* table column components */
 	.hideable-column {display: none;}
 }
+/* large screen */
 @media screen and (min-width: 1024px) { 
-	/* large screen */
+	/* general components */
 	div.less-details {display: none;}
+	/* block-display components */
 	div.less-details-block {display: none;}
+	/* table column components */
 	th.hideable-column {display: table-cell;}
 }

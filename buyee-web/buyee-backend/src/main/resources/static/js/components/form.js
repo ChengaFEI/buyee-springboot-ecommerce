@@ -3,7 +3,6 @@ $(document).ready(function() {
 	$(".cancelButton").on("click", function() {
 		window.location = moduleURL;
 	});
-
 	$("#imageFile").change(function() {
 		if (checkFileSize(this)) {
 			showImageThumbnail(this);

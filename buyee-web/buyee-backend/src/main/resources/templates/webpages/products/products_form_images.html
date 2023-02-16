@@ -1,23 +1,20 @@
 <!-- Main Content Panel -->
-<div th:fragment="content" th:remove="tag">
-	<div th:replace="~{webpages/products/products_form_images::content_full}"></div>
-</div>
-<!-- Main Content Panel in the large/medium screen -->
-<!-- read/write authorization for admins and editors -->
-<div th:fragment="content_full" class="full-details">
+<div th:fragment="content" class="expandable-image">
+	<!-- read/write authorization for admins and editors -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 		<div class="row" id="divProductImages">
 			<!-- Main Image -->
-			<div class="form-group mb-3 rounded" style="width: 25%">
+			<div class="form-group mb-3 rounded expandable-image-content" style="width: 25%">
 				<input type="hidden" th:field="*{mainImage}"/>
 				<!-- Image Input -->
 				<div title="Image should be smaller than 1MB">
+					<!-- Image Title -->
 					<label th:if="${product.shortMainImageName != ''}" class="col-form-label" style="width: 100%" 
-						   for="imageFile">
+						   for="fullImageFile">
 						Main Image: [[${product.shortMainImageName}]]
 					</label>
 					<label th:if="${product.shortMainImageName == ''}" class="col-form-label" style="width: 100%" 
-						   for="imageFile">
+						   for="fullImageFile">
 						Main Image
 					</label>
 					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
@@ -31,7 +28,8 @@
 			</div>
 			<!-- All Existing Extra Images -->
 			<th:block th:each="extraImage, status : ${product.sortedImages}">
-				<div th:id="${'extraImageDiv' + status.index}" class="form-group mb-3 rounded" style="width: 25%">
+				<div th:id="${'extraImageDiv' + status.index}" class="form-group mb-3 rounded expandable-image-content" 
+					 style="width: 25%">
 					<!-- Required Properties -->
 					<input type="hidden" th:id="${'isImageExist' + status.index}" value="true"/>
 					<input type="hidden" name="extraImageIds" th:id="'extraImageId' + ${status.index}"
@@ -57,7 +55,7 @@
 				</div>
 			</th:block>
 			<!-- Extra Image (original state, no delete button) -->
-			<div th:id="${'extraImageDiv' + numExistingExtraImages}" class="form-group mb-3 rounded" style="width: 25%"
+			<div th:id="${'extraImageDiv' + numExistingExtraImages}" class="form-group mb-3 rounded expandable-image-content" style="width: 25%"
 				 title="Image should be smaller than 1MB">
 				<!-- Required Properties -->
 				<input type="hidden" th:id="${'isImageExist' + numExistingExtraImages}" value="false"/>
@@ -70,9 +68,8 @@
 				</div>
 				<!-- Image Preview -->
 				<div>
-					<img th:id="${'extraThumbnail' + numExistingExtraImages}" 
-						 th:alt="${'Extra Image ' + numExistingExtraImages + ' Preview'}" style="width: 100%" 
-						 th:src="@{${product.defaultImagePathString}}"/>
+					<img th:id="${'extraThumbnail' + numExistingExtraImages}" th:src="@{${product.defaultImagePathString}}"
+						 th:alt="${'Extra Image ' + numExistingExtraImages + ' Preview'}" style="width: 100%"/>
 				</div>
 			</div>
 		</div>	
@@ -81,7 +78,7 @@
 	<th:block sec:authorize="hasAuthority('Salesperson')">
 		<div class="row">
 			<!-- Main Image -->
-			<div class="form-group mb-3 rounded" style="width: 25%">
+			<div class="form-group mb-3 rounded expandable-image-content" style="width: 25%">
 				<div th:title="'(Main) ' + ${product.mainImage}">
 					<label class="col-form-label mb-2">Main Image: <br/>[[${product.shortMainImageName}]]</label>
 					<img alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
@@ -89,7 +86,7 @@
 			</div>
 			<!-- All Existing Extra Images -->
 			<th:block th:each="extraImage, status : ${product.sortedImages}">
-				<div class="form-group mb-3 rounded" style="width: 25%">
+				<div class="form-group mb-3 rounded expandable-image-content" style="width: 25%">
 					<div th:title="'(Extra ' + ${status.index+1} + ') ' + ${extraImage.name}">
 						<label class="col-form-label mb-2">
 							Extra Image #[[${status.index+1}]]: <br/>[[${extraImage.shortImageName}]]

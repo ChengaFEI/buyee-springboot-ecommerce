@@ -37,7 +37,7 @@ function showExtraImageThumbnail(fileInput, index) {
 // Add extra image section
 function showNextExtraImageSection(index) {
 	html = `
-		<div id="extraImageDiv${index}" class="form-group mb-3 rounded" style="width: 25%" 
+		<div id="extraImageDiv${index}" class="form-group mb-3 rounded expandable-image-content" style="width: 25%" 
 			 title="Image should be smaller than 1MB">
 			<label class="col-form-label">Extra Image ${index+1}</label>
 			<div id="extraImageHeader${index}" class="input-group mb-3" >

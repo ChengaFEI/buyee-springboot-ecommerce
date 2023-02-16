@@ -64,10 +64,7 @@
 			    <!-- Enabled -->
 				<div class="form-group mb-3" title="Enable/disable the account">
 					<label class="col-form-label">Enabled</label>
-					<div>
-						<input class="checkbox-custom" type="checkbox" th:field="*{enabled}" /> 
-						<label class="col-sm-1">Yes</label>
-					</div>
+					<div th:replace="~{/components/checkbox::enabled}"></div>
 				</div>
 			    <!-- Photo -->
 				<div class="form-group mb-3" title="Image should be smaller than 1MB">

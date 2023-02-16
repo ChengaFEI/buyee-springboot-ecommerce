@@ -1,0 +1,18 @@
+<!-- ##################### -->
+<!-- ## Buttons in Form ## -->
+<!-- ##################### -->
+<!-- Enabled check box -->
+<div th:fragment="enabled">
+	<input class="cf-checkbox" type="checkbox" th:field="*{enabled}" /> 
+	<label class="col-sm-1">Yes</label>
+</div>
+<div th:fragment="enabled_products">
+	<input class="cf-checkbox" type="checkbox" th:field="*{enabled}" 
+	       th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}" />
+	<label class="col-sm-1">Yes</label>
+</div>
+<div th:fragment="in_stock_products">
+	<input class="cf-checkbox" type="checkbox" th:field="*{inStock}" 
+	       th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}" />
+	<label class="col-sm-1">Yes</label>
+</div>

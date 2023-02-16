@@ -68,24 +68,16 @@
 	<!-- Enabled -->
 	<div class="form-group mb-3" title="Enable/disable the product">
 		<label class="col-form-label">Enabled</label>
-		<div>
-			<!-- read/write authorization for admins and editors -->
-			<!-- readonly authorization for salesperson -->
-			<input class="checkbox-custom" type="checkbox" th:field="*{enabled}" 
-			       th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}" />
-			<label class="col-sm-1">Yes</label>
-		</div>
+		<!-- read/write authorization for admins and editors -->
+		<!-- readonly authorization for salesperson -->
+		<div th:replace="~{/components/checkbox::enabled_products}"></div>
 	</div>
 	<!-- In Stock -->
 	<div class="form-group mb-3" title="Is the product in-stock?">
 		<label class="col-form-label">In-Stock</label>
-		<div>
-			<!-- read/write authorization for admins and editors -->
-			<!-- readonly authorization for salesperson -->
-			<input class="checkbox-custom" type="checkbox" th:field="*{inStock}" 
-			       th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}" />
-			<label class="col-sm-1">Yes</label>
-		</div>
+		<!-- read/write authorization for admins and editors -->
+		<!-- readonly authorization for salesperson -->
+		<div th:replace="~{/components/checkbox::in_stock_products}"></div>
 	</div>
 	<!-- Cost -->
 	<div class="form-group mb-3" title="Please enter the cost of this product">

@@ -1,58 +1,68 @@
-/* Welcome Text in Index Page */
-.link-account-manager {
+/************************/
+/** Text in Index Page **/
+/************************/
+/* Welcome message */
+.cf-text-index {
 	color: var(--cf-gray);
 	text-decoration: none
 }
-.link-account-manager:hover {color: var(--cf-red);}
-/* Text of Header's Navigation Items */
-.navbar-custom {background-color: var(--cf-black)!important;}
-.nav-item-active {border-bottom: 1px solid var(--cf-white);}
-.nav-item-active:hover {border-bottom: 1px solid var(--cf-gray);}
-.nav-item-active>a {color: var(--cf-white);}
-.nav-item-inactive:hover {border-bottom: 1px solid var(--cf-white);}
-.nav-item-inactive>a {color: var(--cf-gray);}
-.nav-item-inactive>a:hover {color: var(--cf-white);}
+.cf-text-index:hover {color: var(--cf-red);}
+/********************/
+/** Text in Header **/
+/********************/
+/* Text in Header's Navigation Sections */
+.cf-text-header {background-color: var(--cf-black)!important;}
+.cf-text-header-item-active {border-bottom: 1px solid var(--cf-white);}
+.cf-text-header-item-active:hover {border-bottom: 1px solid var(--cf-gray);}
+.cf-text-header-item-active>a {color: var(--cf-white);}
+.cf-text-header-item-inactive:hover {border-bottom: 1px solid var(--cf-white);}
+.cf-text-header-item-inactive>a {color: var(--cf-gray);}
+.cf-text-header-item-inactive>a:hover {color: var(--cf-white);}
+/*******************/
+/** Text in Table **/
+/*******************/
 /* Text in Table Heads */
-.table-head-active {
+.cf-text-table-head-active {
 	text-decoration: none;
 	color: var(--cf-red);
 }
-.table-head-active:hover {
+.cf-text-table-head-active:hover {
 	text-decoration: none;
 	color: var(--cf-red-light);
 }
-.table-head-inactive {
+.cf-text-table-head-inactive {
 	text-decoration: none;
 	color: var(--cf-black);
 }
-.table-head-inactive:hover {
+.cf-text-table-head-inactive:hover {
 	text-decoration: none;
 	color: var(--cf-red);
 }
 /* Hyperlink Text in Table Body */
-.text-action-tree>a {
+.cf-text-table-body-tree>a {
 	color: var(--cf-black);
 	text-decoration: underline dotted var(--cf-gray);
 	text-underline-offset: 8px;
 }
-.text-action-tree:hover>a {
+.cf-text-table-body-tree:hover>a {
 	color: var(--cf-white);
 	background-color: var(--cf-red);
 	text-decoration: none;
 }
-.text-action-list>a {
+.cf-text-table-body-list>a {
 	color: var(--cf-black);
 	text-decoration: underline dotted var(--cf-gray);
 }
-.text-action-list:hover {
+.cf-text-table-body-list:hover {
 	background-color: var(--cf-red);
 }
-.text-action-list:hover>a {
+.cf-text-table-body-list:hover>a {
 	color: var(--cf-white);
 	text-decoration: none;
 }
-/* Text of Badges in Table Body */
-.badge-custom {margin-right: 10px;}
+/******************/
+/** Text in Form **/
+/******************/
 /* Rich Text Editor in Products Description Form */
 .richText-btn, .richText-undo, .richText-redo, .richText-help {color: var(--cf-gray);}
 .richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {color: var(--cf-red);}

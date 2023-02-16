@@ -1,4 +1,5 @@
 /* Sub Components */
 @import './text.css';
 @import './button.css';
+@import './badge.css';
 @import './pagination.css';

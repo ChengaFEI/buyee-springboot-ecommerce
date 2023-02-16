@@ -17,7 +17,7 @@ function showSelectedCategories(dropdownCategories, selectedCategories) {
 		let selectedCategory = $(this);
 		let catName = selectedCategory.text().replace(/·/g, "");
 		selectedCategories.append(
-			"<span class='badge rounded-pill text-bg-light fw-normal badge-custom' style='margin-right:10px'>"
+			"<span class='badge rounded-pill text-bg-light fw-normal cf-badge' style='margin-right:10px'>"
 			+ catName +
 			"</span>");
 	});

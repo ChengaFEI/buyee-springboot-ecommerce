@@ -44,7 +44,7 @@
 						<!-- Categories -->
 						<td class="align-middle">
 							<span th:each="category : ${brand.getCategories()}"
-								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
+								  class="badge rounded-pill text-bg-light fw-normal cf-badge">[[${category.name}]]</span>
 						</td>
 						<!-- Actions -->
 						<td class="align-middle text-center">
@@ -73,10 +73,10 @@
 								<div style="width: 40%; padding-left: 0">
 									<div class="mb-2"><b>ID: </b>[[${brand.id}]]</div>
 									<div class="mb-2"><b>Name: </b>[[${brand.name}]]</div>
-									<div class="mb-2"><b>Categories: </b></div>
+									<div><b>Categories: </b></div>
 									<div class="mb-2">
 										<span th:each="category : ${brand.categories}"
-								 			  class="badge rounded-pill text-bg-dark fw-normal badge-custom">
+								 			  class="badge rounded-pill text-bg-dark fw-normal cf-badge">
 								 			[[${category.name}]]
 								 		</span>
 									</div>

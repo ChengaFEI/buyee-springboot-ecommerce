@@ -54,7 +54,7 @@
 						<!-- Roles -->
 						<td class="align-middle">
 							<span th:each="role : ${user.getRoles()}"
-								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${role.name}]]</span>
+								  class="badge rounded-pill text-bg-light fw-normal cf-badge">[[${role.name}]]</span>
 						</td>
 						<!-- Enabled -->
 						<td class="align-middle text-center">
@@ -88,7 +88,13 @@
 									<div class="mb-2"><b>ID: </b>[[${user.id}]]</div>
 									<div class="mb-2"><b>Name: </b>[[${user.getFullName}]]</div>
 									<div class="mb-2"><b>Email: </b>[[${user.email}]]</div>
-									<div><b>Roles: </b>[[${user.roles}]]</div>
+									<div><b>Roles: </b></div>
+									<div class="mb-2">
+										<span th:each="role: ${user.roles}"
+								 			  class="badge rounded-pill text-bg-dark fw-normal cf-badge">
+								 			[[${role.name}]]
+								 		</span>
+									</div>
 								</div>
 								<!-- Right: Enabled & Actions -->
 								<div style="width: 64px; margin-left: auto;">

@@ -57,7 +57,7 @@
 						<!-- Category Name -->
 						<td class="align-middle">
 							<span th:each="category:${product.getCategory()}"
-								  class="badge rounded-pill text-bg-light fw-normal badge-custom">[[${category.name}]]</span>
+								  class="badge rounded-pill text-bg-light fw-normal cf-badge">[[${category.name}]]</span>
 						</td>
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
 							<!-- Enabled -->

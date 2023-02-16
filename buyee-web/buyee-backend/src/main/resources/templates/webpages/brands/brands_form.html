@@ -19,11 +19,8 @@
 		    <!-- Required Properties -->
 			<input type="hidden" th:field="*{id}" />
 			<div class="border border-secondary rounded p-3">
-				<!-- Form Title -->
-				<div class="mb-3">
-					<h2>[[${pageTitle}]]</h2>
-				</div>
-				<hr/>
+				<!-- Form Header -->
+				<div th:replace="~{/components/header::form_cancel(${pageTitle})}"></div>
 				<!-- Name -->
 				<div class="form-group mb-3" title="Name must be 3-128 characters long">
 					<label class="col-form-label" for="inputName">Name *</label>

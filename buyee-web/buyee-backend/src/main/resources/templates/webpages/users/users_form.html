@@ -19,9 +19,8 @@
 		    <!-- Required properties for users -->
 			<input type="hidden" th:field="*{id}" />
 			<div class="border border-secondary rounded p-3">
-			    <!-- Form Title -->
-				<div class="mb-3"><h2>[[${pageTitle}]]</h2></div>
-				<hr/>
+			    <!-- Form Header -->
+				<div th:replace="~{/components/header::form_cancel(${pageTitle})}"></div>
 			    <!-- Email -->
 				<div class="form-group mb-3" title="We will not share the email with others">
 					<label class="col-form-label" for="inputEmail">Email *</label>

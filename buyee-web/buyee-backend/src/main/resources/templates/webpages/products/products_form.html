@@ -35,10 +35,7 @@
 			<input th:if="${product.category != null}" type="hidden" id="categoryId" th:value="${product.category.id}" />
 			<div class="border border-secondary rounded p-3">
 				<!-- Form Header -->
-				<div class="mb-3">
-					<h2>[[${pageTitle}]]</h2>
-				</div>
-				<hr />
+				<div th:replace="~{/components/header::form_cancel(${pageTitle})}"></div>
 				<!-- Form Panels -->
 				<div class="tab-content">
 					<!-- Overview Section -->

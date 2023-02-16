@@ -19,9 +19,8 @@
 		    <!-- Required properties for account -->
 			<input type="hidden" th:field="*{id}" />
 			<div class="border border-secondary rounded p-3">
-			    <!-- Form Title -->
-				<div class="mb-3"><h2>Account Details</h2></div>
-				<hr/>
+			    <!-- Form Header -->
+				<div th:replace="~{/components/header::form_cancel('Account Info')}"></div>
 			    <!-- Read-only User Information -->
 			    	<!-- User ID -->
 				<div class="form-group">

@@ -1,6 +1,6 @@
 // Display the thumbnail of uploaded image
 $(document).ready(function() {
-	$("#cancelButton").on("click", function() {
+	$(".cancelButton").on("click", function() {
 		window.location = moduleURL;
 	});
 

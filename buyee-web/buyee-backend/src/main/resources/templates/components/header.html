@@ -1,4 +1,4 @@
-<!-- Navigation Bar -->
+<!-- Main Page Navigation Bar -->
 <div th:fragment="navbar(activeItem)">
 	<!-- Hidden form for secure logout -->
 	<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
@@ -99,4 +99,12 @@
 <!-- Float Window -->
 <div th:fragment="floatwindow" th:if="${message != null}" class="alert alert-secondary text-center bg-dark float-square">
 	<div class="float-square-item form-control bg-dark">[[${message}]]</div>
+</div>
+<!-- Form Header -->
+<div th:fragment="form_cancel(title)" th:remove="tag">
+	<div class="mb-3 modal-header">
+		<h2>[[${title}]]</h2>
+		<input type="button" class="btn-close cancelButton"/>
+	</div>
+	<hr />
 </div>

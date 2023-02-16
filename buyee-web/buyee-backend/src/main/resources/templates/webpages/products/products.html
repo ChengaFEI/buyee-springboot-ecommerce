@@ -49,7 +49,7 @@
 						<!-- ID -->
 						<td class="align-middle text-center hideable-column" th:text="${product.id}" />
 						<!-- Name -->
-						<td class="align-middle text-action-list">
+						<td class="align-middle">
 							<div th:replace="~{/components/text::table_products}"></div>
 						</td>
 						<!-- Brand Name -->
@@ -100,7 +100,7 @@
 									<img th:src="@{${product.mainImagePathString}}" style="width: 100%" />
 								</div>
 								<!-- Middle: Information -->
-								<div class="text-action-list" style="width: 40%; padding-left: 0">
+								<div style="width: 40%; padding-left: 0">
 									<div th:replace="~{/components/text::table_products}"></div>
 								</div>
 								<!-- Right: Enabled & Actions -->

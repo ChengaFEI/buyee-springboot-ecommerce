@@ -44,20 +44,9 @@
 						<!-- ID -->
 						<td class="align-middle text-center" th:text="${category.getId()}"></td>
 						<!-- Name -->
-						<th:block>
-							<!-- Display in hierarchy mode -->
-							<td th:if="${hierarchy}" class="align-middle text-action-tree">
-								<a th:if="${category.children != null && category.children.size != 0}" 
-								   th:text="${category.name}" th:href="'#'+${category.id}"></a>
-								<span th:unless="${category.children != null && category.children.size != 0}">
-									[[${category.name}]]
-								</span>
-							</td>
-							<!-- Display in normal table mode -->
-							<td th:unless="${hierarchy}" class="align-middle">
-								<span>[[${category.name}]]</span>
-							</td>
-						</th:block>
+						<td class="align-middle">
+							<div th:replace="~{/components/text::table_categories}"></div>
+						</td>
 						<!-- Alias -->
 						<td class="align-middle" th:text="${category.getAlias()}" />
 						<!-- Enabled -->
@@ -92,20 +81,13 @@
 								<div style="width: 40%; padding-left: 0">
 									<div class="mb-2"><b>ID: </b>[[${category.id}]]</div>
 									<!-- Name -->
-									<div><b>Name:</b></div>
-									<!-- Display in hierarchy mode -->
-									<div th:if="${hierarchy}" class="align-middle text-action-tree mb-2">
-										<a th:if="${category.children != null && category.children.size != 0}" 
-										   th:text="${category.name}" th:href="'#'+${category.id}"></a>
-										<span th:unless="${category.children != null && category.children.size != 0}">
-											[[${category.name}]]
-										</span>
+									<div class="mb-2">
+										<div><b>Name:</b></div>
+										<div th:replace="~{/components/text::table_categories}"></div>
 									</div>
-									<!-- Display in normal table mode -->
-									<div th:unless="${hierarchy}" class="align-middle">
-										<span>[[${category.name}]]</span>
-									</div>
+									<!-- Alias -->
 									<div class="mb-2"><b>Alias: </b>[[${category.alias}]]</div>
+									<!-- Super Category -->
 									<div><b>Superclass: </b>[[${category.parent}]]</div>
 								</div>
 								<!-- Right: Enabled & Actions -->

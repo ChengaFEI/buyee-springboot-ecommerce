@@ -1,10 +1,12 @@
 /* Sub Components */
+@import './button.css';
 @import './text.css';
 @import './dropdown.css';
 /* Main Header Nav Bar */
 .section-list-custom {
-	padding-left: 15px; 
-	padding-right: 15px;
+	padding-left: calc(var(--main-gutter-x) * .5); 
+	padding-right: calc(var(--main-gutter-x) * .5);
+	margin-right: auto;
 }
 /* Main Header Float Window */
 .float-square {

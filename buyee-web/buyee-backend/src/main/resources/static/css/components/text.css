@@ -3,31 +3,15 @@
 	color: var(--main-gray-normal);
 	text-decoration: none
 }
-.link-account-manager:hover {
-	color: var(--main-pink-bright);
-}
+.link-account-manager:hover {color: var(--main-pink-bright);}
 /* Text of Header's Navigation Items */
-.navbar-custom {
-	background-color: var(--main-black-normal) !important;
-}
-.nav-item-active {
-	border-bottom: 1px solid var(--main-white-bright);
-}
-.nav-item-active:hover {
-	border-bottom: 1px solid var(--main-gray-normal);
-}
-.nav-item-active>a {
-	color: var(--main-white-bright);
-}
-.nav-item-inactive:hover {
-	border-bottom: 1px solid var(--main-white-bright);
-}
-.nav-item-inactive>a {
-	color: var(--main-gray-normal);
-}
-.nav-item-inactive>a:hover {
-	color: var(--main-white-bright);
-}
+.navbar-custom {background-color: var(--main-black-normal) !important;}
+.nav-item-active {border-bottom: 1px solid var(--main-white-bright);}
+.nav-item-active:hover {border-bottom: 1px solid var(--main-gray-normal);}
+.nav-item-active>a {color: var(--main-white-bright);}
+.nav-item-inactive:hover {border-bottom: 1px solid var(--main-white-bright);}
+.nav-item-inactive>a {color: var(--main-gray-normal);}
+.nav-item-inactive>a:hover {color: var(--main-white-bright);}
 /* Text in Table Heads */
 .table-head-active {
 	text-decoration: none;
@@ -52,35 +36,28 @@
 	text-underline-offset: 8px;
 }
 .text-action-tree:hover>a {
-	color: var(--main-pink-bright);
-	text-decoration: underline solid var(--main-pink-bright);
+	color: var(--main-white-bright);
+	background-color: var(--main-pink-bright);
+	text-decoration: none;
 }
 .text-action-list>a {
 	color: var(--main-black-normal);
 	text-decoration: underline dotted var(--main-gray-normal);
 }
+.text-action-list:hover {
+	background-color: var(--main-pink-bright);
+}
 .text-action-list:hover>a {
-	color: var(--main-pink-bright);
-	text-decoration: underline solid var(--main-pink-bright);
-	text-underline-offset: 8px;
+	color: var(--main-white-bright);
+	text-decoration: none;
 }
 /* Text of Badges in Table Body */
-.badge-custom {
-	margin-right: 10px;
-}
+.badge-custom {margin-right: 10px;}
 /* Rich Text Editor in Products Description Form */
-.richText-btn, .richText-undo, .richText-redo, .richText-help {
-	color: var(--main-gray-normal); 
-}
-.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {
-	color: var(--main-pink-bright); 
-}
-.richText-btn:hover .richText-dropdown {
-	color: var(--main-gray-normal);
-}
-.richText-btn:hover .richText-dropdown li:hover {
-	color: var(--main-pink-bright);
-}
+.richText-btn, .richText-undo, .richText-redo, .richText-help {color: var(--main-gray-normal);}
+.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {color: var(--main-pink-bright);}
+.richText-btn:hover .richText-dropdown {color: var(--main-gray-normal);}
+.richText-btn:hover .richText-dropdown li:hover {color: var(--main-pink-bright);}
 .richText .richText-form button {
 	background-color: transparent;
 	color: var(--main-pink-bright);
@@ -90,9 +67,5 @@
 	background-color: var(--main-pink-bright);
 	color:  var(--main-white-bright);
 }
-.richText .richText-form input[type=text]:focus {
-	border: 1px solid var(--main-pink-bright);
-}
-.richText .richText-editor:focus {
-	border-left: 2px solid var(--main-pink-bright);
-}
+.richText .richText-form input[type=text]:focus {border: 1px solid var(--main-pink-bright);}
+.richText .richText-editor:focus {border-left: 2px solid var(--main-pink-bright);}

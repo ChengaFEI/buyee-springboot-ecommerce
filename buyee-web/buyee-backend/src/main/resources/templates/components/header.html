@@ -11,9 +11,8 @@
 		</a>
 		<!-- Toggler button to expand the drop down menu -->
 		<!-- hidden in large screen and visible in medium/small screen -->
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".topNavbar"
-		        aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation" 
-		        style="margin-right: 15px">
+		<button class="navbar-toggler cf-button-navbar" type="button" data-bs-toggle="collapse" data-bs-target=".topNavbar"
+		        aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<!-- Website Sections -->
@@ -73,9 +72,9 @@
 				</th:block>
 			</ul>
 		</div>
-		<!-- Account -->
+		<!-- Account Section -->
 		<div class="collapse navbar-collapse topNavbar">
-			<ul class="navbar-nav section-list-custom" style="padding-right: 0">
+			<ul class="navbar-nav section-list-custom">
 				<li th:class="${activeItem == 'Account' 
 								? 'nav-item ml-auto dropdown nav-item-active'
 								: 'nav-item ml-auto dropdown nav-item-inactive'}">

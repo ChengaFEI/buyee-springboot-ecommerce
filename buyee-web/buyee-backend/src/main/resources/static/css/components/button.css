@@ -1,3 +1,9 @@
+/*********************/
+/* Buttons in Header */
+/*********************/
+.cf-button-navbar {
+	margin-right: calc(var(--main-gutter-x) * .5);
+}
 /*******************/
 /* Buttons in Dock */
 /*******************/

@@ -3,3 +3,14 @@
 	th:class="${activeItem == sectionName ? 'nav-item nav-item-active' : 'nav-item nav-item-inactive'}">
 	<a class="nav-link" th:href="@{${'/' + sectionName.toLowerCase()}}">[[${sectionName}]]</a>
 </li>
+<!-- Hyperlink Text in Products Table -->
+<div th:fragment="table_products" th:remove="tag">
+	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+		<!-- link-detail is required for using preview-modal -->
+		<a class="link-detail" title="View this product" th:text="${product.shortName}" 
+		   th:href="@{'/products/view/' + ${product.id}}"></a> 
+	</th:block>
+	<th:block sec:authorize="hasAuthority('Assistant')">
+		<a title="View this product" th:text="${product.shortName}"></a> 
+	</th:block>
+</div>

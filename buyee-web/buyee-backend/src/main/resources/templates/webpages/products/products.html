@@ -22,7 +22,7 @@
 						<!-- Main Image -->
 						<th th:replace="~{/components/sort::switch('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
 						<!-- ID -->
-						<th th:replace="~{/components/sort::switch('products', 'id', 'ID', '70px', 'text-center', true)}" />
+						<th th:replace="~{/components/sort::switch('products', 'id', 'ID', '70px', 'text-center hideable-column', true)}" />
 						<!-- Name -->
 						<th th:replace="~{/components/sort::switch('products', 'name', 'Name', '', '', true)}" />
 						<!-- Brand -->
@@ -47,17 +47,10 @@
 							<img th:src="@{${product.getMainImagePathString()}}" style="width: 50px" />	
 						</td>
 						<!-- ID -->
-						<td class="align-middle text-center" th:text="${product.id}" />
+						<td class="align-middle text-center hideable-column" th:text="${product.id}" />
 						<!-- Name -->
 						<td class="align-middle text-action-list">
-							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
-								<!-- link-detail is required for using preview-modal -->
-								<a class="link-detail" title="View this product" th:text="${product.shortName}" 
-								   th:href="@{'/products/view/' + ${product.id}}"></a> 
-							</th:block>
-							<th:block sec:authorize="hasAuthority('Assistant')">
-								<a title="View this product" th:text="${product.shortName}"></a> 
-							</th:block>
+							<div th:replace="~{/components/text::table_products}"></div>
 						</td>
 						<!-- Brand Name -->
 						<td class="align-middle" th:text="${product.brand.name}" />
@@ -107,8 +100,8 @@
 									<img th:src="@{${product.mainImagePathString}}" style="width: 100%" />
 								</div>
 								<!-- Middle: Information -->
-								<div style="width: 40%; padding-left: 0">
-									<div class="mb-2"><b>Name:</b><br/>[[${product.name}]]</div>
+								<div class="text-action-list" style="width: 40%; padding-left: 0">
+									<div th:replace="~{/components/text::table_products}"></div>
 								</div>
 								<!-- Right: Enabled & Actions -->
 								<div style="width: 64px; margin-left: auto">

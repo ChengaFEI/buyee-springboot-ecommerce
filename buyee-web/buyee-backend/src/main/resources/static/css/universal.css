@@ -14,7 +14,7 @@
 	div.less-details-block {display: block;}
 	/* image input components in Products Images Section */
 	.expandable-image .expandable-image-content{width: 100%!important}
-	.shrinkable-bar .shrinkable-bar-content{width: 100%!important};
+	.cf-shrinkable-bar .cf-shrinkable-bar-content{width: 100%!important};
 }
 /* medium screen */
 @media screen and (min-width: 768px) and (max-width: 1024px) {

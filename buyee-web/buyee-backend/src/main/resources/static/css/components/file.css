@@ -1,14 +1,10 @@
+/****************************/
+/** File Input Bar in Form **/
+/****************************/
 /* Image File Input Bar in Products' Images Form */
-.file-button-custom input[type=file]::-webkit-file-upload-button {
-	display: none;
-}
-.file-button-custom input[type=file]::file-selector-button {
-	display: none;
-}
-.file-button-custom input[type=file] {
+.cf-file::-webkit-file-upload-button {display: none;}
+.cf-file::file-selector-button {display: none;}
+.cf-file {
 	border-top-left-radius: var(--cf-r-border)!important;
 	border-bottom-left-radius: var(--cf-r-border)!important;
-}
-.file-button-custom a:hover {
-	cursor: pointer;
 }

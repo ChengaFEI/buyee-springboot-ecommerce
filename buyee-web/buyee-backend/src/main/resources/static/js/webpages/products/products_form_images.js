@@ -40,10 +40,10 @@ function showNextExtraImageSection(index) {
 		<div id="extraImageDiv${index}" class="form-group mb-3 rounded" style="width: 25%" 
 			 title="Image should be smaller than 1MB">
 			<label class="col-form-label">Extra Image ${index+1}</label>
-			<div id="extraImageHeader${index}" class="input-group mb-3 file-button-custom" >
+			<div id="extraImageHeader${index}" class="input-group mb-3" >
 				<input type="hidden" id="isImageExist${index}" value="false">
-				<input class="form-inline form-control text-muted" type="file" name="extraImageFile" accept="image/png image/jpeg" 
-				   onchange="showExtraImageThumbnail(this, ${index})">
+				<input class="form-inline form-control text-muted cf-file" type="file" name="extraImageFile" 
+					   accept="image/png image/jpeg" onchange="showExtraImageThumbnail(this, ${index})">
 			</div>
 			<img id="extraThumbnail${index}" alt="Extra Image ${index+1} Preview" style="width: 100%" 
 				 src="${defaultImageThumbnail}"/>

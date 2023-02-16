@@ -38,9 +38,12 @@
 /* Image File Delete Button in Products' Images Form */
 .cf-button-form-delete-image {
 	color: var(--cf-gray);
-	text-decoration: none
+	text-decoration: none;
 }
-.cf-button-form-delete-image:hover {color: var(--cf-red);}
+.cf-button-form-delete-image:hover {
+	color: var(--cf-red);
+	cursor: pointer;
+}
 /* Add/Delete Buttons in Products' Details Form */
 .cf-button-form-delete-detail {
 	color: var(--cf-gray-light);

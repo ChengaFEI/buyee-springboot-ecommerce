@@ -41,10 +41,9 @@
 					<!-- Image Input -->
 					<div title="Image should be smaller than 1MB">
 						<label class="col-form-label">Extra Image #[[${status.index + 1}]]: [[${extraImage.shortImageName}]]</label>
-						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3 file-button-custom">
+						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3">
 							<!-- Input Bar -->
-							<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
-								   accept="image/png image/jpeg"/>
+							<div th:replace="~{/components/file::image}"></div>
 							<!-- Delete Button -->
 							<div th:replace="~{/components/button::delete_image}"></div>
 						</div>
@@ -65,9 +64,8 @@
 				<!-- Image Input -->
 				<div>
 					<label class="col-form-label">Extra Image #[[${numExistingExtraImages+1}]]</label>
-					<div th:id="${'extraImageHeader' + numExistingExtraImages}" class="input-group mb-3 file-button-custom" >
-						<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
-							   accept="image/png image/jpeg"/>
+					<div th:id="${'extraImageHeader' + numExistingExtraImages}" class="input-group mb-3 cf-file" >
+						<div th:replace="~{/components/file::image}"></div>
 					</div>
 				</div>
 				<!-- Image Preview -->

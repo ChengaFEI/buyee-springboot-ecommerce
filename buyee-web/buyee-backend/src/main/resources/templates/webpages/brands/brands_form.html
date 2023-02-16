@@ -33,7 +33,7 @@
 				<div class="form-group mb-3" title="Press 'ctrl/shift + left click' for multiple selection">
 					<!-- Categories Drop Down Menu -->
 					<label class="col-form-label" for="inputCategories">Categories</label>
-					<div class="select-custom">
+					<div class="cf-dropdown-form">
 						<select multiple class="form-control" th:field="*{categories}">
 							<th:block th:each="category: ${listCategories}">
 								<option th:value="${category.id}">[[${category.name}]]</option>

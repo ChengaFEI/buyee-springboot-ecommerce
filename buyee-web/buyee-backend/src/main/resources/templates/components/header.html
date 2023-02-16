@@ -73,8 +73,8 @@
 		<div class="collapse navbar-collapse topNavbar">
 			<ul class="navbar-nav section-list-custom">
 				<li th:class="${activeItem == 'Account' 
-								? 'nav-item ml-auto dropdown nav-item-active'
-								: 'nav-item ml-auto dropdown nav-item-inactive'}">
+								? 'nav-item ml-auto cf-dropdown-header nav-item-active'
+								: 'nav-item ml-auto cf-dropdown-header nav-item-inactive'}">
 					<!-- Drop Down Toggler -->
 					<a class="nav-link dropdown-toggle" th:href="@{/account}">
 						<!-- Icon -->
@@ -83,7 +83,7 @@
 						<span sec:authentication="principal.fullName"></span>
 					</a>
 					<!-- Drop Down Menu -->
-					<div class="dropdown-content">
+					<div class="cf-dropdown-header-content">
 						<a th:href="@{/account }">Account</a>
 						<a id="logoutLink" href="">Logout</a>
 				  	</div>

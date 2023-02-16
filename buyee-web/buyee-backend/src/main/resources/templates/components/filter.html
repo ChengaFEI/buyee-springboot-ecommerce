@@ -1,7 +1,7 @@
 <!-- Filter Bar -->
 <div th:fragment="bar(sectionName, filterFormId, extraClass)" th:remove="tag">
 	<form th:action="@{'/' + ${sectionName} + '/page/1'}" th:title="'Filter ' + ${sectionName} + ' by category'"
-		  th:class="'form-inline form-control filter-bar-custom ' + ${extraClass}" th:id="${filterFormId}">
+		  th:class="'form-inline form-control cf-filter ' + ${extraClass}" th:id="${filterFormId}">
 		<!-- other searchers/sorters to coordinate with -->
 		<!-- Sorter's input -->
 		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 

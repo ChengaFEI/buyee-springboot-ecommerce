@@ -70,7 +70,7 @@
 	<!-- Clear Filter Button -->
 	<div th:replace="~{/components/button::clear_filter(${sectionName}, 'cf-button-dock-clear-middle')}"></div>
 	<!-- Filter Bar -->
-	<div th:replace="~{/components/filter::bar(${sectionName}, 'filter-bar-right')}"></div>
+	<div th:replace="~{/components/filter::bar(${sectionName}, 'cf-filter-right')}"></div>
 	<!-- Export CSV Buttons -->
 	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
 	<!-- Export Excel Buttons -->
@@ -113,7 +113,7 @@
 		<!-- Clear Filter Button -->
 		<div th:replace="~{/components/button::clear_filter('products', 'cf-button-dock-clear-middle')}"></div>
 		<!-- Filter Bar -->
-		<div th:replace="~{/components/filter::bar('products', 'filterLargeScreen', 'filter-bar-right')}"></div>
+		<div th:replace="~{/components/filter::bar('products', 'filterLargeScreen', 'cf-filter-right')}"></div>
 		<!-- Export CSV Buttons -->
 		<div th:replace="~{/components/button::export_csv('products', '')}"></div>
 		<!-- Export Excel Buttons -->
@@ -152,7 +152,7 @@
 		<!-- Authorization: open to all users with access to this page -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 			<!-- Filter Bar -->
-			<div th:replace="~{/components/filter::bar('products', 'filterSmallScreen', 'filter-bar-left')}"></div>
+			<div th:replace="~{/components/filter::bar('products', 'filterSmallScreen', 'cf-filter-left')}"></div>
 			<!-- Clear Filter Button -->
 			<div th:replace="~{/components/button::clear_filter('products', 'cf-button-dock-clear-right')}"></div>
 		</th:block>

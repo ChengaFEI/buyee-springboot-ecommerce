@@ -1,22 +1,22 @@
 /* Pagination in Table */
-.pagination>li>.page-link {
+.cf-pagination>li>.cf-page-link {
 	color: var(--cf-gray-light-su); 
 	border: 1px solid var(--cf-gray-light-ul);
 }
-.pagination>li>.page-link:hover {
+.cf-pagination>li>.cf-page-link:hover {
 	background-color: var(--cf-white);
 	color: var(--cf-red);
 	border: 1px solid var(--cf-gray-light-ul);
 }
-.pagination>.disabled>a {
+.cf-pagination>.disabled>a {
 	color: var(--cf-gray-light-su);
 	border: 1px solid var(--cf-gray-light-ul);
 }
-.pagination>.active>a {
+.cf-pagination>.active>a {
 	background-color: var(--cf-transparent);
 	color: var(--cf-red);
 }
-.pagination>.active>a:hover {
+.cf-pagination>.active>a:hover {
 	background-color: var(--cf-transparent);
 	color: var(--cf-red-light);
 }

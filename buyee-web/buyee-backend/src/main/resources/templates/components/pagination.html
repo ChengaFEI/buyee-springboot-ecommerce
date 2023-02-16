@@ -8,14 +8,14 @@
 	<div class="text-center text-muted mb-2" th:unless="${totalElements > 0}">
 		<span style="color: rgba(41, 43, 44, .4)">no [[${sectionName}]] found</span>
 	</div>
-	<!-- Navigation Bar -->
+	<!-- Go-To-Page Commands Bar -->
 	<div th:if="${totalPages > 1}">
 		<nav>
-			<ul class="pagination justify-content-center">
+			<ul class="pagination cf-pagination justify-content-center">
 				<!-- Navigate to the first page -->
 				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
 					<!-- href keeps track of other searchers/filters/sorters -->
-					<a class="page-link" title="First Page"
+					<a class="page-link cf-page-link" title="First Page"
 					   th:href="@{'/' + ${sectionName} + '/page/1?' + 
 					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
 					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
@@ -26,7 +26,7 @@
 				<!-- Navigate to previous page -->
 				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
 					<!-- href keeps track of other searchers/filters/sorters -->
-					<a class="page-link" title="Previous Page"
+					<a class="page-link cf-page-link" title="Previous Page"
 					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum - 1} + '?' +
 					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
 					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
@@ -38,7 +38,7 @@
 				<li th:class="${pageNum == i ? 'page-item active' : 'page-item'}"
 					th:each="i: ${#numbers.sequence(1, totalPages)}">
 					<!-- href keeps track of other searchers/filters/sorters -->
-					<a class="page-link" th:title="${'Jump to Page ' + i}" 
+					<a class="page-link cf-page-link" th:title="${'Jump to Page ' + i}" 
 					   th:href="@{'/' + ${sectionName} + '/page/' + ${i} + '?' +
 					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
 					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
@@ -49,7 +49,7 @@
 				<!-- Navigate to next page -->
 				<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
 					<!-- href keeps track of other searchers/filters/sorters -->
-					<a class="page-link" title="Next Page"
+					<a class="page-link cf-page-link" title="Next Page"
 					   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum + 1} + '?' +
 					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
 					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
@@ -60,7 +60,7 @@
 				<!-- Navigate to the last page -->
 				<li th:class="${pageNum == totalPages ? 'page-item disabled' : 'page-item'}">
 					<!-- href keeps track of other searchers/filters/sorters -->
-					<a class="page-link" title="Last Page"
+					<a class="page-link cf-page-link" title="Last Page"
 					   th:href="@{'/' + ${sectionName} + '/page/' + ${totalPages} + '?' +
 					   			  ${sortField != null ? '&sortField=' + sortField : ''} +
 					   			  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +

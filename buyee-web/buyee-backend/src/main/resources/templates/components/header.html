@@ -14,7 +14,7 @@
 		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
 		<!-- Website Sections -->
 		<div class="collapse navbar-collapse topNavbar">
-			<ul class="navbar-nav section-list-custom">
+			<ul class="navbar-nav cf-list">
 				<!-- Users -->
 				<th:block sec:authorize="hasAuthority('Admin')">
 					<li th:replace="~{/components/text::header('Users')}"/>&nbsp;
@@ -93,8 +93,8 @@
 	</nav>
 </div>
 <!-- Float Window -->
-<div th:fragment="floatwindow" th:if="${message != null}" class="alert alert-secondary text-center bg-dark float-square">
-	<div class="float-square-item form-control bg-dark">[[${message}]]</div>
+<div th:fragment="floatwindow" th:if="${message != null}" class="alert alert-secondary text-center bg-dark cf-floatwindow">
+	<div class="cf-floatwindow-content form-control bg-dark">[[${message}]]</div>
 </div>
 <!-- Form Header -->
 <div th:fragment="form_cancel(title)" th:remove="tag">

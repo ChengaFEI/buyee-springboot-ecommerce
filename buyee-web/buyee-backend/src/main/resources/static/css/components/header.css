@@ -3,19 +3,18 @@
 @import './text.css';
 @import './dropdown.css';
 /* Main Header Nav Bar */
-.section-list-custom {
+.cf-list {
 	padding-left: calc(var(--cf-gx) * .5); 
 	padding-right: calc(var(--cf-gx) * .5);
-	margin-right: auto;
 }
 /* Main Header Float Window */
-.float-square {
+.cf-floatwindow {
 	border-radius: 0px;
 	border: 0px;
 	padding-bottom: 0px;
 	padding-top: 0px;
 }
-.float-square-item {
+.cf-floatwindow-content {
 	color: var(--cf-white);
 	border: 0px;
 	border-top: 1px solid var(--cf-gray);
@@ -24,10 +23,8 @@
 	padding-bottom: 20px;
 }
 /* Modal Header */
-.model-header-custom {
+.cf-modal-header {
 	background-color: var(--cf-black); 
 	color: var(--cf-white);
 }
-.model-header-custom>h4 {
-	color: var(--cf-white);
-}
+.cf-modal-header>h4 {color: var(--cf-white);}

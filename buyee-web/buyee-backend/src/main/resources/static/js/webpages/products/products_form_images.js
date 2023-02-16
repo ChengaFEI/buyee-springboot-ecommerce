@@ -37,9 +37,9 @@ function showExtraImageThumbnail(fileInput, index) {
 // Add extra image section
 function showNextExtraImageSection(index) {
 	html = `
-		<div id="extraImageDiv${index}" class="form-group mb-3 rounded expandable-image-content" style="width: 25%" 
+		<div id="extraImageDiv${index}" class="form-group mb-3 rounded cf-expandable-image" style="width: 25%" 
 			 title="Image should be smaller than 1MB">
-			<label class="col-form-label">Extra Image ${index+1}</label>
+			<label class="col-form-label">Extra Image #${index+1}:<br/>&nbsp;</label>
 			<div id="extraImageHeader${index}" class="input-group mb-3" >
 				<input type="hidden" id="isImageExist${index}" value="false">
 				<input class="form-inline form-control text-muted cf-file" type="file" name="extraImageFile" 

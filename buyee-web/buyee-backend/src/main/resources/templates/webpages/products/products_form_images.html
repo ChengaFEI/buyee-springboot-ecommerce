@@ -11,7 +11,7 @@
 					<!-- Image Title -->
 					<label th:if="${product.shortMainImageName != ''}" class="col-form-label" style="width: 100%" 
 						   for="fullImageFile">
-						Main Image: [[${product.shortMainImageName}]]
+						Main Image: <br/>[[${product.shortMainImageName}]]
 					</label>
 					<label th:if="${product.shortMainImageName == ''}" class="col-form-label" style="width: 100%" 
 						   for="fullImageFile">
@@ -38,7 +38,7 @@
 						   th:value="${extraImage.name}"/>
 					<!-- Image Input -->
 					<div title="Image should be smaller than 1MB">
-						<label class="col-form-label">Extra Image #[[${status.index + 1}]]: [[${extraImage.shortImageName}]]</label>
+						<label class="col-form-label">Extra Image #[[${status.index + 1}]]: <br/>[[${extraImage.shortImageName}]]</label>
 						<div th:id="${'extraImageHeader' + status.index}" class="input-group mb-3">
 							<!-- Input Bar -->
 							<div th:replace="~{/components/file::image}"></div>
@@ -61,7 +61,7 @@
 				<input type="hidden" th:id="${'isImageExist' + numExistingExtraImages}" value="false"/>
 				<!-- Image Input -->
 				<div>
-					<label class="col-form-label">Extra Image #[[${numExistingExtraImages+1}]]</label>
+					<label class="col-form-label">Extra Image #[[${numExistingExtraImages+1}]]:<br/>&nbsp;</label>
 					<div th:id="${'extraImageHeader' + numExistingExtraImages}" class="input-group mb-3 cf-file" >
 						<div th:replace="~{/components/file::image}"></div>
 					</div>

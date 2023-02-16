@@ -108,7 +108,7 @@
 									<!-- View -->
 									<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 										<!-- link-detail is required for using preview-modal -->
-										<a th:replace="~{/components/button::file('products', ${product}, 'fa-2x mb-4 link-detail file-icon-padding')}"></a>
+										<a th:replace="~{/components/button::file('products', ${product}, 'fa-2x mb-4 link-detail cf-button-file')}"></a>
 									</th:block>
 									<!-- Enabled -->
 									<a th:replace="~{/components/button::edit('products', ${product}, 'fa-2x mb-4')}"></a>

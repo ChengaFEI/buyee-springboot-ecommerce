@@ -46,10 +46,7 @@
 							<input class="form-inline form-control text-muted" type="file" name="extraImageFile" 
 								   accept="image/png image/jpeg"/>
 							<!-- Delete Button -->
-							<a class="input-group-text border-0 link-delete-manager" title="Delete this image"
-							   name="linkRemoveExtraImage"> 
-							    <i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
-							</a>
+							<div th:replace="~{/components/button::delete_image}"></div>
 						</div>
 					</div>
 					<!-- Image Preview -->

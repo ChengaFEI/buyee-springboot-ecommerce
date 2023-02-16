@@ -1,6 +1,6 @@
 /* Filter Bar */
 .filter-bar-custom {
-	border: 1px solid var(--cf-gray);
+	border: 1px solid var(--cf-gray-light);
 	padding: 0 0 0 0;
 }
 .filter-bar-custom>.filter-select {

@@ -1,4 +1,6 @@
 @import './theme.css';
+@import './components/header.css';
+@import './components/footer.css';
 /***********************/
 /* Responsive Settings */
 /***********************/

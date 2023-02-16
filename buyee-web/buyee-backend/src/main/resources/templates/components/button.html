@@ -133,13 +133,15 @@
 	</a>
 </div>
 <!-- Delete Button in Products Details Section -->
-<div th:fragment="delete_detail" class="input-group" style="width: 5%" title="Delete this detail">
+<div th:fragment="delete_detail" class="row input-group" style="width: 65px; margin-left: auto" 
+	 title="Delete this detail">
 	<a class="detail-button-padding cf-button-form-delete-detail linkRemoveDetail">
 	    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>
 	</a>
 </div>
 <!-- Add Button in Products Details Section -->
-<div th:fragment="create_detail" class="input-group" style="width: 5%" title="Add a detail">
+<div th:fragment="create_detail" class="row input-group" style="width: 65px; margin-left: auto" 
+	 title="Add a detail">
 	<a class="detail-button-padding cf-button-form-create-detail" onclick="showNextDetailSection();"> 
 		<i class="fa-solid fa-circle-plus fa-2x"></i>
 	</a>

@@ -15,11 +15,13 @@ function showNextDetailSection() {
 	html = `
 		<div id="divDetail${nextDivDetailId}" class="row mb-3">
 			<input type="hidden" name="detailIds" value="0"/>
-			<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
+			<div class="input-group cf-shrinkable-bar-long" style="width: calc(50% - 30px)" 
+				 title="Name must be 2-255 characters long">
 				<label class="detail-label-padding">Name:</label>
 				<input type="text" class="form-control rounded" name="detailNames" pattern=".{2,255}"/>
 			</div>
-			<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
+			<div class="input-group cf-shrinkable-bar-short" style="width: calc(50% - 30px)" 
+				 title="Value must be 2-255 characters long">
 				<label class="detail-label-padding">Value:</label> 
 				<input type="text" class="form-control rounded" name="detailValues" pattern=".{2,255}"/>
 			</div>
@@ -31,7 +33,7 @@ function showNextDetailSection() {
 	lastDivDetail = allDivDetails.last();
 	lastDivDetailId = lastDivDetail.attr("id");
 	htmlLinkRemove = `
-		<div class="input-group" style="width: 5%" title="Delete this detail">
+		<div class="row input-group" style="width: 65px; margin-left: auto;" title="Delete this detail">
 			<a class="detail-button-padding cf-button-form-delete-detail" 
 			   onclick="removeDetailSectionById('${lastDivDetailId}');">
 			    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>

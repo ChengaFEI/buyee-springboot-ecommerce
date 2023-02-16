@@ -4,19 +4,19 @@
 	<div class="container-fluid">
 		<!-- Short Description -->
 		<div class="form-group mb-3 row">
-			<label class="col-form-label cf-shrinkable-bar-content" th:style="'width:' + ${leftWidthRatio}">
+			<label class="col-form-label cf-shrinkable-bar" th:style="'width:' + ${leftWidthRatio}">
 				Short Description
 			</label>
-			<div class="cf-shrinkable-bar-content" th:style="'width:' + ${rightWidthRatio}">
+			<div class="cf-shrinkable-bar" th:style="'width:' + ${rightWidthRatio}">
 				<div class="form-control" th:utext="${product.shortDescription}" readonly></div>
 			</div>
 		</div>
 		<!-- Full Description -->
 		<div class="form-group mb-3 row">
-			<label class="col-form-label cf-shrinkable-bar-content" th:style="'width:' + ${leftWidthRatio}">
+			<label class="col-form-label cf-shrinkable-bar" th:style="'width:' + ${leftWidthRatio}">
 				Full Description
 			</label>
-			<div class="cf-shrinkable-bar-content" th:style="'width:' + ${rightWidthRatio}">
+			<div class="cf-shrinkable-bar" th:style="'width:' + ${rightWidthRatio}">
 				<div class="form-control" th:utext="${product.fullDescription}" readonly></div>
 			</div>
 		</div>

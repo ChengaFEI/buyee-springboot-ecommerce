@@ -8,13 +8,13 @@
 					<!-- Required Properties -->
 					<input type="hidden" name="detailIds" th:value="${detail.id}"/>
 					<!-- Detail's Name -->
-					<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
+					<div class="input-group cf-shrinkable-bar-long" style="width: calc(50% - 30px)" title="Name must be 2-255 characters long">
 						<label class="detail-label-padding">Name:</label>
 						<input type="text" class="form-control rounded" name="detailNames" pattern=".{2,255}"
 							   th:value="${detail.name}"/>
 					</div>
 					<!-- Detail's Value -->
-					<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
+					<div class="input-group cf-shrinkable-bar-short" style="width: calc(50% - 30px)" title="Value must be 2-255 characters long">
 						<label class="detail-label-padding">Value:</label>
 						<input type="text" class="form-control rounded" name="detailValues" pattern=".{2,255}"
 							   th:value="${detail.value}"/>
@@ -28,12 +28,12 @@
 				<!-- Required Properties -->
 				<input type="hidden" name="detailIds" th:value="0"/>
 				<!-- Detail's Name -->
-				<div class="input-group" style="width: 47.5%" title="Name must be 2-255 characters long">
+				<div class="input-group cf-shrinkable-bar-long" style="width: calc(50% - 30px)" title="Name must be 2-255 characters long">
 					<label class="detail-label-padding">Name:</label>
 					<input type="text" class="form-control rounded" name="detailNames" pattern=".{2,255}"/>
 				</div>
 				<!-- Detail's Value -->
-				<div class="input-group" style="width: 47.5%" title="Value must be 2-255 characters long">
+				<div class="input-group cf-shrinkable-bar-short" style="width: calc(50% - 30px)" title="Value must be 2-255 characters long">
 					<label class="detail-label-padding">Value:</label>
 					<input type="text" class="form-control rounded" name="detailValues" pattern=".{2,255}"/>
 				</div>

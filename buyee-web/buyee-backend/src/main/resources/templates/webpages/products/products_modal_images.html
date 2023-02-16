@@ -1,9 +1,9 @@
 <!-- Images Section -->
-<div th:fragment="content" class="tab-pane fade expandable-image" id="images" role="tabpanel" 
+<div th:fragment="content" class="tab-pane fade" id="images" role="tabpanel" 
 	 style="padding: var(--bs-modal-padding)">
 	 <div class="row container-fluid">
 		<!-- Main Image -->
-		<div class="form-group mb-3 rounded expandable-image-content" style="width: 25%">
+		<div class="form-group mb-3 rounded cf-expandable-image" style="width: 25%">
 			<div th:title="'(Main) ' + ${product.mainImage}">
 				<label class="col-form-label mb-2">Main Image: <br/>[[${product.shortMainImageName}]]</label>
 				<img alt="Main Image Preview" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
@@ -11,7 +11,7 @@
 		</div>
 		<!-- All Existing Extra Images -->
 		<th:block th:each="extraImage, status : ${product.sortedImages}">
-			<div class="form-group mb-3 rounded expandable-image-content" style="width: 25%">
+			<div class="form-group mb-3 rounded cf-expandable-image" style="width: 25%">
 				<div th:title="'(Extra ' + ${status.index+1} + ') ' + ${extraImage.name}">
 					<label class="col-form-label mb-2">Extra Image #[[${status.index+1}]]: <br/>[[${extraImage.shortImageName}]]</label>
 					<img th:alt="${'Extra Image ' + status.index + 'Preview'}" style="width: 100%" 

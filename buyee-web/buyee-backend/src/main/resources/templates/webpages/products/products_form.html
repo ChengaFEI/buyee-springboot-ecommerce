@@ -58,11 +58,11 @@
 						<!-- read/write authorization for admins and editors -->
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 							<div class="row mb-3">
-								<div class="input-group" style="width: 47.5%">
+								<div class="input-group cf-shrinkable-bar-long" style="width: calc(50% - 30px)">
 									<label class="text-muted detail-label-padding">Name:</label>
 									<input disabled type="text" class="form-control rounded"/>
 								</div>
-								<div class="input-group" style="width: 47.5%">
+								<div class="input-group cf-shrinkable-bar-short" style="width: calc(50% - 30px)">
 									<label class="text-muted detail-label-padding">Value:</label>
 									<input disabled type="text" class="form-control rounded"/>
 								</div>

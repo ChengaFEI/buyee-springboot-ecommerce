@@ -14,6 +14,7 @@
 	div.less-details-block {display: block;}
 	/* image input components in Products Images Section */
 	.expandable-image .expandable-image-content{width: 100%!important}
+	/* information bars in Products modal */
 	.cf-shrinkable-bar .cf-shrinkable-bar-content{width: 100%!important};
 }
 /* medium screen */
@@ -27,7 +28,9 @@
 	/* table column components */
 	.hideable-column {display: none;}
 	/* image input components in Products Images Section */
-	.expandable-image .expandable-image-content{width: 25%!important}
+	.expandable-image .expandable-image-content{width: 100%!important}
+	/* information bars in Products modal */
+	.cf-shrinkable-bar .cf-shrinkable-bar-content{width: 100%!important};
 }
 /* large screen */
 @media screen and (min-width: 1024px) { 

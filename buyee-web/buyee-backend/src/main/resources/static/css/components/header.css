@@ -4,8 +4,8 @@
 @import './dropdown.css';
 /* Main Header Nav Bar */
 .section-list-custom {
-	padding-left: calc(var(--main-gutter-x) * .5); 
-	padding-right: calc(var(--main-gutter-x) * .5);
+	padding-left: calc(var(--cf-gx) * .5); 
+	padding-right: calc(var(--cf-gx) * .5);
 	margin-right: auto;
 }
 /* Main Header Float Window */
@@ -16,18 +16,18 @@
 	padding-top: 0px;
 }
 .float-square-item {
-	color: var(--main-white-bright);
+	color: var(--cf-white);
 	border: 0px;
-	border-top: 1px solid var(--main-gray-normal);
+	border-top: 1px solid var(--cf-gray);
 	border-radius: 0px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 /* Modal Header */
 .model-header-custom {
-	background-color: var(--main-black-normal); 
-	color: var(--main-white-bright);
+	background-color: var(--cf-black); 
+	color: var(--cf-white);
 }
 .model-header-custom>h4 {
-	color: var(--main-white-bright);
+	color: var(--cf-white);
 }

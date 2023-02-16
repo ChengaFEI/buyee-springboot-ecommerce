@@ -2,23 +2,23 @@
 /* Buttons in Header */
 /*********************/
 .cf-button-navbar {
-	margin-right: calc(var(--main-gutter-x) * .5);
+	margin-right: calc(var(--cf-gx) * .5);
 }
 /*******************/
 /* Buttons in Dock */
 /*******************/
 /* General buttons setting */
 .link-button-manager {
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 	text-decoration: none
 }
 .link-button-manager:hover {
-	color: var(--main-pink-bright);
+	color: var(--cf-red);
 }
 /* Customized for clear_search button */
 .link-clear-custom {
-	border: 1px solid var(--main-gray-light);
-	background-color: var(--main-transparent);;
+	border: 1px solid var(--cf-gray-light);
+	background-color: var(--cf-transparent);;
 }
 .link-clear-left {
 	border-right: 0px;
@@ -34,10 +34,10 @@
 /* Buttons in Table */
 /********************/
 .icon-action {
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 }
 .icon-action:hover {
-	color: var(--main-pink-bright);
+	color: var(--cf-red);
 }
 .icon-no-deco {
 	text-decoration: none
@@ -50,18 +50,18 @@
 /*******************/
 /* Image File Delete Button in Products' Images Form */
 .link-delete-manager {
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 	text-decoration: none
 }
 .link-delete-manager:hover {
-	color: var(--main-pink-bright);
+	color: var(--cf-red);
 }
 /* Add/Delete Buttons in Products' Details Form */
 .detail-button-manager {
-	color: var(--main-gray-light-medium);
+	color: var(--cf-gray-light);
 	text-decoration: none
 }
 .detail-button-manager:hover {
-	color: var(--main-pink-bright);
+	color: var(--cf-red);
 	cursor: pointer;
 }

@@ -6,8 +6,8 @@
 	display: none;
 }
 .file-button-custom input[type=file] {
-	border-top-left-radius: var(--main-border-radius) !important;
-	border-bottom-left-radius: var(--main-border-radius) !important;
+	border-top-left-radius: var(--cf-r-border)!important;
+	border-bottom-left-radius: var(--cf-r-border)!important;
 }
 .file-button-custom a:hover {
 	cursor: pointer;

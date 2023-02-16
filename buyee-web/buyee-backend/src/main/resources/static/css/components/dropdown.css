@@ -14,24 +14,24 @@
 	display: block;
 	padding: 10px;
 	text-decoration: none;
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 }
 .dropdown:hover .dropdown-content {
 	display: block;
-	background-color: var(--main-white-bright);
-	border: 1px solid var(--main-gray-light); 
+	background-color: var(--cf-white);
+	border: 1px solid var(--cf-gray-light); 
 }
 .dropdown-content a:hover {
-	color: var(--main-white-bright);
-	background-color: var(--main-gray-light);
+	color: var(--cf-white);
+	background-color: var(--cf-gray-light);
 }
 /* Drop Down in Brands Form */
 .select-custom {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
-	border: 1px solid var(--main-gray-light); 
-	border-radius: var(--main-border-radius);
+	border: 1px solid var(--cf-gray-light); 
+	border-radius: var(--cf-r-border);
 }
 .select-custom>select {
 	border: 0px;
@@ -39,6 +39,6 @@
 	height: 210px;
 }
 .select-custom>select>option {
-	color: var(--main-gray-normal); 
+	color: var(--cf-gray); 
 	margin-bottom: 3px;
 }

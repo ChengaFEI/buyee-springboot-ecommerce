@@ -1,13 +1,13 @@
 /* Search Bar */
 .search-bar-custom {
-	border: 1px solid var(--main-gray-light);
+	border: 1px solid var(--cf-gray-light);
 	padding: 0 0 0 0;
 }
 .search-bar-custom>.search-input {
 	margin: 0 0 0 0;
-	border: var(--main-transparent);
-	height: var(--main-command-bar-height);
-	font-size: var(--main-font-size);
+	border: var(--cf-transparent);
+	height: var(--cf-h-dock);
+	font-size: var(--cf-f-size);
 }
 .search-bar-right {
 	border-left: 0px;

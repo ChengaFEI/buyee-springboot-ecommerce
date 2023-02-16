@@ -69,7 +69,7 @@
 					<label for="imageFile" class="form-label">Photo</label> 
 					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="image" 
 					       accept="image/png image/jpeg">
-					<img style="width: var(--main-thumbnail-width)" id="thumbnail" th:src="@{${user.photoPathString}}"/>
+					<img class="cf-thumbnail-form" id="thumbnail" th:src="@{${user.photoPathString}}"/>
 				</div>
 				<!-- Form Footer -->
 				<div th:replace="~{/components/footer::form}"></div>

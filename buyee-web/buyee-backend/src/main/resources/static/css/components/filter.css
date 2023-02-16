@@ -1,13 +1,13 @@
 /* Filter Bar */
 .filter-bar-custom {
-	border: 1px solid var(--main-gray-light);
+	border: 1px solid var(--cf-gray);
 	padding: 0 0 0 0;
 }
 .filter-bar-custom>.filter-select {
 	margin: 0 0 0 0;
-	border: var(--main-transparent);
-	height: var(--main-command-bar-height);
-	font-size: var(--main-font-size);
+	border: var(--cf-h-dock);
+	height: var(--cf-h-dock);
+	font-size: var(--cf-f-size);
 }
 .filter-bar-right {
 	border-left: 0px;

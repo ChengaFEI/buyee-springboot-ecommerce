@@ -1,71 +1,71 @@
 /* Welcome Text in Index Page */
 .link-account-manager {
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 	text-decoration: none
 }
-.link-account-manager:hover {color: var(--main-pink-bright);}
+.link-account-manager:hover {color: var(--cf-red);}
 /* Text of Header's Navigation Items */
-.navbar-custom {background-color: var(--main-black-normal) !important;}
-.nav-item-active {border-bottom: 1px solid var(--main-white-bright);}
-.nav-item-active:hover {border-bottom: 1px solid var(--main-gray-normal);}
-.nav-item-active>a {color: var(--main-white-bright);}
-.nav-item-inactive:hover {border-bottom: 1px solid var(--main-white-bright);}
-.nav-item-inactive>a {color: var(--main-gray-normal);}
-.nav-item-inactive>a:hover {color: var(--main-white-bright);}
+.navbar-custom {background-color: var(--cf-black)!important;}
+.nav-item-active {border-bottom: 1px solid var(--cf-white);}
+.nav-item-active:hover {border-bottom: 1px solid var(--cf-gray);}
+.nav-item-active>a {color: var(--cf-white);}
+.nav-item-inactive:hover {border-bottom: 1px solid var(--cf-white);}
+.nav-item-inactive>a {color: var(--cf-gray);}
+.nav-item-inactive>a:hover {color: var(--cf-white);}
 /* Text in Table Heads */
 .table-head-active {
 	text-decoration: none;
-	color: var(--main-pink-bright);
+	color: var(--cf-red);
 }
 .table-head-active:hover {
 	text-decoration: none;
-	color: var(--main-pink-normal);
+	color: var(--cf-red-light);
 }
 .table-head-inactive {
 	text-decoration: none;
-	color: var(--main-black-normal);
+	color: var(--cf-black);
 }
 .table-head-inactive:hover {
 	text-decoration: none;
-	color: var(--main-pink-bright);
+	color: var(--cf-red);
 }
 /* Hyperlink Text in Table Body */
 .text-action-tree>a {
-	color: var(--main-black-normal);
-	text-decoration: underline dotted var(--main-gray-normal);
+	color: var(--cf-black);
+	text-decoration: underline dotted var(--cf-gray);
 	text-underline-offset: 8px;
 }
 .text-action-tree:hover>a {
-	color: var(--main-white-bright);
-	background-color: var(--main-pink-bright);
+	color: var(--cf-white);
+	background-color: var(--cf-red);
 	text-decoration: none;
 }
 .text-action-list>a {
-	color: var(--main-black-normal);
-	text-decoration: underline dotted var(--main-gray-normal);
+	color: var(--cf-black);
+	text-decoration: underline dotted var(--cf-gray);
 }
 .text-action-list:hover {
-	background-color: var(--main-pink-bright);
+	background-color: var(--cf-red);
 }
 .text-action-list:hover>a {
-	color: var(--main-white-bright);
+	color: var(--cf-white);
 	text-decoration: none;
 }
 /* Text of Badges in Table Body */
 .badge-custom {margin-right: 10px;}
 /* Rich Text Editor in Products Description Form */
-.richText-btn, .richText-undo, .richText-redo, .richText-help {color: var(--main-gray-normal);}
-.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {color: var(--main-pink-bright);}
-.richText-btn:hover .richText-dropdown {color: var(--main-gray-normal);}
-.richText-btn:hover .richText-dropdown li:hover {color: var(--main-pink-bright);}
+.richText-btn, .richText-undo, .richText-redo, .richText-help {color: var(--cf-gray);}
+.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {color: var(--cf-red);}
+.richText-btn:hover .richText-dropdown {color: var(--cf-gray);}
+.richText-btn:hover .richText-dropdown li:hover {color: var(--cf-red);}
 .richText .richText-form button {
 	background-color: transparent;
-	color: var(--main-pink-bright);
-	border: 1px solid var(--main-pink-bright);
+	color: var(--cf-red);
+	border: 1px solid var(--cf-red);
 }
 .richText .richText-form button:hover {
-	background-color: var(--main-pink-bright);
-	color:  var(--main-white-bright);
+	background-color: var(--cf-red);
+	color:  var(--cf-white);
 }
-.richText .richText-form input[type=text]:focus {border: 1px solid var(--main-pink-bright);}
-.richText .richText-editor:focus {border-left: 2px solid var(--main-pink-bright);}
+.richText .richText-form input[type=text]:focus {border: 1px solid var(--cf-red);}
+.richText .richText-editor:focus {border-left: 2px solid var(--cf-red);}

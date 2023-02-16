@@ -1,45 +1,45 @@
 /* Float Island Tab */
 .float-island-tab {
-	border-radius: var(--main-border-radius);
-	border: 1px solid var(--main-gray-light);
+	border-radius: var(--cf-r-border);
+	border: 1px solid var(--cf-gray-light);
 }
 .float-island-tab>li>a {
-	color: var(--main-gray-normal);
-	border-radius: var(--main-border-radius);
+	color: var(--cf-gray);
+	border-radius: var(--cf-r-border);
 	text-decoration: none;
-	height: var(--main-command-bar-height);
-	border: 1px solid var(--main-white-bright);
+	height: var(--cf-h-dock);
+	border: 1px solid var(--cf-white);
 }
 .float-island-tab>li>a:hover {
-	color: var(--main-white-bright);
-	background-color: var(--main-pink-bright);
-	border: 1px solid var(--main-pink-bright);
+	color: var(--cf-white);
+	background-color: var(--cf-red);
+	border: 1px solid var(--cf-red);
 }
 .float-island-tab>li>.active {
-	color: var(--main-white-bright);
-	background-color: var(--main-pink-bright);
-	border: 1px solid var(--main-pink-bright);
+	color: var(--cf-white);
+	background-color: var(--cf-red);
+	border: 1px solid var(--cf-red);
 }
 .float-island-tab>li>.active:hover {
-	color: var(--main-pink-bright);
-	background-color: var(--main-white-bright);
+	color: var(--cf-red);
+	background-color: var(--cf-white);
 }
 /* No Border Tab */
 .full-width-tab {
-	background-color: var(--main-black-normal);
+	background-color: var(--cf-black);
 }
 .full-width-tab>li>a {
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 	text-decoration: none;
-	height: var(--main-command-bar-height);
-	border-top: 2px solid var(--main-black-normal);
+	height: var(--cf-h-dock);
+	border-top: 2px solid var(--cf-black);
 }
 .full-width-tab>li>a:hover, .full-width-tab>li>.active {
-	color: var(--main-black-normal);
-	background-color: var(--main-white-bright);
-	border-bottom: 2px dotted var(--main-gray-light-medium);
-	border-top: 2px solid var(--main-gray-light-medium);
+	color: var(--cf-black);
+	background-color: var(--cf-white);
+	border-bottom: 2px dotted var(--cf-gray-light-su);
+	border-top: 2px solid var(--cf-gray-light-su);
 }
 .full-width-tab>li>.active:hover {
-	color: var(--main-gray-normal);
+	color: var(--cf-gray);
 }

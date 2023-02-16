@@ -20,22 +20,22 @@
 				<thead>
 					<tr>
 						<!-- Main Image -->
-						<th th:replace="~{/components/sort::switch('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
+						<th th:replace="~{/components/text::switch('products', 'mainImage', 'Image', '50px', 'text-center', false)}" />
 						<!-- ID -->
-						<th th:replace="~{/components/sort::switch('products', 'id', 'ID', '70px', 'text-center hideable-column', true)}" />
+						<th th:replace="~{/components/text::switch('products', 'id', 'ID', '70px', 'text-center hideable-column', true)}" />
 						<!-- Name -->
-						<th th:replace="~{/components/sort::switch('products', 'name', 'Name', '', '', true)}" />
+						<th th:replace="~{/components/text::switch('products', 'name', 'Name', '', '', true)}" />
 						<!-- Brand -->
-						<th th:replace="~{/components/sort::switch('products', 'brand', 'Brand', '150px', '', false)}" />
+						<th th:replace="~{/components/text::switch('products', 'brand', 'Brand', '150px', '', false)}" />
 						<!-- Category -->
-						<th th:replace="~{/components/sort::switch('products', 'category', 'Category', '150px', '', false)}" />
+						<th th:replace="~{/components/text::switch('products', 'category', 'Category', '150px', '', false)}" />
 						<!-- Enabled -->
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson')">
-							<th th:replace="~{/components/sort::switch('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
+							<th th:replace="~{/components/text::switch('products', 'enabled', 'Enabled', '120px', 'text-center', true)}" />
 						</th:block>
 						<!-- Actions -->
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
-							<th th:replace="~{/components/sort::switch('products', '', 'Actions', '100px', 'text-center', false)}" />
+							<th th:replace="~{/components/text::switch('products', '', 'Actions', '100px', 'text-center', false)}" />
 						</th:block>
 					</tr>
 				</thead> 

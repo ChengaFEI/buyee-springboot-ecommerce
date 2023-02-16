@@ -64,6 +64,7 @@
 /** Text in Form **/
 /******************/
 /* Rich Text Editor in Products Description Form */
+/* classes are inherited from bootstrap codes */
 .richText-btn, .richText-undo, .richText-redo, .richText-help {color: var(--cf-gray);}
 .richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {color: var(--cf-red);}
 .richText-btn:hover .richText-dropdown {color: var(--cf-gray);}

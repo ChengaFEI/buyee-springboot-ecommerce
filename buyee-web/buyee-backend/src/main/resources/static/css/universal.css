@@ -12,6 +12,8 @@
 	/* block-display components */
 	div.full-details-block {display: none;}
 	div.less-details-block {display: block;}
+	/* table column components in modal */
+	.cf-hideable-column-modal {display: none;}
 	/* image input components in Products Images Section */
 	.cf-expandable-image{width: 100%!important;}
 	/* information bars in Products modal */
@@ -32,8 +34,10 @@
 	/* block-display components */
 	div.full-details-block {display: block;}
 	div.less-details-block {display: none;}
-	/* table column components */
+	/* table column components in sections homepage */
 	.hideable-column {display: none;}
+	/* table column components in modal */
+	.cf-hideable-column-modal {display: none;}
 	/* image input components in Products Images Section */
 	.cf-expandable-image{width: 50%!important}
 	/* information bars in Products modal */

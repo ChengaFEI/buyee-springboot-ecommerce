@@ -1,18 +1,22 @@
 <!-- Description Section -->
-<div th:fragment="content(leftWidthRatio, rightWidthRatio)" class="tab-pane fade" id="description" role="tabpanel" 
-	 style="padding: var(--bs-modal-padding)">
+<div th:fragment="content(leftWidthRatio, rightWidthRatio)" class="tab-pane fade cf-shrinkable-bar" id="description" 
+	 role="tabpanel" style="padding: var(--bs-modal-padding)">
 	<div class="container-fluid">
 		<!-- Short Description -->
 		<div class="form-group mb-3 row">
-			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Short Description</label>
-			<div th:style="'width:' + ${rightWidthRatio}">
+			<label class="col-form-label cf-shrinkable-bar-content" th:style="'width:' + ${leftWidthRatio}">
+				Short Description
+			</label>
+			<div class="cf-shrinkable-bar-content" th:style="'width:' + ${rightWidthRatio}">
 				<div class="form-control" th:utext="${product.shortDescription}" readonly></div>
 			</div>
 		</div>
 		<!-- Full Description -->
 		<div class="form-group mb-3 row">
-			<label class="col-form-label" th:style="'width:' + ${leftWidthRatio}">Full Description</label>
-			<div th:style="'width:' + ${rightWidthRatio}">
+			<label class="col-form-label cf-shrinkable-bar-content" th:style="'width:' + ${leftWidthRatio}">
+				Full Description
+			</label>
+			<div class="cf-shrinkable-bar-content" th:style="'width:' + ${rightWidthRatio}">
 				<div class="form-control" th:utext="${product.fullDescription}" readonly></div>
 			</div>
 		</div>

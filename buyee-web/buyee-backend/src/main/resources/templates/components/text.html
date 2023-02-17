@@ -1,8 +1,8 @@
-<!-- ####################################### -->
-<!-- ## Section Item in webpages's header ## -->
-<!-- ####################################### -->
+<!-- ######################################################## -->
+<!-- ## Section Item in webpages's navbar of header/footer ## -->
+<!-- ######################################################## -->
 <!-- General sections without authorization -->
-<li th:fragment="header(sectionName, sectionIcon)"
+<li th:fragment="navbar(sectionName, sectionIcon)"
 	th:class="${activeItem == sectionName 
 				? 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-active' 
 				: 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-inactive'}">
@@ -21,7 +21,7 @@
   	</div>
 </li>
 <!-- Customized product section with authorization -->
-<li th:fragment="header_products"
+<li th:fragment="navbar_products"
 	th:class="${activeItem == 'Products'
 				? 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-active' 
 				: 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-inactive'}">
@@ -37,9 +37,9 @@
   	</div>
 </li>
 <!-- Customized account section with authentication -->
-<li th:class="'cf-list-account cf-list-item nav-item ml-auto cf-dropdown-header '
-				+ ${activeItem == 'Account' ? 'cf-text-header-item-active' : 'cf-text-header-item-inactive'}"
-	th:fragment="header_account">
+<li th:fragment="navbar_account"
+	th:class="'cf-list-item-right cf-list-item nav-item ml-auto cf-dropdown-header '
+				+ ${activeItem == 'Account' ? 'cf-text-header-item-active' : 'cf-text-header-item-inactive'}">
 	<!-- Drop Down Toggler -->
 	<a class="nav-link dropdown-toggle" th:href="@{/account}">
 		<!-- Icon -->
@@ -52,6 +52,10 @@
 		<a th:href="@{/account }">Account</a>
 		<a id="logoutLink" href="">Logout</a>
   	</div>
+</li>
+<!-- Customized copyright -->
+<li th:fragment="navbar_copyright" class="cf-list-item-right cf-list-item" style="width: 320px">
+	<a class="nav-link">Buyee Control Panel (Copyright &copy; Buyee)</a>
 </li>
 <!-- ################################# -->
 <!-- ## Sort Switch in Table's Head ## -->

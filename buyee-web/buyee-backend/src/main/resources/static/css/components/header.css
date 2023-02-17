@@ -9,7 +9,7 @@
 	margin-right: calc(var(--cf-gx))!important;
 }
 /* Account Section inn header navbar */
-.cf-list-account {
+.cf-list-item-right {
 	margin-left: auto; 
 	width: 135px; 
 	margin-right: var(--cf-gx)!important;

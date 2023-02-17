@@ -3,7 +3,7 @@
 <!-- ####################### -->
 <!-- Navbar Toggler -->
 <div th:fragment="toggler_navbar(target, extraClass)" th:remove="tag">
-	<button th:class="'navbar-toggler cf-button-header-navbar ' + ${extraClass}" type="button" 
+	<button th:class="'navbar-toggler cf-button-navbar ' + ${extraClass}" type="button" 
 			data-bs-toggle="collapse" th:data-bs-target="'.' + ${target}" th:aria-controls="${target}" 
 			aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>

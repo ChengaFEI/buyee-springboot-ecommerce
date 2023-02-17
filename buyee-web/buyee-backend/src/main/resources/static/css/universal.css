@@ -18,12 +18,14 @@
 	/* section text in the header */
 	.cf-full-header-text {display: none;}
 	.cf-less-header-text {display: block;}
-	/* account item in the header */
+	/* section items in the header/footer navbar */
 	li.cf-list-item {
 		margin-left: 0!important;
 		width: cal(var(--cf-gx) * .5)!important;
 		margin-right: var(--cf-gx)!important;
 	}
+	/* toggler button in the header/footer navbar */
+	.cf-button-navbar {margin-left: calc(var(--cf-gx) * .5)!important;}
 	/* table column components in modal */
 	.cf-hideable-column-modal {display: none;}
 	/* image input components in Products Images Section */
@@ -52,12 +54,14 @@
 	/* section text in the header */
 	.cf-full-header-text {display: none;}
 	.cf-less-header-text {display: block;}
-	/* account item in the header */
+	/* section items in the header/footer navbar */
 	li.cf-list-item {
 		margin-left: 0!important;
 		width: cal(var(--cf-gx) * .5)!important;
 		margin-right: var(--cf-gx)!important;
 	}
+	/* toggler button in the header/footer navbar */
+	.cf-button-navbar {margin-left: calc(var(--cf-gx) * .5)!important;}
 	/* table column components in sections homepage */
 	.hideable-column {display: none;}
 	/* table column components in modal */

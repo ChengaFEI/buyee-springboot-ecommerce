@@ -2,7 +2,7 @@
 /* Buttons in Header */
 /*********************/
 /* navbar toggler */
-.cf-button-header-navbar {margin-right: calc(var(--cf-gx) * .5);}
+.cf-button-navbar {margin-right: calc(var(--cf-gx) * .5);}
 /*******************/
 /* Buttons in Dock */
 /*******************/

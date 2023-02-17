@@ -4,9 +4,14 @@
 @import './dropdown.css';
 /* Main Header Nav Bar */
 .cf-list {
-	padding-left: calc(var(--cf-gx) * .5); 
-	padding-right: calc(var(--cf-gx) * .5);
+	margin-left: calc(var(--cf-gx) * .5)!important; 
+	padding-left: calc(var(--cf-gx) * .5)!important; 
+	margin-right: calc(var(--cf-gx))!important;
 }
+/* .cf-list-item {
+	margin-left: 0!important;
+	width: cal(var(--cf-gx) * .5)!important;
+} */
 /* Main Header Float Window */
 .cf-floatwindow {
 	border-radius: 0px;

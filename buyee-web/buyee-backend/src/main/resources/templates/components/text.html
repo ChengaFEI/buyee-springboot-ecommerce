@@ -1,11 +1,15 @@
 <!-- ####################################### -->
 <!-- ## Section Item in webpages's header ## -->
 <!-- ####################################### -->
-<li th:fragment="header(sectionName)"
+<li th:fragment="header(sectionName, sectionIcon)"
 	th:class="${activeItem == sectionName 
-				? 'nav-item cf-text-header-item-active' 
-				: 'nav-item cf-text-header-item-inactive'}">
-	<a class="nav-link" th:href="@{${'/' + sectionName.toLowerCase()}}">[[${sectionName}]]</a>
+				? 'cf-list-item nav-item cf-text-header-item-active' 
+				: 'cf-list-item nav-item cf-text-header-item-inactive'}">
+	<a class="nav-link dropdown-toggle cf-less-header-text" th:href="@{${'/' + sectionName.toLowerCase()}}">[[${sectionName}]]</a>
+	<a class="nav-link dropdown-toggle cf-full-header-text" th:href="@{${'/' + sectionName.toLowerCase()}}"
+	   th:title="${sectionName}">
+		<i th:class="${sectionIcon}"></i>
+	</a>
 </li>
 <!-- ################################# -->
 <!-- ## Sort Switch in Table's Head ## -->

@@ -13,68 +13,66 @@
 		<!-- hidden in large screen and visible in medium/small screen -->
 		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
 		<!-- Website Sections -->
-		<div class="collapse navbar-collapse topNavbar">
+		<div class="collapse navbar-collapse topNavbar row">
 			<ul class="navbar-nav cf-list">
 				<!-- Users -->
 				<th:block sec:authorize="hasAuthority('Admin')">
-					<li th:replace="~{/components/text::header('Users')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Users', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Categories -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Categories')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Categories', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Brands -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Brands')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Brands', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Products -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
-					<li th:replace="~{/components/text::header('Products')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Products', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Questions -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
-					<li th:replace="~{/components/text::header('Questions')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Questions', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Reviews -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
-					<li th:replace="~{/components/text::header('Reviews')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Reviews', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Customers -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
-					<li th:replace="~{/components/text::header('Customers')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Customers', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Shipping -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
-					<li th:replace="~{/components/text::header('Shipping')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Shipping', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Orders -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
-					<li th:replace="~{/components/text::header('Orders')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Orders', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Reports -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
-					<li th:replace="~{/components/text::header('Reports')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Reports', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Articles -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Articles')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Articles', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Menus -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Menus')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Menus', 'fas fa-user')}"/>&nbsp;
 				</th:block>
 				<!-- Settings -->
 				<th:block sec:authorize="hasAnyAuthority('Admin')">
-					<li th:replace="~{/components/text::header('Settings')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Settings', 'fas fa-user')}"/>&nbsp;
 				</th:block>
-			</ul>
-		</div>
-		<!-- Account Section -->
-		<div class="collapse navbar-collapse topNavbar">
-			<ul class="navbar-nav cf-list">
+				<!-- Account Section -->
 				<li th:class="${activeItem == 'Account' 
-								? 'nav-item ml-auto cf-dropdown-header cf-text-header-item-active'
-								: 'nav-item ml-auto cf-dropdown-header cf-text-header-item-inactive'}">
+								? 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-active'
+								: 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-inactive'}"
+					style="margin-left: auto; width: 135px; margin-right: var(--cf-gx)"
+					id="accountItem">
 					<!-- Drop Down Toggler -->
 					<a class="nav-link dropdown-toggle" th:href="@{/account}">
 						<!-- Icon -->
@@ -88,8 +86,14 @@
 						<a id="logoutLink" href="">Logout</a>
 				  	</div>
 				</li>
+				<li class="cf-less-header-text">&nbsp;</li>
 			</ul>
 		</div>
+		<!-- <div class="collapse navbar-collapse topNavbar">
+			<ul class="navbar-nav cf-list">
+				
+			</ul>
+		</div> -->
 	</nav>
 </div>
 <!-- Float Window -->

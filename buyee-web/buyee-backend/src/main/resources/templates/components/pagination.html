@@ -11,7 +11,7 @@
 	<!-- Go-To-Page Commands Bar -->
 	<div th:if="${totalPages > 1}">
 		<nav>
-			<ul class="pagination cf-pagination justify-content-center">
+			<ul class="pagination cf-pagination justify-content-center flex-wrap">
 				<!-- Navigate to the first page -->
 				<li th:class="${pageNum == 1 ? 'page-item disabled' : 'page-item'}">
 					<!-- href keeps track of other searchers/filters/sorters -->

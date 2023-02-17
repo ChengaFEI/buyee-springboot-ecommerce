@@ -11,5 +11,5 @@ $(document).ready(function() {
 });
 function filterProductByCategory(filterFormId) {
 	var filterForm = $(filterFormId);
-	filterForm.find(".filter-select").on("change", function() {filterForm.submit();});
+	filterForm.find(".filter-select").on("change", function() { filterForm.submit(); });
 }

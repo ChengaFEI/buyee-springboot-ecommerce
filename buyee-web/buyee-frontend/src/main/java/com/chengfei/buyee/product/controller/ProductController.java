@@ -14,6 +14,7 @@ import com.chengfei.buyee.category.CategoryService;
 import com.chengfei.buyee.common.entity.Category;
 import com.chengfei.buyee.common.entity.Product;
 import com.chengfei.buyee.common.exception.CategoryNotFoundException;
+import com.chengfei.buyee.common.exception.ProductNotFoundException;
 import com.chengfei.buyee.product.ProductService;
 @Controller
 public class ProductController {
@@ -58,5 +59,20 @@ public class ProductController {
 	    model.addAttribute("pageTitle", category.getName());
 	    return "webpages/products_by_category";
 	} catch (CategoryNotFoundException e) {return "error/404";}
+    }
+    @GetMapping("/p/{product_alias}")
+    public String readProductByAlias(
+	    Model model,
+	    @PathVariable("product_alias") String alias) {
+	try {
+	    Product product = productService.readProductByAlias(alias);
+	    List<Category> listCategoryParents = categoryService.readCategoryParents(product.getCategory());
+	    model.addAttribute("product", product);
+	    model.addAttribute("listCategoryParents", listCategoryParents);
+	    model.addAttribute("pageTitle", product.getVeryShortName());
+	    return "webpages/product_detail";
+	} catch (ProductNotFoundException e) {
+	    return "error/404";
+	}
     }
 }

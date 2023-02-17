@@ -60,3 +60,15 @@
 	color: var(--cf-red);
 	cursor: pointer;
 }
+/****************************/
+/* Buttons in Category List */
+/****************************/
+.cf-button-list {
+	color: var(--cf-black);
+	text-decoration: none;
+}
+.cf-button-list:hover {color: var(--cf-red);}
+.cf-button-list-disabled {
+	color: var(--cf-gray-light);
+	text-decoration: none;	
+}

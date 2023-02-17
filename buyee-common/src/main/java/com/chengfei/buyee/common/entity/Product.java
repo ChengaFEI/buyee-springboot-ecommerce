@@ -1,11 +1,14 @@
 package com.chengfei.buyee.common.entity;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import com.chengfei.buyee.common.Constants;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,6 +18,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 @Entity
@@ -58,6 +62,7 @@ public class Product {
     @Column(name = "main_image")
     private String mainImage;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("name asc")
     private Set<ProductImage> images = new HashSet<>();
     // Details Section 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -129,6 +134,12 @@ public class Product {
 	List<ProductImage> sortedImages = new ArrayList<>(this.images);
 	sortedImages.sort((image1, image2)->{return image1.getName().compareToIgnoreCase(image2.getName());});
 	return sortedImages;
+    }
+    public List<ProductImage> getFirstFourImages() {
+	List<ProductImage> listImages = new ArrayList<>(this.images);
+	listImages.sort(Comparator.comparing(ProductImage::getName));
+	if (listImages.size() <= 4) return listImages;
+	return listImages.subList(0, 4);
     }
     public String getMainImagePathString() {
 	if (id == null || mainImage == null) return Constants.S3_BASE_URI + "/product-images/default-image.png";

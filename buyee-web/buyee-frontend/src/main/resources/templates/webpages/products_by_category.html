@@ -7,30 +7,12 @@
 		<div th:replace="~{/components/header::navbar('')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
-		<div class="cf-header-list container-fluid">
+		<div class="container-fluid">
 			<!-- Category Parents Bread Crumb -->
 			<div th:if="${listCategoryParents != null && !listCategoryParents.empty}">
-				<div class="row">
-					<div class="col">
-						<nav class="mt-3">
-							<ol class="breadcrumb" style="margin-bottom: 0px;">
-								<li class="breadcrumb-item">
-									<a class="cf-text-breadcrumb" th:href="@{/}" title="Home">
-										<i class="fa-solid fa-house"></i>
-									</a>
-								</li>
-								<th:block th:each="parent: ${listCategoryParents}">
-									<li class="breadcrumb-item cf-text-breadcrumb" th:title="${parent.name}">
-										<a class="cf-text-breadcrumb" th:href="@{'/c/'+${parent.alias}}">
-											[[${parent.name}]]
-										</a>
-									</li>
-								</th:block>
-							</ol>
-						</nav>
-					</div>
-				</div>
+				<div th:replace="~{/components/breadcrumb::category('mt-3')}"></div>
 			</div>
+			<!-- Current Category Name -->
 			<div class="mb-3 mt-3">
 				<h2>[[${category.name}]]</h2>
 			</div>
@@ -65,7 +47,7 @@
 								<span style="color: var(--cf-red); font-weight: bold">
 									$[[${product.discountPrice}]]&nbsp;
 								</span>
-								<del><span>$[[${product.price}]]</span></del>
+								<del class="text-muted"><span>$[[${product.price}]]</span></del>
 							</div>
 							<hr/>
 							<!-- Product Image -->

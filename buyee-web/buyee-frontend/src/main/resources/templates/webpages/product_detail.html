@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{/universal::head(${pageTitle}, 'none', 'product_detail')}" />
+<body>
+	<div>
+		<!-- Header (navigation bar) -->
+		<div th:replace="~{/components/header::navbar('')}"></div>
+		<!-- Float Window Message -->
+		<div th:replace="~{/components/header::floatwindow}"></div>
+		<!-- Bread Crumb -->
+		<div class="container-fluid mt-3">
+			<div th:replace="~{/components/breadcrumb::category('')}"></div>
+		</div>
+		<!-- Products display -->
+		<div class="row mb-3">
+			<!-- Product Images -->
+			<div class="mb-3 sticky" style="width: 40%; padding-left: var(--cf-gx);">
+				<!-- Images of Current Product -->
+				<div class="form-group rounded cf-expandable-image cf-image-box-detail sticky-top" th:title="${product.name}"
+					 style="top: calc(64px + 1rem);">
+					<div class="cf-image-content">
+						<!-- Product Image -->
+						<div class="cf-image-inner-box">
+							<img th:alt="${product.mainImage}" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+						</div>
+						<hr/>
+						<!-- Product Extra Images -->
+						<div>
+							<th:block th:each="image: ${product.firstFourImages}">
+								<img th:alt="${image.name}" style="width: 24%; padding: 1%;" th:src="@{${image.imagePathString}}"/>
+							</th:block>
+						</div>
+					</div>
+				</div>
+				<!-- Images of Recommended Products -->
+			</div>
+			<!-- Product Information -->
+			<div style="width: 60%; padding-right: var(--cf-gx);">
+				<!-- First Group: Return/Buy -->
+				<div class="mb-5 row">
+					<!-- Return -->
+					<div style="width: 200px;">
+						<a th:href="@{'/c/' + ${product.category.alias}}" class="cf-text-breadcrumb" style="height: 21px!important;">
+							<i class="fa-solid fa-angle-left" style="height: 21px!important;"></i>&nbsp;
+							back to categories
+						</a>
+					</div>
+					<!-- Buy -->
+					<div th:style="'margin-left: auto; margin-right: var(--cf-gx); padding-right: 0px; text-align: right; ' + 
+								   ${product.inStock ? 'width: 205px;' : 'width: 225px;'}">
+						<div class="row" style="height: 20px!important;">
+							<!-- Add Product Button -->
+							<div style="width: 35px; height: 21px!important;" class="d-flex align-items-center">
+								<a th:if="${product.inStock}" href="#" title="Add to cart">
+									<i class="fa-solid fa-circle-plus cf-button-list"></i>
+								</a>
+								<a th:unless="${product.inStock}" title="Out of stock">
+									<i class="fa-solid fa-circle-plus cf-button-list-disabled"></i>
+								</a>
+							</div>
+							<!-- Add Product Bar -->
+							<input class="form-control" type="text" size="5" th:value="${product.inStock ? '1' : ''}"
+								   th:disabled="${!product.inStock}" 
+								   th:title="${product.inStock ? 'Enter purchase quantity' : 'Out of stock'}"
+								   style="width: 100px; height: 20px!important; margin-right: 10px; 
+								   		  background-color: var(--cf-white)!important;"/>
+							<!-- Stock Status Badge -->
+							<span th:unless="${product.inStock}" title="Out of stock"
+								  style="width: 90px; height: 20px!important; color: var(--cf-white)!important;
+								  		 background-color: var(--cf-gray-light)!important;" 
+								  class="badge text-bg-light">Out of Stock</span>
+							<span th:if="${product.inStock}" style="width: 70px; height: 20px!important;" 
+								  class="badge text-bg-dark" title="In stock">In Stock</span>
+						</div>
+					</div>
+				</div>
+				<!-- Second Group: Name/Price -->
+				<div class="mb-5">
+					<!-- Product Name -->
+					<div><h4>[[${product.name}]]</h4></div>
+					<!-- Product Price -->
+					<th:block>
+						<h5 th:if="${product.discountPercent <= 0}">
+							<span style="color: var(--cf-red)">$[[${product.price}]]</span>
+						</h5>
+						<h5 th:unless="${product.discountPercent <= 0}">
+							<span style="color: var(--cf-red);">
+								<b>$[[${product.discountPrice}]]</b>&nbsp;([[${product.discountPercent}]]% off)<br/>
+							</span>
+							<del class="text-muted"><span>$[[${product.price}]]</span></del>
+						</h5>
+					</th:block>
+				</div>
+				<!-- Third Group: Brand/Category -->
+				<div class="mb-5">
+					<div class="row">
+						<div style="width: 100px;">
+							<div style="font-weight: bold">Brand:</div>
+							<div style="font-weight: bold">Category:</div>
+						</div>
+						<div style="width: calc(100% - 120px)">
+							<div>[[${product.brand.name}]]</div>
+							<div>[[${product.category.name}]]</div>
+						</div>
+					</div>
+				</div>
+				<!-- Fourth Group: Overview (Short Description) -->
+				<div class="mb-5">
+					<label style="font-weight: bold">Overview:</label>
+					<div th:utext="${product.shortDescription}"></div>
+				</div>
+				<!-- Fifth Group: Full Description -->
+				<div class="mb-5">
+					<label style="font-weight: bold">Description:</label>
+					<div th:utext="${product.fullDescription}"></div>
+				</div>
+				<!-- Sixth Group: Details -->
+				<div class="mb-5">
+					<label style="font-weight: bold">Details:</label>
+					<div class="row">
+						<div style="width: 300px;">
+							<th:block th:each="detail: ${product.details}">
+								<div>
+									<label>[[${detail.name}]]</label>
+								</div>
+							</th:block>
+						</div>
+						<div style="width: 400px;">
+							<th:block th:each="detail: ${product.details}">
+								<div>
+									<span>[[${detail.value}]]</span>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div th:replace="~{/components/footer::navbar('')}"></div>
+	</div>
+</body>
+</html>

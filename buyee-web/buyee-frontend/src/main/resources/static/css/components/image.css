@@ -4,11 +4,14 @@
 	width: 20%!important; 
 	padding: calc(var(--cf-gx) * .5);
 }
+.cf-image-box-detail {
+	width: 100%!important; 
+}
 .cf-image-content {
 	border: 1px solid var(--cf-gray-light);
 	height: 100%!important;
 	border-radius: var(--cf-r-border);
 	text-align: center!important;
+	padding: var(--cf-gx);
 }
-.cf-image-content {padding: var(--cf-gx);}
 .cf-image-inner-box {padding: calc(var(--cf-gx) * .5);}

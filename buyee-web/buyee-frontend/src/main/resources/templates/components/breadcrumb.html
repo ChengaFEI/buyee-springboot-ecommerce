@@ -1,0 +1,19 @@
+<!-- ############################################ -->
+<!-- ## Bread Crumb in Categories/Products list ## -->
+<!-- ############################################ -->
+<div th:fragment="category(extraClass)" th:remove="tag">
+	<nav th:class="${extraClass}">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a class="cf-text-breadcrumb" th:href="@{/}" title="Home">
+					<i class="fa-solid fa-house"></i>
+				</a>
+			</li>
+			<th:block th:each="parent: ${listCategoryParents}">
+				<li class="breadcrumb-item" th:title="${parent.name}">
+					<a class="cf-text-breadcrumb" th:href="@{'/c/'+${parent.alias}}">[[${parent.name}]]</a>
+				</li>
+			</th:block>
+		</ol>
+	</nav>
+</div>

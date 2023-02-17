@@ -43,3 +43,11 @@
 .cf-tab-full-width>li>.active:hover {
 	color: var(--cf-gray);
 }
+/* Left align tabs */
+.cf-tab-left>span {
+	margin-right: 5px;
+}
+.cf-tab-left a {
+	text-decoration: none;
+	color: var(--cf-gray);
+}

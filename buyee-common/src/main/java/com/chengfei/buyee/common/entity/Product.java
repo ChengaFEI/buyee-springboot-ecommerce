@@ -85,6 +85,8 @@ public class Product {
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
     @Transient
+    public String getVeryShortName() {return getNameWithChars(20);}
+    @Transient
     public String getShortName() {return getNameWithChars(70);}
     @Transient
     public String getNameWithChars(int numChars) {
@@ -107,6 +109,11 @@ public class Product {
     public void setPrice(float price) {this.price = price;}
     public float getDiscountPercent() {return discountPercent;}
     public void setDiscountPercent(float discountPercent) {this.discountPercent = discountPercent;}
+    @Transient
+    public float getDiscountPrice() {
+	if (discountPercent > 0) return Math.round(price * (100 - discountPercent)) / 100;
+	return this.price;
+    }
     // Description Section
     public String getShortDescription() {return shortDescription;}
     public void setShortDescription(String shortDescription) {this.shortDescription = shortDescription;}

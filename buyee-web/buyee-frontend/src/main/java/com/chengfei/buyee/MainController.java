@@ -15,7 +15,9 @@ public class MainController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
 	List<Category> listNoChildrenCategories = service.readNoChildrenCategories();
+	List<Category> listRootCategories = service.readRootCategories();
 	model.addAttribute("listNoChildrenCategories", listNoChildrenCategories);
+	model.addAttribute("listRootCategories", listRootCategories);
 	return "webpages/index";
     }
 }

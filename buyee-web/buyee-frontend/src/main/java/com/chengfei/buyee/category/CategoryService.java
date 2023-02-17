@@ -21,4 +21,20 @@ public class CategoryService {
 	});
 	return listNoChildrenCategories;
     }
+    public Category readEnabledCategoryByAlias(String alias) {
+	return repo.readEnabledCategoryByAlias(alias);
+    }
+    public List<Category> readCategoryParents(Category child) {
+	List<Category> listCategoryParents = new ArrayList<>();
+	Category parent = child.getParent();
+	while (parent != null) {
+	    listCategoryParents.add(0, parent);
+	    parent = parent.getParent();
+	}
+	listCategoryParents.add(child);
+	return listCategoryParents;
+    }
+    public List<Category> readRootCategories() {
+	return repo.readRootCategories();
+    }
 }

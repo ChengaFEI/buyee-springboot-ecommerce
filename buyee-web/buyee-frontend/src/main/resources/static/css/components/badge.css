@@ -1,2 +1,6 @@
 /* Badges in Table Body */
-.cf-badge {margin-right: 10px;}
+.cf-badge-list:hover>.badge {
+	color: var(--cf-white)!important; 
+	background-color: var(--cf-red)!important; 
+	border: 1px solid var(--cf-transparent)!important;
+}

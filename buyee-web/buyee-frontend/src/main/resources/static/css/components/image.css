@@ -1,4 +1,5 @@
 .cf-thumbnail-form {width: var(--cf-w-thumbnail);}
+.cf-image-table {padding: calc(var(--cf-gx) * .5);}
 .cf-image-box {
 	width: 20%!important; 
 	padding: calc(var(--cf-gx) * .5);

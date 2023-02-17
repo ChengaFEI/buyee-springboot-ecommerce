@@ -7,10 +7,23 @@
 		<div th:replace="~{/components/header::navbar('')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
+		<div class="cf-header-list container-fluid">
+			<div class="mb-3 mt-3">
+				<h2>Categories</h2>
+			</div>
+			<!-- Root Categories -->
+			<div class="cf-tab-left mb-3">
+				<th:block th:each="catgory: ${listRootCategories}">
+					<a th:href="@{'/c/'+${catgory.alias}}" class="cf-badge-list">
+						<span class="badge rounded-pill badge-outline text-dark fw-normal"
+							  style="border: 1px solid black; margin-right: 10px;">[[${catgory.name}]]</span>
+					</a>
+				</th:block>
+			</div>
+		</div>
 		<!-- Categories display -->
-		<div class="container-fluid">
-			<div>
-				<div class="row">
+		<div class="container-fluid mb-3">
+			<div class="row">
 				<th:block th:each="category: ${listNoChildrenCategories}">
 					<div class="form-group rounded cf-expandable-image cf-image-box" th:title="${category.name}">
 						<div class="cf-image-content">
@@ -24,7 +37,6 @@
 						</div>
 					</div>
 				</th:block>
-				</div>
 			</div>
 		</div>
 		<!-- Footer -->

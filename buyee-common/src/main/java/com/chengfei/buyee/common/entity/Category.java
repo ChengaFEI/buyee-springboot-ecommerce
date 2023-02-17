@@ -1,7 +1,9 @@
 package com.chengfei.buyee.common.entity;
 import java.util.HashSet;
 import java.util.Set;
+
 import com.chengfei.buyee.common.Constants;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 @Entity
 @Table(name = "categories")
@@ -30,6 +33,7 @@ public class Category {
     @Column(name = "all_parent_ids", length = 512, nullable = true)
     private String allParentIds;
     @OneToMany(mappedBy = "parent")
+    @OrderBy("name asc")
     private Set<Category> children = new HashSet<>();
     private Integer level;
     // Constructors

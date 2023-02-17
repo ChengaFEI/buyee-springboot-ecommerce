@@ -13,6 +13,18 @@
 	text-decoration: none
 }
 .cf-text-index-list:hover {color: var(--cf-red);}
+/*******************************/
+/** Text in Index Bread Crumb **/
+/*******************************/
+.cf-text-breadcrumb {
+	color: var(--cf-gray);
+	text-decoration: none;
+}
+.cf-text-breadcrumb:hover {
+	color: var(--cf-red);
+	text-decoration: underline;
+	text-underline-offset: 10px;
+}
 /********************/
 /** Text in Header **/
 /********************/

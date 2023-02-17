@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{/universal::head(${pageTitle}, 'none', 'products_by_category')}" />
+<body>
+	<div>
+		<!-- Header (navigation bar) -->
+		<div th:replace="~{/components/header::navbar('')}"></div>
+		<!-- Float Window Message -->
+		<div th:replace="~{/components/header::floatwindow}"></div>
+		<div class="cf-header-list container-fluid">
+			<!-- Category Parents Bread Crumb -->
+			<div th:if="${listCategoryParents != null && !listCategoryParents.empty}">
+				<div class="row">
+					<div class="col">
+						<nav class="mt-3">
+							<ol class="breadcrumb" style="margin-bottom: 0px;">
+								<li class="breadcrumb-item">
+									<a class="cf-text-breadcrumb" th:href="@{/}" title="Home">
+										<i class="fa-solid fa-house"></i>
+									</a>
+								</li>
+								<th:block th:each="parent: ${listCategoryParents}">
+									<li class="breadcrumb-item cf-text-breadcrumb" th:title="${parent.name}">
+										<a class="cf-text-breadcrumb" th:href="@{'/c/'+${parent.alias}}">
+											[[${parent.name}]]
+										</a>
+									</li>
+								</th:block>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="mb-3 mt-3">
+				<h2>[[${category.name}]]</h2>
+			</div>
+			<!-- Children -->
+			<div class="cf-tab-left mb-3">
+				<th:block th:each="child: ${listCategoryChildren}">
+					<a th:href="@{'/c/'+${child.alias}}" class="cf-badge-list">
+						<span class="badge rounded-pill badge-outline text-dark fw-normal"
+							  style="border: 1px solid black; margin-right: 10px;">[[${child.name}]]</span>
+					</a>
+				</th:block>
+			</div>
+		</div>
+		<!-- Products display -->
+		<div class="container-fluid mb-3">
+			<div>
+				<div class="row">
+				<th:block th:each="product: ${listProducts}">
+					<div class="form-group rounded cf-expandable-image cf-image-box" th:title="${product.name}">
+						<div class="cf-image-content">
+							<!-- Product Name -->
+							<div class="mb-1">
+								<a class="cf-text-index-list" th:href="@{'/p/'+${product.alias}}">
+									[[${product.veryShortName}]]
+								</a>
+							</div>
+							<!-- Product Price -->
+							<div th:if="${product.discountPercent <= 0}">
+								<span>$[[${product.price}]]</span>
+							</div>
+							<div th:unless="${product.discountPercent <= 0}">
+								<span style="color: var(--cf-red); font-weight: bold">
+									$[[${product.discountPrice}]]&nbsp;
+								</span>
+								<del><span>$[[${product.price}]]</span></del>
+							</div>
+							<hr/>
+							<!-- Product Image -->
+							<div class="cf-image-inner-box">
+								<img th:alt="${product.mainImage}" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+							</div>
+						</div>
+					</div>
+				</th:block>
+				</div>
+			</div>
+		</div>
+		<!-- Pagination -->
+		<!-- <div th:replace="~{/components/pagination::bar_category(${categoryAlias})}"></div> -->
+		<!-- Footer -->
+		<div th:replace="~{/components/footer::navbar('')}"></div>
+	</div>
+</body>
+</html>

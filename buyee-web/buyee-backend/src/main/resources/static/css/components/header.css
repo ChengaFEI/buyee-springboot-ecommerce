@@ -35,3 +35,7 @@
 	color: var(--cf-white);
 }
 .cf-modal-header>h4 {color: var(--cf-white);}
+/* Header style in the front end list */
+.cf-header-list {
+	border: 1px solid var(--cf-gray)!important;
+}

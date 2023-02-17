@@ -11,11 +11,11 @@
 					<!-- Image Title -->
 					<label th:if="${product.shortMainImageName != ''}" class="col-form-label" style="width: 100%" 
 						   for="fullImageFile">
-						Main Image: <br/>[[${product.shortMainImageName}]]
+						Main Image:<br/>[[${product.shortMainImageName}]]
 					</label>
 					<label th:if="${product.shortMainImageName == ''}" class="col-form-label" style="width: 100%" 
 						   for="fullImageFile">
-						Main Image
+						Main Image:<br/>&nbsp;
 					</label>
 					<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
 					       accept="image/png image/jpeg" th:required="${product.mainImage == null}"/>

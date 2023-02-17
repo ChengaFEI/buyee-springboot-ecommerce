@@ -1,0 +1,148 @@
+<!-- ####################### -->
+<!-- ## Buttons in Header ## -->
+<!-- ####################### -->
+<!-- Navbar Toggler -->
+<div th:fragment="toggler_navbar(extraClass)" th:remove="tag">
+	<button th:class="'navbar-toggler cf-button-header-navbar ' + ${extraClass}" type="button" 
+			data-bs-toggle="collapse" data-bs-target=".topNavbar" aria-controls="topNavbar" aria-expanded="false" 
+			aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+</div>
+<!-- ##################### -->
+<!-- ## Buttons in Dock ## -->
+<!-- ##################### -->
+<!-- Create New Item -->
+<div th:fragment="create_instance(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   th:title="'Create ' + ${sectionName}" th:href="@{'/' + ${sectionName} + '/new'}"> 
+		<i class="fa-solid fa-circle-plus fa-2x"></i>
+	</a>
+</div>
+<!-- Clear Sorting -->
+<div th:fragment="clear_sort(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Clear Sorting"
+	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
+	   			  ${keyword != null ? '&keyword=' + keyword : ''} +
+		   		  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+	    <i class="fa-solid fa-square-xmark fa-2x"></i>
+	</a>
+</div>
+<!-- Clear Search -->
+<div th:fragment="clear_search(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text cf-button-dock-clear ' + ${extraClass}" id="search-addon" 
+	   title="Clear Search Results"
+	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
+		<i class="fa-solid fa-square-minus fa-2x"></i>
+	</a> 
+</div>
+<!-- Clear Filter -->
+<div th:fragment="clear_filter(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text cf-button-dock-clear ' + ${extraClass}" id="search-addon" 
+	   title="Clear Filter Results"
+	   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + '?' +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${keyword != null ? '&keyword=' + keyword : ''}}">
+		<i class="fa-solid fa-square-minus fa-2x"></i>
+	</a> 
+</div>
+<!-- Export table to CSV File -->
+<div th:fragment="export_csv(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Export to csv" th:href="@{'/' + ${sectionName} + '/export/csv'}"> 
+	    <i class="fa-solid fa-file-csv fa-2x"></i>
+	</a>
+</div>
+<!-- Export table to Excel File -->
+<div th:fragment="export_excel(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Export to excel" th:href="@{'/' + ${sectionName} + '/export/excel'}"> 
+	    <i class="fa-solid fa-file-excel fa-2x"></i>
+	</a>
+</div>
+<!-- Export table to PDF File -->
+<div th:fragment="export_pdf(sectionName, extraClass)" th:remove="tag">
+	<a th:class="'cf-button-dock input-group-text border-0 ' + ${extraClass}" id="search-addon" 
+	   title="Export to pdf" th:href="@{'/' + ${sectionName} + '/export/pdf'}"> 
+	    <i class="fa-solid fa-file-pdf fa-2x"></i>
+	</a>	
+</div>
+<!-- ###################### -->
+<!-- ## Buttons in Table ## -->
+<!-- ###################### -->
+<!-- Enable Item -->
+<div th:fragment="enable(sectionName, instance, extraClass)" th:remove="tag">
+	
+	<!-- If the item is enabled, disable it -->
+	<a th:if="${instance.enabled}" th:title="${'Disable ' + sectionName}"
+	   th:class="'fa-solid fa-check-circle cf-button-table ' + ${extraClass}"
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + '/enabled/false?' + 
+	   			  'pageNum=' + ${pageNum} +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${keyword != null ? '&keyword=' + keyword : ''} + 
+				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}"></a> 
+	<!-- If the item is disabled, enable it -->
+	<a th:if="${!instance.enabled}" th:title="${'Enable ' + sectionName}"
+	   th:class="'fa-regular fa-circle cf-button-table ' + ${extraClass}"
+	   th:href="@{'/' + ${sectionName} + '/' + ${instance.id} + '/enabled/true?' + 
+	   			  'pageNum=' + ${pageNum} +
+	   			  ${sortField != null ? '&sortField=' + sortField : ''} +
+				  ${sortOrder != null ? '&sortOrder=' + sortOrder : ''} +
+				  ${keyword != null ? '&keyword=' + keyword : ''} + 
+				  ${categoryId != null ? '&categoryId=' + categoryId : ''}}"></a>
+</div>
+<!-- View Details -->
+<div th:fragment="view(sectionName, instance, extraClass)" th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
+	   th:href="@{'/' + ${sectionName} + '/view/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-eye cf-button-table ' + ${extraClass}"></a> 
+</div>
+<!-- Open File -->
+<div th:fragment="file(sectionName, instance, extraClass)" th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'View ' + ${sectionName}" 
+	   th:href="@{'/' + ${sectionName} + '/view/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-file-lines cf-button-table ' + ${extraClass}"></a> 
+</div>
+<!-- Edit Item -->
+<div th:fragment="edit(sectionName, instance, extraClass)"  th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'Update ' + ${sectionName}" 
+	   th:href="@{'/' + ${sectionName} + '/edit/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-pen-to-square cf-button-table ' + ${extraClass}"></a> 
+</div>
+<!-- Delete Item -->
+<div th:fragment="delete_instance(sectionName, instance, extraClass)"  th:remove="tag">
+	<a data-bs-toggle="tooltip" th:title="'Delete ' + ${sectionName}"
+ 	   th:href="@{'/' + ${sectionName} + '/delete/' + ${instance.getId()}}"
+	   th:class="'fa-solid fa-trash-can cf-button-table button-delete ' + ${extraClass}"
+	   th:instanceId="${instance.getId()}" th:instanceName="${instance.getName()}"></a>
+</div>
+<!-- ##################### -->
+<!-- ## Buttons in Form ## -->
+<!-- ##################### -->
+<!-- Delete Image Button in Products Images Section -->
+<div th:fragment="delete_image"  th:remove="tag">
+	<a class="input-group-text border-0 cf-button-form-delete-image" title="Delete this image"
+  	   name="linkRemoveExtraImage"> 
+    	<i class="fa-solid fa-xmark" style="height: 100%; padding: 0.3rem"></i>
+	</a>
+</div>
+<!-- Delete Button in Products Details Section -->
+<div th:fragment="delete_detail" class="row input-group" style="width: 65px; margin-left: auto" 
+	 title="Delete this detail">
+	<a class="detail-button-padding cf-button-form-delete-detail linkRemoveDetail">
+	    <i class="fa-solid fa-square-xmark fa-2x" style="height: 100% ; padding: 0.1rem"></i>
+	</a>
+</div>
+<!-- Add Button in Products Details Section -->
+<div th:fragment="create_detail" class="row input-group" style="width: 65px; margin-left: auto" 
+	 title="Add a detail">
+	<a class="detail-button-padding cf-button-form-create-detail" onclick="showNextDetailSection();"> 
+		<i class="fa-solid fa-circle-plus fa-2x"></i>
+	</a>
+</div>

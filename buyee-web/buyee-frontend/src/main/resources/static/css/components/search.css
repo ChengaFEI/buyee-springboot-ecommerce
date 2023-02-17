@@ -1,0 +1,17 @@
+/* Search Bar */
+.cf-search {
+	border: 1px solid var(--cf-gray-light);
+	padding: 0 0 0 0;
+}
+.cf-search>.cf-search-input {
+	margin: 0 0 0 0;
+	border: var(--cf-transparent);
+	height: var(--cf-h-dock);
+	font-size: var(--cf-f-size);
+}
+.cf-search-right {
+	border-left: 0px;
+}
+.cf-search-left {
+	border-right: 0px;
+}

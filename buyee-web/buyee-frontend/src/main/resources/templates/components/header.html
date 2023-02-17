@@ -1,0 +1,36 @@
+<!-- Main Page Navigation Bar -->
+<div th:fragment="navbar(activeItem)">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark cf-text-header">
+		<!-- Website logo -->
+		<a class="navbar-brand" th:href="@{/}" style="margin-right: 0px;"> 
+			<img class="cf-less-logo" src="https://buyee-db.s3.us-east-2.amazonaws.com/site-logo/buyee-logo-text.png" />
+			<img class="cf-full-logo" src="https://buyee-db.s3.us-east-2.amazonaws.com/site-logo/buyee-logo.png" />
+		</a>
+		<!-- Toggler button to expand the drop down menu -->
+		<!-- hidden in large screen and visible in medium/small screen -->
+		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
+		<!-- Website Sections -->
+		<div class="collapse navbar-collapse topNavbar row">
+			<ul class="navbar-nav cf-list">
+				 <li th:replace="~{/components/text::header('Careers', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::header('Payment', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::header('Shipping &amp; Delivery', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::header('Login', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::header('Contact', '')}"/>
+				 <li class="cf-less-header-text">&nbsp;</li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<!-- Float Window -->
+<div th:fragment="floatwindow" th:if="${message != null}" class="alert alert-secondary text-center bg-dark cf-floatwindow">
+	<div class="cf-floatwindow-content form-control bg-dark">[[${message}]]</div>
+</div>
+<!-- Form Header -->
+<div th:fragment="form_cancel(title)" th:remove="tag">
+	<div class="mb-3 modal-header">
+		<h2>[[${title}]]</h2>
+		<input type="button" class="btn-close cancelButton"/> 
+	</div>
+	<hr />
+</div>

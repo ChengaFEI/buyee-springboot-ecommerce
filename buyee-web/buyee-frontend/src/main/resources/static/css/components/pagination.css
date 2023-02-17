@@ -1,0 +1,22 @@
+/* Pagination in Table */
+.cf-pagination>li>.cf-page-link {
+	color: var(--cf-gray-light-su); 
+	border: 1px solid var(--cf-gray-light-ul);
+}
+.cf-pagination>li>.cf-page-link:hover {
+	background-color: var(--cf-white);
+	color: var(--cf-red);
+	border: 1px solid var(--cf-gray-light-ul);
+}
+.cf-pagination>.disabled>a {
+	color: var(--cf-gray-light-su);
+	border: 1px solid var(--cf-gray-light-ul);
+}
+.cf-pagination>.active>a {
+	background-color: var(--cf-transparent);
+	color: var(--cf-red);
+}
+.cf-pagination>.active>a:hover {
+	background-color: var(--cf-transparent);
+	color: var(--cf-red-light);
+}

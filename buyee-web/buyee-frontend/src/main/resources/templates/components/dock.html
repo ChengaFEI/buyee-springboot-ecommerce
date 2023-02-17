@@ -1,0 +1,160 @@
+<!-- ########################### -->
+<!-- ## General Section Docks ## -->
+<!-- ########################### -->
+<!--------------->
+<!-- Type One: -->
+<!--------------->
+<!-- Contents: Search Bar, Command Buttons -->
+<!-- Screen Compatibility: All -->
+<!-- Authorization: No -->
+<div th:fragment="search_buttons(sectionName)" th:remove="tag">
+	<!-- Large/Medium Screen -->
+	<div th:replace="~{/components/dock::search_buttons_full(${sectionName})}"></div>
+	<!-- Small Screen -->
+	<div th:replace="~{/components/dock::search_buttons_less(${sectionName})}"></div>
+</div>
+<!-- Contents: Search Bar, Command Buttons -->
+<!-- Screen Compatibility: Large, Medium -->
+<!-- Authorization: No -->
+<div th:fragment="search_buttons_full(sectionName)" 
+	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
+	<!-- Create Item Button -->
+	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
+	<!-- Clear Sorting Button -->
+	<div th:replace="~{/components/button::clear_sort(${sectionName}, '')}"></div>
+	<!-- Clear Search Button -->
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-dock-clear-left')}"></div>
+	<!-- Search Bar -->
+	<div th:replace="~{/components/search::bar(${sectionName}, 'cf-search-right')}"></div>
+	<!-- Export CSV Buttons -->
+	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
+	<!-- Export Excel Buttons -->
+	<div th:replace="~{/components/button::export_excel(${sectionName}, '')}"></div>
+	<!-- Export PDF Buttons -->
+	<div th:replace="~{/components/button::export_pdf(${sectionName}, '')}"></div>
+</div>
+<!-- Contents: Search Bar, Command Buttons -->
+<!-- Screen Compatibility: Small -->
+<!-- Authorization: No -->
+<div th:fragment="search_buttons_less(sectionName)" 
+	 class="input-group rounded container-fluid mt-3 mb-3 less-details">
+	<!-- Create Item Button -->
+	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
+	<!-- Export CSV Buttons -->
+	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
+	<!-- Export Excel Buttons -->
+	<div th:replace="~{/components/button::export_excel(${sectionName}, '')}"></div>
+	<!-- Export PDF Buttons -->
+	<div th:replace="~{/components/button::export_pdf(${sectionName}, '')}"></div>
+	<!-- Search Bar -->
+	<div th:replace="~{/components/search::bar(${sectionName}, 'cf-search-left')}"></div>
+	<!-- Clear Search Button -->
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-dock-clear-right')}"></div>
+</div>
+<!--------------->
+<!-- Type Two: -->
+<!--------------->
+<!-- Contents: Search Bar, Filter Bar, Command Buttons -->
+<!-- Screen Compatibility: Large, Medium -->
+<!-- Authorization: No -->
+<div th:fragment="search_filter_buttons_full(sectionName)" 
+	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
+	<!-- Create Item Button -->
+	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
+	<!-- Clear Sorting Button -->
+	<div th:replace="~{/components/button::clear_sort(${sectionName}, '')}"></div>
+	<!-- Clear Search Button -->
+	<div th:replace="~{/components/button::clear_search(${sectionName}, 'cf-button-dock-clear-left')}"></div>
+	<!-- Search Bar -->
+	<div th:replace="~{/components/search::bar(${sectionName}, 'cf-search-right')}"></div>
+	<!-- Clear Filter Button -->
+	<div th:replace="~{/components/button::clear_filter(${sectionName}, 'cf-button-dock-clear-middle')}"></div>
+	<!-- Filter Bar -->
+	<div th:replace="~{/components/filter::bar(${sectionName}, 'cf-filter-right')}"></div>
+	<!-- Export CSV Buttons -->
+	<div th:replace="~{/components/button::export_csv(${sectionName}, '')}"></div>
+	<!-- Export Excel Buttons -->
+	<div th:replace="~{/components/button::export_excel(${sectionName}, '')}"></div>
+	<!-- Export PDF Buttons -->
+	<div th:replace="~{/components/button::export_pdf(${sectionName}, '')}"></div>
+</div>
+<!-- ###################### -->
+<!-- ## Customized Docks ## -->
+<!-- ###################### -->
+<!----------------------->
+<!-- Section: Products -->
+<!----------------------->
+<!-- Contents: Search Bar, Filter Bar, Command Buttons -->
+<!-- Screen Compatibility: All -->
+<!-- Authorization: Yes -->
+<div th:fragment="products" th:remove="tag">
+	<!-- Large/Medium Screen -->
+	<div th:replace="~{/components/dock::products_full}"></div>
+	<!-- Small Screen -->
+	<div th:replace="~{/components/dock::products_less}"></div>
+</div>
+<!-- Contents: Search Bar, Filter Bar, Command Buttons -->
+<!-- Screen Compatibility: Large, Medium -->
+<!-- Authorization: Yes -->
+<div th:fragment="products_full" class="input-group rounded container-fluid mt-3 mb-3 full-details">
+	<!-- Authorization: only open to admin and editor -->
+	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+		<!-- Create Item Button -->
+		<div th:replace="~{/components/button::create_instance('products', '')}"></div>
+	</th:block>
+	<!-- Authorization: open to all users with access to this page -->
+	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+		<!-- Clear Sorting Button -->
+		<div th:replace="~{/components/button::clear_sort('products', '')}"></div>
+		<!-- Clear Search Button -->
+		<div th:replace="~{/components/button::clear_search('products', 'cf-button-dock-clear-left')}"></div>
+		<!-- Search Bar -->
+		<div th:replace="~{/components/search::bar('products', 'cf-search-right')}"></div>
+		<!-- Clear Filter Button -->
+		<div th:replace="~{/components/button::clear_filter('products', 'cf-button-dock-clear-middle')}"></div>
+		<!-- Filter Bar -->
+		<div th:replace="~{/components/filter::bar('products', 'filterLargeScreen', 'cf-filter-right')}"></div>
+		<!-- Export CSV Buttons -->
+		<div th:replace="~{/components/button::export_csv('products', '')}"></div>
+		<!-- Export Excel Buttons -->
+		<div th:replace="~{/components/button::export_excel('products', '')}"></div>
+		<!-- Export PDF Buttons -->
+		<div th:replace="~{/components/button::export_pdf('products', '')}"></div>
+	</th:block>
+</div>
+<!-- Contents: Search Bar, Filter Bar, Command Buttons -->
+<!-- Screen Compatibility: Small -->
+<!-- Authorization: Yes -->
+<div th:fragment="products_less">
+	<!-- First row -->
+	<div class="input-group rounded container-fluid mt-3 mb-3 less-details">
+		<!-- Authorization: only open to admin and editor -->
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+			<!-- Create Item Button -->
+			<div th:replace="~{/components/button::create_instance('products', '')}"></div>
+		</th:block>
+		<!-- Authorization: open to all users with access to this page -->
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+			<!-- Export CSV Buttons -->
+			<div th:replace="~{/components/button::export_csv('products', '')}"></div>
+			<!-- Export Excel Buttons -->
+			<div th:replace="~{/components/button::export_excel('products', '')}"></div>
+			<!-- Export PDF Buttons -->
+			<div th:replace="~{/components/button::export_pdf('products', '')}"></div>
+			<!-- Search Bar -->
+			<div th:replace="~{/components/search::bar('products', 'cf-search-left')}"></div>
+			<!-- Clear Search Button -->
+			<div th:replace="~{/components/button::clear_search('products', 'cf-button-dock-clear-right')}"></div>
+		</th:block>
+	</div>
+	<!-- Second row -->
+	<div class="input-group rounded container-fluid mt-3 mb-3 less-details">
+		<!-- Authorization: open to all users with access to this page -->
+		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+			<!-- Filter Bar -->
+			<div th:replace="~{/components/filter::bar('products', 'filterSmallScreen', 'cf-filter-left')}"></div>
+			<!-- Clear Filter Button -->
+			<div th:replace="~{/components/button::clear_filter('products', 'cf-button-dock-clear-right')}"></div>
+		</th:block>
+	</div>
+</div>

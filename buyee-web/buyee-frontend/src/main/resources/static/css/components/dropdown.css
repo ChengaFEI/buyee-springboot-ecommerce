@@ -1,0 +1,50 @@
+/***********************/
+/* Drop-down in Header */
+/***********************/
+/* Account Label Drop Down */
+.cf-dropdown-header {
+	display: inline-block;
+	position: relative;
+}
+.cf-dropdown-header-content {
+	display: none;
+	position: absolute;
+	width: 100%;
+	overflow: auto;
+	z-index: 10;
+}
+.cf-dropdown-header-content a {
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	color: var(--cf-gray);
+}
+.cf-dropdown-header:hover .cf-dropdown-header-content {
+	display: block;
+	background-color: var(--cf-white);
+	border: 1px solid var(--cf-gray-light); 
+}
+.cf-dropdown-header-content a:hover {
+	color: var(--cf-white);
+	background-color: var(--cf-gray-light);
+}
+/*********************/
+/* Drop-down in Form */
+/*********************/
+/* Drop Down in Brands Form */
+.cf-dropdown-form {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border: 1px solid var(--cf-gray-light); 
+	border-radius: var(--cf-r-border);
+}
+.cf-dropdown-form>select {
+	border: 0px;
+	resize: vertical;
+	height: 210px;
+}
+.cf-dropdown-form>select>option {
+	color: var(--cf-gray); 
+	margin-bottom: 3px;
+}

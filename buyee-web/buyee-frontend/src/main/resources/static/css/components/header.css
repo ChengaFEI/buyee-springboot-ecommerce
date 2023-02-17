@@ -1,0 +1,37 @@
+/* Sub Components */
+@import './button.css';
+@import './text.css';
+@import './dropdown.css';
+/* General Sections in header navbar */
+.cf-list {
+	margin-left: calc(var(--cf-gx) * .5)!important; 
+	padding-left: calc(var(--cf-gx) * .5)!important; 
+	margin-right: calc(var(--cf-gx))!important;
+}
+/* Account Section inn header navbar */
+.cf-list-account {
+	margin-left: auto; 
+	width: 135px; 
+	margin-right: var(--cf-gx)!important;
+}
+/* Main Header Float Window */
+.cf-floatwindow {
+	border-radius: 0px;
+	border: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+.cf-floatwindow-content {
+	color: var(--cf-white);
+	border: 0px;
+	border-top: 1px solid var(--cf-gray);
+	border-radius: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+/* Modal Header */
+.cf-modal-header {
+	background-color: var(--cf-black); 
+	color: var(--cf-white);
+}
+.cf-modal-header>h4 {color: var(--cf-white);}

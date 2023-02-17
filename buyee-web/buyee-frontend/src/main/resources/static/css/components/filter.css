@@ -1,0 +1,15 @@
+/************************/
+/** Filter Bar in Dock **/
+/************************/
+.cf-filter {
+	border: 1px solid var(--cf-gray-light);
+	padding: 0 0 0 0;
+}
+.cf-filter>.filter-select {
+	margin: 0 0 0 0;
+	border: var(--cf-h-dock);
+	height: var(--cf-h-dock);
+	font-size: var(--cf-f-size);
+}
+.cf-filter-left {border-right: 0px;}
+.cf-filter-right {border-left: 0px;}

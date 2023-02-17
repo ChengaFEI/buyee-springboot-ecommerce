@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{/universal::head('Home - Buyee Admin', 'none', 'index')}" />
+<head th:replace="~{/universal::head('Buyee', 'none', 'index')}" />
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
@@ -9,11 +9,9 @@
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Welcome -->
 		<div class="mt-3 container-fluid">
-			<h2>Buyee Control Panel</h2>
+			<h2>Buyee</h2>
 			<a class="cf-text-index" th:href="@{/account}">
 				Welcome
-				<span sec:authentication="principal.fullName"></span>
-				<span sec:authentication="principal.authorities"></span>
 			</a>
 		</div>
 		<!-- Footer -->

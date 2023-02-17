@@ -1,0 +1,82 @@
+/************************/
+/** Text in Index Page **/
+/************************/
+/* Welcome message */
+.cf-text-index {
+	color: var(--cf-gray);
+	text-decoration: none
+}
+.cf-text-index:hover {color: var(--cf-red);}
+/********************/
+/** Text in Header **/
+/********************/
+/* Text in Header's Navigation Sections */
+.cf-text-header {background-color: var(--cf-black)!important;}
+.cf-text-header-item-active {border-bottom: 1px solid var(--cf-white);}
+.cf-text-header-item-active:hover {border-bottom: 1px solid var(--cf-gray);}
+.cf-text-header-item-active>a {color: var(--cf-white);}
+.cf-text-header-item-inactive:hover {border-bottom: 1px solid var(--cf-white);}
+.cf-text-header-item-inactive>a {color: var(--cf-gray);}
+.cf-text-header-item-inactive>a:hover {color: var(--cf-white);}
+/*******************/
+/** Text in Table **/
+/*******************/
+/* Text in Table Heads */
+.cf-text-table-head-active {
+	text-decoration: none;
+	color: var(--cf-red);
+}
+.cf-text-table-head-active:hover {
+	text-decoration: none;
+	color: var(--cf-red-light);
+}
+.cf-text-table-head-inactive {
+	text-decoration: none;
+	color: var(--cf-black);
+}
+.cf-text-table-head-inactive:hover {
+	text-decoration: none;
+	color: var(--cf-red);
+}
+/* Hyperlink Text in Table Body */
+.cf-text-table-body-tree>a {
+	color: var(--cf-black);
+	text-decoration: underline dotted var(--cf-gray);
+	text-underline-offset: 8px;
+}
+.cf-text-table-body-tree:hover>a {
+	color: var(--cf-white);
+	background-color: var(--cf-red);
+	text-decoration: none;
+}
+.cf-text-table-body-list>a {
+	color: var(--cf-black);
+	text-decoration: underline dotted var(--cf-gray);
+}
+.cf-text-table-body-list:hover {
+	background-color: var(--cf-red);
+}
+.cf-text-table-body-list:hover>a {
+	color: var(--cf-white);
+	text-decoration: none;
+}
+/******************/
+/** Text in Form **/
+/******************/
+/* Rich Text Editor in Products Description Form */
+/* classes are inherited from bootstrap codes */
+.richText-btn, .richText-undo, .richText-redo, .richText-help {color: var(--cf-gray);}
+.richText-btn:hover, .richText-undo:hover, .richText-redo:hover, .richText-help:hover {color: var(--cf-red);}
+.richText-btn:hover .richText-dropdown {color: var(--cf-gray);}
+.richText-btn:hover .richText-dropdown li:hover {color: var(--cf-red);}
+.richText .richText-form button {
+	background-color: transparent;
+	color: var(--cf-red);
+	border: 1px solid var(--cf-red);
+}
+.richText .richText-form button:hover {
+	background-color: var(--cf-red);
+	color:  var(--cf-white);
+}
+.richText .richText-form input[type=text]:focus {border: 1px solid var(--cf-red);}
+.richText .richText-editor:focus {border-left: 2px solid var(--cf-red);}

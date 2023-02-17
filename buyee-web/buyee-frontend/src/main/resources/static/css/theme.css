@@ -1,0 +1,47 @@
+:root {
+	/***********/
+	/** Color **/
+	/***********/
+	/* red */
+	--cf-red: rgba(220, 53, 69, 1); /* same as bootstrap's .btn-danger var(--bs-btn-color) #dc3545 */
+	--cf-red-light: rgba(220, 53, 69, .7); /* same as bootstrap's .btn-danger var(--bs-btn-color) #dc3545 */
+	/* black, white, gray */
+	--cf-black: rgba(33, 37, 41, 1); /* same as bootstrap's .btn-dark var(--bs-btn-color) #212529 */
+	--cf-white: rgba(255, 255, 255, 1); /* pure white */
+	--cf-gray: rgba(150, 150, 150, 1); /* main gray */
+	--cf-gray-light-su: rgba(41, 43, 44, .4); /* subtle light gray */
+	--cf-gray-light: rgba(41, 43, 44, .2); /* light gray */
+	--cf-gray-light-ul: rgba(41, 43, 44, .1); /* ultra light gray */
+	--cf-gray-border: rgba(206, 212, 218, 1); /* same as bootstrap's .form-control border color #ced4da */
+	--cf-gray-text: rgba(108, 117, 125, 1); /* same as bootstrap's .text-muted text color #6c757d */
+	/* Alpha */
+	--cf-transparent: rgba(255, 255, 255, 0); /* purely transparent */
+	/************/
+	/** Layout **/
+	/************/
+	/* margin */
+	--cf-mb-3: 1rem; /* same as bootstrap's .mb-3 margin-bottom */
+	/* padding */
+	--cf-px: 0.75rem; /* same as bootstrap's .form-control padding (horizontal) */
+	--cf-py-lg: 0.5rem; /* larger vertical padding */
+	--cf-py: 0.375rem; /* same as bootstrap's .form-control padding (vertical) */
+	--cf-py-sm: 0.15rem; /* smaller vertical padding */
+	--cf-gx: 1.5rem; /* same as bootstrap's .container-fluid var(--bs-gutter-x) */
+	/***********/
+	/** Scale **/
+	/***********/
+	/* height */
+	--cf-h-dock: 45px; /* dock's height */
+	/* width */
+	--cf-w-thumbnail: 200px; /* thumbnail's width */
+	--cf-w-thumbnail-sm: 50px; /* smaller thumbnail's width */
+	/****************/
+	/** Decoration **/
+	/****************/
+	/* radius */
+	--cf-r-border: 0.375rem; /* same as bootstrap's .form-control border-radius */
+	/**********/
+	/** Font **/
+	/**********/
+	--cf-f-size: 15px;
+}

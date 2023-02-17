@@ -1,0 +1,10 @@
+/****************************/
+/** File Input Bar in Form **/
+/****************************/
+/* Image File Input Bar in Products' Images Form */
+.cf-file::-webkit-file-upload-button {display: none;}
+.cf-file::file-selector-button {display: none;}
+.cf-file {
+	border-top-left-radius: var(--cf-r-border)!important;
+	border-bottom-left-radius: var(--cf-r-border)!important;
+}

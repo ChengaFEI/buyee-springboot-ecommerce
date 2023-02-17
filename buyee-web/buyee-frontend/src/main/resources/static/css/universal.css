@@ -24,6 +24,8 @@
 		width: cal(var(--cf-gx) * .5)!important;
 		margin-right: var(--cf-gx)!important;
 	}
+	/* toggler button in the header/footer navbar */
+	.cf-button-navbar {margin-left: calc(var(--cf-gx) * .5)!important;}
 	/* table column components in modal */
 	.cf-hideable-column-modal {display: none;}
 	/* image input components in Products Images Section */
@@ -58,6 +60,8 @@
 		width: cal(var(--cf-gx) * .5)!important;
 		margin-right: var(--cf-gx)!important;
 	}
+	/* toggler button in the header/footer navbar */
+	.cf-button-navbar {margin-left: calc(var(--cf-gx) * .5)!important;}
 	/* table column components in sections homepage */
 	.hideable-column {display: none;}
 	/* table column components in modal */

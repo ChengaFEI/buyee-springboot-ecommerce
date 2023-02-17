@@ -8,16 +8,15 @@
 		</a>
 		<!-- Toggler button to expand the drop down menu -->
 		<!-- hidden in large screen and visible in medium/small screen -->
-		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
+		<div th:replace="~{/components/button::toggler_navbar('topNavbar', '')}"></div>
 		<!-- Website Sections -->
 		<div class="collapse navbar-collapse topNavbar row">
 			<ul class="navbar-nav cf-list">
-				 <li th:replace="~{/components/text::header('Careers', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Payment', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Shipping &amp; Delivery', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Login', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Contact', '')}"/>
-				 <li class="cf-less-header-text">&nbsp;</li>
+				 <li th:replace="~{/components/text::navbar('Careers', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::navbar('Payment', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::navbar('Shipping &amp; Delivery', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::navbar('Login', '')}"/>&nbsp;
+				 <li th:replace="~{/components/text::navbar('Contact', '')}"/>
 			</ul>
 		</div>
 	</nav>

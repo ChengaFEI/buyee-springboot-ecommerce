@@ -1,6 +1,26 @@
-<!-- Copyright -->
-<div th:fragment="copyright" class="text-center m-3 text-muted">
-	<p class="cf-footer-copyright">Buyee Control Panel (Copyright &copy; Buyee)</p>
+<!-- Main Page Footer -->
+<div th:fragment="navbar(activeItem)" class="mt-3 fixed-bottom">
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark cf-text-header">
+			<!-- Website logo -->
+			<!-- <a class="navbar-brand" th:href="@{/}" style="margin-right: 0px;"> 
+				<img src="https://buyee-db.s3.us-east-2.amazonaws.com/site-logo/buyee-logo-text-white.png" />
+			</a> -->
+			<!-- Toggler button to expand the drop down menu -->
+			<!-- hidden in large screen and visible in medium/small screen -->
+			<div th:replace="~{/components/button::toggler_navbar('bottomNavbar', '')}"></div>
+			<!-- Website Sections -->
+			<div class="collapse navbar-collapse bottomNavbar row">
+				<ul class="navbar-nav cf-list">
+				    &nbsp;
+					<li th:replace="~{/components/text::navbar('About Us', 'fa-solid fa-user-group')}"/>&nbsp;
+					<li th:replace="~{/components/text::navbar('Privacy Notice', 'fa-solid fa-user-group')}"/>&nbsp;
+					<li th:replace="~{/components/text::navbar('Returns &amp; Refunds', 'fa-solid fa-user-group')}"/>&nbsp;
+					<li th:replace="~{/components/text::navbar_copyright}"/>					
+				</ul>
+			</div>
+		</nav>
+	</div>
 </div>
 <!-- Form Footer -->
 <div th:fragment="form">

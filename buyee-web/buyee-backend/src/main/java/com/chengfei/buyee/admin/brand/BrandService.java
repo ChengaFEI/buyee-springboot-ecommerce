@@ -13,7 +13,7 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class BrandService {
-    public static final Integer BRANDS_PER_PAGE = 8;
+    public static final Integer BRANDS_PER_PAGE = 10000;
     @Autowired private BrandRepository repo;
     // Create Tasks
     public void saveBrand(Brand brand) {

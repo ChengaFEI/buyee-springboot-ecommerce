@@ -13,7 +13,7 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class UserService {
-    public static final int USERS_PER_PAGE = 6;
+    public static final int USERS_PER_PAGE = 10000;
     @Autowired private UserRepository userRepo;
     @Autowired private RoleRepository roleRepo;
     // Create Tasks (empty)

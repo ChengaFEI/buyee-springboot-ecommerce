@@ -22,7 +22,7 @@ import com.chengfei.buyee.common.entity.Category;
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class CategoryController {
-    private static final int CATEGORIES_PER_PAGE = 5;
+    private static final int CATEGORIES_PER_PAGE = 10000;
     @Autowired private CategoryService service;
     // Create Tasks
     @GetMapping("/categories/new")

@@ -13,7 +13,7 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class ProductService {
-    public static final Integer PRODUCTS_PER_PAGE = 5;
+    public static final Integer PRODUCTS_PER_PAGE = 10000;
     @Autowired private ProductRepository repo;
     // Create Tasks
     public Product saveProduct(Product product) {

@@ -1,3 +1,13 @@
-.cf-thumbnail-form {
-	width: var(--cf-w-thumbnail);
+.cf-thumbnail-form {width: var(--cf-w-thumbnail);}
+.cf-image-box {
+	width: 20%!important; 
+	padding: calc(var(--cf-gx) * .5);
 }
+.cf-image-content {
+	border: 1px solid var(--cf-gray-light);
+	height: 100%!important;
+	border-radius: var(--cf-r-border);
+	text-align: center!important;
+}
+.cf-image-content {padding: var(--cf-gx);}
+.cf-image-inner-box {padding: calc(var(--cf-gx) * .5);}

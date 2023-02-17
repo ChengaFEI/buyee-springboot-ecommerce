@@ -7,12 +7,25 @@
 		<div th:replace="~{/components/header::navbar('')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
-		<!-- Welcome -->
-		<div class="mt-3 container-fluid">
-			<h2>Buyee</h2>
-			<a class="cf-text-index" th:href="@{/account}">
-				Welcome
-			</a>
+		<!-- Categories display -->
+		<div class="container-fluid">
+			<div>
+				<div class="row">
+				<th:block th:each="category: ${listNoChildrenCategories}">
+					<div class="form-group rounded cf-expandable-image cf-image-box" th:title="${category.name}">
+						<div class="cf-image-content">
+							<a class="mb-3 mt-3 cf-text-index-list" th:href="@{'/c/' + ${category.alias}}">
+								[[${category.name}]]
+							</a>
+							<hr/>
+							<div class="cf-image-inner-box">
+								<img th:alt="${category.image}" style="width: 100%" th:src="@{${category.imagePathString}}"/>
+							</div>
+						</div>
+					</div>
+				</th:block>
+				</div>
+			</div>
 		</div>
 		<!-- Footer -->
 		<div th:replace="~{/components/footer::navbar('')}"></div>

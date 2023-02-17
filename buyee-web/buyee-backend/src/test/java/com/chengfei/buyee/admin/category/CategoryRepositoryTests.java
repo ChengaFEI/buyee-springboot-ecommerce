@@ -18,11 +18,8 @@ import com.chengfei.buyee.common.entity.Category;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class CategoryRepositoryTests {
-    @Autowired
-    private CategoryRepository repo;
-    
+    @Autowired private CategoryRepository repo;
     // Create Tasks
-    
     @Test
     public void testCreateRootCategory() {
 	Category category1 = new Category("Computers");
@@ -32,7 +29,6 @@ public class CategoryRepositoryTests {
 	assertThat(savedCategory1.getId()).isGreaterThan(0);
 	assertThat(savedCategory2.getId()).isGreaterThan(0);
     }
-    
     @Test
     public void testCreateSubCategory() {
 	Category parent1 = new Category(1);
@@ -52,25 +48,20 @@ public class CategoryRepositoryTests {
 	assertThat(savedCategory3.getId()).isGreaterThan(0);
 	assertThat(savedCategory4.getId()).isGreaterThan(0);
 	assertThat(savedCategory5.getId()).isGreaterThan(0);
-	
 	Category parent3 = new Category(5);
 	Category category6 = new Category("Memory", parent3);
 	Category savedCategory6 = repo.save(category6);
 	assertThat(savedCategory6.getId()).isGreaterThan(0);
-	
 	Category parent4 = new Category(4);
 	Category category7 = new Category("Gaming Laptops", parent4);
 	Category savedCategory7 = repo.save(category7);
 	assertThat(savedCategory7.getId()).isGreaterThan(0);
-	
 	Category parent5 = new Category(7);
 	Category category8 = new Category("iPhone", parent5);
 	Category savedCategory8 = repo.save(category8);
 	assertThat(savedCategory8.getId()).isGreaterThan(0);
     }
-    
     // Read Tasks
-    
     @Test
     public void readAllCategoryById () {
 	Category category = repo.findById(2).get();
@@ -79,15 +70,11 @@ public class CategoryRepositoryTests {
 	Set<Category> children = category.getChildren();
 	assertThat(children.size()).isGreaterThan(0);
     }
-    
     @Test
     public void testPrintHierarchicalCategories() {
 	Iterable<Category> categories = repo.findAll();
-	for (Category category : categories) {
-	    if (category.getParent() == null) printCategory(category, 0);
-	}
+	for (Category category : categories) {if (category.getParent() == null) printCategory(category, 0);}
     }
-    
     private void printCategory(Category category, int level) {
 	if (category == null || category.getName() == null) return;
 	for (int i = 0; i < level-1; i++) System.out.printf("  ");
@@ -96,7 +83,6 @@ public class CategoryRepositoryTests {
 	Set<Category> children = category.getChildren();
 	for (Category subcategory : children) printCategory(subcategory, level+1);
     }
-    
     @Test
     public void testFindByName() {
 	String name1 = "Computers";
@@ -107,7 +93,6 @@ public class CategoryRepositoryTests {
 	Category category2 = repo.findByName(name2);
 	assertThat(category2).isNull();
     }
-    
     @Test
     public void testFindByAlias() {
 	String alias1 = "Computers";

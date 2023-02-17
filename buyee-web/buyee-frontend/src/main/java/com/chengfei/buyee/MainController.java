@@ -1,4 +1,4 @@
-package com.chengfei.buyee.site;
+package com.chengfei.buyee;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

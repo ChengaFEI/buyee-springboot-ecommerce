@@ -16,4 +16,6 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
 	   "OR p.category.allParentIds LIKE %?2%) " + 
 	   "ORDER BY p.name ASC")
     public Page<Product> readProductsByCategory(Integer categoryId, String categoryIdMatch, Pageable pageable);
+    public Product readProductByAlias(String alias);
 }
+ 

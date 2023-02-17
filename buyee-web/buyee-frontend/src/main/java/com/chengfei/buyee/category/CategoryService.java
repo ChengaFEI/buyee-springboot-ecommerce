@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chengfei.buyee.common.entity.Category;
+import com.chengfei.buyee.common.exception.CategoryNotFoundException;
 @Service
 public class CategoryService {
     @Autowired private CategoryRepository repo;
@@ -21,8 +22,10 @@ public class CategoryService {
 	});
 	return listNoChildrenCategories;
     }
-    public Category readEnabledCategoryByAlias(String alias) {
-	return repo.readEnabledCategoryByAlias(alias);
+    public Category readEnabledCategoryByAlias(String alias) throws CategoryNotFoundException {
+	Category category = repo.readEnabledCategoryByAlias(alias);
+	if (category == null) throw new CategoryNotFoundException("Could not find any category with alias " + alias);
+	return category;
     }
     public List<Category> readCategoryParents(Category child) {
 	List<Category> listCategoryParents = new ArrayList<>();

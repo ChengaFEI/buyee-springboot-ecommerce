@@ -123,9 +123,9 @@
 			</table>
 		</div>
 		<!-- Pagination -->
-		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
+		<!-- <th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 			<div th:replace="~{/components/pagination::bar('products')}"></div>
-		</th:block>
+		</th:block> -->
 		<!-- Delete User Confirmation Modal -->
 		<div th:replace="~{/components/modal::confirm}"></div>
 		<!-- Product Preview Modal -->

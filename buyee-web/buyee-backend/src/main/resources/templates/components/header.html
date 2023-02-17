@@ -30,7 +30,7 @@
 				</th:block>
 				<!-- Products -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
-					<li th:replace="~{/components/text::header('Products', 'fa-solid fa-store')}"/>&nbsp;
+					<li th:replace="~{/components/text::header_products}"/>&nbsp;
 				</th:block>
 				<!-- Questions -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
@@ -69,24 +69,7 @@
 					<li th:replace="~{/components/text::header('Settings', 'fa-solid fa-gear')}"/>&nbsp;
 				</th:block>
 				<!-- Account Section -->
-				<li th:class="${activeItem == 'Account' 
-								? 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-active'
-								: 'cf-list-item nav-item ml-auto cf-dropdown-header cf-text-header-item-inactive'}"
-					style="margin-left: auto; width: 135px; margin-right: var(--cf-gx)"
-					id="accountItem">
-					<!-- Drop Down Toggler -->
-					<a class="nav-link dropdown-toggle" th:href="@{/account}">
-						<!-- Icon -->
-						<i class="fas fa-user"></i> &nbsp;
-						<!-- Username -->
-						<span sec:authentication="principal.fullName"></span>
-					</a>
-					<!-- Drop Down Menu -->
-					<div class="cf-dropdown-header-content">
-						<a th:href="@{/account }">Account</a>
-						<a id="logoutLink" href="">Logout</a>
-				  	</div>
-				</li>
+				<li th:replace="~{/components/text::header_account}"/>
 				<li class="cf-less-header-text">&nbsp;</li>
 			</ul>
 		</div>

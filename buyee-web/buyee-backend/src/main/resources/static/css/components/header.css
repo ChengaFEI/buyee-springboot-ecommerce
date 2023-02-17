@@ -2,16 +2,18 @@
 @import './button.css';
 @import './text.css';
 @import './dropdown.css';
-/* Main Header Nav Bar */
+/* General Sections in header navbar */
 .cf-list {
 	margin-left: calc(var(--cf-gx) * .5)!important; 
 	padding-left: calc(var(--cf-gx) * .5)!important; 
 	margin-right: calc(var(--cf-gx))!important;
 }
-/* .cf-list-item {
-	margin-left: 0!important;
-	width: cal(var(--cf-gx) * .5)!important;
-} */
+/* Account Section inn header navbar */
+.cf-list-account {
+	margin-left: auto; 
+	width: 135px; 
+	margin-right: var(--cf-gx)!important;
+}
 /* Main Header Float Window */
 .cf-floatwindow {
 	border-radius: 0px;

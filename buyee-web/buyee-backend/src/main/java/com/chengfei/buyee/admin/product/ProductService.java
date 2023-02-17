@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.chengfei.buyee.common.entity.Product;
+import com.chengfei.buyee.common.exception.ProductNotFoundException;
+
 import jakarta.transaction.Transactional;
 @Service
 @Transactional

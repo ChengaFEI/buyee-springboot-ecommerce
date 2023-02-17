@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.chengfei.buyee.common.entity.Category;
+import com.chengfei.buyee.common.exception.CategoryNotFoundException;
 
 import jakarta.transaction.Transactional;
 @Service

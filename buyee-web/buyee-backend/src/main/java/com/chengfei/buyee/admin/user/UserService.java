@@ -9,6 +9,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.chengfei.buyee.common.entity.Role;
 import com.chengfei.buyee.common.entity.User;
+import com.chengfei.buyee.common.exception.UserNotFoundException;
+
 import jakarta.transaction.Transactional;
 @Service
 @Transactional

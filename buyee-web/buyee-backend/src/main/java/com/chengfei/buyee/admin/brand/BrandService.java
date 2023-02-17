@@ -7,8 +7,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import com.chengfei.buyee.admin.user.UserNotFoundException;
+
 import com.chengfei.buyee.common.entity.Brand;
+import com.chengfei.buyee.common.exception.BrandNotFoundException;
+import com.chengfei.buyee.common.exception.UserNotFoundException;
+
 import jakarta.transaction.Transactional;
 @Service
 @Transactional

@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.chengfei.buyee.admin.AmazonS3Util;
-import com.chengfei.buyee.admin.user.UserNotFoundException;
 import com.chengfei.buyee.admin.user.UserService;
 import com.chengfei.buyee.admin.user.export.UserCsvExporter;
 import com.chengfei.buyee.admin.user.export.UserExcelExporter;
 import com.chengfei.buyee.admin.user.export.UserPdfExporter;
 import com.chengfei.buyee.common.entity.Role;
 import com.chengfei.buyee.common.entity.User;
+import com.chengfei.buyee.common.exception.UserNotFoundException;
+
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class UserController {

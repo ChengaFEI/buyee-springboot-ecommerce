@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.chengfei.buyee.admin.AmazonS3Util;
-import com.chengfei.buyee.admin.brand.BrandNotFoundException;
 import com.chengfei.buyee.admin.brand.BrandService;
 import com.chengfei.buyee.admin.brand.export.BrandCsvExporter;
 import com.chengfei.buyee.admin.brand.export.BrandExcelExporter;
 import com.chengfei.buyee.admin.brand.export.BrandPdfExporter;
 import com.chengfei.buyee.admin.category.CategoryService;
-import com.chengfei.buyee.admin.user.UserNotFoundException;
 import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Category;
+import com.chengfei.buyee.common.exception.BrandNotFoundException;
+import com.chengfei.buyee.common.exception.UserNotFoundException;
+
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class BrandController {

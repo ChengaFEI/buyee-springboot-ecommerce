@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.chengfei.buyee.admin.AmazonS3Util;
-import com.chengfei.buyee.admin.category.CategoryNotFoundException;
 import com.chengfei.buyee.admin.category.CategoryService;
 import com.chengfei.buyee.admin.category.export.CategoryCsvExporter;
 import com.chengfei.buyee.admin.category.export.CategoryExcelExporter;
 import com.chengfei.buyee.admin.category.export.CategoryPdfExporter;
 import com.chengfei.buyee.common.entity.Category;
+import com.chengfei.buyee.common.exception.CategoryNotFoundException;
+
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class CategoryController {

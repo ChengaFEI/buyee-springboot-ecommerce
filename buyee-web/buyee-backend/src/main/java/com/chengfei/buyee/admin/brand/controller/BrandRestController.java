@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.chengfei.buyee.admin.brand.BrandNotFoundException;
+
 import com.chengfei.buyee.admin.brand.BrandService;
 import com.chengfei.buyee.common.entity.Brand;
 import com.chengfei.buyee.common.entity.Category;
+import com.chengfei.buyee.common.exception.BrandNotFoundException;
 @RestController
 public class BrandRestController {
     @Autowired BrandService service;

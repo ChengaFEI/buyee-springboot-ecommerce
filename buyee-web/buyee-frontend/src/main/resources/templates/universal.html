@@ -19,5 +19,9 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/universal.css}" />
 	<script type="text/javascript" th:src="@{/js/universal.js}"></script>
 	<!-- Customized Dependencies (Special) -->
+	<link th:if="${type == '403'}" rel="stylesheet" type="text/css" th:href="@{/css/error/403.css}" />
+	<link th:if="${type == '404'}" rel="stylesheet" type="text/css" th:href="@{/css/error/404.css}" />
+	<link th:if="${type == '500'}" rel="stylesheet" type="text/css" th:href="@{/css/error/500.css}" />
+	<link th:if="${type == 'error'}" rel="stylesheet" type="text/css" th:href="@{/css/error/error.css}" />
 	<link th:if="${type == 'index'}" rel="stylesheet" type="text/css" th:href="@{/css/webpages/index.css}" />
 </head>

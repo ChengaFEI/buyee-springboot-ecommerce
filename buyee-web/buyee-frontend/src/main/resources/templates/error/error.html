@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{/universal::head('Error - Buyee Admin', 'none', 'error')}" />
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{/universal::head('Error - Buyee', 'none', 'error')}" />
 <body>
 	<!-- Header (navigation bar) -->
 	<div th:replace="~{/components/header::navbar('')}"></div>
-	<div class="mt-3 container-fluid text-center">
-		<h2>Sorry, an unexpected error occurs!</h2>
-	</div>
+	<div class="mt-3 container-fluid text-center"><h2>Sorry, an unexpected error occurs!</h2></div>
 	<!-- Footer -->
 	<div th:replace="~{/components/footer::navbar('')}"></div>
 </body>

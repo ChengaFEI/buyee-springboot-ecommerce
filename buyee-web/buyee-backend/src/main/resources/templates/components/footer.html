@@ -1,18 +1,16 @@
 <!-- Main Page Footer -->
-<div th:fragment="navbar()">
+<div th:fragment="navbar(activeItem)">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark cf-text-header">
+		<!-- Website logo -->
+		<a class="navbar-brand" th:href="@{/}" style="margin-right: 0px;"> 
+			<img src="https://buyee-db.s3.us-east-2.amazonaws.com/site-logo/buyee-logo-text-white.png" />
+		</a>
 		<!-- Toggler button to expand the drop down menu -->
 		<!-- hidden in large screen and visible in medium/small screen -->
-		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
+		<div th:replace="~{/components/button::toggler_navbar('bottomNavbar', '')}"></div>
 		<!-- Website Sections -->
 		<div class="collapse navbar-collapse bottomNavbar row">
 			<ul class="navbar-nav cf-list">
-				 <li th:replace="~{/components/text::header('Careers', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Payment', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Shipping &amp; Delivery', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Login', '')}"/>&nbsp;
-				 <li th:replace="~{/components/text::header('Contact', '')}"/>
-				 <li class="cf-less-header-text">&nbsp;</li>
 			</ul>
 		</div>
 	</nav>

@@ -18,55 +18,55 @@
 			<ul class="navbar-nav cf-list">
 				<!-- Users -->
 				<th:block sec:authorize="hasAuthority('Admin')">
-					<li th:replace="~{/components/text::header('Users', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Users', 'fa-solid fa-user-group')}"/>&nbsp;
 				</th:block>
 				<!-- Categories -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Categories', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Categories', 'fa-solid fa-square-poll-horizontal')}"/>&nbsp;
 				</th:block>
 				<!-- Brands -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Brands', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Brands', 'fa-solid fa-signature')}"/>&nbsp;
 				</th:block>
 				<!-- Products -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
-					<li th:replace="~{/components/text::header('Products', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Products', 'fa-solid fa-store')}"/>&nbsp;
 				</th:block>
 				<!-- Questions -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
-					<li th:replace="~{/components/text::header('Questions', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Questions', 'fa-solid fa-circle-question')}"/>&nbsp;
 				</th:block>
 				<!-- Reviews -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
-					<li th:replace="~{/components/text::header('Reviews', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Reviews', 'fa-solid fa-comments')}"/>&nbsp;
 				</th:block>
 				<!-- Customers -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
-					<li th:replace="~{/components/text::header('Customers', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Customers', 'fa-solid fa-user-tag')}"/>&nbsp;
 				</th:block>
 				<!-- Shipping -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
-					<li th:replace="~{/components/text::header('Shipping', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Shipping', 'fa-solid fa-truck-fast')}"/>&nbsp;
 				</th:block>
 				<!-- Orders -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
-					<li th:replace="~{/components/text::header('Orders', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Orders', 'fa-solid fa-box')}"/>&nbsp;
 				</th:block>
 				<!-- Reports -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
-					<li th:replace="~{/components/text::header('Reports', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Reports', 'fa-solid fa-clipboard-list')}"/>&nbsp;
 				</th:block>
 				<!-- Articles -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Articles', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Articles', 'fa-solid fa-book')}"/>&nbsp;
 				</th:block>
 				<!-- Menus -->
 				<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-					<li th:replace="~{/components/text::header('Menus', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Menus', 'fa-solid fa-list-ul')}"/>&nbsp;
 				</th:block>
 				<!-- Settings -->
 				<th:block sec:authorize="hasAnyAuthority('Admin')">
-					<li th:replace="~{/components/text::header('Settings', 'fas fa-user')}"/>&nbsp;
+					<li th:replace="~{/components/text::header('Settings', 'fa-solid fa-gear')}"/>&nbsp;
 				</th:block>
 				<!-- Account Section -->
 				<li th:class="${activeItem == 'Account' 

@@ -86,6 +86,8 @@
 	/* section text in the header */
 	.cf-full-header-text {display: block;}
 	.cf-less-header-text {display: none;}
+	/* account item in the header */
+	li.cf-list-item {margin-right: .3%;}
 	/* table column components */
 	th.hideable-column {display: table-cell;}
 }

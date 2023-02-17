@@ -12,7 +12,7 @@
 		</a>
 		<!-- Toggler button to expand the drop down menu -->
 		<!-- hidden in large screen and visible in medium/small screen -->
-		<div th:replace="~{/components/button::toggler_navbar('')}"></div>
+		<div th:replace="~{/components/button::toggler_navbar('topNavbar', '')}"></div>
 		<!-- Website Sections -->
 		<div class="collapse navbar-collapse topNavbar row">
 			<ul class="navbar-nav cf-list">
@@ -70,14 +70,8 @@
 				</th:block>
 				<!-- Account Section -->
 				<li th:replace="~{/components/text::header_account}"/>
-				<li class="cf-less-header-text">&nbsp;</li>
 			</ul>
 		</div>
-		<!-- <div class="collapse navbar-collapse topNavbar">
-			<ul class="navbar-nav cf-list">
-				
-			</ul>
-		</div> -->
 	</nav>
 </div>
 <!-- Float Window -->

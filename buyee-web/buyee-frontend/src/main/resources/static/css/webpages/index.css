@@ -1,5 +1,6 @@
 /* Special Components */
 @import '../components/text.css';
+@import '../components/search.css';
 @import '../components/tab.css';
 @import '../components/badge.css';
 @import '../components/image.css';

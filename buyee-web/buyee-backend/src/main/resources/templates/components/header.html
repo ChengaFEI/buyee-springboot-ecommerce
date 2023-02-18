@@ -1,5 +1,5 @@
 <!-- Main Page Navigation Bar -->
-<div th:fragment="navbar(activeItem)" class="sticky-top">
+<div th:fragment="navbar(activeItem)">
 	<!-- Hidden form for secure logout -->
 	<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
 		<input type="submit"/>

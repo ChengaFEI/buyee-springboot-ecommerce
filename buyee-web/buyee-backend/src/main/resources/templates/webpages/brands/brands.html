@@ -3,6 +3,7 @@
 <head>
 	<head th:replace="~{/universal::head('Brands - Buyee Admin', 'tag', 'brands')}"/>
 	<script type="text/javascript" th:src="@{/js/components/table.js}"></script>
+	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
 </head>
 <body>
 	<div>
@@ -11,7 +12,9 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Dock with Command Buttons and Search Bar -->
-		<div th:replace="~{/components/dock :: search_buttons('brands')}"></div>
+		<div id="scrollBox" class="sticky-top pb-3 pt-3" style="background-color: var(--cf-white); z-index: 10;">
+			<div th:replace="~{/components/dock :: search_buttons('brands')}"></div>
+		</div>
 		<!-- Brands Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">

@@ -1,5 +1,19 @@
-<!-- Search Bar -->
-<div th:fragment="bar(sectionName, extraClass)" th:remove="tag">
+<!-- Search Bar in Dock (backend/admin-end) -->
+<div th:fragment="bar_dock(sectionName, extraClass)" th:remove="tag">
+	<form th:action="@{'/' + ${sectionName} + '/page/1'}" 
+		  th:class="'form-inline form-control cf-search ' + ${extraClass}">
+		<!-- other filters/sorters to coordinate with -->
+		<input th:if="${sortField != null}" type="hidden" name="sortField" th:value="${sortField}" /> 
+	    <input th:if="${sortOrder != null}" type="hidden" name="sortOrder" th:value="${sortOrder}" />
+	    <input th:if="${categoryId != null}" type="hidden" name="categoryId" th:value="${categoryId}" />
+	    <!-- Enter a keyword to search for -->
+	    <input type="search" name="keyword" th:value="${keyword}" class="form-control cf-search-input" 
+	           placeholder="Search..." aria-label="Search" required aria-describedby="search-addon" 
+	           th:title="'Search ' + ${sectionName}" />
+	</form>
+</div>
+<!-- Search Bar in Products List (client-end) -->
+<div th:fragment="bar_list(sectionName, extraClass)" th:remove="tag">
 	<form th:action="@{'/' + ${sectionName} + '/page/1'}" 
 		  th:class="'form-inline form-control cf-search ' + ${extraClass}">
 		<!-- other filters/sorters to coordinate with -->

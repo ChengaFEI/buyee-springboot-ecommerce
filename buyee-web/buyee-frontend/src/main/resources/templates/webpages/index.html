@@ -7,7 +7,13 @@
 		<div th:replace="~{/components/header::navbar('')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
+		<!-- Search Bar -->
+		<div class="container-fluid sticky-top pt-3 pb-3" 
+			 style="background-color: var(--cf-white);">
+			<div th:replace="~{/components/search::bar_list('', '')}"></div>
+		</div>
 		<div class="cf-header-list container-fluid">
+			<!-- Page Title -->
 			<div class="mb-3 mt-3">
 				<h2>Categories</h2>
 			</div>

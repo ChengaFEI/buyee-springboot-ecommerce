@@ -17,7 +17,7 @@
 <!-- Screen Compatibility: Large, Medium -->
 <!-- Authorization: No -->
 <div th:fragment="search_buttons_full(sectionName)" 
-	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
+	 class="input-group rounded container-fluid full-details">
 	<!-- Create Item Button -->
 	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
 	<!-- Clear Sorting Button -->
@@ -37,7 +37,7 @@
 <!-- Screen Compatibility: Small -->
 <!-- Authorization: No -->
 <div th:fragment="search_buttons_less(sectionName)" 
-	 class="input-group rounded container-fluid mt-3 mb-3 less-details">
+	 class="input-group rounded container-fluid less-details">
 	<!-- Create Item Button -->
 	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
 	<!-- Export CSV Buttons -->
@@ -58,7 +58,7 @@
 <!-- Screen Compatibility: Large, Medium -->
 <!-- Authorization: No -->
 <div th:fragment="search_filter_buttons_full(sectionName)" 
-	 class="input-group rounded container-fluid mt-3 mb-3 full-details">
+	 class="input-group rounded container-fluid full-details">
 	<!-- Create Item Button -->
 	<div th:replace="~{/components/button::create_instance(${sectionName}, '')}"></div>
 	<!-- Clear Sorting Button -->
@@ -96,7 +96,7 @@
 <!-- Contents: Search Bar, Filter Bar, Command Buttons -->
 <!-- Screen Compatibility: Large, Medium -->
 <!-- Authorization: Yes -->
-<div th:fragment="products_full" class="input-group rounded container-fluid mt-3 mb-3 full-details">
+<div th:fragment="products_full" class="input-group rounded container-fluid full-details">
 	<!-- Authorization: only open to admin and editor -->
 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 		<!-- Create Item Button -->
@@ -127,7 +127,7 @@
 <!-- Authorization: Yes -->
 <div th:fragment="products_less">
 	<!-- First row -->
-	<div class="input-group rounded container-fluid mt-3 mb-3 less-details">
+	<div class="input-group rounded container-fluid mb-3 less-details">
 		<!-- Authorization: only open to admin and editor -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 			<!-- Create Item Button -->
@@ -148,7 +148,7 @@
 		</th:block>
 	</div>
 	<!-- Second row -->
-	<div class="input-group rounded container-fluid mt-3 mb-3 less-details">
+	<div class="input-group rounded container-fluid mt-3 less-details">
 		<!-- Authorization: open to all users with access to this page -->
 		<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
 			<!-- Filter Bar -->

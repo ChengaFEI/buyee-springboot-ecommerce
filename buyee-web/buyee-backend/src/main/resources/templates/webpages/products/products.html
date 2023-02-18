@@ -4,6 +4,7 @@
 	<head th:replace="~{/universal::head('Products - Buyee Admin', 'tag', 'products')}"/>
 	<script type="text/javascript" th:src="@{/js/webpages/products/products.js}"></script>
 	<script type="text/javascript" th:src="@{/js/components/table.js}"></script>
+	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
 </head>
 <body>
 	<div>
@@ -12,7 +13,9 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Dock with Search Bar and Command Buttons -->
-		<div th:replace="~{/components/dock::products}"></div>
+		<div id="scrollBox" class="sticky-top pb-3 pt-3" style="background-color: var(--cf-white); z-index: 10;">
+			<div th:replace="~{/components/dock::products}"></div>
+		</div>
 		<!-- Products Table with full-details -->
 		<div class="container-fluid full-details">
 			<table class="table table-bordered table-hover table-responsive-xl">

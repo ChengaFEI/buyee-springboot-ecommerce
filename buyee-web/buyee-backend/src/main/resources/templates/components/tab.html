@@ -4,7 +4,7 @@
 	<div th:replace="~{/components/tab::bar_less(${extraClass})}"></div>
 </div>
 <!-- Tabs with texts in large/medium screen -->
-<div th:fragment="bar_full(extraClass)" class="mb-3 full-details-block">
+<div th:fragment="bar_full(extraClass)" class="full-details-block">
 	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
 		<li class="nav-item">
 	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
@@ -39,7 +39,7 @@
 	</ul>
 </div>
 <!-- Tabs with texts in small screen -->
-<div th:fragment="bar_less(extraClass)" class="mb-3 less-details-block">
+<div th:fragment="bar_less(extraClass)" class="less-details-block">
 	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
 		<li class="nav-item" title="overview">
 	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 

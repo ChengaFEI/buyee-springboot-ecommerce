@@ -15,7 +15,7 @@
 		<i th:class="${sectionIcon}"></i>
 	</a>
 	<!-- Drop Down Menu -->
-	<div class="cf-dropdown-header-content" style="min-width: 150px">
+	<div class="cf-dropdown-header-content" style="min-width: 150px; z-index: 12;">
 		<a th:href="@{'/' + ${sectionName.toLowerCase()}}">[[${sectionName}]]</a>
 		<a th:href="@{'/' + ${sectionName.toLowerCase()} + '/new'}">Create New</a>
   	</div>
@@ -31,7 +31,7 @@
 		<i class="fa-solid fa-store"></i>
 	</a>
 	<!-- Drop Down Menu -->
-	<div class="cf-dropdown-header-content" style="min-width: 150px">
+	<div class="cf-dropdown-header-content" style="min-width: 150px; z-index: 11;">
 		<a th:href="@{/products}">Products</a>
 		<a th:href="@{/products/new}" sec:authorize="hasAnyAuthority('Editor', 'Admin')">Create New</a>
   	</div>
@@ -48,7 +48,7 @@
 		<span sec:authentication="principal.fullName"></span>
 	</a>
 	<!-- Drop Down Menu -->
-	<div class="cf-dropdown-header-content">
+	<div class="cf-dropdown-header-content" style="z-index: 12;">
 		<a th:href="@{/account }">Account</a>
 		<a id="logoutLink" href="">Logout</a>
   	</div>

@@ -12,7 +12,9 @@
 <body>
 	<div>
 		<!-- Header (navigation bar) -->	
-		<div th:replace="~{/components/header::navbar('Users')}"></div>
+		<div class="sticky-top">
+			<div th:replace="~{/components/header::navbar('Users')}"></div>
+		</div>
 		<!-- Data Collection Form -->
 		<form class="mt-3 container-fluid" th:action="@{/users/save}" method="post" style="margin: 0 auto" 
 		      enctype="multipart/form-data" th:object="${user}" onsubmit="return checkEmail(this);">

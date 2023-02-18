@@ -12,7 +12,9 @@
 <body>
 	<div>
 		<!-- Navigation Bar -->
-		<div th:replace="~{/components/header::navbar('Categories')}"></div>
+		<div class="sticky-top">
+			<div th:replace="~{/components/header::navbar('Categories')}"></div>
+		</div>
 		<!-- Data Collection Form -->
 		<form class="mt-3 container-fluid" th:action="@{/categories/save}" method="post" style="margin: 0 auto" 
 		      enctype="multipart/form-data" th:object="${category}" onsubmit="return checkNameAlias(this);">

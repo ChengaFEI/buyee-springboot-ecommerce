@@ -7,10 +7,14 @@
 		<div th:replace="~{/components/header::navbar('')}"></div>
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
+		<!-- Search Bar -->
+		<div class="container-fluid sticky-top pt-3 pb-3" style="background-color: var(--cf-white);">
+			<div th:replace="~{/components/search::bar_list('', '')}"></div>
+		</div>
 		<div class="container-fluid">
 			<!-- Category Parents Bread Crumb -->
 			<div th:if="${listCategoryParents != null && !listCategoryParents.empty}">
-				<div th:replace="~{/components/breadcrumb::category('mt-3')}"></div>
+				<div th:replace="~{/components/breadcrumb::category('')}"></div>
 			</div>
 			<!-- Current Category Name -->
 			<div class="mb-3 mt-3">

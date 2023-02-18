@@ -8,6 +8,7 @@
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_description.js}"></script>
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_images.js}"></script>
 	<script type="text/javascript" th:src="@{/js/webpages/products/products_form_details.js}"></script>
+	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
 	<!-- RichText Editor for Description Section -->
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
@@ -24,7 +25,8 @@
 		<!-- Navigation Bar -->
 		<div th:replace="~{/components/header::navbar('Products')}"></div>
 		<!-- Tabs -->
-		<div class="container-fluid mt-3 mb-3">
+		<div id="scrollBox" class="container-fluid pb-3 pt-3 sticky-top" 
+			 style="background-color: var(--cf-white); z-index: 10;">
 			<div th:replace="~{/components/tab::bar('cf-tab-float-island')}"></div>
 		</div>
 		<!-- Data Collection Form -->

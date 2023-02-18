@@ -14,7 +14,7 @@
 		<!-- Products display -->
 		<div class="row mb-3">
 			<!-- Product Images -->
-			<div class="mb-3 sticky" style="width: 40%; padding-left: var(--cf-gx);">
+			<div style="width: 40%; padding-left: var(--cf-gx); position: relative; z-index: 0;">
 				<!-- Images of Current Product -->
 				<div class="form-group rounded cf-expandable-image cf-image-box-detail sticky-top" th:title="${product.name}"
 					 style="top: calc(64px + 1rem);">
@@ -40,7 +40,8 @@
 				<div class="mb-5 row">
 					<!-- Return -->
 					<div style="width: 200px;">
-						<a th:href="@{'/c/' + ${product.category.alias}}" class="cf-text-breadcrumb" style="height: 21px!important;">
+						<a th:href="@{'/c/' + ${product.category.alias}}" class="cf-text-breadcrumb" 
+						   style="height: 21px!important;">
 							<i class="fa-solid fa-angle-left" style="height: 21px!important;"></i>&nbsp;
 							back to categories
 						</a>
@@ -48,7 +49,7 @@
 					<!-- Buy -->
 					<div th:style="'margin-left: auto; margin-right: var(--cf-gx); padding-right: 0px; text-align: right; ' + 
 								   ${product.inStock ? 'width: 205px;' : 'width: 225px;'}">
-						<div class="row" style="height: 20px!important;">
+						<div class="row" style="height: 21px!important;">
 							<!-- Add Product Button -->
 							<div style="width: 35px; height: 21px!important;" class="d-flex align-items-center">
 								<a th:if="${product.inStock}" href="#" title="Add to cart">
@@ -62,11 +63,11 @@
 							<input class="form-control" type="text" size="5" th:value="${product.inStock ? '1' : ''}"
 								   th:disabled="${!product.inStock}" 
 								   th:title="${product.inStock ? 'Enter purchase quantity' : 'Out of stock'}"
-								   style="width: 100px; height: 20px!important; margin-right: 10px; 
+								   style="width: 100px; height: 21px!important; margin-right: 10px; 
 								   		  background-color: var(--cf-white)!important;"/>
 							<!-- Stock Status Badge -->
 							<span th:unless="${product.inStock}" title="Out of stock"
-								  style="width: 90px; height: 20px!important; color: var(--cf-white)!important;
+								  style="width: 90px; height: 21px!important; color: var(--cf-white)!important;
 								  		 background-color: var(--cf-gray-light)!important;" 
 								  class="badge text-bg-light">Out of Stock</span>
 							<span th:if="${product.inStock}" style="width: 70px; height: 20px!important;" 
@@ -132,6 +133,37 @@
 								</div>
 							</th:block>
 						</div>
+					</div>
+				</div>
+				<!-- Seventh Group: Add to Cart -->
+				<div class="mb-3">
+					<!-- Stock -->
+					<div class="mb-2">
+						<label style="font-weight: bold">Stock:&nbsp;</label>
+						<!-- Stock Status Badge -->
+						<span th:unless="${product.inStock}" title="Out of stock"
+							  style="width: 90px; height: 20px!important; color: var(--cf-white)!important;
+							  		 background-color: var(--cf-gray-light)!important;" 
+							  class="badge rounded-pill text-bg-light">Out of Stock</span>
+						<span th:if="${product.inStock}" style="width: 70px; height: 20px!important;" 
+							  class="badge rounded-pill text-bg-dark" title="In stock">In Stock</span>
+					</div>
+					<div class="row" th:if='${product.inStock}'>
+						<!-- Add Product Button -->
+							<div style="width: 35px; height: 21px!important;" class="d-flex align-items-center">
+								<a th:if="${product.inStock}" href="#" title="Add to cart">
+									<i class="fa-solid fa-circle-plus cf-button-list"></i>
+								</a>
+								<a th:unless="${product.inStock}" title="Out of stock">
+									<i class="fa-solid fa-circle-plus cf-button-list-disabled"></i>
+								</a>
+							</div>
+							<!-- Add Product Bar -->
+							<input class="form-control" type="text" size="5" th:value="${product.inStock ? '1' : ''}"
+								   th:disabled="${!product.inStock}" 
+								   th:title="${product.inStock ? 'Enter purchase quantity' : 'Out of stock'}"
+								   style="width: 100px; height: 21px!important; margin-right: 10px; 
+								   		  background-color: var(--cf-white)!important;"/>
 					</div>
 				</div>
 			</div>

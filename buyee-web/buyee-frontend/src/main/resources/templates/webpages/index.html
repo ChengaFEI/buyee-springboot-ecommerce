@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{/universal::head('Buyee', 'none', 'index')}" />
+<head>
+	<head th:replace="~{/universal::head('Buyee', 'tag', 'index')}"/>
+	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
+</head>
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
@@ -8,7 +11,7 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Search Bar -->
-		<div class="container-fluid sticky-top pt-3 pb-3" 
+		<div id="scrollBox" class="container-fluid sticky-top pt-3 pb-3" 
 			 style="background-color: var(--cf-white);">
 			<div th:replace="~{/components/search::bar_list('', '')}"></div>
 		</div>

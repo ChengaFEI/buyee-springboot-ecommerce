@@ -3,6 +3,7 @@
 <head>
 	<head th:replace="~{/universal::head(${pageTitle}, 'tag', 'product_detail')}" />
 	<script type="text/javascript" th:src="@{/js/webpages/products/product_detail.js}"></script>
+	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
 	<script type="text/javascript">
 		var mainImagePathURL = "[[@{${product.mainImagePathString}}]]";
 	</script>
@@ -14,7 +15,7 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Search Bar -->
-		<div class="container-fluid sticky-top pt-3 pb-3" 
+		<div id="scrollBox" class="container-fluid sticky-top pt-3 pb-3" 
 			 style="background-color: var(--cf-white);">
 			<div th:replace="~{/components/search::bar_list('', '')}"></div>
 		</div>

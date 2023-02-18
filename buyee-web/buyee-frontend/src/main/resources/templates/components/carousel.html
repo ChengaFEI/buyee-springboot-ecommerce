@@ -1,0 +1,38 @@
+<!-- ############################################ -->
+<!-- ## Image Carousel in Product Details Page ## -->
+<!-- ############################################ -->
+<div th:fragment="image" th:remove="tag">
+	<div class="modal fade text-center" id="carouselModal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div id="carouselIndicators" class="carousel slide" data-bs-ride="true">
+					<div class="carousel-indicators">
+				    	<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				    	<th:block th:each="image, status: ${product.images}">
+					    	<button type="button" data-bs-target="#carouselIndicators" 
+					    			th:data-bs-slide-to="${status.count}" th:aria-label="'Slide '+${status.count}"></button>
+				    	</th:block>
+				  	</div>
+				  	<div class="carousel-inner mt-5 mb-5">
+				    	<div class="carousel-item active">
+				      		<img th:src="@{${product.mainImagePathString}}" class="img-fluid">
+				    	</div>
+				    	<th:block th:each="image: ${product.images}">
+					    	<div class="carousel-item">
+					      		<img th:src="@{${image.imagePathString}}" class="img-fluid">
+					    	</div>
+				    	</th:block>
+				  	</div>
+				  	<button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+				    	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    	<span class="visually-hidden">Previous</span>
+				  	</button>
+				  	<button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+				    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    	<span class="visually-hidden">Next</span>
+				  	</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -51,19 +51,19 @@
 								   ${product.inStock ? 'width: 205px;' : 'width: 225px;'}">
 						<div class="row" style="height: 21px!important;">
 							<!-- Add Product Button -->
-							<div style="width: 35px; height: 21px!important;" class="d-flex align-items-center">
+							<div style="width: 40px; height: 21px!important;" class="d-flex align-items-center">
 								<a th:if="${product.inStock}" href="#" title="Add to cart">
-									<i class="fa-solid fa-circle-plus cf-button-list"></i>
+									<i class="fa-solid fa-cart-plus cf-button-list"></i>
 								</a>
 								<a th:unless="${product.inStock}" title="Out of stock">
-									<i class="fa-solid fa-circle-plus cf-button-list-disabled"></i>
+									<i class="fa-solid fa-cart-plus cf-button-list-disabled"></i>
 								</a>
 							</div>
 							<!-- Add Product Bar -->
 							<input class="form-control" type="text" size="5" th:value="${product.inStock ? '1' : ''}"
 								   th:disabled="${!product.inStock}" 
 								   th:title="${product.inStock ? 'Enter purchase quantity' : 'Out of stock'}"
-								   style="width: 100px; height: 21px!important; margin-right: 10px; 
+								   style="width: 95px; height: 21px!important; margin-right: 10px; 
 								   		  background-color: var(--cf-white)!important;"/>
 							<!-- Stock Status Badge -->
 							<span th:unless="${product.inStock}" title="Out of stock"
@@ -136,7 +136,7 @@
 					</div>
 				</div>
 				<!-- Seventh Group: Add to Cart -->
-				<div class="mb-3">
+				<div class="mb-5">
 					<!-- Stock -->
 					<div class="mb-2">
 						<label style="font-weight: bold">Stock:&nbsp;</label>
@@ -150,12 +150,12 @@
 					</div>
 					<div class="row" th:if='${product.inStock}'>
 						<!-- Add Product Button -->
-							<div style="width: 35px; height: 21px!important;" class="d-flex align-items-center">
+							<div style="width: 40px; height: 21px!important;" class="d-flex align-items-center">
 								<a th:if="${product.inStock}" href="#" title="Add to cart">
-									<i class="fa-solid fa-circle-plus cf-button-list"></i>
+									<i class="fa-solid fa-cart-plus cf-button-list"></i>
 								</a>
 								<a th:unless="${product.inStock}" title="Out of stock">
-									<i class="fa-solid fa-circle-plus cf-button-list-disabled"></i>
+									<i class="fa-solid fa-cart-plus cf-button-list-disabled"></i>
 								</a>
 							</div>
 							<!-- Add Product Bar -->
@@ -164,6 +164,16 @@
 								   th:title="${product.inStock ? 'Enter purchase quantity' : 'Out of stock'}"
 								   style="width: 100px; height: 21px!important; margin-right: 10px; 
 								   		  background-color: var(--cf-white)!important;"/>
+					</div>
+				</div>
+				<!-- Return -->
+				<div>
+					<div style="width: 200px;">
+						<a th:href="@{'/c/' + ${product.category.alias}}" class="cf-text-breadcrumb" 
+						   style="height: 21px!important;">
+							<i class="fa-solid fa-angle-left" style="height: 21px!important;"></i>&nbsp;
+							back to categories
+						</a>
 					</div>
 				</div>
 			</div>

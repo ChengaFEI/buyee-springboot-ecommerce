@@ -80,6 +80,28 @@ public class ProductController {
     public String readProductsByKeyword(
 	    Model model,
 	    @Param("keyword") String keyword) {
+	return readProductsByKeywordAndPageNum(model, keyword, 1);
+    }
+    @GetMapping("/search/page/{pageNum}")
+    public String readProductsByKeywordAndPageNum(
+	    Model model,
+	    @Param("keyword") String keyword,
+	    @PathVariable("pageNum") int pageNum) {
+	Page<Product> pageProducts = productService.readProductsByKeyword(keyword, pageNum);
+	List<Product> listProducts = pageProducts.getContent();
+	long totalElements = pageProducts.getTotalElements();
+	long totalPages = pageProducts.getTotalPages();
+	long startCount = (pageNum - 1) * ProductService.PRODUCTS_PER_PAGE + 1;
+	long endCount = startCount + ProductService.PRODUCTS_PER_PAGE - 1;
+	endCount = Math.min(totalElements, endCount);
+	model.addAttribute("listProducts", listProducts);
+	model.addAttribute("pageNum", pageNum);
+	model.addAttribute("totalElements", totalElements);
+	model.addAttribute("totalPages", totalPages);
+	model.addAttribute("startCount", startCount);
+	model.addAttribute("endCount", endCount);
+	model.addAttribute("pageTitle", keyword + " - Search Results");
+	model.addAttribute("keyword", keyword);
 	return "webpages/products/products_search_results";
     }
 }

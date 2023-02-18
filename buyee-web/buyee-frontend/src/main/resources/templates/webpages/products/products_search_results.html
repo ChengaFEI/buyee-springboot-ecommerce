@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-	<head th:replace="~{/universal::head('Search Results', 'tag', 'products_search_results')}" />
+	<head th:replace="~{/universal::head(${pageTitle}, 'tag', 'products_search_results')}" />
 	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
 </head>
 <body>
@@ -14,7 +14,40 @@
 		<div id="scrollBox" class="container-fluid sticky-top pt-3 pb-3" style="background-color: var(--cf-white);">
 			<div th:replace="~{/components/search::bar_list('', '')}"></div>
 		</div>
-		
+		<!-- Products display -->
+		<div class="container-fluid mb-3">
+			<div>
+				<div class="row">
+				<th:block th:each="product: ${listProducts}">
+					<div class="form-group rounded cf-expandable-image cf-image-box" th:title="${product.name}">
+						<div class="cf-image-content">
+							<!-- Product Name -->
+							<div class="mb-1">
+								<a class="cf-text-index-list" th:href="@{'/p/'+${product.alias}}">
+									[[${product.veryShortName}]]
+								</a>
+							</div>
+							<!-- Product Price -->
+							<div th:if="${product.discountPercent <= 0}">
+								<span>$[[${product.price}]]</span>
+							</div>
+							<div th:unless="${product.discountPercent <= 0}">
+								<span style="color: var(--cf-red); font-weight: bold">
+									$[[${product.discountPrice}]]&nbsp;
+								</span>
+								<del class="text-muted"><span>$[[${product.price}]]</span></del>
+							</div>
+							<hr/>
+							<!-- Product Image -->
+							<div class="cf-image-inner-box">
+								<img th:alt="${product.mainImage}" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+							</div>
+						</div>
+					</div>
+				</th:block>
+				</div>
+			</div>
+		</div>
 		<!-- Footer -->
 		<div th:replace="~{/components/footer::navbar('')}"></div>
 	</div>

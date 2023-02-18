@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,7 +58,7 @@ public class ProductController {
 	    model.addAttribute("startCount", startCount);
 	    model.addAttribute("endCount", endCount);
 	    model.addAttribute("pageTitle", category.getName());
-	    return "webpages/products_by_category";
+	    return "webpages/products/products_by_category";
 	} catch (CategoryNotFoundException e) {return "error/404";}
     }
     @GetMapping("/p/{product_alias}")
@@ -70,9 +71,15 @@ public class ProductController {
 	    model.addAttribute("product", product);
 	    model.addAttribute("listCategoryParents", listCategoryParents);
 	    model.addAttribute("pageTitle", product.getVeryShortName());
-	    return "webpages/product_detail";
+	    return "webpages/products/product_details";
 	} catch (ProductNotFoundException e) {
 	    return "error/404";
 	}
+    }
+    @GetMapping("/search")
+    public String readProductsByKeyword(
+	    Model model,
+	    @Param("keyword") String keyword) {
+	return "webpages/products/products_search_results";
     }
 }

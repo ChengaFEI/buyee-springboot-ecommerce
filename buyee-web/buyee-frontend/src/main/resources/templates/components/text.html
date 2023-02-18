@@ -15,7 +15,7 @@
 		<i th:class="${sectionIcon}"></i>
 	</a>
 	<!-- Drop Down Menu -->
-	<div class="cf-dropdown-header-content" style="min-width: 150px">
+	<div class="cf-dropdown-header-content" style="min-width: 150px; z-index: 12;">
 		<a th:href="@{'/' + ${sectionName.toLowerCase()}}">[[${sectionName}]]</a>
 		<a th:href="@{'/' + ${sectionName.toLowerCase()} + '/new'}">Create New</a>
   	</div>
@@ -24,63 +24,3 @@
 <li th:fragment="navbar_copyright" class="cf-list-item-right cf-list-item" style="width: 230px">
 	<a class="nav-link">Buyee E-Commerce &copy; Buyee</a>
 </li>
-<!-- ################################# -->
-<!-- ## Sort Switch in Table's Head ## -->
-<!-- ################################# -->
-<div th:fragment="switch(sectionName, fieldName, columnLabel, columnWidth, extraClass, sortable)" th:remove="tag">
-	<th th:class="'align-middle ' + ${extraClass}" th:style="${columnWidth != null ? 'width: ' + columnWidth : ''}">
-		<!-- If this column can be sorted -->
-		<!-- href keeps track of other searchers/filters -->
-		<a class="cf-text-table-head-inactive" th:if="${sortable && (sortField == null || sortField != fieldName)}"
-		   th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + 
-		   			  '?sortField=' + ${fieldName} + 
-		   			  '&sortOrder=asc' + 
-		   			  ${keyword != null ? '&keyword=' + keyword : ''} +
-		   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
-			[[${columnLabel}]] 
-			<i class="fa-solid fa-angle-down"></i>
-	    </a>
-		<!-- href keeps track of other searchers/filters -->
-	    <a class="cf-text-table-head-active" th:if="${sortable && sortField == fieldName}"
-	       th:href="@{'/' + ${sectionName} + '/page/' + ${pageNum} + 
-	       			  '?sortField=' + ${fieldName} + 
-	       			  '&sortOrder=' + ${reverseOrder} + 
-		   			  ${keyword != null ? '&keyword=' + keyword : ''} +
-		   			  ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
-			[[${columnLabel}]] 
-			<i th:class="${sortOrder == 'asc' ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down'}"></i>
-		</a>	
-		<!-- If this column can't be sorted -->
-		<a th:if="${!sortable}">[[${columnLabel}]]</a>		
-	</th>
-</div>
-<!-- ######################################## -->
-<!-- ## Hyperlink Text in Categories Table ## -->
-<!-- ######################################## -->
-<div th:fragment="table_categories" class="cf-text-table-body-tree">
-	<!-- Display in hierarchy mode -->
-	<th:block th:if="${hierarchy}">
-		<a th:if="${category.children != null && category.children.size != 0}" 
-		   th:text="${category.name}" th:href="'#'+${category.id}"></a>
-		<span th:unless="${category.children != null && category.children.size != 0}">
-			[[${category.name}]]
-		</span>
-	</th:block>
-	<!-- Display in normal table mode -->
-	<th:block th:unless="${hierarchy}">
-		<span>[[${category.name}]]</span>
-	</th:block>
-</div>
-<!-- ###################################### -->
-<!-- ## Hyperlink Text in Products Table ## -->
-<!-- ###################################### -->
-<div th:fragment="table_products" class="cf-text-table-body-list">
-	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor', 'Salesperson', 'Shipper')">
-		<!-- link-detail is required for using preview-modal -->
-		<a class="link-detail" title="View this product" th:text="${product.shortName}" 
-		   th:href="@{'/products/view/' + ${product.id}}"></a> 
-	</th:block>
-	<th:block sec:authorize="hasAuthority('Assistant')">
-		<a title="View this product" th:text="${product.shortName}"></a> 
-	</th:block>
-</div>

@@ -11,7 +11,8 @@
 		<!-- Float Window Message -->
 		<div th:replace="~{/components/header::floatwindow}"></div>
 		<!-- Search Bar -->
-		<div id="scrollBox" class="container-fluid sticky-top pt-3 pb-3" style="background-color: var(--cf-white);">
+		<div id="scrollBox" class="container-fluid sticky-top pt-3 pb-3" 
+			 style="background-color: var(--cf-white); z-index: 10;">
 			<div th:replace="~{/components/search::bar_list('', '')}"></div>
 		</div>
 		<div class="container-fluid">

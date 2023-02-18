@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<head th:replace="~{/universal::head('Search Results', 'tag', 'products_search_results')}" />
+	<script type="text/javascript" th:src="@{/js/actions/scroll.js}"></script>
+</head>
+<body>
+	<div>
+		<!-- Header (navigation bar) -->
+		<div th:replace="~{/components/header::navbar('')}"></div>
+		<!-- Float Window Message -->
+		<div th:replace="~{/components/header::floatwindow}"></div>
+		<!-- Search Bar -->
+		<div id="scrollBox" class="container-fluid sticky-top pt-3 pb-3" style="background-color: var(--cf-white);">
+			<div th:replace="~{/components/search::bar_list('', '')}"></div>
+		</div>
+		
+		<!-- Footer -->
+		<div th:replace="~{/components/footer::navbar('')}"></div>
+	</div>
+</body>
+</html>

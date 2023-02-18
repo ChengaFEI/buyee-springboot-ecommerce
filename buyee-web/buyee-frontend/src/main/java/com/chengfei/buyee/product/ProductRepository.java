@@ -17,5 +17,8 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
 	   "ORDER BY p.name ASC")
     public Page<Product> readProductsByCategory(Integer categoryId, String categoryIdMatch, Pageable pageable);
     public Product readProductByAlias(String alias);
+    @Query(value= "SELECT p FROM Product p WHERE p.enabled = true " +
+	    	  "AND MATCH(name, short_description, full_description) AGAINST (?1)",
+	   nativeQuery = true)
+    public Page<Product> readProductsByKeyword(String keyword, Pageable pageable);
 }
- 

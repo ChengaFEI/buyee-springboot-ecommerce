@@ -22,4 +22,8 @@ public class ProductService {
 	if (product == null) throw new ProductNotFoundException("Could not find any product with alias " + alias);
 	return product;
     }
+    public Page<Product> readProductsByKeyword(String keyword, int pageNum) {
+	Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
+	return repo.readProductsByKeyword(keyword, pageable);
+    }
 }

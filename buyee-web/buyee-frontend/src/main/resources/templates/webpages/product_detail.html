@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{/universal::head(${pageTitle}, 'none', 'product_detail')}" />
+<head>
+	<head th:replace="~{/universal::head(${pageTitle}, 'tag', 'product_detail')}" />
+	<script type="text/javascript" th:src="@{/js/webpages/products/product_detail.js}"></script>
+	<script type="text/javascript">
+		var mainImagePathURL = "[[@{${product.mainImagePathString}}]]";
+	</script>
+</head>
 <body>
 	<div>
 		<!-- Header (navigation bar) -->
@@ -16,18 +22,20 @@
 			<!-- Product Images -->
 			<div style="width: 40%; padding-left: var(--cf-gx); position: relative; z-index: 0;">
 				<!-- Images of Current Product -->
-				<div class="form-group rounded cf-expandable-image cf-image-box-detail sticky-top" th:title="${product.name}"
+				<div class="form-group rounded cf-expandable-image cf-image-box-detail sticky-top"
 					 style="top: calc(64px + 1rem);">
 					<div class="cf-image-content">
 						<!-- Product Image -->
 						<div class="cf-image-inner-box">
-							<img th:alt="${product.mainImage}" style="width: 100%" th:src="@{${product.mainImagePathString}}"/>
+							<img id="image-big" th:alt="${product.mainImage}" style="width: 100%" 
+								 th:src="@{${product.mainImagePathString}}" th:title="${product.mainImage}"/>
 						</div>
 						<hr/>
 						<!-- Product Extra Images -->
 						<div>
 							<th:block th:each="image: ${product.firstFourImages}">
-								<img th:alt="${image.name}" style="width: 24%; padding: 1%;" th:src="@{${image.imagePathString}}"/>
+								<img class="image-thumbnail" th:alt="${image.name}" style="width: 24%; padding: 1%;" 
+									 th:src="@{${image.imagePathString}}" th:title="${image.name}"/>
 							</th:block>
 						</div>
 					</div>

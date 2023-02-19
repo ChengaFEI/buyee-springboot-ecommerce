@@ -10,8 +10,8 @@
 	div.full-details {display: none;}
 	div.less-details {display: flex;}
 	/* block-display components */
-	div.full-details-block {display: none;}
-	div.less-details-block {display: block;}
+	.full-details-block {display: none;}
+	.less-details-block {display: block;}
 	/* website logo in the header */
 	.cf-full-logo {display: block;}
 	.cf-less-logo {display: none;}
@@ -46,8 +46,8 @@
 	div.full-details {display: flex;}
 	div.less-details {display: none;}
 	/* block-display components */
-	div.full-details-block {display: block;}
-	div.less-details-block {display: none;}
+	.full-details-block {display: block;}
+	.less-details-block {display: none;}
 	/* website logo in the header */
 	.cf-full-logo {display: block;}
 	.cf-less-logo {display: none;}
@@ -83,7 +83,7 @@
 	/* general components */
 	div.less-details {display: none;}
 	/* block-display components */
-	div.less-details-block {display: none;}
+	.less-details-block {display: none;}
 	/* website logo in the header */
 	.cf-full-logo {display: none;}
 	.cf-less-logo {display: block;}

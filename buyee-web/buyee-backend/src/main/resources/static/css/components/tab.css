@@ -3,24 +3,24 @@
 	border-radius: var(--cf-r-border);
 	border: 1px solid var(--cf-gray-light);
 }
-.cf-tab-float-island>li>a {
+.cf-tab-float-island li>a {
 	color: var(--cf-gray);
 	border-radius: var(--cf-r-border);
 	text-decoration: none;
 	height: var(--cf-h-dock);
 	border: 1px solid var(--cf-white);
 }
-.cf-tab-float-island>li>a:hover {
+.cf-tab-float-island li>a:hover {
 	color: var(--cf-white);
 	background-color: var(--cf-red);
 	border: 1px solid var(--cf-red);
 }
-.cf-tab-float-island>li>.active {
+.cf-tab-float-island li>.active {
 	color: var(--cf-white);
 	background-color: var(--cf-red);
 	border: 1px solid var(--cf-red);
 }
-.cf-tab-float-island>li>.active:hover {
+.cf-tab-float-island li>.active:hover {
 	color: var(--cf-red);
 	background-color: var(--cf-white);
 }
@@ -28,18 +28,18 @@
 .cf-tab-full-width {
 	background-color: var(--cf-black);
 }
-.cf-tab-full-width>li>a {
+.cf-tab-full-width li>a {
 	color: var(--cf-gray);
 	text-decoration: none;
 	height: var(--cf-h-dock);
 	border-top: 2px solid var(--cf-black);
 }
-.cf-tab-full-width>li>a:hover, .cf-tab-full-width>li>.active {
+.cf-tab-full-width li>a:hover, .cf-tab-full-width li>.active {
 	color: var(--cf-black);
 	background-color: var(--cf-white);
 	border-bottom: 2px dotted var(--cf-gray-light-su);
 	border-top: 2px solid var(--cf-gray-light-su);
 }
-.cf-tab-full-width>li>.active:hover {
+.cf-tab-full-width li>.active:hover {
 	color: var(--cf-gray);
 }

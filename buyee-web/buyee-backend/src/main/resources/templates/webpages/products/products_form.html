@@ -27,7 +27,7 @@
 		<!-- Tabs -->
 		<div id="scrollBox" class="container-fluid pb-3 pt-3 sticky-top" 
 			 style="background-color: var(--cf-white); z-index: 10;">
-			<div th:replace="~{/components/tab::bar('cf-tab-float-island')}"></div>
+			<div th:replace="~{/components/tab::bar('products', 'cf-tab-float-island')}"></div>
 		</div>
 		<!-- Data Collection Form -->
 		<form class="container-fluid" th:action="@{/products/save}" method="post" style="margin: 0 auto" 

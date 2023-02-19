@@ -8,9 +8,9 @@
 		<!-- Navigation Bar -->
 		<div th:replace="~{/components/header::navbar('Settings')}"></div>
 		<!-- Tabs -->
-		<div id="scrollBox" class="container-fluid pb-3 pt-3 sticky-top" 
+		<div id="scrollBox" class="container-fluid pt-3 sticky-top" 
 			 style="background-color: var(--cf-white); z-index: 10;">
-			<div th:replace="~{/components/tab::bar('cf-tab-float-island')}"></div>
+			<div th:replace="~{/components/tab::bar('settings', 'cf-tab-float-island')}"></div>
 		</div>
 		<!-- Footer -->
 		<div th:replace="~{/components/footer::navbar('')}"></div>

@@ -1,75 +1,29 @@
 <!-- Tabs in Product Section -->
-<div th:fragment="bar(extraClass)" th:remove="tag">
-	<div th:replace="~{/components/tab::bar_full(${extraClass})}"></div>
-	<div th:replace="~{/components/tab::bar_less(${extraClass})}"></div>
-</div>
-<!-- Tabs with texts in large/medium screen -->
-<div th:fragment="bar_full(extraClass)" class="full-details-block">
+<div th:fragment="bar(sectionTitle, extraClass)">
 	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
-		<li class="nav-item">
-	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
-	    	   role="tab" type="button">
-	    		<span class="align-middle">Overview</span>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#description" 
-	    	   role="tab" type="button">
-	    		<span class="align-middle">Description</span>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#images" 
-	    	   role="tab" type="button">
-	    		<span class="align-middle">Images</span>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#details" 
-	    	   role="tab" type="button">
-	    		<span class="align-middle">Details</span>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" 
-	    	   role="tab" type="button">
-	    		<span class="align-middle">Shipping</span>
-    	    </a>
-	  	</li>
+		<th:block th:if="${sectionTitle=='products'}">
+			<div th:replace="~{/components/tab::item('Overview', 'fa-brands fa-elementor', 'active')}"></div>
+			<div th:replace="~{/components/tab::item('Description', 'fa-brands fa-readme', '')}"></div>
+			<div th:replace="~{/components/tab::item('Images', 'fa-solid fa-images', '')}"></div>
+			<div th:replace="~{/components/tab::item('Details', 'fa-solid fa-circle-info', '')}"></div>
+			<div th:replace="~{/components/tab::item('Shipping', 'fa-solid fa-truck-fast', '')}"></div>
+		</th:block>
+		<th:block th:if="${sectionTitle=='settings'}">
+			<div th:replace="~{/components/tab::item('General', 'fa-solid fa-gears', 'active')}"></div>
+			<div th:replace="~{/components/tab::item('Countries', 'fa-solid fa-globe', '')}"></div>
+			<div th:replace="~{/components/tab::item('States', 'fa-solid fa-flag', '')}"></div>
+			<div th:replace="~{/components/tab::item('Mail Server', 'fa-solid fa-server', '')}"></div>
+			<div th:replace="~{/components/tab::item('Mail Templates', 'fa-solid fa-envelope', '')}"></div>
+		</th:block>
 	</ul>
 </div>
-<!-- Tabs with texts in small screen -->
-<div th:fragment="bar_less(extraClass)" class="less-details-block">
-	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
-		<li class="nav-item" title="overview">
-	    	<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" 
-	    	   role="tab" type="button">
-	    		<i class="fa-brands fa-elementor align-middle"></i>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item" title="description">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#description" 
-	    	   role="tab" type="button">
-	    		<i class="fa-brands fa-readme align-middle"></i>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item" title="images">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#images" 
-	    	   role="tab" type="button">
-	    		<i class="fa-solid fa-images align-middle"></i>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item" title="details">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#details" 
-	    	   role="tab" type="button">
-	    		<i class="fa-solid fa-circle-info align-middle"></i>
-	    	</a>
-	  	</li>
-	  	<li class="nav-item" title="shipping">
-	    	<a class="nav-link" data-bs-toggle="tab" data-bs-target="#shipping" 
-	    	   role="tab" type="button">
-	    		<i class="fa-solid fa-truck-fast align-middle"></i>
-    	    </a>
-	  	</li>
-	</ul>
+<!-- Tab nav-item with texts(full screen)/images(small screen) -->
+<div th:fragment="item(title, imageClass, extraClass)" th:remove="tag">
+	<li class="nav-item" th:title="${title}">
+    	<a th:class="'nav-link '+${extraClass}" data-bs-toggle="tab" th:data-bs-target="'#'+${title.toLowerCase()}" 
+    	   role="tab" type="button">
+    		<span class="align-middle full-details-block">[[${title}]]</span>
+    		<span class="less-details-block"><i th:class="'align-middle '+${imageClass}"></i></span>
+   	    </a>
+  	</li>
 </div>

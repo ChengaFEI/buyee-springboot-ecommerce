@@ -1,4 +1,4 @@
-package com.chengfei.buyee.admin.currency;
+package com.chengfei.buyee.admin.setting;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
@@ -17,6 +17,7 @@ import com.chengfei.buyee.common.entity.Currency;
 @Rollback(false)
 public class CurrencyRepositoryTests {
     @Autowired private CurrencyRepository repo;
+    // Read Tasks
     @Test
     public void testCreateCurrencies() {
 	List<Currency> listCurrencies = Arrays.asList(
@@ -36,5 +37,11 @@ public class CurrencyRepositoryTests {
 	repo.saveAll(listCurrencies);
 	Iterable<Currency> savedCurrencies = repo.findAll();
 	assertThat(savedCurrencies).size().isEqualTo(12);
+    }
+    @Test
+    public void testFindAllByOrderByNameAsc() {
+	List<Currency> currencies = repo.findAllByOrderByNameAsc();
+	currencies.forEach(System.out::println);
+	assertThat(currencies.size()).isEqualTo(12);
     }
 }

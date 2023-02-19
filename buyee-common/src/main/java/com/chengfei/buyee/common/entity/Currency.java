@@ -47,5 +47,8 @@ public class Currency {
     public void setCode(String code) {
         this.code = code;
     }
-    
+    @Override
+    public String toString() {
+	return "Currency [id=" + id + ", name=" + name + ", symbol=" + symbol + ", code=" + code + "]";
+    }
 }

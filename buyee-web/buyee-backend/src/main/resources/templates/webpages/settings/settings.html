@@ -8,10 +8,27 @@
 		<!-- Navigation Bar -->
 		<div th:replace="~{/components/header::navbar('Settings')}"></div>
 		<!-- Tabs -->
-		<div id="scrollBox" class="container-fluid pt-3 sticky-top" 
+		<div id="scrollBox" class="container-fluid pt-3 pb-3 sticky-top" 
 			 style="background-color: var(--cf-white); z-index: 10;">
 			<div th:replace="~{/components/tab::bar('settings', 'cf-tab-float-island')}"></div>
 		</div>
+		<!-- Data Collection Form -->
+		<form class="container-fluid" th:action="@{/products/save}" method="post" style="margin: 0 auto" 
+		      enctype="multipart/form-data">
+			<div class="border border-secondary rounded p-3">
+				<!-- Form Header -->
+				<div th:replace="~{/components/header::form_cancel(${pageTitle})}"></div>
+				<!-- Form Panels -->
+				<div class="tab-content">
+					<!-- General Section -->
+					<div class="tab-pane active fade show" id="general" role="tabpanel">
+						<div th:replace="~{/webpages/settings/settings_general::content}"></div>
+					</div>
+				</div>
+				<!-- Form Footer -->
+				<div th:replace="~{/components/footer::form}"></div>
+			</div>
+		</form>
 		<!-- Footer -->
 		<div th:replace="~{/components/footer::navbar('')}"></div>
 	</div>

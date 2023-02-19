@@ -1,6 +1,7 @@
-<!-- Tabs in Product Section -->
+<!-- Tab Bar -->
 <div th:fragment="bar(sectionTitle, extraClass)">
 	<ul th:class="'nav nav-justified ' + ${extraClass}" id="myTab" role="tablist">
+		<!-- Tab Bar in Products Section -->
 		<th:block th:if="${sectionTitle=='products'}">
 			<div th:replace="~{/components/tab::item('Overview', 'fa-brands fa-elementor', 'active')}"></div>
 			<div th:replace="~{/components/tab::item('Description', 'fa-brands fa-readme', '')}"></div>
@@ -8,6 +9,7 @@
 			<div th:replace="~{/components/tab::item('Details', 'fa-solid fa-circle-info', '')}"></div>
 			<div th:replace="~{/components/tab::item('Shipping', 'fa-solid fa-truck-fast', '')}"></div>
 		</th:block>
+		<!-- Tab Bar in Settings Section -->
 		<th:block th:if="${sectionTitle=='settings'}">
 			<div th:replace="~{/components/tab::item('General', 'fa-solid fa-gears', 'active')}"></div>
 			<div th:replace="~{/components/tab::item('Countries', 'fa-solid fa-globe', '')}"></div>

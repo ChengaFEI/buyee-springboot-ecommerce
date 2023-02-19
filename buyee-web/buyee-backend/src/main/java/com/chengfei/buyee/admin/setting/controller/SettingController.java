@@ -21,10 +21,11 @@ public class SettingController {
 	    Model model) {
 	List<Setting> listSettings = service.readAllSettings();
 	List<Currency> listCurrencies = currencyRepo.findAllByOrderByNameAsc();
-	model.addAttribute("listCurrencies", listCurrencies);
 	for (Setting setting: listSettings) {
 	    model.addAttribute(setting.getKey(), setting.getValue());
 	}
+	model.addAttribute("listCurrencies", listCurrencies);
+	model.addAttribute("pageTitle", "Settings");
 	return "webpages/settings/settings";
     }
 }

@@ -1,0 +1,24 @@
+<!-- Main content of the general section in Settings module -->
+<div th:fragment="content" th:remove="tag">
+	<!-- Product Name -->
+	<div class="form-group mb-3" title="Site name must be 3-1024 characters long">
+		<label class="col-form-label" for="inputSiteName">Site Name *</label>
+		<input type="text" class="form-control" pattern=".{3, 1024}" id="inputSiteName" th:name="${SITE_NAME}"
+				   th:value="${SITE_NAME}" required/>
+	</div>
+	<!-- Copyright -->
+	<div class="form-group mb-3" title="Copyright must be 3-1024 characters long">
+		<label class="col-form-label" for="inputCopyright">Copyright *</label>
+		<input type="text" class="form-control" pattern=".{3, 1024}" id="inputCopyright" th:name="${COPYRIGHT}"
+				   th:value="${COPYRIGHT}" required/>
+	</div>
+	<!-- Site Logo -->
+	<div class="form-group mb-3" title="Image should be smaller than 1MB">
+		<!-- Logo Input -->
+		<label for="imageFile" class="form-label">Site Logo</label> 
+		<input class="form-control text-muted mb-3" type="file" id="imageFile" name="imageFile" 
+		       accept="image/png image/jpeg">
+		<!-- Logo Preview -->
+		<img class="cf-thumbnail-form" id="thumbnail" th:src="@{${SITE_LOGO}}"/>
+	</div>
+</div>

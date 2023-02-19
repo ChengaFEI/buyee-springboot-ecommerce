@@ -25,6 +25,6 @@ public class SettingController {
 	for (Setting setting: listSettings) {
 	    model.addAttribute(setting.getKey(), setting.getValue());
 	}
-	return "/settings/settings";
+	return "webpages/settings/settings";
     }
 }

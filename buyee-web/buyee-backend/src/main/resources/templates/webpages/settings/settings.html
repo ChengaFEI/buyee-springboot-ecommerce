@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="~{/universal::head(${pageTitle}, 'tag', 'products_form')}"/>
+</head>
+<body>
+	<div>
+		<!-- Navigation Bar -->
+		<div th:replace="~{/components/header::navbar('Settings')}"></div>
+		<!-- Tabs -->
+		<div id="scrollBox" class="container-fluid pb-3 pt-3 sticky-top" 
+			 style="background-color: var(--cf-white); z-index: 10;">
+			<div th:replace="~{/components/tab::bar('cf-tab-float-island')}"></div>
+		</div>
+		<!-- Footer -->
+		<div th:replace="~{/components/footer::navbar('')}"></div>
+	</div>
+</body>
+</html>

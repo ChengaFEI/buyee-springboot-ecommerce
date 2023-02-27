@@ -11,5 +11,20 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
+
+
+### Eclipse ###
+.settings/
+
+
+
+### VS Code ###
+# General
+.vscode
+
+
+
 ### MacOS ###
+# General
 .DS_Store
+

@@ -30,6 +30,12 @@ buildNumber.properties
 
 
 
+### Log ###
+# General
+*.log
+
+
+
 ### MacOS ###
 # General
 .DS_Store

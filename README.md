@@ -8,14 +8,14 @@ Cheng Fei (Individual Project)
 
 ## 📋 Introduction
 
-Buyee is an e-commerce platform with both toB and toC applications. It's a clone of the real-life amazon platform. The application is built with Spring Boot and Amazon S3, and deployed on Heroku.
+Buyee is an e-commerce platform with both toB and toC applications. It's a clone of the real-life Amazon platform. The application is built with Spring Boot and Amazon S3, and deployed on Heroku.
 
 ## ✨ Overview
 
-Frontend:
+toC application:
 ![frontend-demo](docs/frontend-demo.gif)
 
-Backend:
+toB application:
 ![backend-demo](docs/backend-demo.gif)
 
 ## 💻 Technology Stack
